@@ -1,0 +1,24 @@
+$navbar-main-color: #030300;
+$button-color : #00FFFD;
+$text-color: #DEDEDE;
+$js-color: #F7DF1E;
+$php-color: #6280B6;
+$html-color: #E44D26;
+$css-color: #1572B6;
+
+$main-font: 'Quantico';
+
+$background-image: url('/assets/images/background-image.jpg');
+
+@mixin card ($x, $y, $o, $color){
+    width: $x;
+    height: $y;
+    background-color: $color;
+    border-radius: 5px;
+    opacity: $o;
+}
+
+html{
+    font-family: $main-font;
+}
+
