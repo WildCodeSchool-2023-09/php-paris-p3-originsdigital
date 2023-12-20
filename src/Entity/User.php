@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -17,6 +16,11 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
+    #[Assert\NotBlank(message: 'un pseudo est obligatoire')]
+    #[Assert\Length(
+        max: 150,
+        maxMessage: 'Le pseudo saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
     private ?string $username = null;
 
     #[ORM\Column(length: 150, nullable: true)]
@@ -67,17 +71,28 @@ class User
     #[Assert\Email(
         message: 'L\'email {{ value }} n\'est pas valide.',
     )]
+    #[Assert\NotBlank(message: 'un mail est obligatoire')]
+    #[Assert\Length(
+        max: 150,
+        maxMessage: 'Le mail saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
     private ?string $mail = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
+    #[ORM\Column(length: 14, nullable: true)]
     #[Assert\Regex(
-        pattern: '^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$',
+        pattern:
+        '^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$',
         match: false,
         message: 'Numéro de téléphone invalide',
     )]
     private ?string $phonenumber = null;
 
     #[ORM\Column(length: 32)]
+    #[Assert\NotBlank(message: 'un mot de passe est obligatoire')]
+    #[Assert\Length(
+        max: 32,
+        maxMessage: 'Le mot de passe saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 200, nullable: true)]
