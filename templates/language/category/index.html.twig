@@ -8,5 +8,16 @@
 {% block body %}
 	<div id="index-categories">
 		<h1>//CATÉGORIES_</h1>
+		<div id="index-category-cards">
+			{% for category in categories %}
+				<card id="{{category.label}}-card">
+					<h2>//{{category.label}}_</h2>
+					<div id="category_carrousel">
+						<a id="previous-button"><img src="{{ asset('build/images/next.c7d5200b.svg')}}"></a>
+						<a id="next-button"><img src="{{ asset('build/images/previous.fbd91271.svg')}}"></a>
+					</div>
+				</card>
+			{% endfor %}
+		</div>
 	</div>
 {% endblock %}

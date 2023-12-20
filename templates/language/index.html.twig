@@ -8,13 +8,13 @@
 {% block body %}
 	<div id="index-language">
 		<h1>//LANGAGES_</h1>
-		<div id="index-cards">
+		<div id="index-language-cards">
 			{% for language in languages %}
 				<card id="{{language.label}}-card">
 					<img src="{{ vich_uploader_asset(language) }}" alt="logo of {{language.label}}">
 					<h2>//{{language.label}}_</h2>
 					<p>{{language.description}}</p>
-					<a class="btn-glitch-fill" href="{{ path("category_index", { label: language.label })}}">
+					<a class="btn-glitch-fill" href="{{ path("category_index", { slug: language.slug })}}">
 						<span class="text">//Catégories</span>
 						<span class="text-decoration">_</span>
 						<span class="decoration">&rArr;</span>

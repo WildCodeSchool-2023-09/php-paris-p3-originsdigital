@@ -1,0 +1,23 @@
+#index-categories{
+    width: 81vw;
+    margin-left: 19vw;
+    h1{
+        color: $text-color;
+        font-size: 4rem;
+        text-align: center;
+        margin-top: 8vh;
+        margin-bottom: 5vh;
+    }
+    #index-language-cards {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 61vw;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 10%;
+        #category-carrousel{
+            width: 61vw;
+            height: 11vw;
+        }
+    }
+}

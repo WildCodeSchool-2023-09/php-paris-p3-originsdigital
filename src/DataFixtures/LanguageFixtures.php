@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Language;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class LanguageFixtures extends Fixture
 {
@@ -14,6 +15,7 @@ class LanguageFixtures extends Fixture
         $php->setLabel('PHP');
         $php->setLogo('php-logo.svg');
         $php->setDescription('Apprends les bases du langage PHP');
+        $php->setSlug('php');
         $this->addReference('PHPLanguage', $php);
         $manager->persist($php);
 
@@ -21,6 +23,7 @@ class LanguageFixtures extends Fixture
         $javascript->setLabel('JavaScript');
         $javascript->setLogo('javascript-logo.svg');
         $javascript->setDescription('Apprends les bases du langage JavaScript');
+        $javascript->setSlug('js');
         $this->addReference('JSLanguage', $javascript);
         $manager->persist($javascript);
 
@@ -28,6 +31,7 @@ class LanguageFixtures extends Fixture
         $html->setLabel('HTML');
         $html->setLogo('html-logo.svg');
         $html->setDescription('Lance toi dans HTML pour commencer ton site web');
+        $html->setSlug('html');
         $this->addReference('HTMLLanguage', $html);
         $manager->persist($html);
 
@@ -35,6 +39,7 @@ class LanguageFixtures extends Fixture
         $css->setLabel('CSS');
         $css->setLogo('css-logo.svg');
         $css->setDescription('Personnalise ta mise en page avec CSS');
+        $css->setSlug('css');
         $this->addReference('CSSLanguage', $css);
         $manager->persist($css);
 
