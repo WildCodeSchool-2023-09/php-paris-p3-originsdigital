@@ -14,28 +14,28 @@ class LanguageFixtures extends Fixture
         $php->setLabel('PHP');
         $php->setLogo('php-logo.svg');
         $php->setDescription('Apprends les bases du langage PHP');
-        $this->addReference($php . 'Language', $php);
+        $this->addReference('PHPLanguage', $php);
         $manager->persist($php);
 
-        $js = new Language();
-        $js->setLabel('JavaScript');
-        $js->setLogo('js-logo.svg');
-        $js->setDescription('Apprends les bases du langage JavaScript');
-        $this->addReference($js . 'Language', $js);
-        $manager->persist($js);
+        $javascript = new Language();
+        $javascript->setLabel('JavaScript');
+        $javascript->setLogo('javascript-logo.svg');
+        $javascript->setDescription('Apprends les bases du langage JavaScript');
+        $this->addReference('JSLanguage', $javascript);
+        $manager->persist($javascript);
 
         $html = new Language();
         $html->setLabel('HTML');
         $html->setLogo('html-logo.svg');
         $html->setDescription('Lance toi dans HTML pour commencer ton site web');
-        $this->addReference($html . 'Language', $html);
+        $this->addReference('HTMLLanguage', $html);
         $manager->persist($html);
 
         $css = new Language();
         $css->setLabel('CSS');
         $css->setLogo('css-logo.svg');
         $css->setDescription('Personnalise ta mise en page avec CSS');
-        $this->addReference($css . 'Language', $css);
+        $this->addReference('CSSLanguage', $css);
         $manager->persist($css);
 
 

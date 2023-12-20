@@ -3,7 +3,7 @@ vich_uploader:
     metadata:
         type: attribute
     mappings:
-        poster_file:
+        logo_file:
             uri_prefix: /uploads/logos
-            upload_destination: '%upload_directory_logos%'
+            upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

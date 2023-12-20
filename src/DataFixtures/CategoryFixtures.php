@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CategoryFixtures extends Fixture
+class CategoryFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -48,7 +49,7 @@ class CategoryFixtures extends Fixture
 
         $htmlLesson = new Category();
         $htmlLesson->setLabel('Cours');
-        $htmlLesson->setLanguage($this->getReference('HMTLLanguage'));
+        $htmlLesson->setLanguage($this->getReference('HTMLLanguage'));
 
         $manager->persist($htmlLesson);
 
@@ -91,5 +92,4 @@ class CategoryFixtures extends Fixture
           LanguageFixtures::class,
         ];
     }
-
 }

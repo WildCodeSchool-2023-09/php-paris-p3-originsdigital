@@ -11,56 +11,16 @@
 		<div id="index-cards">
 			{% for language in languages %}
 				<card id="{{language.label}}-card">
-					<img src="{{ vich_uploader_asset(language) }}" alt="logo of " {{language.label}}>
+					<img src="{{ vich_uploader_asset(language) }}" alt="logo of {{language.label}}">
 					<h2>//{{language.label}}_</h2>
 					<p>{{language.description}}</p>
-					<a class="btn-glitch-fill" href="">
+					<a class="btn-glitch-fill" href="{{ path("category_index", { label: language.label })}}">
 						<span class="text">//Catégories</span>
 						<span class="text-decoration">_</span>
 						<span class="decoration">&rArr;</span>
 					</a>
 				</card>
 			{% endfor %}
-			<card id="js-card">
-				<img src="{{ asset('build/images/javascript-logo.eb9d2cb6.svg')}}" alt="logo of JavaScript">
-				<h2>//JavaScript_</h2>
-				<p>Apprends les bases du langage JavaScript</p>
-				<a class="btn-glitch-fill" href="">
-					<span class="text">//Catégories</span>
-					<span class="text-decoration">_</span>
-					<span class="decoration">&rArr;</span>
-				</a>
-			</card>
-			<card id="php-card">
-				<img src="{{ asset('build/images/php-logo.e7123345.svg')}}" alt="logo of PHP">
-				<h2>//PHP_</h2>
-				<p>Apprends les bases du langage PHP</p>
-				<a class="btn-glitch-fill" href="">
-					<span class="text">//Catégories</span>
-					<span class="text-decoration">_</span>
-					<span class="decoration">&rArr;</span>
-				</a>
-			</card>
-			<card id="html-card">
-				<img src="{{ asset('build/images/html-logo.8c11e1a8.svg')}}" alt="logo of HTML">
-				<h2>//HTML_</h2>
-				<p>Lance toi dans HTML pour commencer ton site web</p>
-				<a class="btn-glitch-fill" href="">
-					<span class="text">//Catégories</span>
-					<span class="text-decoration">_</span>
-					<span class="decoration">&rArr;</span>
-				</a>
-			</card>
-			<card id="css-card">
-				<img src="{{ asset('build/images/css-logo.b3c0acbf.svg')}}" alt="logo of CSS">
-				<h2>//CSS_</h2>
-				<p>Personnalise ta mise en page avec CSS</p>
-				<a class="btn-glitch-fill" href="">
-					<span class="text">//Catégories</span>
-					<span class="text-decoration">_</span>
-					<span class="decoration">&rArr;</span>
-				</a>
-			</card>
 		</div>
 	</div>
 {% endblock %}
