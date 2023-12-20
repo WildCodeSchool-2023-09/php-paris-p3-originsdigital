@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
@@ -18,9 +20,19 @@ class User
     private ?string $username = null;
 
     #[ORM\Column(length: 150, nullable: true)]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre nom ne devrait pas contenir de numéros',
+    )]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 150, nullable: true)]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre nom ne devrait pas contenir de numéros',
+    )]
     private ?string $firstname = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
@@ -36,15 +48,33 @@ class User
     private ?string $city = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Regex(
+        pattern: '/\d+/',
+        match: false,
+        message: 'Code postal invalide',
+    )]
     private ?int $zipcode = null;
 
     #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre pays devrait pas contenir de numéros',
+    )]
     private ?string $country = null;
 
     #[ORM\Column(length: 150)]
+    #[Assert\Email(
+        message: 'L\'email {{ value }} n\'est pas valide.',
+    )]
     private ?string $mail = null;
 
     #[ORM\Column(length: 10, nullable: true)]
+    #[Assert\Regex(
+        pattern: '^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$',
+        match: false,
+        message: 'Numéro de téléphone invalide',
+    )]
     private ?string $phonenumber = null;
 
     #[ORM\Column(length: 32)]
