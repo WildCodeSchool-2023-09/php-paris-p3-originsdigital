@@ -4,10 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Faker\Factory;
-use Faker\Provider\fr_FR\PhoneNumber;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-;
 
 class UserFixtures extends Fixture
 {
@@ -31,7 +29,7 @@ class UserFixtures extends Fixture
         $premium->setHousenumber($faker->numberBetween(1, 100));
         $premium->setStreetname($faker->streetName());
         $premium->setCity($faker->city());
-        $premium->setZipcode('010101');
+        $premium->setZipcode(010101);
         $premium->setCountry($faker->country());
         $premium->setMail('premium@test.com');
         $premium->setPhonenumber('0101010101');
@@ -46,7 +44,6 @@ class UserFixtures extends Fixture
         $admin->setPassword('1234');
         $admin->setRole('admin');
         $manager->persist($admin);
-        
         $manager->flush();
     }
 }

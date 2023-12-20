@@ -6,8 +6,21 @@ use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(
+    fields: ['mail'],
+    message: 'ce mail est déjà utilisé',
+)]
+#[UniqueEntity(
+    fields: ['username'],
+    message: 'ce pseudo est déjà utilisé',
+)]
+#[UniqueEntity(
+    fields: ['phonenumber'],
+    message: 'ce numéro de téléphone est déjà utilisé',
+)]
 class User
 {
     #[ORM\Id]
