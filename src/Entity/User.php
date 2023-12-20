@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -100,10 +101,10 @@ class User
     )]
     private ?string $phonenumber = null;
 
-    #[ORM\Column(length: 32)]
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'un mot de passe est obligatoire')]
     #[Assert\Length(
-        max: 32,
+        max: 255,
         maxMessage: 'Le mot de passe saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
     )]
     private ?string $password = null;

@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+<div class="formErrors">
+        {{ form_errors(form) }}
+</div>
+
+<div class="formFields">
+    {{ form_row(form.username) }}
+    {{ form_row(form.mail) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form._token) }}
+</div>
+
+<button class="btn">{{ button_label|default('créer mon compte') }}</button>
+{{ form_end(form, {render_rest: false}) }}
