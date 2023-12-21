@@ -19,13 +19,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ['user', 'premium', 'admin'];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 150)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 200, nullable: true)]
+    private ?string $profilepicture = null;
 
     public function getId(): ?int
     {
@@ -95,5 +101,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getProfilepicture(): ?string
+    {
+        return $this->profilepicture;
+    }
+
+    public function setProfilepicture(?string $profilepicture): static
+    {
+        $this->profilepicture = $profilepicture;
+
+        return $this;
     }
 }
