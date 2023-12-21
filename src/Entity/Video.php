@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Repository\VideoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
+#[Vich\Uploadable]
 class Video
 {
     #[ORM\Id]
@@ -22,9 +25,13 @@ class Video
 
     #[ORM\Column(length: 255)]
     private ?string $video = null;
+    #[Vich\UploadableField(mapping: 'video_file', fileNameProperty: 'video')]
+    private ?File $videoFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $miniature = null;
+    #[Vich\UploadableField(mapping: 'miniature_file', fileNameProperty: 'miniature')]
+    private ?File $miniatureFile = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -92,5 +99,26 @@ class Video
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function setVideoFile(File $video = null): Video
+    {
+        $this->videoFile = $video;
+        return $this;
+    }
+
+    public function getVideoFile(): ?File
+    {
+        return $this->videoFile;
+    }
+
+    public function setMiniatureFile(File $image = null): Video
+    {
+        $this->miniatureFile = $image;
+        return $this;
+    }
+    public function getMiniatureFile(): ?File
+    {
+        return $this->miniatureFile;
     }
 }

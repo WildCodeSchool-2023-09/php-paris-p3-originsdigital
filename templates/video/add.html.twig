@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TEST FORMULAIRE{% endblock %}
+
+
+
+{% block body %}
+{{ form_start(form) }}
+<fieldset>
+    {# {{ form_errors(form.title) }}
+    {{ form_label(form.title) }} #}
+    {{ form_widget(form) }}
+    {# {{ form_help(form.title) }}
+    {{ form_row(form.title) }} #}
+</fieldset>
+    {# <div>some HTML code between 2 form field</div>
+    {{ form_row(form.family) }} #}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% endblock %}
