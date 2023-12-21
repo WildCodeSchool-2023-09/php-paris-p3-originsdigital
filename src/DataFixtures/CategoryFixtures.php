@@ -24,7 +24,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($phpTutoriel);
 
         $phpLiveCoding = new Category();
-        $phpLiveCoding->setLabel('Live Coding');
+        $phpLiveCoding->setLabel('LiveCoding');
         $phpLiveCoding->setLanguage($this->getReference('PHPLanguage'));
 
         $manager->persist($phpLiveCoding);
@@ -42,7 +42,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($jsTutoriel);
 
         $jsLiveCoding = new Category();
-        $jsLiveCoding->setLabel('Live Coding');
+        $jsLiveCoding->setLabel('LiveCoding');
         $jsLiveCoding->setLanguage($this->getReference('JSLanguage'));
 
         $manager->persist($jsLiveCoding);
@@ -60,7 +60,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($htmlTutoriel);
 
         $htmlLiveCoding = new Category();
-        $htmlLiveCoding->setLabel('Live Coding');
+        $htmlLiveCoding->setLabel('LiveCoding');
         $htmlLiveCoding->setLanguage($this->getReference('HTMLLanguage'));
 
         $manager->persist($htmlLiveCoding);
@@ -78,7 +78,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($cssTutoriel);
 
         $cssLiveCoding = new Category();
-        $cssLiveCoding->setLabel('Live Coding');
+        $cssLiveCoding->setLabel('LiveCoding');
         $cssLiveCoding->setLanguage($this->getReference('CSSLanguage'));
 
         $manager->persist($cssLiveCoding);

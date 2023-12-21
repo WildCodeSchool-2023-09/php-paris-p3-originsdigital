@@ -10,13 +10,118 @@
 		<h1>//CATÉGORIES_</h1>
 		<div id="index-category-cards">
 			{% for category in categories %}
-				<card id="{{category.label}}-card">
-					<h2>//{{category.label}}_</h2>
-					<div id="category_carrousel">
-						<a id="previous-button"><img src="{{ asset('build/images/next.c7d5200b.svg')}}"></a>
-						<a id="next-button"><img src="{{ asset('build/images/previous.fbd91271.svg')}}"></a>
+				<h2>{{category.label}}</h2>
+				<div id="{{category.label}}-carousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 1_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 2_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 3_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 4_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 5_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 6_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 7_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 8_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+							<div class="{{slug}}-card category-card">
+								<img src="{{ asset('build/images/test-carousel-1.2ad61582.png') }}" alt="logo of ">
+								<h3>//Cours 9_</h3>
+								<p>Découvre les tableaux en JS</p>
+								<a class="btn-glitch-fill" href="">
+									<span class="text">//Vidéo</span>
+									<span class="text-decoration">_</span>
+									<span class="decoration">&rArr;</span>
+								</a>
+							</div>
+						</div>
 					</div>
-				</card>
+					<a class="left carousel-control" href="#{{category.label}}-carousel" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#{{category.label}}-carousel" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+				<span>Voir plus ...</span>
 			{% endfor %}
 		</div>
 	</div>

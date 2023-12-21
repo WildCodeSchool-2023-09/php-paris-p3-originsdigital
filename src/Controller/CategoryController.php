@@ -12,12 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     #[Route('/{slug}', name: 'index')]
-    public function index(string $slug, CategoryRepository $categoryRepository, LanguageRepository $languageRepository): Response
-    {
+    public function index(
+        string $slug,
+        CategoryRepository $categoryRepository,
+        LanguageRepository $languageRepository
+    ): Response {
+        
         $language = $languageRepository->findBy(['slug' => $slug]);
         $categories = $categoryRepository->findByLanguage($language);
+        
         return $this->render('language/category/index.html.twig', [
             'categories' => $categories,
+            'slug' => $slug,
         ]);
     }
 }

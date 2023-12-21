@@ -1,6 +1,7 @@
 #index-language{
     width: 81vw;
     margin-left: 19vw;
+    font-family: $main-font;
     h1{
         color: $text-color;
         font-size: 4rem;
@@ -16,7 +17,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         gap: 10%;
-        card{
+        .language-card{
             border-radius: 5px;
             display: block;
             text-align: center;
@@ -62,7 +63,7 @@
                   animation-duration: 0.5s;
                   background-color: black;
                   color:$button-color;
-                  border: 1px solid yellow;
+                  border: 1px solid $button-color;
                   .text-decoration {
                     animation-name: blink;
                     animation-duration: 0.3s;
@@ -97,7 +98,7 @@
                 }
                 &:active {
                   background: none;
-                  color:yellow;
+                  color:$button-color;
                   .text-decoration {
                     animation-name: none;
                   }

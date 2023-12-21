@@ -1,6 +1,7 @@
 #index-categories{
     width: 81vw;
     margin-left: 19vw;
+    font-family: $main-font;
     h1{
         color: $text-color;
         font-size: 4rem;
@@ -8,16 +9,158 @@
         margin-top: 8vh;
         margin-bottom: 5vh;
     }
-    #index-language-cards {
-        margin-left: 10vw;
-        margin-right: 10vw;
-        height: 61vw;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        gap: 10%;
-        #category-carrousel{
-            width: 61vw;
-            height: 11vw;
+    #index-category-cards {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        height: 71vw;
+        h2{
+            color: $text-color;
+            font-size: 3rem;
+        }
+        span{
+            color: $text-color;
+            font-size: 1.5rem;
+        }
+        .js-card{
+            background-color: $js-color;
+        }
+        .php-card{
+            background-color: $php-color;
+        }
+        .html-card{
+            background-color: $html-color;
+        }
+        .css-card{
+            background-color: $css-color;
+        }
+        .category-card{
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            // opacity: 0.8;
+            img{
+                width: 8rem;
+                height: 5rem;
+                border: solid black;
+                border-radius: 5px;
+                margin-top: 20%;
+                margin-bottom: 10%;
+            }
+            h3{
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            p{
+                display: none;
+            }
+            a{
+                border-radius: 3px;
+                margin-bottom: 1rem;;
+            }
+            [class*="btn-glitch-"] {
+                display: none;
+                font-family: "Quantico", monospace;
+                border: 1px solid black;
+                color: $button-color;
+                background-color: $navbar-main-color;
+                padding: 5px 7px;
+                min-width: 150px;
+                line-height: 1.5em;
+                white-space: no-wrap;
+                text-transform: uppercase;
+                cursor: pointer;
+                .text,
+                .decoration,
+                .text-decoration {
+                  display: inline-block;
+                  color: $button-color;
+                }
+                .decoration {
+                  display: inline-block;
+                }
+                &:hover, &:focus {
+                  animation-name: glitch;
+                  animation-duration: 0.5s;
+                  background-color: black;
+                  color:$button-color;
+                  border: 1px solid $button-color;
+                  .text-decoration {
+                    animation-name: blink;
+                    animation-duration: 0.3s;
+                    animation-iteration-count: infinite;
+                    color: $button-color;
+                  }
+                  .decoration {
+                    animation-name: blink;
+                    animation-duration: 0.3s;
+                    animation-iteration-count: infinite;
+                  }
+                  :before {
+                    content: " ";
+                    width: 15px;
+                    border: 1px solid black;
+                    position: absolute;
+                    right: 25%;
+                    bottom: 3px;
+                    transform: rotate(35deg)
+                  }
+                  :after {
+                    animation-name: shrink;
+                    animation-duration:.5s;
+                    animation-iteration-count: 1;
+                    animation-fill-mode : forwards;
+                    content: " ";
+                    width: 75%;
+                    border: 1px solid black;
+                    position: absolute;
+                    left: 0;
+                    bottom: 5px;
+                  }
+                }
+                &:active {
+                  background: none;
+                  color: $button-color;
+                  .text-decoration {
+                    animation-name: none;
+                    color: $button-color;
+                  }
+                  .decoration {
+                    animation-name: none;
+                  }
+                  :before, :after {
+                    display: none;
+                  }
+                }
+              }
+              
+              @keyframes blink {
+                50% {
+                  opacity: 0;
+                }
+              }
+              
+              @keyframes shrink {
+                100% {
+                  width: 10%;
+                }
+              }
+            
+        }
+        .carousel-inner{
+            display:flex;
+            width: 90%;
+            margin-left: 15%;
+        }
+        .active{
+            display: flex;
+            width: 80%;
+        }
+        .category-card{
+            margin: 0.5rem;
+            width: 40%;
+        }
+        .carousel-control{
+            width: 10%;
         }
     }
 }
