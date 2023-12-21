@@ -27,17 +27,17 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}/{categoryLabel}', name: 'show_all')]
-    public function showAllVideosForOneCategory(
-        string $slug,
-        string $categoryLabel,
-        VideoRepository $videoRepository,
-    ): Response {
+    // #[Route('/{slug}/{categoryLabel}', name: 'show_all')]
+    // public function showAllVideosForOneCategory(
+    //     string $slug,
+    //     string $categoryLabel,
+    //     VideoRepository $videoRepository,
+    // ): Response {
 
-        $videos = $videoRepository->findByCategory($categoryLabel);
+    //     $videos = $videoRepository->findByCategory($categoryLabel);
 
-        return $this->render('language/category/index.html.twig', [
-            'videos' => $videos,
-        ]);
-    }
+    //     return $this->render('language/category/index.html.twig', [
+    //         'videos' => $videos,
+    //     ]);
+    // }
 }
