@@ -15,8 +15,8 @@ class UploadVideoType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('video')
-            ->add('miniature')
+            // ->add('video')
+            // ->add('miniature')
 
             ->add('miniatureFile', VichFileType::class, [
                 'required'      => false,

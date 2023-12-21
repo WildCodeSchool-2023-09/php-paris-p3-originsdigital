@@ -1,3 +1,14 @@
 body {
-    background-image: url("assets/images/background-image.jpg");
+    background-image: $background-image;
+    background-size: cover;
+}
+
+#form {
+    width: 20rem;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
 }
