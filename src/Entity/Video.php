@@ -29,12 +29,9 @@ class Video
     private ?File $videoFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $miniature = null;
-    #[Vich\UploadableField(mapping: 'miniature_file', fileNameProperty: 'miniature')]
-    private ?File $miniatureFile = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?string $thumbnail = null;
+    #[Vich\UploadableField(mapping: 'thumbnail_file', fileNameProperty: 'thumbnail')]
+    private ?File $thumbnailFile = null;
 
     public function getId(): ?int
     {
@@ -77,26 +74,14 @@ class Video
         return $this;
     }
 
-    public function getMiniature(): ?string
+    public function getThumbnail(): ?string
     {
-        return $this->miniature;
+        return $this->thumbnail;
     }
 
-    public function setMiniature(?string $miniature): static
+    public function setThumbnail(?string $thumbnail): static
     {
-        $this->miniature = $miniature;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }
@@ -112,13 +97,13 @@ class Video
         return $this->videoFile;
     }
 
-    public function setMiniatureFile(File $image = null): Video
+    public function setThumbnailFile(File $image = null): Video
     {
-        $this->miniatureFile = $image;
+        $this->thumbnailFile = $image;
         return $this;
     }
-    public function getMiniatureFile(): ?File
+    public function getThumbnailFile(): ?File
     {
-        return $this->miniatureFile;
+        return $this->thumbnailFile;
     }
 }

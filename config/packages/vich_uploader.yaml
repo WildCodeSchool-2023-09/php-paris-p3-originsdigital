@@ -5,12 +5,12 @@ vich_uploader:
         type: attribute
 
     mappings:
-        miniature_file:
-            uri_prefix: /uploads/images/miniatures
-            upload_destination: "%upload_directory%"
+        thumbnail_file:
+            uri_prefix: /uploads/thumbnails
+            upload_destination: "%upload_directory_thumbnails%"
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
         video_file:
             uri_prefix: /uploads/videos
-            upload_destination: "%upload_directory%"
+            upload_destination: "%upload_directory_videos%"
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

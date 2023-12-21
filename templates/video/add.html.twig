@@ -4,29 +4,16 @@
 
 
 {% block body %}
-{{ form_start(form) }}
-<div id="form">
-<fieldset>
-    {# {{ form_errors(form.title) }}
-    {{ form_label(form.title) }} #}
-
-    {# {{ form_help(form.title) }}
-    {{ form_row(form.title) }} #}
-    {{ form_widget(form.title) }}
-    {{ form_widget(form.description) }}
-    {{ form_widget(form.miniatureFile) }}
-    {{ form_widget(form.videoFile) }}
-
-
-</fieldset>
-    {# <div>some HTML code between 2 form field</div>
-    {{ form_row(form.family) }} #}
-    {# <button class="btn">{{ button_label|default('upload') }}</button> #}
+    {{ form_start(form) }}
+    <fieldset>
+        {{ form_widget(form) }}
+    </fieldset>
+    
     <div class="center-center">
         <a class="btn-glitch-fill">
         <span class="text"><button>{{ button_label|default('//upload_') }}</span><span class="text-decoration">_</span><span class="decoration">&rArr;</span></button></div>
         </a>
     </div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}

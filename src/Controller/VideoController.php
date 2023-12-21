@@ -10,18 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/video', name: 'video_')]
 class VideoController extends AbstractController
 {
-    #[Route('/video', name: 'app_video')]
-    public function index(): Response
-    {
-        return $this->render('video/index.html.twig', [
-            'controller_name' => 'VideoController',
-        ]);
-    }
-
-    #[Route('/new', name: 'upload_video')]
-    public function new(
+    #[Route('/new', name: 'new')]
+    public function new (
         Request $request,
         EntityManagerInterface $entityManager
     ): Response {
@@ -32,12 +25,12 @@ class VideoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($video);
             $entityManager->flush();
-            return $this->redirectToRoute('upload_video');
+            
+            return $this->redirectToRoute('video_new');
         }
 
         return $this->render('video/add.html.twig', [
-        'video' => $video,
-        'form' => $form,
+            'form' => $form,
         ]);
     }
 }
