@@ -17,13 +17,27 @@ class CategoryController extends AbstractController
         CategoryRepository $categoryRepository,
         LanguageRepository $languageRepository
     ): Response {
-        
+
         $language = $languageRepository->findBy(['slug' => $slug]);
         $categories = $categoryRepository->findByLanguage($language);
-        
+
         return $this->render('language/category/index.html.twig', [
             'categories' => $categories,
             'slug' => $slug,
+        ]);
+    }
+
+    #[Route('/{slug}/{categoryLabel}', name: 'show_all')]
+    public function showAllVideosForOneCategory(
+        string $slug,
+        string $categoryLabel,
+        VideoRepository $videoRepository,
+    ): Response {
+
+        $videos = $videoRepository->findByCategory($categoryLabel);
+
+        return $this->render('language/category/index.html.twig', [
+            'videos' => $videos,
         ]);
     }
 }

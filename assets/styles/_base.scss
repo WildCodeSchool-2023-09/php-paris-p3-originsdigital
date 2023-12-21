@@ -9,6 +9,7 @@ $css-color: #1572B6;
 $main-font: 'Quantico';
 
 $background-image: url('/assets/images/background-image.jpg');
+$background-image-mobile: url('/assets/images/background-image-mobile.jpg');
 
 @mixin card ($x, $y, $o, $color){
     width: $x;
@@ -22,8 +23,16 @@ html{
     font-family: $main-font;
 }
 
-body{
-    background-image: $background-image;
-    background-size: cover;
+@media screen and (min-width: 600px) {
+    body{
+        background-image: $background-image;
+        background-size: cover;
+    }
 }
 
+@media screen and (max-width: 600px) {
+    body{
+        background-image: $background-image-mobile;
+        background-size: cover;
+    }
+}

@@ -6,8 +6,8 @@
         color: $text-color;
         font-size: 4rem;
         text-align: center;
-        margin-top: 8vh;
-        margin-bottom: 5vh;
+        margin-top: 5vh;
+        margin-bottom: 3vh;
     }
     #index-category-cards {
         margin-left: 5vw;
@@ -32,6 +32,13 @@
         }
         .css-card{
             background-color: $css-color;
+        }
+        .all-videos{
+            text-decoration: none;
+            color: $text-color;
+            font-size: 1.2rem;
+            display:block;
+            text-align: end;
         }
         .category-card{
             border-radius: 5px;
