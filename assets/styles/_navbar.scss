@@ -1,5 +1,4 @@
-
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 769px) {
     #navbar {
         width: 33vh;
         height: 100vh;
@@ -10,6 +9,7 @@
         flex-direction: column;
         align-items: center;
         box-shadow: 6px 0px 4px 0px $button-color;
+        position: fixed;
     }
 
     #logo {
@@ -51,7 +51,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-size: 2rem;
+        font-size: 1.8rem;
         padding-left: 1vh;
         margin: 1vh 0 1vh 0;
     }
