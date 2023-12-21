@@ -16,32 +16,30 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
-    {
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        $userRole = $user->getRoles();
-        $user->setRoles($userRole);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $user->getPassword();
-            $hashedPassword = $passwordHasher->hashPassword(
-            $user,
-            $plainPassword
-            );
+            $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
             $user->setPassword($hashedPassword);
+            $arrayRole = $user->getRoles();
+            $userRole[] = $arrayRole[0];
+            $user->setRoles($userRole);
             $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
     }
-
-    
 }

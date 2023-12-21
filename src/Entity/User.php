@@ -19,7 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username = null;
 
     #[ORM\Column]
-    private array $roles = ['user', 'premium', 'admin'];
+    private array $roles = ['ROLE_USER', 'ROLE_PREMIUM', 'ROLE_ADMIN'];
 
     /**
      * @var string The hashed password
