@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class VideoController extends AbstractController
 {
     #[Route('/new', name: 'new')]
-    public function new (
+    public function new(
         Request $request,
         EntityManagerInterface $entityManager
     ): Response {
@@ -25,7 +25,7 @@ class VideoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($video);
             $entityManager->flush();
-            
+
             return $this->redirectToRoute('video_new');
         }
 

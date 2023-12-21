@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-;
 
 class VideoFixtures extends Fixture
 {

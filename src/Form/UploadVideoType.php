@@ -17,14 +17,14 @@ class UploadVideoType extends AbstractType
             ->add('description')
             ->add('thumbnailFile', VichFileType::class, [
                 'required'      => false,
-                'allow_delete'  => true, // not mandatory, default is true
-                'download_uri' => true, // not mandatory, default is true
+                'allow_delete'  => true,
+                'download_uri' => true,
         ])
 
             ->add('videoFile', VichFileType::class, [
                 'required'      => false,
-                'allow_delete'  => true, // not mandatory, default is true
-                'download_uri' => true, // not mandatory, default is true
+                'allow_delete'  => true,
+                'download_uri' => true,
         ])
         ;
     }
