@@ -35,7 +35,6 @@ class UserController extends AbstractController
             $originalFilename = pathinfo($profilePictureFile->getClientOriginalName(), PATHINFO_FILENAME);
             $safeFilename = $slugger->slug($originalFilename);
             $newFilename = $safeFilename . '-' . uniqid() . ' . ' . $profilePictureFile->guessExtension();
-           
             try {
                 $profilePictureFile->move(
                     $this->getParameter('profilepicture_directory'),
