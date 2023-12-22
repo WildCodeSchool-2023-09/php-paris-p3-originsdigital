@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class UserType extends AbstractType
 {
@@ -19,9 +21,28 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Repeter votre mot de passe'],
+                'invalid_message' => 'les mots de passe ne correspondent pas.'
             ])
             ->add('email')
-            ->add('profilepicture')
+            ->add('profilepicture', FileType::class, [
+                'label' => 'Photo de profil',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/tiff',
+                            'image/webp',
+                            'image/svg+xml',
+                        ],
+                        'mimeTypesMessage' => 'Merci d\'uploader une photo de type 
+                        Jpeg, Jpg, Png, Tiff, webp ou Svg et d\'une taille inférieure à 5mo',
+                    ])
+                ],
+            ])
         ;
     }
 

@@ -1,3 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
 {{ form_start(form) }}
 
 <div class="formErrors">
@@ -5,12 +10,29 @@
 </div>
 
 <div class="formFields">
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
+    <input class="form-control"
+    name="{{ field_name(form.username) }}"
+    value="{{ field_value(form.username) }}"
+    placeholder="{{ field_label(form.username) }}"
+    >
+    <input class="form-control"
+    name="{{ field_name(form.email) }}"
+    value="{{ field_value(form.email) }}"
+    placeholder="{{ field_label(form.email) }}"
+    >
+
+    {# {{ form_row(form.email) }} #}
     {{ form_row(form.password) }}
     {{ form_row(form.profilepicture)}}
     {{ form_row(form._token) }}
 </div>
 
+<div id="preview_pictures_field"> </div>
+
 <button class="btn">{{ button_label|default('créer mon compte') }}</button>
+
+{% block javascripts %}{% endblock %}
+
 {{ form_end(form, {render_rest: false}) }}
+
+{% endblock %}

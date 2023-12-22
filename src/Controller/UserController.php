@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -20,19 +23,34 @@ class UserController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher,
-        array $userRole
+        SluggerInterface $slugger
     ): Response {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
+        $profilePictureFile = $form->get('profilepicture')->getData();
+
+        if ($profilePictureFile) {
+            $originalFilename = pathinfo($profilePictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename . '-' . uniqid() . ' . ' . $profilePictureFile->guessExtension();
+           
+            try {
+                $profilePictureFile->move(
+                    $this->getParameter('profilepicture_directory'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            $user->setprofilePicture($newFilename);
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword = $user->getPassword();
-            $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
-            $user->setPassword($hashedPassword);
-            $arrayRole = $user->getRoles();
-            $userRole[] = $arrayRole[0];
-            $user->setRoles($userRole);
+            $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
+            $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
 

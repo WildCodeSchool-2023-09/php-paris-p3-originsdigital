@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use Faker\Factory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -11,7 +10,6 @@ class UserFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create();
         // Fixture d'un utilisateur connecté, seuls les champs obligatoires pour ce type de profil sont renseignés//
         $user = new User();
         $user->setUsername('USER');
