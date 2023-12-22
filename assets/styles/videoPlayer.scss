@@ -1,118 +1,171 @@
-// @media screen and (min-width: 769px) {
-    #video-player {
-        display: flex;
-        background-color: grey;
+#video-player {
+    display: flex;
+    background-color: grey;
+    width: 61vw;
+    height: 31vw;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30.7vw;
+    position: fixed;
+    margin-top: 2vw;
+}
+
+#description {
+    background-image: url('/assets/images/card.svg');
+    width: 57vw;
+    background-repeat: no-repeat;
+    background-size: 50vw;
+    height: 23vw;
+    margin-left: 30.7vw;
+    position: fixed;
+    margin-top: 40vw;
+    color: #DEDEDE;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: space-between;
+}
+
+#video-options {
+    background-image: url('/assets/images/card2.svg');
+    background-repeat: no-repeat;
+    background-size: 13vw;
+    width: 13vw;
+    height: 4vw;
+    margin-left: 30.7vw;
+    position: fixed;
+    margin-top: 34.5vw;
+}
+
+#playlist-button {
+    background-image: url('/assets/images/addPlaylist.svg');
+    background-repeat: no-repeat;
+    background-size: 3vw;
+    width: 4vw;
+    height: 4vw;
+    margin-left: 0.7vw;
+    position: fixed;
+    margin-top: 0.5vw;
+}
+
+#like-button {
+    background-image: url('/assets/images/like.svg');
+    background-repeat: no-repeat;
+    background-size: 3vw;
+    width: 4vw;
+    height: 4vw;
+    margin-left: 4.3vw;
+    position: fixed;
+    margin-top: 0.5vw;
+}
+
+#share-button {
+    background-image: url('/assets/images/share.svg');
+    background-repeat: no-repeat;
+    background-size: 3vw;
+    width: 4vw;
+    height: 4vw;
+    margin-left: 7.7vw;
+    position: fixed;
+    margin-top: 0.5vw;
+}
+
+#title-description {
+    padding: 1vw 0 0 1vw;
+    font-size: 1.8vw;
+}
+#text-description {
+    padding: 1vw 9vw 1vw 1vw;
+    font-size: 1.5vw;
+    line-height: 1.8vw;
+}
+
+#recommended-videos-field {
+    background-color: rgba(3, 3, 0, 0.50);
+    border-radius: 5px;
+    border: 1px solid $button-color;
+    width: 10vw;
+    height: 26vw;
+    position: fixed;
+    margin-top: 34.5vw;
+    margin-left: 82vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommended-videos {
+    display: flex;
+    background-color: grey;
+    width: 9vw;
+    height: 6vw;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.3vw;    
+}
+
+@media screen and (min-width: 851px) and (max-width: 950px) {
+    #components {
         width: 61vw;
-        height: 31vw;
-        justify-content: center;
-        align-items: center;
-        margin-left: 30.7vw;
+        margin: 0vw 0 0 1vw;
         position: fixed;
-        margin-top: 2vw;
     }
 
-    #description {
-        background-image: url('/assets/images/card.svg');
-        width: 57vw;
-        background-repeat: no-repeat;
-        background-size: 50vw;
-        height: 23vw;
-        margin-left: 30.7vw;
+}
+
+@media screen and (min-width: 769px) and (max-width: 850px) {
+    #components {
+        width: 61vw;
+        margin: 0vw 0 0 3vw;
         position: fixed;
-        margin-top: 40vw;
-        color: #DEDEDE;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        align-content: space-between;
     }
 
-    #video-options {
-        background-image: url('/assets/images/card2.svg');
-        background-repeat: no-repeat;
-        background-size: 13vw;
-        width: 13vw;
-        height: 4vw;
-        margin-left: 30.7vw;
-        position: fixed;
-        margin-top: 34.5vw;
-    }
-
-    #playlist-button {
-        background-image: url('/assets/images/addPlaylist.svg');
-        background-repeat: no-repeat;
-        background-size: 3vw;
-        width: 4vw;
-        height: 4vw;
-        margin-left: 0.7vw;
-        position: fixed;
-        margin-top: 0.5vw;
-    }
-
-    #like-button {
-        background-image: url('/assets/images/like.svg');
-        background-repeat: no-repeat;
-        background-size: 3vw;
-        width: 4vw;
-        height: 4vw;
-        margin-left: 4.3vw;
-        position: fixed;
-        margin-top: 0.5vw;
-    }
-
-    #share-button {
-        background-image: url('/assets/images/share.svg');
-        background-repeat: no-repeat;
-        background-size: 3vw;
-        width: 4vw;
-        height: 4vw;
-        margin-left: 7.7vw;
-        position: fixed;
-        margin-top: 0.5vw;
-    }
-
-    #title-description {
-        padding: 1vw 0 0 1vw;
-        font-size: 1.8vw;
-    }
-    #text-description {
-        padding: 1vw 9vw 1vw 1vw;
-        font-size: 1.5vw;
-        line-height: 1.8vw;
-    }
-
-    #recommended-videos-field {
-        background-color: rgba(3, 3, 0, 0.50);
-        border-radius: 5px;
-        border: 1px solid $button-color;
-        width: 10vw;
-        height: 26vw;
-        position: fixed;
-        margin-top: 34.5vw;
-        margin-left: 82vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .recommended-videos {
-        display: flex;
-        background-color: grey;
-        width: 9vw;
-        height: 6vw;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.3vw;    
-    }
-// }
+}
 
 @media screen and (max-width: 768px) {
     #video-player {
         width: 100%;
         margin: 2vw 0 0 0;
+    }
+
+    #video-options {
+        background-image: none;
+    }
+
+    #playlist-button {
+        background-size: 6vw;
+        width: 7vw;
+        height: 5vw;
+        margin-left: -23.3vw;
+        margin-top: 0.5vw;
+    }
+
+    #like-button {
+        background-size: 6vw;
+        width: 7vw;
+        height: 5vw;
+        margin-left: 13.7vw;
+        margin-top: 0.5vw;
+    }
+
+    #share-button {
+        background-size: 6vw;
+        width: 7vw;
+        height: 6vw;
+        margin-left: 54vw;
+        margin-top: 0.5vw;
+    }
+
+    #description {
+        background-image: none;
+    }
+    
+
+    #recommended-videos-field {
+        display: none;
     }
 
 }
