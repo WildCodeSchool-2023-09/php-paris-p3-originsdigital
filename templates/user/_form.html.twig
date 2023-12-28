@@ -2,30 +2,59 @@
 
 {% block body %}
 
+<div class = 'contentContainer'>
 
-{{ form_start(form) }}
+    {{ form_start(form) }}
 
-<div class="formErrors">
-        {{ form_errors(form) }}
+    
+
+    <div class="formFields">
+
+        <div id="preview_pictures_field"> </div>
+
+        <div class="formErrors">
+            {{ form_errors(form) }}
+        </div>
+        <input type="file"
+            class="form-control"
+            id="user_profilepicture"
+            name="user[profilepicture]"
+            aria-label="photo de profil"
+        >
+        {{ form_errors(form.username) }}
+        <input class="form-control"
+            name="{{ field_name(form.username) }}"
+            aria-label="Pseudo"
+            value="{{ field_value(form.username) }}"
+            placeholder="Pseudo"
+        >
+        {{ form_errors(form.email) }}
+        <input class="form-control"
+            name="{{ field_name(form.email) }}"
+            aria-label="email"
+            value="{{ field_value(form.email) }}"
+            placeholder="{{ field_label(form.email) }}"
+        >
+        {{ form_row(form.password)}}
+        
+        {# {{ form_errors(form.password) }} #}
+        {# <input type="password"
+            class="form-control"
+            id="user_password_first" 
+            name="user[password][first]" 
+            required="required"
+            placeholder = "Mot de passe"
+        >
+        <input type="password" 
+            class="form-control"
+            id="user_password_second" 
+            name="user[password][second]" 
+            required="required"
+            placeholder = "Confirmation"
+        > #}
+        {{ form_row(form._token) }}
+    </div>
 </div>
-
-<div class="formFields">
-    <input class="form-control"
-    name="{{ field_name(form.username) }}"
-    value="{{ field_value(form.username) }}"
-    placeholder="{{ field_label(form.username) }}"
-    >
-    <input class="form-control"
-    name="{{ field_name(form.email) }}"
-    value="{{ field_value(form.email) }}"
-    placeholder="{{ field_label(form.email) }}"
-    >
-    {{ form_row(form.password) }}
-    {{ form_row(form.profilepicture)}}
-    {{ form_row(form._token) }}
-</div>
-
-<div id="preview_pictures_field"> </div>
 
 <button class="btn">{{ button_label|default('créer mon compte') }}</button>
 

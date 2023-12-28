@@ -10,7 +10,7 @@ $main-font: 'Quantico';
 
 $background-image: url('/assets/images/background-image.jpg');
 
-@mixin card ($x, $y, $o, $color){
+@mixin card ($x, $y, $o, $color) {
     width: $x;
     height: $y;
     background-color: $color;
@@ -18,7 +18,32 @@ $background-image: url('/assets/images/background-image.jpg');
     opacity: $o;
 }
 
-html{
+html {
     font-family: $main-font;
 }
 
+.contentContainer {
+    display: flex;
+    width: 69%; // NICE <3 //
+    height: 78%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    background-color: #1572B6;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formFields .form-control,
+#user_password_first,
+#user_password_second {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.formFields ul li {
+    text-align: center;
+}

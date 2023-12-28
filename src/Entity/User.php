@@ -6,8 +6,19 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(
+    fields: ['email'],
+    message: 'ce mail est déjà utilisé',
+)]
+#[UniqueEntity(
+    fields: ['username'],
+    message: 'ce pseudo est déjà utilisé',
+)]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -16,6 +27,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'un pseudo est obligatoire')]
+    #[Assert\Length(
+        max: 180,
+        maxMessage: 'Le pseudo saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
     private ?string $username = null;
 
     #[ORM\Column]
@@ -27,7 +43,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 150, unique: true)]
+    #[Assert\Email(
+        message: 'L\'email {{ value }} n\'est pas valide.',
+    )]
+    #[Assert\NotBlank(message: 'un mail est obligatoire')]
+    #[Assert\Length(
+        max: 150,
+        maxMessage: 'Le mail saisi {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
     private ?string $email = null;
 
     #[ORM\Column(length: 200, nullable: true)]

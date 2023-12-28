@@ -19,9 +19,10 @@ class UserType extends AbstractType
             ->add('username')
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Repeter votre mot de passe'],
-                'invalid_message' => 'les mots de passe ne correspondent pas.'
+                'options' => ['label' => false],
+                'first_options'  => ['attr' => ['placeholder' => 'Mot de passe']],
+                'second_options' => ['attr' => ['placeholder' => 'Confirmation']],
+                'invalid_message' => 'les mots de passe ne correspondent pas.',
             ])
             ->add('email')
             ->add('profilepicture', FileType::class, [
