@@ -1,9 +1,10 @@
 //start coding by removing this file and adding yours ;)
+@import "~bootstrap/scss/bootstrap";
 @import "reset";
 @import "base";
 @import "language/index";
 @import "language/category/index";
-@import "~bootstrap/scss/bootstrap";
+@import "upload";
 @import "navbarMobile";
 @import "navbar";
 @import "headerMobile";

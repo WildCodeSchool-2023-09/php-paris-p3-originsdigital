@@ -12,3 +12,5 @@ import './styles/app.scss';
 import './bootstrap';
 import './cardHover';
 require('bootstrap');
+import './picturePreview';
+

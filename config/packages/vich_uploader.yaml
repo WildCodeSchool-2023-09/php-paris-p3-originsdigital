@@ -5,5 +5,14 @@ vich_uploader:
     mappings:
         logo_file:
             uri_prefix: /uploads/logos
-            upload_destination: '%upload_directory%'
+            upload_destination: '%upload_directory_logos%'
+
+        thumbnail_file:
+            uri_prefix: /uploads/thumbnails
+            upload_destination: "%upload_directory_thumbnails%"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        video_file:
+            uri_prefix: /uploads/videos
+            upload_destination: "%upload_directory_videos%"
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
