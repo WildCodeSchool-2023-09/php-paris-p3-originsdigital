@@ -2,18 +2,64 @@
 
 {% block title %}TEST FORMULAIRE{% endblock %}
 
-
 {% block body %}
+<div id="form">
     {{ form_start(form) }}
-    <fieldset>
-        {{ form_widget(form) }}
+    <fieldset class="form">
+            <div id="preview_pictures_field">
+                {{ form_widget(form.thumbnailFile) }}
+            </div>
+            <div id="upload_button">
+                {{ form_widget(form.videoFile) }}
+            </div>
+            <div id="writing_field">
+                {{ form_widget(form.title) }}
+                {{ form_widget(form.description) }}
+            </div>
     </fieldset>
-    
+
+    <div id="select_upload">
+        <select name="language_select" class="select">
+            <option value="language">// Langage_</option>
+                <option value="javascript">Javascript</option>
+                <option value="php">PHP</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+        </select>
+
+        <select name="category_select" class="select" id="category_select">
+            <option value="category">// Catégorie_</option>
+                <option value="cours">Cours</option>
+                <option value="tuto">Tutoriel</option>
+                <option value="livecoding">LiveCoding</option>
+        </select>
+
+        <select name="chapter_select" class="select" id="select_chapter">
+            <option value="chapitre">// Chapitre_</option>
+                <option value="1">Chapitre 1 : Les bases</option>
+                <option value="2">Chapitre 2 : Je sais pas encore</option>
+                <option value="3">Chapitre 3 : Il faudrait lier au choix précédent</option>
+        </select>
+
+        <select name="episode_select" class="select">
+            <option value="episode">// Episode_</option>
+                <option value="1">Episode 1 </option>
+                <option value="2">Episode 2 </option>
+                <option value="3">Episode 3 </option>
+        </select>
+
+    </div>
     <div class="center-center">
         <a class="btn-glitch-fill">
-        <span class="text"><button>{{ button_label|default('//upload_') }}</span><span class="text-decoration">_</span><span class="decoration">&rArr;</span></button></div>
+            <button>
+            <span class="text">{{ button_label|default('// Upload') }}</span><span class="text-decoration">_ </span><span class="decoration"> &rArr; </span>
+            </button>
         </a>
     </div>
     {{ form_end(form) }}
+</div>
+{% endblock %}
 
+{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
 {% endblock %}

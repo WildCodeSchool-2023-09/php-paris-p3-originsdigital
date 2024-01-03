@@ -15,6 +15,8 @@ class Video
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+
+
     private ?int $id = null;
 
     #[ORM\Column(length: 500)]
@@ -32,6 +34,10 @@ class Video
     private ?string $thumbnail = null;
     #[Vich\UploadableField(mapping: 'thumbnail_file', fileNameProperty: 'thumbnail')]
     private ?File $thumbnailFile = null;
+
+    #[ORM\ManyToOne(inversedBy: 'videos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -105,5 +111,17 @@ class Video
     public function getThumbnailFile(): ?File
     {
         return $this->thumbnailFile;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }
