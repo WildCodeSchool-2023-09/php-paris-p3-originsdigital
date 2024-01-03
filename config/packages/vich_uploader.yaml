@@ -1,0 +1,16 @@
+vich_uploader:
+    db_driver: orm
+
+    metadata:
+        type: attribute
+
+    mappings:
+        thumbnail_file:
+            uri_prefix: /uploads/thumbnails
+            upload_destination: "%upload_directory_thumbnails%"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        video_file:
+            uri_prefix: /uploads/videos
+            upload_destination: "%upload_directory_videos%"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
