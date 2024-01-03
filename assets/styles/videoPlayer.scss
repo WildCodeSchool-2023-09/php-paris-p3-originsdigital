@@ -11,8 +11,8 @@
     height: 31vw;
     justify-content: center;
     align-items: center;
-    position: fixed;
     margin-top: 2vw;
+    margin-right: -61.2vw;
 }
 
 #description {
@@ -21,15 +21,13 @@
     background-repeat: no-repeat;
     background-size: 50vw;
     height: 23vw;
-    margin-right: 4%;
-    position: fixed;
+    margin-right: 3.3vw;
     margin-top: 40vw;
     color: #DEDEDE;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    align-content: space-between;
 }
 
 #video-options {
@@ -38,8 +36,7 @@
     background-size: 13vw;
     width: 13vw;
     height: 4vw;
-    margin-right: 48%;
-    position: fixed;
+    margin-right: -13vw;
     margin-top: 34.5vw;
 }
 
@@ -50,7 +47,6 @@
     width: 4vw;
     height: 4vw;
     margin-left: 0.7vw;
-    position: fixed;
     margin-top: 0.5vw;
 }
 
@@ -61,8 +57,7 @@
     width: 4vw;
     height: 4vw;
     margin-left: 4.3vw;
-    position: fixed;
-    margin-top: 0.5vw;
+    margin-top: -4vw;
 }
 
 #share-button {
@@ -72,8 +67,7 @@
     width: 4vw;
     height: 4vw;
     margin-left: 7.7vw;
-    position: fixed;
-    margin-top: 0.5vw;
+    margin-top: -4vw;
 }
 
 #title-description {
@@ -92,9 +86,8 @@
     border: 1px solid $button-color;
     width: 10vw;
     height: 26vw;
-    position: fixed;
-    margin-top: 35%;
-    margin-left: 51%;
+    margin-top: 35vw;
+    margin-left: -9vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,79 +105,72 @@
     margin-bottom: 0.3vw;    
 }
 
-// @media screen and (min-width: 851px) and (max-width: 950px) {
-//     #components {
-//         width: 61vw;
-//         margin: 0vw 0 0 1vw;
-//         position: fixed;
-//     }
-
-// }
-
-// @media screen and (min-width: 769px) and (max-width: 850px) {
-//     #components {
-//         width: 61vw;
-//         margin: 0vw 0 0 3vw;
-//         position: fixed;
-//     }
-
-// }
-
 @media screen and (max-width: 768px) {
     #components {
         margin: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
     }
     #video-player {
         width: 100%;
         height: 40vw;
-        margin: 2vw 0 0 0;
+        margin: 0;
     }
 
     #video-options {
         background-image: none;
+        margin: 0;
     }
 
     #playlist-button {
         background-size: 6vw;
         width: 7vw;
         height: 5vw;
-        margin-left: -13.3vw;
-        margin-top: 10.5vw;
+        margin-left: -10.3vw;
+        margin-top: 2.5vw;
     }
 
     #like-button {
         background-size: 6vw;
         width: 7vw;
         height: 5vw;
-        margin-left: 27.7vw;
-        margin-top: 10.5vw;
+        margin-left: 32.7vw;
+        margin-top: -5.5vw;
     }
 
     #share-button {
         background-size: 6vw;
         width: 7vw;
         height: 6vw;
-        margin-left: 65vw;
-        margin-top: 10.5vw;
+        margin-left: 69vw;
+        margin-top: -4.5vw;
     }
 
     #description {
         background-image: none;
+        margin: 0 0 50vw 0;
     }
 
     #title-description {
-        font-size: 5vw;
+        background-color: rgba(3, 3, 0, 0.50);
+        border-radius: 5px;
+        border: 1px solid $button-color;
+        font-size: 4vw;
         font-weight: 600;
-        padding: 0;
-        margin: 14vw 0 0 -17vw;
+        padding: 1vw;
+        margin: 14vw 0 0 -26vw;
     }
 
     #text-description {
-        font-size: 3.5vw;
+        background-color: rgba(3, 3, 0, 0.50);
+        border-radius: 5px;
+        border: 1px solid $button-color;
+        font-size: 3vw;
         line-height: 4.5vw;
-        padding: 0;
-        margin: 3vw 0 0 -17vw;
-        width: 164%;
+        padding: 1vw;
+        margin: 3vw 0 0 -25vw;
+        width: 168%;
     }
     
 
@@ -194,6 +180,17 @@
 
 }
 
-@media screen and (max-width: 650px) {
-    
+@media screen and (max-width: 425px) {
+    #video-player {
+        height: 60vw;
+    }
+
+    #title-description {
+        font-size: 5vw;
+    }
+
+    #text-description {
+        font-size: 4vw;
+        line-height: 5.5vw;
+    }
 }
