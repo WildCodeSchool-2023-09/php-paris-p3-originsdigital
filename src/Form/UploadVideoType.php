@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints\File;
 
 class UploadVideoType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title')
@@ -46,4 +46,3 @@ class UploadVideoType extends AbstractType
         ]);
     }
 }
-
