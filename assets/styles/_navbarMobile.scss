@@ -7,6 +7,8 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        position: fixed;
+        top: 93vh;
     }
 
     #navbar-mobile>.link-mobile {
