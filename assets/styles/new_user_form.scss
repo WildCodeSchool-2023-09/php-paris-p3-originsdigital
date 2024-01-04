@@ -26,7 +26,6 @@ body {
     min-height: 50px;
     width: 30vw;
     min-width: 160px;
-    color: #00FFFD;
     border-color: transparent;
     background-color: transparent;
     background-image: url("/assets/images/form-fields.svg");
@@ -81,15 +80,6 @@ img.imgPreview {
     object-fit: cover;
 }
 
-
-.camera-icon {
-    display: flex;
-    background-image: url("/assets/images/camera.svg");
-    background-repeat: no-repeat;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 img.imgPreview {
     display: flex;
     margin: 0 auto;
@@ -97,7 +87,8 @@ img.imgPreview {
 
 .form-control::placeholder,
 #user_password_first::placeholder,
-#user_password_second::placeholder {
+#user_password_second::placeholder,
+.form-control {
     color: #FFF;
     font-family: $main-font;
     font-size: 2vw;
@@ -106,6 +97,8 @@ img.imgPreview {
 
 .formFields ul li {
     text-align: center;
+    color: rgb(226, 168, 20);
+    font-size: 1.2rem;
 }
 
 .btn {
