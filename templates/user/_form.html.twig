@@ -6,27 +6,25 @@
 
     {{ form_start(form) }}
 
-    
-
     <div class="formFields">
-
-        <div id="preview_pictures_field"> </div>
 
         <div class="formErrors">
             {{ form_errors(form) }}
         </div>
-        <input type="file"
-            class="form-control"
-            id="user_profilepicture"
-            name="user[profilepicture]"
-            aria-label="photo de profil"
-        >
+                <div id="preview_pictures_field">
+                    <input type="file"
+                        class="file-input-field"
+                        id="user_profilepicture"
+                        name="user[profilepicture]"
+                        aria-label="photo de profil"
+                    >
+                </div>
         {{ form_errors(form.username) }}
         <input class="form-control"
             name="{{ field_name(form.username) }}"
             aria-label="Pseudo"
             value="{{ field_value(form.username) }}"
-            placeholder="Pseudo"
+            placeholder="{{ field_label(form.username) }}"
         >
         {{ form_errors(form.email) }}
         <input class="form-control"
@@ -36,22 +34,6 @@
             placeholder="{{ field_label(form.email) }}"
         >
         {{ form_row(form.password)}}
-        
-        {# {{ form_errors(form.password) }} #}
-        {# <input type="password"
-            class="form-control"
-            id="user_password_first" 
-            name="user[password][first]" 
-            required="required"
-            placeholder = "Mot de passe"
-        >
-        <input type="password" 
-            class="form-control"
-            id="user_password_second" 
-            name="user[password][second]" 
-            required="required"
-            placeholder = "Confirmation"
-        > #}
         {{ form_row(form._token) }}
     </div>
 </div>
