@@ -6,55 +6,72 @@ use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class VideoFixtures extends Fixture implements DependentFixtureInterface
 {
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $firstLesson = new Video();
         $firstLesson  ->setTitle("Apprendre #Symfony 6 - Installation et configuration")
-            ->setThumbnail("https://www.dzfoot.com/wp-content/uploads/2022/07/
-        AG-%C2%AClective-de-la-FAF-16-750x430-600x390.jpg")
+            ->setThumbnail("/uploads/thumbnails/test1.jpg")
             ->setDescription("Installation et configuration")
-            ->setVideo("https://youtu.be/WJZgqmA4hi0?si=5TiR45py1rkXkTTe")
+            ->setVideo("/uploads/videos/test1.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($firstLesson->getTitle());
+        $firstLesson->setSlug($slug);
         $manager->persist($firstLesson);
         $secondLesson = new Video();
         $secondLesson  ->setTitle("Apprendre #Symfony 6 - Notre première page")
-            ->setThumbnail("https://cdn.lebuteur.com/data/images/article/thumbs/
-        large-zefzef-a-fait-une-viree-au-stade-hier-a6ab8.jpg")
+            ->setThumbnail("/uploads/thumbnails/test2.jpg")
             ->setDescription("Notre première page")
-            ->setVideo("https://youtu.be/_lrnWIuknSU?si=0OoPGrKTBFhwLcDl")
+            ->setVideo("/uploads/videos/test2.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($secondLesson->getTitle());
+        $secondLesson->setSlug($slug);
         $manager->persist($secondLesson);
         $thirdLesson = new Video();
         $thirdLesson  ->setTitle("Apprendre #Symfony 6 - Twig & Symfony")
-            ->setThumbnail("https://pbs.twimg.com/media/FXEBikKXwAYCeNq.jpg")
+            ->setThumbnail("/uploads/thumbnails/test3.jpg")
             ->setDescription("Twig & Symfony")
-            ->setVideo("https://youtu.be/nxjflBN47zA?si=j_lBDVZXczo_hF8J")
+            ->setVideo("/uploads/videos/test3.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($thirdLesson->getTitle());
+        $thirdLesson->setSlug($slug);
         $manager->persist($thirdLesson);
         $fourthLesson = new Video();
         $fourthLesson  ->setTitle("Apprendre #Symfony 6 - Notre première entité")
-            ->setThumbnail("https://pbs.twimg.com/media/FXEV4jrUYAA1Qhs.jpg")
+            ->setThumbnail("/uploads/thumbnails/test4.jpg")
             ->setDescription("Notre première entité")
-            ->setVideo("https://youtu.be/PWkLFn8if0I?si=4B445er-8Y-_nUSC")
+            ->setVideo("/uploads/videos/test4.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($fourthLesson->getTitle());
+        $fourthLesson->setSlug($slug);
         $manager->persist($fourthLesson);
         $fifthLesson = new Video();
         $fifthLesson  ->setTitle("Apprendre #Symfony 6 - Validation des entités")
-            ->setThumbnail("https://encrypted-tbn0.gstatic.com/
-        images?q=tbn:ANd9GcSQ3qza-vLatZLZ1J6jGHmxLNTqjbQeTcuNKw&usqp=CAU")
+            ->setThumbnail("/uploads/thumbnails/test5.jpg")
             ->setDescription("Validation des entités")
-            ->setVideo("https://youtu.be/e9Q4zP2wB5o?si=uB7E4B6iTGK30yH-")
+            ->setVideo("/uploads/videos/test5.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($fifthLesson->getTitle());
+        $fifthLesson->setSlug($slug);
         $manager->persist($fifthLesson);
         $sixthLesson = new Video();
-        $sixthLesson  ->setTitle("Apprendre #Symfony 6 -  Les Fixtures")
-            ->setThumbnail("https://elwatan-dz.com/storage/2120/276265792.jpg")
+        $sixthLesson  ->setTitle("Apprendre #Symfony 6 - Les Fixtures")
+            ->setThumbnail("/uploads/thumbnails/test6.jpg")
             ->setDescription(" Les Fixtures")
-            ->setVideo("https://youtu.be/hv_SWZUb1Us?si=4eoPj7xJ9kkr0RGJ")
+            ->setVideo("/uploads/videos/test6.mp4")
             ->setCategory($this->getReference("PHPLesson"));
+        $slug = $this->slugger->slug($sixthLesson->getTitle());
+        $sixthLesson->setSlug($slug);
         $manager->persist($sixthLesson);
         $manager->flush();
     }

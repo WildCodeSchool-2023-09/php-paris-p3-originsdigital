@@ -4,7 +4,11 @@
 
 {% block body %}
 <div id="components">
-    <div id="video-player"></div>
+    <div id="video-player">
+        <video id="video" controls>
+            <source src="{{ video.video }}" type="video/mp4">
+        </video>
+    </div>
     <div id="video-options">
         <div id="playlist-button">
             <a href="#"></a>
@@ -17,23 +21,15 @@
         </div>
     </div>
     <div id="description">
-        <span id="title-description">Épisode 1 : les bases.</span>
-        <p id="text-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed non risus. 
-            Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. 
-            Cras elementum ultrices diam. 
-            Maecenas ligula massa, varius a, semper congue, euismod non, mi. 
-            Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Cras vestibulum bibendum augue.
-        </p>
+        <span id="title-description">{{ video.title }}</span>
+        <p id="text-description">{{ video.description }}</p>
     </div>
-    <div id="recommended-videos-field">
+    <div id="recommanded-videos-field">
+    {% for recommandedVideo in recommandedVideos %}
         <ul>
-            <li><a class="recommended-videos" href="#">link</a></li>
-            <li><a class="recommended-videos" href="#">link</a></li>
-            <li><a class="recommended-videos" href="#">link</a></li>
-            <li><a class="recommended-videos" href="#">link</a></li>
+            <li><a class="recommanded-videos" href="{{ path('video_show', {slug: recommandedVideo.slug}) }}"><img src="{{ recommandedVideo.thumbnail }}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a></li>
         </ul>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
