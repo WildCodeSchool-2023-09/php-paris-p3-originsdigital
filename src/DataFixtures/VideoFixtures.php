@@ -85,15 +85,15 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
                                             'PHPTutoriel','PHPTutoriel','PHPTutoriel','PHPTutoriel',
                                             'PHPLesson','PHPLesson','PHPLesson','PHPLesson','PHPLesson','PHPLesson',],
                 ];
-        $i = 0;
+        $count = 0;
         foreach ($videoData['title'] as $title) {
             $video = new Video();
-            $video->setTitle($videoData['title'][$i]);
-            $video->setThumbnail($videoData['thumbnail'][$i]);
-            $video->setDescription($videoData['description'][$i]);
-            $video->setVideo($videoData['video'][$i]);
-            $video->setCategory($this->getReference($videoData['categoryReference'][$i]));
-            $i = $i + 1;
+            $video->setTitle($title);
+            $video->setThumbnail($videoData['thumbnail'][$count]);
+            $video->setDescription($videoData['description'][$count]);
+            $video->setVideo($videoData['video'][$count]);
+            $video->setCategory($this->getReference($videoData['categoryReference'][$count]));
+            $count = $count + 1;
             $slug = $this->slugger->slug($video->getTitle());
             $video->setSlug($slug);
 
