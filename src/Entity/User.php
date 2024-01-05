@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -18,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     fields: ['username'],
     message: 'ce pseudo est déjà utilisé',
 )]
-
+#[Vich\Uploadable]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -56,6 +58,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $profilepicture = null;
+
+    #[Vich\UploadableField(mapping: 'profilepicture_file', fileNameProperty: 'profilepicture')]
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/tiff',],
+    )]
+    private ?File $profilepictureFile = null;
 
     public function getId(): ?int
     {
@@ -137,6 +146,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
 
         return $this;
+    }
+
+    public function setProfilepictureFile(File $image = null): User
+    {
+        $this->profilepictureFile = $image;
+        return $this;
+    }
+
+    public function getProfilepictureFile(): ?File
+    {
+        return $this->profilepictureFile;
     }
 
     public function getProfilepicture(): ?string
