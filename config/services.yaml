@@ -9,7 +9,6 @@ parameters:
     upload_directory_thumbnails: "%kernel.project_dir%/public/uploads/thumbnails/"
     upload_directory_videos: "%kernel.project_dir%/public/uploads/videos/"
 
-
 services:
     # default configuration for services in *this* file
     _defaults:

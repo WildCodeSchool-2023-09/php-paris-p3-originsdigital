@@ -24,7 +24,7 @@ function changeInputFile(oEvent) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var aFileInput = document.forms['user'].getElementById('user_profilepictureFile_file');
+    var aFileInput = document.forms['user'].querySelectorAll('[type=file]');
 
     for (var k = 0; k < aFileInput.length; k++) {
         aFileInput[k].addEventListener('change', changeInputFile, false);
