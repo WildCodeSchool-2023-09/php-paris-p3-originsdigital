@@ -7,22 +7,29 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+
 		<title>
-			{% block title %}Origins Digital
-			{% endblock %}
+			{% block title %} Origins Digital {% endblock %}
 		</title>
 
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
-
-		{# // <script src="/assets/styles/picturePreview.js"></script> #}
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
+
 	<body>
-		{% block body %}{% endblock %}
+		{% block nav %}
+			{% include '/component/_headerMobile.html.twig' %}
+			{% include '/component/_navbar.html.twig' %}
+			{% include '/component/_navbarMobile.html.twig' %}
+		{% endblock %}
+
+		{% block body %}
+		{% endblock %}
+
 	</body>
 </html>

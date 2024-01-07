@@ -1,7 +1,7 @@
 
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 769px) {
     #navbar {
-        width: 33vh;
+        width: 250px;
         height: 100vh;
         background-color: #030300;
         color: $text-color;
@@ -10,11 +10,12 @@
         flex-direction: column;
         align-items: center;
         box-shadow: 6px 0px 4px 0px $button-color;
+        position: fixed;
     }
 
     #logo {
         color: #006AB3;
-        font-size: 4vh;
+        font-size: 3.5vh;
         margin: 3vh;
     }
 
@@ -51,7 +52,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-size: 2rem;
+        font-size: 1.8rem;
         padding-left: 1vh;
         margin: 1vh 0 1vh 0;
     }
