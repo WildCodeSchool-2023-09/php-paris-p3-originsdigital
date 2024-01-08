@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
 use App\Repository\VideoRepository;
+use App\Service\RecommandedVideos;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,28 +37,22 @@ class VideoController extends AbstractController
     }
 
     #[Route('/show/{slug}', name: 'show')]
-    public function index(string $slug, VideoRepository $videoRepository): Response
-    {
+    public function index(
+        string $slug,
+        VideoRepository $videoRepository,
+        RecommandedVideos $recommandedVideos
+    ): Response {
         $video = $videoRepository->findOneBy(['slug' => $slug]);
-        $categoryVideos = $videoRepository->findByCategory($video->getCategory());
-        $recommandedVideos = [];
-        foreach ($categoryVideos as $key => $categoryVideo) {
-            if ($categoryVideo->getId() === $video->getId()) {
-                for ($i = 1; $i <= 4; $i++) {
-                    if (isset($categoryVideos[$key + $i])) {
-                        $recommandedVideos[] = $categoryVideos[$key + $i];
-                    }
-                }
-            }
-        }
+
         if (!$video) {
             throw $this->createNotFoundException(
-                'No video with id : ' . $slug . ' found in video\'s table.'
+                'No video with name : ' . $slug . ' found in video\'s table.'
             );
         }
+
         return $this->render('video/index.html.twig', [
             'video' => $video,
-            'recommandedVideos' => $recommandedVideos,
+            'recommandedVideos' => $recommandedVideos->recommandedVideos($videoRepository, $video),
         ]);
     }
 }
