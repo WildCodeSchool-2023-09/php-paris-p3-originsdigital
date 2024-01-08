@@ -24,19 +24,18 @@ html {
 }
 
 @media screen and (min-width: 769px) {
-    body{
+    body {
         background-image: $background-image;
         background-size: cover;
         background-attachment: fixed;
         background-position-x: 250px;
     }
 }
+
 @media screen and (max-width: 768px) {
-    body{
+    body {
         background-image: $background-image-mobile;
         background-size: cover;
         background-attachment: fixed;
     }
 }
-
-

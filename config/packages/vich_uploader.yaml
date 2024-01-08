@@ -5,6 +5,12 @@ vich_uploader:
         type: attribute
 
     mappings:
+
+        profilepicture_file:
+            uri_prefix: /uploads/profilepictures
+            upload_destination: '%upload_directory_profilepictures%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
         thumbnail_file:
             uri_prefix: /uploads/thumbnails
             upload_destination: "%upload_directory_thumbnails%"

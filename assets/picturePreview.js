@@ -1,22 +1,20 @@
+function createThumbnail(sFile) {
+  var oReader = new FileReader();
+  oReader.addEventListener('load', function () {
+    let inputfield = document.querySelector('.file-input-field');
+    inputfield.style.backgroundImage = `url(${oReader.result})`;
+  }, false);
 
-    // Utilisez JavaScript pour détecter les changements dans le champ d'upload d'image
-    document.getElementById('preview_pictures_field').addEventListener('change', function () {
-        var input = this;
+  oReader.readAsDataURL(sFile);
+}
 
-        // Vérifiez si un fichier a été sélectionné
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+function changeInputFile(oEvent) {
+  var oInputFile = oEvent.currentTarget;
+  var aFiles = oInputFile.files;
+  createThumbnail(aFiles[0]);
+}
 
-            // Configurez la fonction de rappel pour charger l'image en tant que source de données
-            reader.onload = function (e) {
-                var preview = document.getElementById('image-preview');
-
-                // Affichez l'image en tant que miniature
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-            };
-
-            // Chargez le fichier en tant que données URL
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  var aFileInput = document.forms['user'].querySelectorAll('[type=file]');
+  aFileInput[0].addEventListener('change', changeInputFile, false);
+});
