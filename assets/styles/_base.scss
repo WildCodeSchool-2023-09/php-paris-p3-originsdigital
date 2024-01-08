@@ -11,7 +11,7 @@ $main-font: 'Quantico';
 $background-image: url('/assets/images/background-image.jpg');
 $background-image-mobile: url('/assets/images/background-image-mobile.jpg');
 
-@mixin card ($x, $y, $o, $color){
+@mixin card ($x, $y, $o, $color) {
     width: $x;
     height: $y;
     background-color: $color;
@@ -19,7 +19,23 @@ $background-image-mobile: url('/assets/images/background-image-mobile.jpg');
     opacity: $o;
 }
 
-html{
+html {
     font-family: $main-font;
 }
 
+@media screen and (min-width: 769px) {
+    body {
+        background-image: $background-image;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position-x: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: $background-image-mobile;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}
