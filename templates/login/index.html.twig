@@ -12,10 +12,9 @@
         <form action="{{ path('app_login') }}" method="post">
 
             <input type="text" class ="form-control" placeholder = "Pseudo" id="username" name="_username" value="{{ last_username }}">
-
             <input type="password" class ="form-control" placeholder = "Mot de passe" id="password" name="_password">
-
             <input type="hidden" name="app_home" value="/account">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <button class="btn-glitch-fill" type ="submit">
                 <span class="text">//Login</span>
