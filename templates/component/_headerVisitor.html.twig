@@ -1,7 +1,14 @@
 <div id="header-visitor">
     <div id="header-visitor-logo">{<span>Origins</span>/<span>Digital</span>}</div>
     <div id="header-visitor-buttons-container">
-        <a href ="{{ path('app_login') }}" class="connexion-buttons" id="header-visitor-login-button">LOGIN</a>
+
+        {# {% if app.user %}
+            {{ app.user.username }}
+            <a href="{{ path('app_logout') }}" class="connexion-buttons" id="header-visitor-login-button"> Se déconnecter</a>
+            {% else %}
+            <a href ="{{ path('app_login') }}" class="connexion-buttons" id="header-visitor-login-button">LOGIN</a>
+        {% endif %} #}
+
         <a href ="{{ path('app_user_new') }}" class="connexion-buttons" id="header-visitor-inscription-button">INSCRIPTION</a>
     </div>
     <img id="header-visitor-search" src= "{{ asset('build/images/search.svg') }}">
