@@ -40,9 +40,9 @@ class VideoController extends AbstractController
     public function index(
         string $slug,
         VideoRepository $videoRepository,
-        RecommandedVideos $recommandedVideos
     ): Response {
         $video = $videoRepository->findOneBy(['slug' => $slug]);
+        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory()->getLabel());
 
         if (!$video) {
             throw $this->createNotFoundException(
@@ -52,7 +52,7 @@ class VideoController extends AbstractController
 
         return $this->render('video/index.html.twig', [
             'video' => $video,
-            'recommandedVideos' => $recommandedVideos->recommandedVideos($videoRepository, $video),
+            'recommandedVideos' => $recommandedVideos,
         ]);
     }
 }
