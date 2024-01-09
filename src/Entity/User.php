@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -21,7 +22,7 @@ use Symfony\Component\HttpFoundation\File\File;
     message: 'ce pseudo est déjà utilisé',
 )]
 #[Vich\Uploadable]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -100,7 +101,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
@@ -114,7 +114,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -167,5 +167,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->profilepicture = $profilepicture;
 
         return $this;
+    }
+
+    public function isEqualTo(UserInterface $user): bool
+    {
+        if ($this->username !== $user->getUserIdentifier()) {
+            return false;
+        }
+        return true;
     }
 }
