@@ -40,12 +40,12 @@ class VideoRepository extends ServiceEntityRepository
 
         $data = $paginator->getQuery()->getResult();
 
-        if(empty($data)){
+        if (empty($data)) {
             return $result;
         }
 
         $pages = ceil($paginator->count() / $limit);
-        
+
         $result['data'] = $data;
         $result['pages'] = $pages;
         $result['page'] = $page;

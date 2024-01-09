@@ -22,7 +22,7 @@ class CategoryController extends AbstractController
         $language = $languageRepository->findBy(['slug' => $slug]);
         $categories = $categoryRepository->findByLanguage($language);
         $videos = [];
-        foreach($categories as $category){
+        foreach ($categories as $category) {
             $videos[$category->getLabel()] = $videoRepository->findByCategory($category, null, 9);
         }
 
@@ -32,5 +32,4 @@ class CategoryController extends AbstractController
             'videos' => $videos,
         ]);
     }
-
 }
