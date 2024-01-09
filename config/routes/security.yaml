@@ -1,6 +1,4 @@
 _security_logout:
     resource: security.route_loader.logout
     type: service
-_symfony_logout:
-    resource: security.route_loader.logout
-    type: service
+    

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
 
 class LoginController extends AbstractController
 {
@@ -23,11 +24,10 @@ class LoginController extends AbstractController
     }
 
     #[Route('/logout', name: 'app_logout')]
-    public function logout(Security $security): Response
+    public function logout(Security $security, LogoutEvent $event): Response
     {
         $security->logout();
-        $security->logout(false);
-
+        $this->addFlash('success', 'The new program has been created');
         return $this->render('home/index.html.twig');
     }
 }
