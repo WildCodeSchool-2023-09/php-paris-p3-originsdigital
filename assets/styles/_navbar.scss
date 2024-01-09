@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 769px) {
     #navbar {
         width: 250px;
@@ -66,6 +65,7 @@
         width: 6vh;
         height: 6vh;
     }
+
     .nav-button {
         padding-left: 1vh;
     }
@@ -79,7 +79,8 @@
         margin-left: 3vh;
     }
 
-    #navbar-mobile, #header-mobile {
+    #navbar-mobile,
+    #header-mobile {
         display: none;
     }
 
