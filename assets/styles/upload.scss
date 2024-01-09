@@ -5,10 +5,12 @@
 }
 
     #preview {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto;
         justify-content: center;
+        align-items: end;
         margin-left: 250px;
-        gap: 16vw;
+        gap: 5vw;
             #thumbnailPreview {
             margin-top: 10vw;
             }
@@ -17,8 +19,8 @@
                 width: 20vw;
             }
             video {
-                height: 30vw;
-                width: 30vw;
+                height: 20vw;
+                width: 20vw;
             }
     }
 

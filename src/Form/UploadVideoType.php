@@ -66,9 +66,14 @@ class UploadVideoType extends AbstractType
                 'class' => Language::class,
                 'choice_label' => 'label'
             ])
+
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'label'
+                'choice_label' => 'label',
+                'choice_attr' => function (?Category $category) {
+                    return ['data-lang' => $category->getLanguage()->getId()
+                    ];
+                }
             ])
         ;
     }
