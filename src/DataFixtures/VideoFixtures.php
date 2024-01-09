@@ -6,62 +6,149 @@ use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class VideoFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const VIDEO_DATA = [
+        '/uploads/videos/test1.mp4' => [
+            'title' => 'Live Coding 1',
+            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'description' => 'live coding 1',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test2.mp4' => [
+            'title' => 'Tutoriel 1',
+            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'description' => 'tuto 1',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test3.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Installation et configuration",
+            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'description' => 'Installation et configuration',
+            'categoryReference' => 'PHPLesson',
+        ],
+        '/uploads/videos/test4.mp4' => [
+            'title' => 'Live Coding 2',
+            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'description' => 'live coding 2',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test5.mp4' => [
+            'title' => 'Tutoriel 2',
+            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'description' => 'tuto 2',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test6.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Notre première page",
+            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'description' => "Notre première page",
+            'categoryReference' => 'PHPLesson',
+        ],
+        '/uploads/videos/test7.mp4' => [
+            'title' => 'Live Coding 3',
+            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'description' => 'live coding 3',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test8.mp4' => [
+            'title' => 'Tutoriel 3',
+            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'description' => 'tuto 3',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test9.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Twig & Symfony",
+            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'description' => "Twig & Symfony",
+            'categoryReference' => 'PHPLesson',
+        ],
+        '/uploads/videos/test10.mp4' => [
+            'title' => 'Live Coding 4',
+            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'description' => 'live coding 4',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test11.mp4' => [
+            'title' => 'Tutoriel 4',
+            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'description' => 'tuto 4',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test12.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Notre première entité",
+            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'description' => "Notre première entité",
+            'categoryReference' => 'PHPLesson',
+        ],
+        '/uploads/videos/test13.mp4' => [
+            'title' => 'Live Coding 5',
+            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'description' => 'live coding 5',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test14.mp4' => [
+            'title' => 'Turoriel 5',
+            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'description' => 'tuto 5',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test15.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Validation des entités",
+            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'description' => "Validation des entités",
+            'categoryReference' => 'PHPLesson',
+        ],
+        '/uploads/videos/test16.mp4' => [
+            'title' => 'Live Coding 6',
+            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'description' => 'live coding 6',
+            'categoryReference' => 'PHPLiveCoding',
+        ],
+        '/uploads/videos/test17.mp4' => [
+            'title' => 'Tutoriel 6',
+            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'description' => 'tuto 6',
+            'categoryReference' => 'PHPTutoriel',
+        ],
+        '/uploads/videos/test18.mp4' => [
+            'title' => "Apprendre #Symfony 6 - Les Fixtures",
+            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'description' => 'Les Fixtures',
+            'categoryReference' => 'PHPLesson',
+        ],
+    ];
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
     public function load(ObjectManager $manager): void
     {
-        $firstLesson = new Video();
-        $firstLesson  ->setTitle("Apprendre #Symfony 6 - Installation et configuration")
-            ->setThumbnail("https://www.dzfoot.com/wp-content/uploads/2022/07/
-        AG-%C2%AClective-de-la-FAF-16-750x430-600x390.jpg")
-            ->setDescription("Installation et configuration")
-            ->setVideo("https://youtu.be/WJZgqmA4hi0?si=5TiR45py1rkXkTTe")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($firstLesson);
-        $secondLesson = new Video();
-        $secondLesson  ->setTitle("Apprendre #Symfony 6 - Notre première page")
-            ->setThumbnail("https://cdn.lebuteur.com/data/images/article/thumbs/
-        large-zefzef-a-fait-une-viree-au-stade-hier-a6ab8.jpg")
-            ->setDescription("Notre première page")
-            ->setVideo("https://youtu.be/_lrnWIuknSU?si=0OoPGrKTBFhwLcDl")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($secondLesson);
-        $thirdLesson = new Video();
-        $thirdLesson  ->setTitle("Apprendre #Symfony 6 - Twig & Symfony")
-            ->setThumbnail("https://pbs.twimg.com/media/FXEBikKXwAYCeNq.jpg")
-            ->setDescription("Twig & Symfony")
-            ->setVideo("https://youtu.be/nxjflBN47zA?si=j_lBDVZXczo_hF8J")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($thirdLesson);
-        $fourthLesson = new Video();
-        $fourthLesson  ->setTitle("Apprendre #Symfony 6 - Notre première entité")
-            ->setThumbnail("https://pbs.twimg.com/media/FXEV4jrUYAA1Qhs.jpg")
-            ->setDescription("Notre première entité")
-            ->setVideo("https://youtu.be/PWkLFn8if0I?si=4B445er-8Y-_nUSC")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($fourthLesson);
-        $fifthLesson = new Video();
-        $fifthLesson  ->setTitle("Apprendre #Symfony 6 - Validation des entités")
-            ->setThumbnail("https://encrypted-tbn0.gstatic.com/
-        images?q=tbn:ANd9GcSQ3qza-vLatZLZ1J6jGHmxLNTqjbQeTcuNKw&usqp=CAU")
-            ->setDescription("Validation des entités")
-            ->setVideo("https://youtu.be/e9Q4zP2wB5o?si=uB7E4B6iTGK30yH-")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($fifthLesson);
-        $sixthLesson = new Video();
-        $sixthLesson  ->setTitle("Apprendre #Symfony 6 -  Les Fixtures")
-            ->setThumbnail("https://elwatan-dz.com/storage/2120/276265792.jpg")
-            ->setDescription(" Les Fixtures")
-            ->setVideo("https://youtu.be/hv_SWZUb1Us?si=4eoPj7xJ9kkr0RGJ")
-            ->setCategory($this->getReference("PHPLesson"));
-        $manager->persist($sixthLesson);
+        foreach (self::VIDEO_DATA as $key => $properties) {
+            $video = new Video();
+            $video->setVideo($key);
+            $video->setTitle($properties['title']);
+            $video->setThumbnail($properties['thumbnail']);
+            $video->setDescription($properties['description']);
+            $video->setCategory($this->getReference($properties['categoryReference']));
+            $slug = $this->slugger->slug($video->getTitle());
+            $video->setSlug($slug);
+
+            $manager->persist($video);
+        }
+
         $manager->flush();
     }
+
     public function getDependencies()
     {
         return [
-        CategoryFixtures::class,
+            CategoryFixtures::class,
         ];
     }
 }

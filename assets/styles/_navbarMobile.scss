@@ -1,4 +1,4 @@
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
     #navbar-mobile {
         width: 100%;
         height: 7vh;
@@ -7,6 +7,9 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        position: fixed;
+        z-index: 2;
+        top: 93vh;
     }
 
     #navbar-mobile>.link-mobile {
