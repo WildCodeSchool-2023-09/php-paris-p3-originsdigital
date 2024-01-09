@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,5 +33,25 @@ class VideoController extends AbstractController
         return $this->render('video/add.html.twig', [
             'form' => $form,
         ]);
+    }
+
+
+    #[Route('/{slug}/{categoryLabel}', name: 'show_by_category')]
+    public function showAllVideosForOneCategory(
+        string $slug,
+        string $categoryLabel,
+        VideoRepository $videoRepository,
+        Request $request
+    ): Response {
+
+        $page = $request->query->getInt('page', 1);
+
+        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 9);
+
+        return $this->render('video/index.html.twig', [
+                'videos' => $videos,
+                'categoryLabel' => $categoryLabel,
+                'languageSlug' => $slug,
+            ]);
     }
 }

@@ -6,6 +6,7 @@ vich_uploader:
         logo_file:
             uri_prefix: /uploads/logos
             upload_destination: '%upload_directory_logos%'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
         thumbnail_file:
             uri_prefix: /uploads/thumbnails

@@ -1,3 +1,4 @@
+@media screen and (min-width: 769px) {
 #index-categories{
     width: 81vw;
     margin-left: 19vw;
@@ -39,12 +40,12 @@
             font-size: 1.2rem;
             display:block;
             text-align: end;
+            margin-top: 1rem;
         }
         .category-card{
             border-radius: 5px;
-            display: block;
             text-align: center;
-            // opacity: 0.8;
+            height: 250px;
             img{
                 width: 8rem;
                 height: 5rem;
@@ -62,7 +63,8 @@
             }
             a{
                 border-radius: 3px;
-                margin-bottom: 1rem;;
+                margin-bottom: 1rem;
+                text-decoration: none;
             }
             [class*="btn-glitch-"] {
                 display: none;
@@ -105,7 +107,6 @@
                   :before {
                     content: " ";
                     width: 15px;
-                    border: 1px solid black;
                     position: absolute;
                     right: 25%;
                     bottom: 3px;
@@ -118,7 +119,6 @@
                     animation-fill-mode : forwards;
                     content: " ";
                     width: 75%;
-                    border: 1px solid black;
                     position: absolute;
                     left: 0;
                     bottom: 5px;
@@ -151,23 +151,227 @@
                   width: 10%;
                 }
               }
-            
-        }
-        .carousel-inner{
-            display:flex;
-            width: 90%;
-            margin-left: 15%;
-        }
-        .active{
-            display: flex;
-            width: 80%;
-        }
-        .category-card{
-            margin: 0.5rem;
-            width: 40%;
-        }
-        .carousel-control{
-            width: 10%;
         }
     }
+}
+#index-category-cards{
+  #myCarousel {
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .carousel-inner .carousel-item>div {
+    display: none;
+}
+
+.carousel-inner .carousel-item>div:first-child {
+    display: block;
+}
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-start,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-item-next:not(.carousel-item-start) {
+        transform: translateX(25%) !important;
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-item-prev:not(.carousel-item-end),
+    .active.carousel-item-start,
+    .carousel-item-prev:not(.carousel-item-end) {
+        transform: translateX(-25%) !important;
+    }
+
+    .carousel-item-next.carousel-item-start,
+    .active.carousel-item-end {
+        transform: translateX(0) !important;
+    }
+
+    .carousel-inner .carousel-item-prev,
+    .carousel-item-prev:not(.carousel-item-end) {
+        transform: translateX(-25%) !important;
+    }
+    .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            top: 35%;
+            transform: translateY(-50%);
+        }
+        .carousel-control-prev {
+          left: -6%;
+      }
+
+      .carousel-control-next {
+          right: -6%;
+      }
+}
+}
+}
+
+@media screen and (max-width:768px){
+  #index-categories{
+    font-family: $main-font;
+    color: $text-color;
+    margin-left: 0vw;
+    width: 100%;
+    h1{
+        display: none;
+    }
+    #index-category-cards {
+      .category-carousel{
+        border-bottom: solid 1px $button-color;
+      }
+      h2{
+        margin-left: 1rem;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+      }
+      .category-card{
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        grid-template-rows: 1fr 1fr;
+        height: 150px;
+        width: 90%;
+        margin-left: 5%;
+        img{
+          grid-column: 1/2;
+          grid-row: 1/3;
+          display: block;
+          margin: auto;
+          width: 8rem;
+          height: 5rem;
+          margin-top: 2.1rem;
+          margin-bottom: 2.1rem;
+        }
+        h3{
+          grid-column: 2/3;
+          grid-row: 1/2;
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-top: 0.5rem;
+          margin-left: 0.5rem;
+        }
+        p{
+          display: none;
+        }
+        a{
+          grid-column: 2/3;
+          grid-row: 2/3;
+          border-radius: 3px;
+          display: block;
+          margin: auto;
+          text-decoration: none;
+        }
+        [class*="btn-glitch-"] {
+            display: inline-block;
+            font-family: "Quantico", monospace;
+            border: 1px solid black;
+            color: $button-color;
+            background-color: $navbar-main-color;
+            padding: 5px 7px;
+            min-width: 150px;
+            line-height: 1.5em;
+            white-space: no-wrap;
+            text-transform: uppercase;
+            cursor: pointer;
+            .text,
+            .decoration {
+              display: inline-block;
+              color: $button-color;
+            }
+            .decoration {
+              display: inline-block;
+            }
+            &:hover, &:focus {
+              animation-name: glitch;
+              animation-duration: 0.5s;
+              background-color: black;
+              color:$button-color;
+              border: 1px solid $button-color;
+              .text-decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+              }
+              .decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+              }
+              :before {
+                content: " ";
+                width: 15px;
+                border: 1px solid black;
+                position: absolute;
+                right: 25%;
+                bottom: 3px;
+                transform: rotate(35deg)
+              }
+              :after {
+                animation-name: shrink;
+                animation-duration:.5s;
+                animation-iteration-count: 1;
+                animation-fill-mode : forwards;
+                content: " ";
+                width: 75%;
+                border: 1px solid black;
+                position: absolute;
+                left: 0;
+                bottom: 5px;
+              }
+            }
+            &:active {
+              background: none;
+              color:$button-color;
+              .text-decoration {
+                animation-name: none;
+              }
+              .decoration {
+                animation-name: none;
+              }
+              :before, :after {
+                display: none;
+              }
+            }
+          }
+          
+          @keyframes blink {
+            50% {
+              opacity: 0;
+            }
+          }
+          
+          @keyframes shrink {
+            100% {
+              width: 10%;
+            }
+          }
+    }
+  }
+  .carousel-inner .carousel-item>div {
+    display: none;
+}
+
+.carousel-inner .carousel-item>div:first-child {
+    display: block;
+}
+.all-videos{
+  text-decoration: none;
+  color: $text-color;
+  font-size: 1.2rem;
+  display:block;
+  text-align: end;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+}
 }

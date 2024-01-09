@@ -49,4 +49,29 @@ if (window.innerWidth >= 768) {
             categoryCardButton.style.display = "none";
         });
     });
+
+    const videoCards = document.getElementsByClassName('video-card');
+
+    Array.from(videoCards).forEach(videoCard => {
+        const videoCardDescription = videoCard.querySelector("p");
+        const videoCardThumbnail = videoCard.querySelector("img");
+        const videoCardButton = videoCard.querySelector("a");
+        const videoCardTitle = videoCard.querySelector("h2");
+
+        videoCard.addEventListener("mouseover", () => {
+            videoCardTitle.style.marginTop = "8%";
+            videoCardDescription.style.display = "block";
+            videoCardDescription.style.marginTop = "8%";
+            videoCardThumbnail.style.display = "none";
+            videoCardButton.style.display = "inline-block";
+            videoCardButton.style.marginTop = "8%";
+        });
+
+        videoCard.addEventListener("mouseout", () => {
+            videoCardTitle.style.marginTop = "0%";
+            videoCardDescription.style.display = "none";
+            videoCardThumbnail.style.display = "inline";
+            videoCardButton.style.display = "none";
+        });
+    });
 }
