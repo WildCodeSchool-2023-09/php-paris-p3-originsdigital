@@ -21,16 +21,16 @@ class UploadVideoType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'attr' => [
-                'placeholder' => 'Titre'
+                'placeholder' => '//Titre_'
                 ]])
 
             ->add('description', TextareaType::class, [
                 'attr' => [
-                    'placeholder' => 'Description'
+                    'placeholder' => '//Description_'
                 ]])
 
             ->add('thumbnailFile', VichFileType::class, [
-                'label'          => 'Image',
+                'label'          => 'Image (.jpg ou .png)',
                 'required'       => false,
                 'allow_delete'   => true,
                 'download_uri'   => true,
@@ -47,9 +47,10 @@ class UploadVideoType extends AbstractType
             ])
 
             ->add('videoFile', VichFileType::class, [
-                'required'      => false,
-                'allow_delete'  => true,
-                'download_uri' => true,
+                'label'             => 'Video (.mp4)',
+                'required'          => false,
+                'allow_delete'      => true,
+                'download_uri'      => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '1024M',
@@ -64,11 +65,13 @@ class UploadVideoType extends AbstractType
             ->add('language', EntityType::class, [
                 'mapped' => false,
                 'class' => Language::class,
+                'placeholder' => '//Langage_',
                 'choice_label' => 'label'
             ])
 
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'placeholder' => '//Categorie_',
                 'choice_label' => 'label',
                 'choice_attr' => function (?Category $category) {
                     return ['data-lang' => $category->getLanguage()->getId()

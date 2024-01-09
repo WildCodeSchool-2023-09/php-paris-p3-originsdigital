@@ -1,3 +1,4 @@
+// Prévisualisation des fichiers Uploads
 window.addEventListener('DOMContentLoaded', function () {
     var thumbnailFileInput = document.getElementById('upload_video_thumbnailFile_file');
     var videoFileInput = document.getElementById('upload_video_videoFile_file');
@@ -32,6 +33,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
+// Category_Select et Language_Select
 window.addEventListener('DOMContentLoaded', function () {
     var languageSelect = document.getElementById('language_select');
     var categorySelect = document.getElementById('upload_video_category');
