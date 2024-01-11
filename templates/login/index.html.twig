@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class = 'contentContainer'>
+    <div class="formFields">
+
+        <h1 id="user-form-title">Connexion</h1>
+
+        {% if error %}
+        <div class = "formErrors">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('app_login') }}" method="post">
+
+            <input type="text" class ="form-control" placeholder = "Pseudo" id="username" name="_username" value="{{ last_username }}">
+            <input type="password" class ="form-control" placeholder = "Mot de passe" id="password" name="_password">
+            <input type="hidden" name="_target_path" value="/">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn-glitch-fill" type ="submit">
+                <span class="text">//Login</span>
+                <span class="text-decoration">_</span>
+                <span class="decoration">&rArr;</span>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
