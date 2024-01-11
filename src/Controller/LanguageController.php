@@ -14,7 +14,7 @@ class LanguageController extends AbstractController
     public function index(LanguageRepository $languageRepository): Response
     {
         $languages = $languageRepository->findAll();
-        
+
         return $this->render('language/index.html.twig', [
             'languages' => $languages,
          ]);

@@ -23,7 +23,7 @@ class CategoryController extends AbstractController
         $categories = $categoryRepository->findByLanguage($language);
 
         $videos = [];
-        
+
         foreach ($categories as $category) {
             $videos[$category->getLabel()] = $videoRepository->findByCategory($category, null, 9);
         }
