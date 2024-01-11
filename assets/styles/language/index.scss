@@ -8,7 +8,7 @@
       color: $text-color;
       font-size: 4rem;
       text-align: center;
-      padding-top: 8vh;
+      padding-top: 7vh;
       margin-bottom: 5vh;
   }
   #index-language-cards {
@@ -195,6 +195,7 @@
           grid-column: 2/3;
           grid-row: 2/3;
           border-radius: 3px;
+          font-size: 0.9rem;
           display: block;
           margin: auto;
           text-decoration: none;

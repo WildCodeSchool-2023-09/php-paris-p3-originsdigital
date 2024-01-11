@@ -14,5 +14,3 @@ require('bootstrap');
 import './bootstrap';
 import './cardHover';
 import './carousel';
-import './picturePreview';
-

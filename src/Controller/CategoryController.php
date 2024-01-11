@@ -21,7 +21,9 @@ class CategoryController extends AbstractController
     ): Response {
         $language = $languageRepository->findBy(['slug' => $slug]);
         $categories = $categoryRepository->findByLanguage($language);
+
         $videos = [];
+        
         foreach ($categories as $category) {
             $videos[$category->getLabel()] = $videoRepository->findByCategory($category, null, 9);
         }

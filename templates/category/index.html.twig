@@ -34,66 +34,13 @@
 						</div>
 					</section>
 					<a class="all-videos" href="{{ path("video_show_by_category", { 'categoryLabel': category.label, 'slug': slug })}}">Toutes les vidéos</a>
+					<a class="all-videos-mobile btn-glitch-fill" href="{{ path("video_show_by_category", { 'categoryLabel': category.label, 'slug': slug })}}">
+						<span class="text">//Vidéos</span>
+						<span class="text-decoration">_</span>
+						<span class="decoration">&rArr;</span>
+					</a>
 				</div>
 			{% endfor %}
 		</div>
 	</div>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-
-var splideOne = new Splide('#Cours-slider', {
-perPage: 3,
-perMove: 1,
-gap: '4rem',
-pagination: false,
-type: 'loop',
-autoplay: true,
-breakpoints: {
-768: {
-perPage: 1
-}
-}
-});
-
-splideOne.mount();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-
-var splideTwo = new Splide('#Tutoriel-slider', {
-perPage: 3,
-perMove: 1,
-gap: '4rem',
-pagination: false,
-type: 'loop',
-autoplay: true,
-breakpoints: {
-768: {
-perPage: 1
-}
-}
-});
-
-splideTwo.mount();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-
-var splideThree = new Splide('#LiveCoding-slider', {
-perPage: 3,
-perMove: 1,
-gap: '4rem',
-pagination: false,
-type: 'loop',
-autoplay: true,
-breakpoints: {
-768: {
-perPage: 1
-}
-}
-});
-
-splideThree.mount();
-});
-	</script>
 {% endblock %}
