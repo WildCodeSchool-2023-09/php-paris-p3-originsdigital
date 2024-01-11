@@ -3,49 +3,97 @@
 {% block title %}
 	{{ parent() }}
 	- Catégories
+	{{slug}}
 {% endblock %}
 
 {% block body %}
-	<div id="index-categories">
+	<div id="index-category">
 		<h1>//CATÉGORIES_</h1>
-
 		<div id="index-category-cards">
 			{% for category in categories %}
 				<div class="category-carousel">
 					<h2>{{category.label}}</h2>
-					<div id="{{category.label}}-carousel" class="carousel slide container" data-bs-ride="carousel">
-						<div class="carousel-inner w-100">
-							{% for video in videos[category.label] %}
-								<div class="carousel-item {% if loop.first %}active{% endif %}">
-									<div class="col-md-3">
+					<section class="splide" id="{{category.label}}-slider" aria-label="Splide Basic HTML Example">
+						<div class="splide__track">
+							<ul class="splide__list">
+								{% for video in videos[category.label] %}
+									<li class="splide__slide">
 										<div class="{{slug}}-card category-card">
 											<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
 											<h3>{{video.title}}</h3>
 											<p>{{video.description}}</p>
-											<a class="btn-glitch-fill" href="">
+											<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
 												<span class="text">//Vidéo</span>
 												<span class="text-decoration">_</span>
 												<span class="decoration">&rArr;</span>
 											</a>
 										</div>
-									</div>
-								</div>
-							{% endfor %}
+									</li>
+								{% endfor %}
+							</ul>
 						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#{{category.label}}-carousel" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#{{category.label}}-carousel" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
-
+					</section>
 					<a class="all-videos" href="{{ path("video_show_by_category", { 'categoryLabel': category.label, 'slug': slug })}}">Toutes les vidéos</a>
 				</div>
 			{% endfor %}
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
 
+var splideOne = new Splide('#Cours-slider', {
+perPage: 3,
+perMove: 1,
+gap: '4rem',
+pagination: false,
+type: 'loop',
+autoplay: true,
+breakpoints: {
+768: {
+perPage: 1
+}
+}
+});
+
+splideOne.mount();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+var splideTwo = new Splide('#Tutoriel-slider', {
+perPage: 3,
+perMove: 1,
+gap: '4rem',
+pagination: false,
+type: 'loop',
+autoplay: true,
+breakpoints: {
+768: {
+perPage: 1
+}
+}
+});
+
+splideTwo.mount();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+var splideThree = new Splide('#LiveCoding-slider', {
+perPage: 3,
+perMove: 1,
+gap: '4rem',
+pagination: false,
+type: 'loop',
+autoplay: true,
+breakpoints: {
+768: {
+perPage: 1
+}
+}
+});
+
+splideThree.mount();
+});
+	</script>
 {% endblock %}

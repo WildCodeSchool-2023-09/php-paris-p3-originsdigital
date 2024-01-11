@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 769px) {
     #navbar {
-        width: 33vh;
+        width: 250px;
         height: 100vh;
         background-color: #030300;
         color: $text-color;
@@ -15,7 +15,7 @@
 
     #logo {
         color: #006AB3;
-        font-size: 4vh;
+        font-size: 3.5vh;
         margin: 3vh;
     }
 
@@ -66,6 +66,7 @@
         width: 6vh;
         height: 6vh;
     }
+
     .nav-button {
         padding-left: 1vh;
     }
@@ -79,7 +80,8 @@
         margin-left: 3vh;
     }
 
-    #navbar-mobile, #header-mobile {
+    #navbar-mobile,
+    #header-mobile {
         display: none;
     }
 

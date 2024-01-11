@@ -1,11 +1,14 @@
-//start coding by removing this file and adding yours ;)
 @import "~bootstrap/scss/bootstrap";
 @import "reset";
 @import "base";
 @import "language/index";
-@import "language/category/index";
-@import "language/category/video/index";
+@import "category/index";
+@import "video/index";
 @import "upload";
 @import "navbarMobile";
 @import "navbar";
 @import "headerMobile";
+@import "videoPlayer";
+@import "headerVisitor";
+@import "newUserForm";
+@import "test";

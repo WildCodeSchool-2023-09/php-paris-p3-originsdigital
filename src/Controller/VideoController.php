@@ -35,23 +35,42 @@ class VideoController extends AbstractController
         ]);
     }
 
-
-    #[Route('/{slug}/{categoryLabel}', name: 'show_by_category')]
+    #[Route('/index/{slug}/{categoryLabel}', name: 'show_by_category')]
     public function showAllVideosForOneCategory(
         string $slug,
         string $categoryLabel,
         VideoRepository $videoRepository,
         Request $request
     ): Response {
-
         $page = $request->query->getInt('page', 1);
 
-        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 9);
+        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 6);
 
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
                 'categoryLabel' => $categoryLabel,
                 'languageSlug' => $slug,
             ]);
+    }
+
+    #[Route('/show/{slug}', name: 'show')]
+    public function show(
+        string $slug,
+        VideoRepository $videoRepository,
+    ): Response {
+
+        $video = $videoRepository->findOneBy(['slug' => $slug]);
+        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory()->getLabel());
+
+        if (!$video) {
+            throw $this->createNotFoundException(
+                'No video with name : ' . $slug . ' found in video\'s table.'
+            );
+        }
+
+        return $this->render('video/player.html.twig', [
+            'video' => $video,
+            'recommandedVideos' => $recommandedVideos,
+        ]);
     }
 }

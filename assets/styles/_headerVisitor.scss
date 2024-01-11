@@ -1,7 +1,6 @@
-@media screen and (max-width: 768px) {
-    #header-mobile {
+    #header-visitor {
         width: 100%;
-        height: 6vh;
+        height: 5vh;
         background-color: $navbar-main-color;
         color: $text-color;
         display: flex;
@@ -9,18 +8,17 @@
         align-items: center;
     }
 
-    #header-mobile-logo {
+    #header-visitor-logo {
         color: #006AB3;
         font-size: 4vw;
         margin-left: 2vh;
         margin: 1vw 0 1vw 2vw;
     }
 
-    #header-mobile-logo>span {
+    #header-visitor-logo>span {
         color: $text-color;
     }
 
-    #header-mobile-search {
+    #header-visitor-search {
         margin: 1vw 2vw 1vw 0;
     }
-}

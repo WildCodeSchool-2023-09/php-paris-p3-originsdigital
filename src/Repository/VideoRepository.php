@@ -53,4 +53,17 @@ class VideoRepository extends ServiceEntityRepository
 
         return $result;
     }
+
+    public function recommandedVideos(int $id, string $category): array
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('c', 'v')
+            ->from('App\Entity\Video', 'v')
+            ->join('v.category', 'c')
+            ->where("c.label = '$category'")
+            ->andWhere("v.id > '$id'")
+            ->setMaxResults(4)
+            ->getQuery();
+        return $query->getResult();
+    }
 }

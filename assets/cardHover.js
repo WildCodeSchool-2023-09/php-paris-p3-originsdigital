@@ -34,21 +34,22 @@ if (window.innerWidth >= 768) {
         const categoryCardTitle = categoryCard.querySelector("h3");
 
         categoryCard.addEventListener("mouseover", () => {
-            categoryCardTitle.style.marginTop = "5%";
+            categoryCardTitle.style.paddingTop = "10%";
             categoryCardDescription.style.display = "block";
-            categoryCardDescription.style.marginTop = "5%";
+            categoryCardDescription.style.marginTop = "10%";
             categoryCardLogo.style.display = "none";
             categoryCardButton.style.display = "inline-block";
-            categoryCardButton.style.marginTop = "5%";
+            categoryCardButton.style.marginTop = "10%";
         });
 
         categoryCard.addEventListener("mouseout", () => {
-            categoryCardTitle.style.marginTop = "0%";
+            categoryCardTitle.style.paddingTop = "0%";
             categoryCardDescription.style.display = "none";
             categoryCardLogo.style.display = "inline";
             categoryCardButton.style.display = "none";
         });
     });
+
 
     const videoCards = document.getElementsByClassName('video-card');
 

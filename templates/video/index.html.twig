@@ -3,6 +3,8 @@
 {% block title %}
 	{{ parent() }}
 	- Vidéos
+	{{ categoryLabel }}
+	{{ languageSlug }}
 {% endblock %}
 
 {% block body %}
@@ -14,7 +16,7 @@
 					<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
 					<h2>//{{video.title}}_</h2>
 					<p>{{video.description}}</p>
-					<a class="btn-glitch-fill" href="">
+					<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
 						<span class="text">//Video</span>
 						<span class="text-decoration">_</span>
 						<span class="decoration">&rArr;</span>
