@@ -7,7 +7,7 @@
         grid-template-columns: auto auto;
         justify-content: center;
         align-items: end;
-
+        margin-bottom: 3rem;
         margin-left: 250px;
         gap: 5vw;
             #thumbnailPreview {
@@ -27,8 +27,6 @@
     #form {
         display: grid;
         justify-content: center;
-        // padding-top: 5%;
-        margin-top: 15%;
         margin-left: 250px;
         label {
             display: flex;

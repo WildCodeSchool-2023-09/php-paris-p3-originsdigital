@@ -20,21 +20,19 @@ class UploadVideoType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'attr' => [
-                'placeholder' => '//Titre_'
+                'attr'          => [
+                'placeholder'   => '//Titre_'
                 ]])
-
             ->add('description', TextareaType::class, [
-                'attr' => [
-                    'placeholder' => '//Description_'
+                'attr'          => [
+                'placeholder'   => '//Description_'
                 ]])
-
             ->add('thumbnailFile', VichFileType::class, [
                 'label'          => 'Image (.jpg ou .png)',
                 'required'       => false,
                 'allow_delete'   => true,
                 'download_uri'   => true,
-                'constraints'   => [
+                'constraints'    => [
                     new File([
                         'maxSize'       => '5M',
                         'mimeTypes'     => [
@@ -45,15 +43,14 @@ class UploadVideoType extends AbstractType
                     ])
                 ],
             ])
-
             ->add('videoFile', VichFileType::class, [
                 'label'             => 'Video (.mp4)',
                 'required'          => false,
                 'allow_delete'      => true,
                 'download_uri'      => true,
-                'constraints' => [
+                'constraints'       => [
                     new File([
-                        'maxSize' => '1024M',
+                        'maxSize'   => '1024M',
                         'mimeTypes' => [
                             'video/mp4'
                         ],
@@ -61,21 +58,18 @@ class UploadVideoType extends AbstractType
                     ]),
                 ],
             ])
-
             ->add('language', EntityType::class, [
-                'mapped' => false,
-                'class' => Language::class,
-                'placeholder' => '//Langage_',
-                'choice_label' => 'label'
+                'mapped'            => false,
+                'class'             => Language::class,
+                'placeholder'       => '//Langage_',
+                'choice_label'      => 'label'
             ])
-
             ->add('category', EntityType::class, [
-                'class' => Category::class,
-                'placeholder' => '//Categorie_',
-                'choice_label' => 'label',
-                'choice_attr' => function (?Category $category) {
-                    return ['data-lang' => $category->getLanguage()->getId()
-                    ];
+                'class'         => Category::class,
+                'placeholder'   => '//Categorie_',
+                'choice_label'  => 'label',
+                'choice_attr'   => function (?Category $category) {
+                    return ['data-category-id' => $category->getLanguage()->getId()];
                 }
             ])
         ;

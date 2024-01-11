@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (languageSelect) {
             languageSelect.addEventListener('change', function(e) {
-                const categories = allCategories.filter((category) => category.getAttribute("data-lang") == e.target.value)
+                const categories = allCategories.filter((category) => category.getAttribute("data-category-id") == e.target.value)
                 let select = document.createElement("select");
                 select.setAttribute("id", "upload_video_category");
                 select.setAttribute("name", "upload_video[category]")
