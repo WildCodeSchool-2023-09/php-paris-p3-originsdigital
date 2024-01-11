@@ -10,11 +10,26 @@
             {{ form_errors(form) }}
         </div>
 
-        {{ form_row(form.profilepictureFile) }}
-        {{ form_row(form.username) }}
-        {{ form_row(form.email)}}
-        {{ form_row(form.password)}}
-        {{ form_row(form._token) }}
+        {% if (app.user is null) or (app.user.roles[0] != "ROLE_USER") %}
+
+            {{ form_row(form.profilepictureFile) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email)}}
+            {{ form_row(form.password)}}
+
+        {% else %}
+
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.phoneNumber) }}
+            {{ form_row(form.birthdate) }}
+            {{ form_row(form.houseNumber) }}
+            {{ form_row(form.streetName) }}
+            {{ form_row(form.city) }}
+            {{ form_row(form.country) }}
+
+        {% endif %}
+            {{ form_row(form._token) }}
 
         <button class="btn-glitch-fill">
             <span class="text">//Valider</span>

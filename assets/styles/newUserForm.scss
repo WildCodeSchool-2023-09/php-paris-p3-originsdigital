@@ -20,6 +20,22 @@ body {
 
 }
 
+.premium-user-form {
+    margin-top: 2vh;
+    font-size: 1.5rem;
+    color: #FFF;
+    text-align: center;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    background-color: rgba(217, 217, 217, 0.30);
+    border: 1px solid #030300;
+    border-radius: 5px;
+}
+
 .securityContainer {
     display: flex;
     width: 69%;
@@ -59,6 +75,48 @@ body {
             margin-right: auto;
         }
 
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 2vh;
+        }
+
+        #user_birthdate {
+
+            display: inline-flex;
+            justify-content: space-between;
+            flex-direction: row;
+            height: 1.5rem;
+            gap: 10%;
+            margin-right: auto;
+            margin-left: auto;
+            justify-self: center;
+
+            #user_birthdate_month,
+            #user_birthdate_year,
+            #user_birthdate_day {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                color: #FFF;
+                font-family: $main-font;
+                font-size: 1.5rem;
+                padding-left: 5%;
+                display: block;
+                width: 10vw;
+                height: 5.5vh;
+                background-color: $navbar-main-color;
+                border: 1px solid $button-color;
+                border-radius: 5px;
+                margin-top: 1%;
+
+                option {
+                    color: #FFF;
+                }
+            }
+        }
+
         input::-webkit-file-upload-button {
             display: none;
         }
@@ -92,7 +150,8 @@ body {
         .form-control::placeholder,
         #user_password_first::placeholder,
         #user_password_second::placeholder,
-        .form-control {
+        .form-control,
+        label {
             color: #FFF;
             font-family: $main-font;
             font-size: 2vw;
@@ -241,7 +300,8 @@ body {
             .form-control::placeholder,
             #user_password_first::placeholder,
             #user_password_second::placeholder,
-            .form-control {
+            .form-control,
+            label {
                 color: #FFF;
                 font-family: $main-font;
                 font-size: 3vw;
@@ -251,6 +311,13 @@ body {
                 font-size: 3vw;
             }
 
+            #user_birthdate_month,
+            #user_birthdate_year,
+            #user_birthdate_day {
+                font-size: 2vw;
+                padding-left: 5%;
+                height: 5vh;
+            }
         }
 
         @media screen and (max-width: 425px) {
@@ -265,6 +332,14 @@ body {
                 font-size: 2rem;
             }
 
+            #user_birthdate_month,
+            #user_birthdate_year,
+            #user_birthdate_day {
+                font-size: 10px;
+                padding-left: 5%;
+                height: 5vh;
+                width: fit-content;
+            }
         }
     }
 }
