@@ -16,16 +16,30 @@
         color: #006AB3;
         font-size: 3.5vh;
         margin: 3vh;
+        text-decoration: none;
     }
 
     span {
         color: $text-color;
     }
 
-    #avatar {
+    #avatar-container,
+    #avatar-picture {
         margin: 2vh;
-        width: 60%;
-        height: auto;
+        display: flex;
+        width: 9vw;
+        height: 9vw;
+        background-image: url("/assets/images/avatar-border.svg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-size: cover;
+        border-radius: 50%;
+        background-position-x: center;
+        background-position-y: center;
+    }
+
+    #avatar-picture {
+        height: 7vw;
     }
 
     #pseudo {

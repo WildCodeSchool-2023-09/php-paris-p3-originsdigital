@@ -22,9 +22,18 @@
 	</head>
 	<body>
 		{% block nav %}
-			{% include '/component/_headerMobile.html.twig' %}
-			{% include '/component/_navbar.html.twig' %}
-			{% include '/component/_navbarMobile.html.twig' %}
+            {% if app.user %}
+
+                {% include '/component/_headerMobile.html.twig' %}
+                {% include '/component/_navbar.html.twig' %}
+                {% include '/component/_navbarMobile.html.twig' %}
+
+            {% else %}
+
+                {% include '/component/_headerVisitor.html.twig' %}
+
+            {% endif %}
+
 		{% endblock %}
 
 		{% block body %}{% endblock %}
