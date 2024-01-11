@@ -27,8 +27,6 @@
     #avatar-picture {
         margin: 2vh;
         display: flex;
-        width: 9vw;
-        height: 9vw;
         background-image: url("/assets/images/avatar-border.svg");
         background-repeat: no-repeat;
         background-size: 100%;
@@ -39,7 +37,8 @@
     }
 
     #avatar-picture {
-        height: 7vw;
+        width: 9vw;
+        height: 9vw;
     }
 
     #pseudo {
