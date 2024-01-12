@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/video', name: 'video_')]
 class VideoController extends AbstractController
@@ -19,13 +20,15 @@ class VideoController extends AbstractController
     #[Route('/new', name: 'new')]
     public function new(
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger
     ): Response {
         $video = new Video();
         $form = $this->createForm(UploadVideoType::class, $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $video->setSlug($slugger->slug($video->getTitle()));
             $entityManager->persist($video);
             $entityManager->flush();
 

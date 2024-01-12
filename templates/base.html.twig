@@ -6,12 +6,13 @@
 
 		<link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
 
-		<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
 
 		<title>
-			{% block title %}Origins Digital
+			{% block title %}
+				Origins Digital
 			{% endblock %}
 		</title>
 
@@ -32,6 +33,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
+
 	<body>
 		{% block nav %}
 			{% include '/component/_headerMobile.html.twig' %}
