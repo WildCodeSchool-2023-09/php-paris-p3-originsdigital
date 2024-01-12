@@ -12,5 +12,5 @@ require('bootstrap');
 
 // start the Stimulus application
 import './bootstrap';
-import './cardHover';
 import './carousel';
+import './cardHover';

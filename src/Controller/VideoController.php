@@ -35,21 +35,21 @@ class VideoController extends AbstractController
         ]);
     }
 
-    #[Route('/index/{slug}/{categoryLabel}', name: 'show_by_category')]
-    public function showAllVideosForOneCategory(
-        string $slug,
+    #[Route('/{languageSlug}/{categoryLabel}', name: 'show_by_category')]
+    public function listByCategory(
+        string $languageSlug,
         string $categoryLabel,
         VideoRepository $videoRepository,
         Request $request
     ): Response {
         $page = $request->query->getInt('page', 1);
 
-        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 9);
+        $videos = $videoRepository->findByCategoryPaginated($page, $categoryLabel, 9);
 
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
                 'categoryLabel' => $categoryLabel,
-                'languageSlug' => $slug,
+                'languageSlug' => $languageSlug,
             ]);
     }
 

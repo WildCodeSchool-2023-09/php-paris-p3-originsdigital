@@ -22,7 +22,6 @@ class Category
     #[ORM\JoinColumn(nullable: false)]
     private ?Language $language = null;
 
-
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Video::class, orphanRemoval: true)]
     private Collection $videos;
 

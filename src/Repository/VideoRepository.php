@@ -22,7 +22,7 @@ class VideoRepository extends ServiceEntityRepository
         parent::__construct($registry, Video::class);
     }
 
-    public function findVideosByCategoryPaginated(int $page, string $category, int $limit = 9): array
+    public function findByCategoryPaginated(int $page, string $category, int $limit = 9): array
     {
         $limit = abs($limit);
 
@@ -64,6 +64,7 @@ class VideoRepository extends ServiceEntityRepository
             ->andWhere("v.id > '$id'")
             ->setMaxResults(4)
             ->getQuery();
+
         return $query->getResult();
     }
 }

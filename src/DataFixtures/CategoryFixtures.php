@@ -101,7 +101,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-        LanguageFixtures::class,
+            LanguageFixtures::class,
         ];
     }
 }
