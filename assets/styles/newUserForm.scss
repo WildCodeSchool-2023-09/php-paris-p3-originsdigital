@@ -69,8 +69,8 @@ body {
             background-repeat: no-repeat;
             background-size: 100%;
             background-position: center;
-            margin-top: 2vw;
-            margin-bottom: 2vw;
+            margin-top: 0.5vw;
+            margin-bottom: 0.5vw;
             margin-left: auto;
             margin-right: auto;
         }
@@ -82,7 +82,7 @@ body {
             margin-bottom: 2vh;
         }
 
-        #user_birthdate {
+        #subscription_birthdate {
 
             display: inline-flex;
             justify-content: space-between;
@@ -93,9 +93,9 @@ body {
             margin-left: auto;
             justify-self: center;
 
-            #user_birthdate_month,
-            #user_birthdate_year,
-            #user_birthdate_day {
+            #subscription_birthdate_month,
+            #subscription_birthdate_year,
+            #subscription_birthdate_day {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -311,9 +311,9 @@ body {
                 font-size: 3vw;
             }
 
-            #user_birthdate_month,
-            #user_birthdate_year,
-            #user_birthdate_day {
+            #subscription_birthdate_month,
+            #subscription_birthdate_year,
+            #subscription_birthdate_day {
                 font-size: 2vw;
                 padding-left: 5%;
                 height: 5vh;
@@ -332,9 +332,9 @@ body {
                 font-size: 2rem;
             }
 
-            #user_birthdate_month,
-            #user_birthdate_year,
-            #user_birthdate_day {
+            #subscription_birthdate_month,
+            #subscription_birthdate_year,
+            #subscription_birthdate_day {
                 font-size: 10px;
                 padding-left: 5%;
                 height: 5vh;
