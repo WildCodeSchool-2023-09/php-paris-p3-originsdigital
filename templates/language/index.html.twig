@@ -12,7 +12,7 @@
 			{% for language in languages %}
 				<div id="{{language.label}}-card" class="language-card index-card">
 					<div class="recto-index-card">
-						<img src="{{ vich_uploader_asset(language) }}" alt="logo of {{language.label}}">
+						<img src="{{ asset('build/images/language_logo/' ~ language.slug ~ '-logo.svg') }}" alt="logo of {{ language.label }}">
 						<h2>//{{language.label}}_</h2>
 					</div>
 					<div class="verso-index-card">

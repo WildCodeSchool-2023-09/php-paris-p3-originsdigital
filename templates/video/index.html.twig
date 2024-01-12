@@ -11,7 +11,7 @@
 	<div id="index-videos">
 		<h1>//VIDEOS</h1>
 		<div id="index-videos-cards">
-			{% for video in videos.data %}
+			{% for video in videos %}
 				<div class="video-card index-card {{video.category.language.slug}}-card">
 					<div class="recto-index-card">
 						<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
@@ -29,11 +29,8 @@
 				</div>
 			{% endfor %}
 		</div>
-		{% set path = 'video_show_by_category' %}
-		{% set languageSlug = languageSlug %}
-		{% set pages = videos.pages %}
-		{% set currentPage = videos.page %}
-		{% set categoryLabel = categoryLabel %}
-		{% include "/component/_pagination.html.twig" %}
+		<div class="navigation flex justify-center">
+			{{ knp_pagination_render(videos) }}
+		</div>
 	</div>
 {% endblock %}

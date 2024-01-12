@@ -3,11 +3,6 @@ vich_uploader:
     metadata:
         type: attribute
     mappings:
-        logo_file:
-            uri_prefix: /uploads/logos
-            upload_destination: '%upload_directory_logos%'
-            namer: Vich\UploaderBundle\Naming\OrignameNamer
-
         profilepicture_file:
             uri_prefix: /uploads/profilepictures
             upload_destination: '%upload_directory_profilepictures%'

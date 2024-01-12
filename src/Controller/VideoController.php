@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,13 +41,19 @@ class VideoController extends AbstractController
     public function listByCategory(
         string $languageSlug,
         string $categoryLabel,
+        CategoryRepository $categoryRepository,
         VideoRepository $videoRepository,
+        PaginatorInterface $paginator,
         Request $request
     ): Response {
-        $page = $request->query->getInt('page', 1);
 
-        $videos = $videoRepository->findByCategoryPaginated($page, $categoryLabel, 9);
-
+        $category = $categoryRepository->findByLabel($categoryLabel);
+        $videos = $videoRepository->findByCategory($category);
+        $videos = $paginator->paginate(
+            $videos,
+            $request->query->getInt('page', 1),
+            3,
+        );
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
                 'categoryLabel' => $categoryLabel,

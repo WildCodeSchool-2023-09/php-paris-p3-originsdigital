@@ -13,4 +13,10 @@ require('bootstrap');
 // start the Stimulus application
 import './bootstrap';
 import './carousel';
-import './cardHover';
+
+if (window.innerWidth >= 768) {
+    import('./cardHover').then((cardHoverModule) => {
+    }).catch((error) => {
+        console.error('Une erreur s\'est produite lors de l\'import du script :', error);
+    });
+}
