@@ -10,15 +10,20 @@
 		<h1>//LANGAGES_</h1>
 		<div id="index-language-cards">
 			{% for language in languages %}
-				<div id="{{language.label}}-card" class="language-card">
-					<img src="{{ vich_uploader_asset(language) }}" alt="logo of {{language.label}}">
-					<h2>//{{language.label}}_</h2>
-					<p>{{language.description}}</p>
-					<a class="btn-glitch-fill" href="{{ path("category_index", { slug: language.slug })}}">
-						<span class="text">//Catégories</span>
-						<span class="text-decoration">_</span>
-						<span class="decoration">&rArr;</span>
-					</a>
+				<div id="{{language.label}}-card" class="language-card index-card">
+					<div class="recto-index-card">
+						<img src="{{ vich_uploader_asset(language) }}" alt="logo of {{language.label}}">
+						<h2>//{{language.label}}_</h2>
+					</div>
+					<div class="verso-index-card">
+						<h2>//{{language.label}}_</h2>
+						<p>{{language.description}}</p>
+						<a class="btn-glitch-fill" href="{{ path("category_index", { slug: language.slug })}}">
+							<span class="text">//Catégories</span>
+							<span class="text-decoration">_</span>
+							<span class="decoration">&rArr;</span>
+						</a>
+					</div>
 				</div>
 			{% endfor %}
 		</div>

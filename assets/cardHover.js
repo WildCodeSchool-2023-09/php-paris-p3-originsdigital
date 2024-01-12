@@ -1,78 +1,19 @@
 if (window.innerWidth >= 768) {
 
-    const languageCards = document.getElementsByClassName('language-card');
+    const indexCards = document.getElementsByClassName('index-card');
 
-    Array.from(languageCards).forEach(languageCard => {
-        const languageCardDescription = languageCard.querySelector("p");
-        const languageCardLogo = languageCard.querySelector("img");
-        const languageCardButton = languageCard.querySelector("a");
-        const languageCardTitle = languageCard.querySelector("h2");
+    Array.from(indexCards).forEach(indexCard => {
+        const rectoIndexCard = indexCard.querySelector(".recto-index-card");
+        const versoIndexCard = indexCard.querySelector(".verso-index-card");
 
-        languageCard.addEventListener("mouseover", () => {
-            languageCardTitle.style.marginTop = "10%";
-            languageCardDescription.style.display = "block";
-            languageCardDescription.style.marginTop = "10%";
-            languageCardLogo.style.display = "none";
-            languageCardButton.style.display = "inline-block";
-            languageCardButton.style.marginTop = "10%";
+        indexCard.addEventListener("mouseover", () => {
+            rectoIndexCard.style.display = "none";
+            versoIndexCard.style.display = "block";
         });
 
-        languageCard.addEventListener("mouseout", () => {
-            languageCardTitle.style.marginTop = "0%";
-            languageCardDescription.style.display = "none";
-            languageCardLogo.style.display = "inline";
-            languageCardButton.style.display = "none";
-        });
-    });
-
-    const categoryCards = document.getElementsByClassName('category-card');
-
-    Array.from(categoryCards).forEach(categoryCard => {
-        const categoryCardDescription = categoryCard.querySelector("p");
-        const categoryCardLogo = categoryCard.querySelector("img");
-        const categoryCardButton = categoryCard.querySelector("a");
-        const categoryCardTitle = categoryCard.querySelector("h3");
-
-        categoryCard.addEventListener("mouseover", () => {
-            categoryCardTitle.style.paddingTop = "10%";
-            categoryCardDescription.style.display = "block";
-            categoryCardDescription.style.marginTop = "10%";
-            categoryCardLogo.style.display = "none";
-            categoryCardButton.style.display = "inline-block";
-            categoryCardButton.style.marginTop = "10%";
-        });
-
-        categoryCard.addEventListener("mouseout", () => {
-            categoryCardTitle.style.paddingTop = "0%";
-            categoryCardDescription.style.display = "none";
-            categoryCardLogo.style.display = "inline";
-            categoryCardButton.style.display = "none";
-        });
-    });
-
-
-    const videoCards = document.getElementsByClassName('video-card');
-
-    Array.from(videoCards).forEach(videoCard => {
-        const videoCardDescription = videoCard.querySelector("p");
-        const videoCardThumbnail = videoCard.querySelector("img");
-        const videoCardButton = videoCard.querySelector("a");
-        const videoCardTitle = videoCard.querySelector("h2");
-
-        videoCard.addEventListener("mouseover", () => {
-            videoCardTitle.style.marginTop = "8%";
-            videoCardDescription.style.display = "block";
-            videoCardDescription.style.marginTop = "8%";
-            videoCardThumbnail.style.display = "none";
-            videoCardButton.style.display = "inline-block";
-            videoCardButton.style.marginTop = "8%";
-        });
-
-        videoCard.addEventListener("mouseout", () => {
-            videoCardTitle.style.marginTop = "0%";
-            videoCardDescription.style.display = "none";
-            videoCardThumbnail.style.display = "inline";
-            videoCardButton.style.display = "none";
+        indexCard.addEventListener("mouseout", () => {
+            rectoIndexCard.style.display = "block";
+            versoIndexCard.style.display = "none";
         });
     });
 }

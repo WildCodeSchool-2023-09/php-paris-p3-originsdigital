@@ -29,39 +29,50 @@
           .css-card{
             background-color: $css-color;
           }
-            .video-card{
-              border-radius: 5px;
+            .video-card {
               display: block;
+              border-radius: 5px;
               text-align: center;
               height: 250px;
               padding-right:0.5rem;
               padding-left:0.5rem;
-              img{
+              .recto-index-card {
+                display: block;
+                img{
                   width: 85%;
                   height: 6rem;
                   border: solid black;
                   border-radius: 5px;
                   margin-top: 10%;
                   margin-bottom: 10%;
-              }
-              h2{
+                }
+                h2{
                   font-size: 1.5rem;
                   font-weight: bold;
                   margin-bottom: 1rem;
+                }
               }
-              p{
-                  display: none;
+              .verso-index-card {
+                display: none;
+                h2 {
+                  font-size: 1.5rem;
+                  font-weight: bold;
+                  margin-bottom: 1rem;
+                  margin-top: 8%;
+                }
+                p{
                   margin-right: 10px;
                   margin-left: 10px;
                   line-height: 150%;
-                  margin-bottom: 0.5rem;
-              }
-              a{
+                  margin-bottom: 1.5rem;
+                  margin-top: 8%;
+                }
+                a{
                   border-radius: 3px;
                   text-decoration: none;
-              }
-              [class*="btn-glitch-"] {
-                  display: none;
+                }
+                [class*="btn-glitch-"] {
+                  display: inline-block;
                   font-family: "Quantico", monospace;
                   border: 1px solid black;
                   color: $button-color;
@@ -130,6 +141,9 @@
                       display: none;
                     }
                   }
+              }
+            }
+              
                 }
                 
                 @keyframes blink {
@@ -154,7 +168,7 @@
           justify-content: center;
         }
     }
-}
+
 
 @media screen and (max-width:768px){
   #index-videos{
@@ -167,125 +181,134 @@
       .video-card{
         display: grid;
         grid-template-columns: 1fr 1.5fr;
-        grid-template-rows: 1fr 1fr;
-        border-top: solid 1px $button-color;
         border-bottom: solid 1px $button-color;
         height: 160px;
-        img{
-          grid-column: 1/2;
-          grid-row: 1/3;
-          display: block;
-          margin: auto;
-          width: 8rem;
-          height: 5rem;
-          margin-top: 2.1rem;
-          margin-bottom: 2.1rem;
-          margin-right: 5px;
-          margin-left: 5px;
+        .recto-index-card{
+          img{
+            grid-column: 1/2;
+            grid-row: 1/3;
+            display: block;
+            margin: auto;
+            width: 8rem;
+            height: 5rem;
+            margin-top: 2.1rem;
+            margin-bottom: 2.1rem;
+            margin-right: 5px;
+            margin-left: 5px;
+          }
+          h2{
+            display: none;
+          }
         }
-        h2{
-          grid-column: 2/3;
-          grid-row: 1/2;
-          font-size: 1.2rem;
-          font-weight: bold;
-          margin-top: 0.5rem;
-          margin-left: 0.5rem;
-          margin-right: 0.5rem;
-        }
-        p{
-          display: none;
-        }
-        a{
-          grid-column: 2/3;
-          grid-row: 2/3;
-          border-radius: 3px;
-          display: block;
-          margin: auto;
-          text-decoration: none;
-          font-size: 0.9rem;
-        }
-        [class*="btn-glitch-"] {
-            display: inline-block;
-            font-family: "Quantico", monospace;
-            border: 1px solid black;
-            color: $button-color;
-            background-color: $navbar-main-color;
-            padding: 5px 7px;
-            line-height: 1.5em;
-            white-space: no-wrap;
-            text-transform: uppercase;
-            cursor: pointer;
-            .text,
-            .text-decoration,
-            .decoration {
+        .verso-index-card{
+          display: grid;
+          grid-template-rows: 1.7fr 1fr;
+          h2{
+            grid-row: 1/2;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+          }
+          p{
+            display: none;
+          }
+          a{
+            grid-row: 2/3;
+            border-radius: 3px;
+            display: block;
+            margin: auto;
+            text-decoration: none;
+            font-size: 0.9rem;
+          }
+          [class*="btn-glitch-"] {
               display: inline-block;
+              font-family: "Quantico", monospace;
+              border: 1px solid black;
               color: $button-color;
-            }
-            .decoration {
-              display: inline-block;
-            }
-            &:hover, &:focus {
-              animation-name: glitch;
-              animation-duration: 0.5s;
-              background-color: black;
-              color:$button-color;
-              border: 1px solid $button-color;
-              .text-decoration {
-                animation-name: blink;
-                animation-duration: 0.3s;
-                animation-iteration-count: infinite;
+              background-color: $navbar-main-color;
+              padding: 5px 7px;
+              line-height: 1.5em;
+              white-space: no-wrap;
+              text-transform: uppercase;
+              cursor: pointer;
+              .text,
+              .text-decoration,
+              .decoration {
+                display: inline-block;
+                color: $button-color;
               }
               .decoration {
-                animation-name: blink;
-                animation-duration: 0.3s;
-                animation-iteration-count: infinite;
+                display: inline-block;
               }
-              :before {
-                content: " ";
-                width: 15px;
-                position: absolute;
-                right: 25%;
-                bottom: 3px;
-                transform: rotate(35deg)
+              &:hover, &:focus {
+                animation-name: glitch;
+                animation-duration: 0.5s;
+                background-color: black;
+                color:$button-color;
+                border: 1px solid $button-color;
+                .text-decoration {
+                  animation-name: blink;
+                  animation-duration: 0.3s;
+                  animation-iteration-count: infinite;
+                }
+                .decoration {
+                  animation-name: blink;
+                  animation-duration: 0.3s;
+                  animation-iteration-count: infinite;
+                }
+                :before {
+                  content: " ";
+                  width: 15px;
+                  position: absolute;
+                  right: 25%;
+                  bottom: 3px;
+                  transform: rotate(35deg)
+                }
+                :after {
+                  animation-name: shrink;
+                  animation-duration:.5s;
+                  animation-iteration-count: 1;
+                  animation-fill-mode : forwards;
+                  content: " ";
+                  width: 75%;
+                  position: absolute;
+                  left: 0;
+                  bottom: 5px;
+                }
               }
-              :after {
-                animation-name: shrink;
-                animation-duration:.5s;
-                animation-iteration-count: 1;
-                animation-fill-mode : forwards;
-                content: " ";
-                width: 75%;
-                position: absolute;
-                left: 0;
-                bottom: 5px;
+              &:active {
+                background: none;
+                color:$button-color;
+                .text-decoration {
+                  animation-name: none;
+                }
+                .decoration {
+                  animation-name: none;
+                }
+                :before, :after {
+                  display: none;
+                }
               }
             }
-            &:active {
-              background: none;
-              color:$button-color;
-              .text-decoration {
-                animation-name: none;
-              }
-              .decoration {
-                animation-name: none;
-              }
-              :before, :after {
-                display: none;
+            
+            @keyframes blink {
+              50% {
+                opacity: 0;
               }
             }
-          }
-          
-          @keyframes blink {
-            50% {
-              opacity: 0;
+            
+            @keyframes shrink {
+              100% {
+                width: 10%;
+              }
             }
-          }
-          
-          @keyframes shrink {
-            100% {
-              width: 10%;
-            }
-          }
+        }
+
+
+
+        
     }
   }
 }

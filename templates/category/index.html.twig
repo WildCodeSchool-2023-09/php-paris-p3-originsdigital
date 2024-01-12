@@ -18,15 +18,20 @@
 							<ul class="splide__list">
 								{% for video in videos[category.label] %}
 									<li class="splide__slide">
-										<div class="{{slug}}-card category-card">
-											<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
-											<h3>{{video.title}}</h3>
-											<p>{{video.description}}</p>
-											<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
-												<span class="text">//Vidéo</span>
-												<span class="text-decoration">_</span>
-												<span class="decoration">&rArr;</span>
-											</a>
+										<div class="{{slug}}-card category-card index-card">
+											<div class="recto-index-card">
+												<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+												<h3>{{video.title}}</h3>
+											</div>
+											<div class="verso-index-card">
+												<h3>{{video.title}}</h3>
+												<p>{{video.description}}</p>
+												<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
+													<span class="text">//Vidéo</span>
+													<span class="text-decoration">_</span>
+													<span class="decoration">&rArr;</span>
+												</a>
+											</div>
 										</div>
 									</li>
 								{% endfor %}

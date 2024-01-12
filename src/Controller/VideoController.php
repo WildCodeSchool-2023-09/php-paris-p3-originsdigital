@@ -44,7 +44,7 @@ class VideoController extends AbstractController
     ): Response {
         $page = $request->query->getInt('page', 1);
 
-        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 6);
+        $videos = $videoRepository->findVideosByCategoryPaginated($page, $categoryLabel, 9);
 
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
