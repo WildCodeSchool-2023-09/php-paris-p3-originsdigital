@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -66,6 +68,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/tiff',],
     )]
     private ?File $profilepictureFile = null;
+
+    #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
+    private Collection $courses;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -175,5 +185,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
             return false;
         }
         return true;
+    }
+
+    /**
+     * @return Collection<int, Course>
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): static
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses->add($course);
+            $course->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): static
+    {
+        if ($this->courses->removeElement($course)) {
+            $course->removeUser($this);
+        }
+
+        return $this;
     }
 }
