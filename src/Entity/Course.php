@@ -18,7 +18,7 @@ class Course
     #[ORM\Column(length: 100)]
     private ?string $label = null;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'courses')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'courses')]
     private Collection $user;
 
     #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'course')]
@@ -48,14 +48,14 @@ class Course
     }
 
     /**
-     * @return Collection<int, user>
+     * @return Collection<int, User>
      */
     public function getUser(): Collection
     {
         return $this->user;
     }
 
-    public function addUser(user $user): static
+    public function addUser(User $user): static
     {
         if (!$this->user->contains($user)) {
             $this->user->add($user);
@@ -64,7 +64,7 @@ class Course
         return $this;
     }
 
-    public function removeUser(user $user): static
+    public function removeUser(User $user): static
     {
         $this->user->removeElement($user);
 

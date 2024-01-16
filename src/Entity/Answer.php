@@ -18,11 +18,11 @@ class Answer
     private ?string $label = null;
 
     #[ORM\Column]
-    private ?bool $is_correct = null;
+    private ?bool $isCorrect = null;
 
     #[ORM\ManyToOne(inversedBy: 'answers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?question $question = null;
+    private ?Question $question = null;
 
     public function getId(): ?int
     {
@@ -43,22 +43,22 @@ class Answer
 
     public function isIsCorrect(): ?bool
     {
-        return $this->is_correct;
+        return $this->isCorrect;
     }
 
-    public function setIsCorrect(bool $is_correct): static
+    public function setIsCorrect(bool $isCorrect): static
     {
-        $this->is_correct = $is_correct;
+        $this->isCorrect = $isCorrect;
 
         return $this;
     }
 
-    public function getQuestion(): ?question
+    public function getQuestion(): ?Question
     {
         return $this->question;
     }
 
-    public function setQuestion(?question $question): static
+    public function setQuestion(?Question $question): static
     {
         $this->question = $question;
 

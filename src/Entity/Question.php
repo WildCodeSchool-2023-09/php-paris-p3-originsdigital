@@ -22,7 +22,7 @@ class Question
     #[ORM\Column]
     private ?int $questionNumber = null;
 
-    #[ORM\ManyToMany(targetEntity: course::class, inversedBy: 'questions')]
+    #[ORM\ManyToMany(targetEntity: Course::class, inversedBy: 'questions')]
     private Collection $course;
 
     #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class)]
@@ -64,14 +64,14 @@ class Question
     }
 
     /**
-     * @return Collection<int, course>
+     * @return Collection<int, Course>
      */
     public function getCourse(): Collection
     {
         return $this->course;
     }
 
-    public function addCourse(course $course): static
+    public function addCourse(Course $course): static
     {
         if (!$this->course->contains($course)) {
             $this->course->add($course);
@@ -80,7 +80,7 @@ class Question
         return $this;
     }
 
-    public function removeCourse(course $course): static
+    public function removeCourse(Course $course): static
     {
         $this->course->removeElement($course);
 
