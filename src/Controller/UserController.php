@@ -48,7 +48,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_payment', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('user/subscription.html.twig', [

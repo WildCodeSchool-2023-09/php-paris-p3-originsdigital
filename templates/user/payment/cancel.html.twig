@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}{% endblock %}
+
+{% block title %}Paiement annulé{% endblock %}
+
+{% block body %}
+
+    <h1 id="user-form-title">désolé de vous voir changer d'avis</h1>
+    <div class = 'securityContainer'>
+        <div class="formFields">
+            <p class="premium-user-form">Vous pouvez toujours reprendre le processus pour profiter de nombreux avantages</p>
+                <a href="{{ path('app_home')}}" class="btn-glitch-fill">
+                    <span class="text">Retour au menu</span>
+                    <span class="text-decoration">_</span>
+                    <span class="decoration">&rArr;</span>
+                </a>
+        </div>
+    </div>
+
+{% endblock %}
