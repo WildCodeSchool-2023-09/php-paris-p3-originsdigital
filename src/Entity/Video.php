@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
+use App\Config\Category;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -37,10 +39,13 @@ class Video
 
     #[ORM\ManyToOne(inversedBy: 'videos')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private ?Language $language = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
 
     public function getId(): ?int
     {
@@ -116,14 +121,14 @@ class Video
         return $this->thumbnailFile;
     }
 
-    public function getCategory(): ?Category
+    public function getLanguage(): ?Language
     {
-        return $this->category;
+        return $this->language;
     }
 
-    public function setCategory(?Category $category): static
+    public function setLanguage(?Language $language): static
     {
-        $this->category = $category;
+        $this->language = $language;
 
         return $this;
     }
@@ -136,6 +141,18 @@ class Video
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
-use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,14 +43,12 @@ class VideoController extends AbstractController
     public function listByCategory(
         string $languageSlug,
         string $categoryLabel,
-        CategoryRepository $categoryRepository,
         VideoRepository $videoRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response {
 
-        $category = $categoryRepository->findByLabel($categoryLabel);
-        $videos = $videoRepository->findByCategory($category);
+        $videos = $videoRepository->findBy(['category' => $categoryLabel]);
         $videos = $paginator->paginate(
             $videos,
             $request->query->getInt('page', 1),
@@ -71,7 +68,7 @@ class VideoController extends AbstractController
     ): Response {
 
         $video = $videoRepository->findOneBy(['slug' => $slug]);
-        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory()->getLabel());
+        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory());
 
         if (!$video) {
             throw $this->createNotFoundException(

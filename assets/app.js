@@ -20,4 +20,4 @@ if (window.innerWidth >= 768) {
     });
 }
 import './uploadVideo';
-import './picturePreview';
+// import './picturePreview';
