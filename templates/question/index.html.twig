@@ -3,4 +3,25 @@
 {% block title %}Questions{% endblock %}
 
 {% block body %}
+<div id="quizComponent">
+    <div id="quizField">
+        <div id="progressBar"></div>
+            <ul>
+                <li id="questionList">
+                    {{question.label}}
+                </li>
+            </ul>
+        {% for answer in answers %}
+            <ul>
+                <li id="answersField">{{answer.label}}</li>
+            </ul>
+        {% endfor %}
+          <button class="btn-glitch-fill">
+            <span class="text">//Valider</span>
+            <span class="text-decoration">_</span>
+            <span class="decoration">&rArr;</span>
+        </button>
+    </div>
+</div>
+
 {% endblock %}

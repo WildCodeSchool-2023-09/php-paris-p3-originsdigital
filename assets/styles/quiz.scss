@@ -1,0 +1,136 @@
+#quizComponent {
+    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+
+    #progressBar {
+        display: grid;
+        justify-content: center;
+        background-color: rgba(217, 217, 217, 0.30);
+        border: 1px solid #030300;
+        border-radius: 5px;
+        width: 57vw;
+        height: 2vw;
+        margin-top: 6vw;
+        margin-bottom: 4vw;    
+    }
+
+    #quizField {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: rgba(217, 217, 217, 0.30);
+        border: 1px solid #030300;
+        border-radius: 5px;
+        width: 60vw;
+        height: 40vw;
+        font-size: 2vw;
+        margin: 11%;
+    }
+    
+    #questionList {
+        color: whitesmoke;
+    }
+
+    #answersField {
+        background-image: url('/assets/images/answer.svg');
+        background-repeat: no-repeat;
+        color: white;
+        font-size: 1.8vw;
+        margin-top: 7vw;
+        height: 6vw;
+        width: 29vw;
+        background-size: 29vw;
+        padding: 0.5vw 3vw 0.5vw 1vw;
+        text-align: center;
+    }
+
+    [class*="btn-glitch-"] {
+        margin-bottom: 3vh;
+        margin-top: 3vh;
+        height: 13%;
+        text-align: center;
+        font-size: 2rem;
+        display: flex;
+        font-family: "Quantico", monospace;
+        border: 1px solid black;
+        color: $button-color;
+        background-color: $navbar-main-color;
+        padding: 5px 7px;
+        min-width: fit-content;
+        line-height: 1.5em;
+        text-transform: uppercase;
+        cursor: pointer;
+    
+        .text,
+        .decoration,
+        .text-decoration {
+            display: inline-block;
+            color: $button-color;
+        }
+    
+        .decoration {
+            display: inline-block;
+        }
+    
+        &:hover,
+        &:focus {
+            animation-name: glitch;
+            animation-duration: 0.5s;
+            background-color: black;
+            color: $button-color;
+            border: 1px solid $button-color;
+    
+            .text-decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+                color: $button-color;
+            }
+    
+            .decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+            }
+    
+            :before {
+                content: " ";
+                width: 15px;
+                position: absolute;
+                right: 25%;
+                bottom: 3px;
+                transform: rotate(35deg)
+            }
+    
+            :after {
+                animation-name: shrink;
+                animation-duration: .5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                content: " ";
+                width: 75%;
+            }
+        }
+    
+        &:active {
+            background: none;
+            color: $button-color;
+    
+            .text-decoration {
+                animation-name: none;
+                color: $button-color;
+            }
+    
+            .decoration {
+                animation-name: none;
+            }
+    
+            :before,
+            :after {
+                display: none;
+            }
+        }
+    }
+}
