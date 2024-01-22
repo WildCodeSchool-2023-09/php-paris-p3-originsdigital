@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Stripe\StripeClient;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -41,8 +43,13 @@ class PaymentController extends AbstractController
     }
 
     #[Route('/success-url', name: 'success_url')]
-    public function successUrl(): Response
+    public function successUrl(EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $user->setRoles(['ROLE_PREMIUM']);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
         return $this->render('/user/payment/success.html.twig');
     }
 
