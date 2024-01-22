@@ -11,16 +11,18 @@
                     {{question.label}}
                 </li>
             </ul>
-        {% for answer in answers %}
+        {% for answer in question.answers %}
             <ul>
-                <li id="answersField">{{answer.label}}</li>
+                <li class="answersField">{{answer.label}}</li>
             </ul>
         {% endfor %}
-          <button class="btn-glitch-fill">
-            <span class="text">//Valider</span>
-            <span class="text-decoration">_</span>
-            <span class="decoration">&rArr;</span>
-        </button>
+        <form>
+            <button class="btn-glitch-fill">
+                <span class="text">//Valider</span>
+                <span class="text-decoration">_</span>
+                <span class="decoration">&rArr;</span>
+            </button>
+        </form
     </div>
 </div>
 

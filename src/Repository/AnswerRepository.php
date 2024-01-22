@@ -21,18 +21,6 @@ class AnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, Answer::class);
     }
 
-    public function findByQuestionId(int $id): array
-    {
-        $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('a', 'q')
-            ->from('App\Entity\Answer', 'a')
-            ->join('a.question', 'q')
-            ->where("a.question = q.id")
-            ->andwhere("q.id = '$id'")
-            ->getQuery();
-
-        return $query->getResult();
-    }
 //    /**
 //     * @return Answer[] Returns an array of Answer objects
 //     */
