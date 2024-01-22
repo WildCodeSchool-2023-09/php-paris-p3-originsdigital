@@ -14,12 +14,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaymentController extends AbstractController
 {
+    private StripeClient $stripe;
+
+    public function __construct()
+    {
+        $this->stripe = new StripeClient($this->getParameter('stripe_secret_key'));
+    }
+
     #[Route('/payment', name: 'app_payment')]
     public function payment(): Response
     {
-        $stripe = new StripeClient($this->getParameter('stripe_secret_key'));
-
-        $checkoutSession = $stripe->checkout->sessions->create([
+        $checkoutSession = $this->stripe->checkout->sessions->create([
             'line_items' => [[
               'price_data' => [
                 'currency' => 'eur',
@@ -31,7 +36,7 @@ class PaymentController extends AbstractController
               'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => "http://localhost:8000/payment/success-url?session_id={CHECKOUT_SESSION_ID}",
+            'success_url' => $this->getParameter('root_url') . "payment/success-url?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
 
@@ -44,10 +49,8 @@ class PaymentController extends AbstractController
     #[Route('/success-url', name: 'success_url')]
     public function successUrl(EntityManagerInterface $entityManager): Response
     {
-        $stripe = new StripeClient($this->getParameter('stripe_secret_key'));
-
         try {
-            $session = $stripe->checkout->sessions->retrieve($_GET['session_id']);
+            $session = $this->stripe->checkout->sessions->retrieve($_GET['session_id']);
 
             if ($session["payment_status"] === "paid") {
                 $user = $this->getUser();

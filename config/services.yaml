@@ -9,6 +9,7 @@ parameters:
     upload_directory_thumbnails: "%kernel.project_dir%/public/uploads/thumbnails/"
     upload_directory_videos: "%kernel.project_dir%/public/uploads/videos/"
     stripe_secret_key: "%env(STRIPE_PRIVATE_KEY_TEST)%"
+    root_url: "%env(ROOT_URL)%"
 
 services:
     # default configuration for services in *this* file
