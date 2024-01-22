@@ -31,10 +31,9 @@ class PaymentController extends AbstractController
               'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            'success_url' => "http://localhost:8000/payment/success-url?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
-
 
         header("HTTP/1.1 303 See Other");
         header("Location: " . $checkoutSession->url);
@@ -45,10 +44,22 @@ class PaymentController extends AbstractController
     #[Route('/success-url', name: 'success_url')]
     public function successUrl(EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-        $user->setRoles(['ROLE_PREMIUM']);
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $stripe = new StripeClient($this->getParameter('stripe_secret_key'));
+
+        try {
+            $session = $stripe->checkout->sessions->retrieve($_GET['session_id']);
+
+            if ($session["payment_status"] === "paid") {
+                $user = $this->getUser();
+                $user->setRoles(['ROLE_PREMIUM']);
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
+            http_response_code(200);
+        } catch (\Error $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
 
         return $this->render('/user/payment/success.html.twig');
     }
