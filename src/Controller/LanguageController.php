@@ -33,7 +33,7 @@ class LanguageController extends AbstractController
         foreach ($results as $result) {
             $videos[$result->getCategory()][] = $result;
         }
-        
+
         return $this->render('category/index.html.twig', [
             'videos' => $videos,
             'slug' => $slug,
