@@ -2,34 +2,33 @@
 
 {% block body %}
 
-<div class = 'contentContainer'>
+	<div id="registerForm">
+		<div class='contentContainer'>
 
-    {{ form_start(form) }}
+			{{ form_start(form) }}
 
-    <div class="formFields">
+			<div class="formFields">
 
-        <div class="formErrors">
-            {{ form_errors(form) }}
-        </div>
+				<div class="formErrors">
+					{{ form_errors(form) }}
+				</div>
 
-        {{ form_row(form.profilepictureFile) }}
-        {{ form_row(form.username) }}
-        {{ form_row(form.email)}}
-        {{ form_row(form.password)}}
-        {{ form_row(form._token) }}
+				{{ form_row(form.profilepictureFile) }}
+				{{ form_row(form.username) }}
+				{{ form_row(form.email)}}
+				{{ form_row(form.password)}}
+				{{ form_row(form._token) }}
+			</div>
+		</div>
 
-        <button class="btn-glitch-fill">
-            <span class="text">//Valider</span>
-            <span class="text-decoration">_</span>
-            <span class="decoration">&rArr;</span>
-        </button>
+		<button class="btn-glitch-fill">
+			<span class="text">//Valider</span>
+			<span class="text-decoration">_</span>
+			<span class="decoration">&rArr;</span>
+		</button>
+	</div>
+	{% block javascripts %}{% endblock %}
 
-    </div>
-</div>
-
-
-{% block javascripts %}{% endblock %}
-
-{{ form_end(form, {render_rest: false}) }}
+	{{ form_end(form, {render_rest: false}) }}
 
 {% endblock %}

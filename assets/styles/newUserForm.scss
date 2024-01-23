@@ -126,7 +126,7 @@ input[type='file'] {
     margin-top: 2vh;
     text-align: center;
 }
-
+#registerForm{
 [class*="btn-glitch-"] {
     margin-left: auto;
     margin-right: auto;
@@ -228,6 +228,7 @@ input[type='file'] {
     100% {
         width: 10%;
     }
+}
 }
 
 @media screen and (max-width: 800px) {
