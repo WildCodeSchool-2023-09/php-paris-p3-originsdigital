@@ -8,8 +8,7 @@
     <p id="pseudo">{{ app.user.username }}</p>
     <p id="rank">Gardien du Savoir Suprême</p>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span></a>
-    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/notes.svg') }}"><span class="nav-button">Notes</span></a>
-    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Playlists</span></a>
+    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Ma playlist</span></a>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span></a>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/profile.svg') }}"><span class="nav-button">Profil</span></a>
     {% if app.user.roles[0] is same as("ROLE_USER") %}
