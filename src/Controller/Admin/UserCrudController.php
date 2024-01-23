@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -21,5 +22,17 @@ class UserCrudController extends AbstractCrudController
         return $crud
         ->setEntityLabelInPlural("Utilisateurs")
         ->setEntityLabelInSingular("Utilisateur");
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id')
+            ->setFormTypeOption('disabled', 'disabled'),
+            TextField::new('username'),
+            TextField::new('email')
+            ->setFormTypeOption('disabled', 'disabled'),
+            ArrayField::new('roles'),
+        ];
     }
 }
