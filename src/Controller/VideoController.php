@@ -39,6 +39,26 @@ class VideoController extends AbstractController
         ]);
     }
 
+    #[Route('/show/{slug}', name: 'show')]
+    public function show(
+        string $slug,
+        VideoRepository $videoRepository,
+    ): Response {
+        $video = $videoRepository->findOneBy(['slug' => $slug]);
+        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory(), $video->getLanguage()->getLabel());
+        
+        if (!$video) {
+            throw $this->createNotFoundException(
+                'No video with name : ' . $slug . ' found in video\'s table.'
+            );
+        }
+
+        return $this->render('video/player.html.twig', [
+            'video' => $video,
+            'recommandedVideos' => $recommandedVideos,
+        ]);
+    }
+
     #[Route('/{languageSlug}/{categoryLabel}', name: 'show_by_category')]
     public function listByCategory(
         string $languageSlug,
@@ -54,31 +74,11 @@ class VideoController extends AbstractController
             $request->query->getInt('page', 1),
             3,
         );
+
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
                 'categoryLabel' => $categoryLabel,
                 'languageSlug' => $languageSlug,
             ]);
-    }
-
-    #[Route('/show/{slug}', name: 'show')]
-    public function show(
-        string $slug,
-        VideoRepository $videoRepository,
-    ): Response {
-
-        $video = $videoRepository->findOneBy(['slug' => $slug]);
-        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory());
-
-        if (!$video) {
-            throw $this->createNotFoundException(
-                'No video with name : ' . $slug . ' found in video\'s table.'
-            );
-        }
-
-        return $this->render('video/player.html.twig', [
-            'video' => $video,
-            'recommandedVideos' => $recommandedVideos,
-        ]);
     }
 }
