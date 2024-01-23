@@ -45,8 +45,12 @@ class VideoController extends AbstractController
         VideoRepository $videoRepository,
     ): Response {
         $video = $videoRepository->findOneBy(['slug' => $slug]);
-        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory(), $video->getLanguage()->getLabel());
-        
+        $recommandedVideos = $videoRepository->recommandedVideos(
+            $video->getId(),
+            $video->getCategory(),
+            $video->getLanguage()->getLabel()
+        );
+
         if (!$video) {
             throw $this->createNotFoundException(
                 'No video with name : ' . $slug . ' found in video\'s table.'
