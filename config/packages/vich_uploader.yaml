@@ -1,11 +1,8 @@
 vich_uploader:
     db_driver: orm
-
     metadata:
         type: attribute
-
     mappings:
-
         profilepicture_file:
             uri_prefix: /uploads/profilepictures
             upload_destination: '%upload_directory_profilepictures%'

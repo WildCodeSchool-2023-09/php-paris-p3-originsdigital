@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    upload_directory_logos: "%kernel.project_dir%/public/uploads/logos/"
     upload_directory_profilepictures: '%kernel.project_dir%/public/uploads/profilepictures'
     upload_directory_thumbnails: "%kernel.project_dir%/public/uploads/thumbnails/"
     upload_directory_videos: "%kernel.project_dir%/public/uploads/videos/"
