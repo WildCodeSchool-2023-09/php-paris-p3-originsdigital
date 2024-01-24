@@ -29,7 +29,7 @@
 			{% for recommandedVideo in recommandedVideos %}
 				<ul>
 					<li>
-						<a class="recommanded-videos" href="{{ path('video_show', {slug: recommandedVideo.slug}) }}">
+						<a class="recommanded-videos" href="{{ path('video_show', {'languageSlug': recommandedVideo.language.slug, 'videoSlug': recommandedVideo.slug}) }}">
 							<imgsrc="{{recommandedVideo.thumbnail}}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a>
 						</li>
 					</li>

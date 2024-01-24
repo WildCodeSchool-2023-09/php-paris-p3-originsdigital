@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
-use App\Config\Category;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -14,11 +12,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Video
 {
+    const CATEGORIES = ['Cours' => 'Cours', 'Tutoriel' => 'Tutoriel', 'LiveCoding' => 'LiveCoding'];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-
-
     private ?int $id = null;
 
     #[ORM\Column(length: 500)]

@@ -2,12 +2,11 @@
 
 namespace App\Form;
 
-use App\Config\Category as ConfigCategory;
 use App\Entity\Language;
 use App\Entity\Video;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -60,12 +59,15 @@ class UploadVideoType extends AbstractType
                 ],
             ])
             ->add('language', EntityType::class, [
-                'mapped'            => false,
                 'class'             => Language::class,
                 'placeholder'       => '//Langage_',
-                'choice_label'      => 'label'
+                'choice_label'      => 'label',
             ])
-            ->add('category', EnumType::class, ['class' => ConfigCategory::class, 'placeholder' => '//Catégorie_']);
+            ->add('category', ChoiceType::class, [
+                'placeholder' => '//Catégorie_',
+                'choices' => Video::CATEGORIES,
+                'label' => 'Category',
+            ]);
         ;
     }
 

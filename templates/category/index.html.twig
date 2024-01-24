@@ -26,7 +26,7 @@
 											<div class="verso-index-card">
 												<h3>{{video.title}}</h3>
 												<p>{{video.description}}</p>
-												<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
+												<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
 													<span class="text">//Vidéo</span>
 													<span class="text-decoration">_</span>
 													<span class="decoration">&rArr;</span>

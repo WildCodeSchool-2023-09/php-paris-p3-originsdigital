@@ -31,7 +31,7 @@ class VideoController extends AbstractController
             $entityManager->persist($video);
             $entityManager->flush();
 
-            return $this->redirectToRoute('video_new');
+            return $this->redirectToRoute('video_show', ['languageSlug' => $video->getLanguage()->getSlug(), 'videoSlug' => $video->getSlug()]);
         }
 
         return $this->render('video/add.html.twig', [
@@ -39,12 +39,13 @@ class VideoController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{slug}', name: 'show')]
+    #[Route('/show/{languageSlug}/{videoSlug}', name: 'show')]
     public function show(
-        string $slug,
+        string $languageSlug,
+        string $videoSlug,
         VideoRepository $videoRepository,
     ): Response {
-        $video = $videoRepository->findOneBy(['slug' => $slug]);
+        $video = $videoRepository->findOneBy(['slug' => $videoSlug]);
         $recommandedVideos = $videoRepository->recommandedVideos(
             $video->getId(),
             $video->getCategory(),
@@ -53,7 +54,7 @@ class VideoController extends AbstractController
 
         if (!$video) {
             throw $this->createNotFoundException(
-                'No video with name : ' . $slug . ' found in video\'s table.'
+                'No video with name : ' . $videoSlug . ' found in video\'s table.'
             );
         }
 
