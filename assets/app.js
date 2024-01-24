@@ -15,4 +15,4 @@ import './bootstrap';
 import './carousel';
 import './cardHover';
 import './uploadVideo';
-// import './picturePreview';
+import './picturePreview';

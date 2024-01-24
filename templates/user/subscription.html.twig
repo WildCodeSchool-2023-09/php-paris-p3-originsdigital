@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}{% endblock %}
+
+{% block title %}Devenir Premium{% endblock %}
+
+{% block body %}
+
+    <h1 id="user-form-title">Devenir membre Premium</h1>
+    <p class="premium-user-form">Afin de pouvoir devenir un utilisateur Premium, nous aurions besoin de quelques informations supplémentaires</p>
+
+    <div class = 'securityContainer'>
+
+        {{ form_start(form) }}
+
+        <div class="formFields">
+
+            <div class="formErrors">
+                {{ form_errors(form) }}
+            </div>
+
+                {{ form_row(form.lastname) }}
+                {{ form_row(form.firstname) }}
+                {{ form_row(form.phoneNumber) }}
+                {{ form_row(form.birthdate) }}
+                {{ form_row(form.houseNumber) }}
+                {{ form_row(form.streetName) }}
+                {{ form_row(form.city) }}
+                {{ form_row(form.country) }}
+                {{ form_row(form._token) }}
+
+            <button class="btn-glitch-fill">
+                <span class="text">//Valider et payer</span>
+                <span class="text-decoration">_</span>
+                <span class="decoration">&rArr;</span>
+            </button>
+        </div>
+    </div>
+
+    {{ form_end(form, {render_rest: false}) }}
+
+{% endblock %}

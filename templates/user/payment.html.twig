@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}{% endblock %}
+
+{% block title %}Devenir Premium{% endblock %}
+
+{% block body %}
+
+    <h1 id="user-form-title">Devenir membre Premium</h1>
+    <p class="premium-user-form">L'option Premium vous sera facturée 10€ par mois</p>
+
+    <div class = 'securityContainer'>
+
+        <div class="formFields">
+
+            <form action="/create-checkout-session" method="POST">
+                <p class="premium-user-form">L'option Premium vous sera facturée 10€ par mois</p>
+                <button class="btn-glitch-fill">
+                    <span class="text">Payer</span>
+                    <span class="text-decoration">_</span>
+                    <span class="decoration">&rArr;</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
