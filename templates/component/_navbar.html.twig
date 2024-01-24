@@ -1,5 +1,5 @@
 <div id="navbar">
-    <a href="{{ path('app_home') }}" id="logo">{<span>Origins</span>/<span>Digital</span>}</a>
+    <a href="{{ path('language_index') }}" id="logo">{<span>Origins</span>/<span>Digital</span>}</a>
     {% if app.user.profilepicture %}
     <div id="avatar-container">
         <div id ="avatar-picture" style="background-image: url('{{ vich_uploader_asset(app.user, 'profilepictureFile') }}')"></div>
