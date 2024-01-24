@@ -36,11 +36,11 @@ class PaymentController extends AbstractController
               'quantity' => 1,
             ]],
             'mode' => 'payment',
+            'customer_email' => $this->getUser()->getEmail(),
             'success_url' => $this->getParameter('root_url') . "payment/success-url?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
 
-        header("HTTP/1.1 303 See Other");
         header("Location: " . $checkoutSession->url);
 
         return $this->redirect($checkoutSession->url, 303);
