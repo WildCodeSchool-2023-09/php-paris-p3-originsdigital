@@ -1,38 +1,21 @@
 {% block body %}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 <div class = 'securityContainer'>
 
     {{ form_start(form) }}
 
-<<<<<<< HEAD
-        <div class="formFields">
-=======
     <div class="formFields">
->>>>>>> dev
 
         <div class="formErrors">
             {{ form_errors(form) }}
         </div>
 
-            {{ form_row(form.profilepictureFile) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email)}}
-            {{ form_row(form.password)}}
-            {{ form_row(form._token) }}
+        {{ form_row(form.profilepictureFile) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email)}}
+        {{ form_row(form.password)}}
+        {{ form_row(form._token) }}
 
-<<<<<<< HEAD
-		<button class="btn-glitch-fill">
-			<span class="text">//Valider</span>
-			<span class="text-decoration">_</span>
-			<span class="decoration">&rArr;</span>
-		</button>
-	</div>
-
-=======
         <button class="btn-glitch-fill">
             <span class="text">//Valider</span>
             <span class="text-decoration">_</span>
@@ -42,7 +25,6 @@
     </div>
 </div>
 
->>>>>>> dev
 {% block javascripts %}{% endblock %}
 
 {{ form_end(form, {render_rest: false}) }}
