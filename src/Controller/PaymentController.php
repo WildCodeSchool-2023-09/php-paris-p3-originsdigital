@@ -11,20 +11,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/payment')]
-
 class PaymentController extends AbstractController
 {
-    private StripeClient $stripe;
-
-    public function __construct()
-    {
-        $this->stripe = new StripeClient($this->getParameter('stripe_secret_key'));
-    }
-
-    #[Route('/payment', name: 'app_payment')]
+    #[Route('/', name: 'app_payment')]
     public function payment(): Response
     {
-        $checkoutSession = $this->stripe->checkout->sessions->create([
+        $stripeClient = new StripeClient($this->getParameter('stripe_secret_key'));
+
+        $checkoutSession = $stripeClient->checkout->sessions->create([
             'line_items' => [[
               'price_data' => [
                 'currency' => 'eur',
@@ -36,11 +30,11 @@ class PaymentController extends AbstractController
               'quantity' => 1,
             ]],
             'mode' => 'payment',
+            'customer_email' => $this->getUser()->getEmail(),
             'success_url' => $this->getParameter('root_url') . "payment/success-url?session_id={CHECKOUT_SESSION_ID}",
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
 
-        header("HTTP/1.1 303 See Other");
         header("Location: " . $checkoutSession->url);
 
         return $this->redirect($checkoutSession->url, 303);
@@ -49,8 +43,10 @@ class PaymentController extends AbstractController
     #[Route('/success-url', name: 'success_url')]
     public function successUrl(EntityManagerInterface $entityManager): Response
     {
+        $stripeClient = new StripeClient($this->getParameter('stripe_secret_key'));
+
         try {
-            $session = $this->stripe->checkout->sessions->retrieve($_GET['session_id']);
+            $session = $stripeClient->checkout->sessions->retrieve($_GET['session_id']);
 
             if ($session["payment_status"] === "paid") {
                 $user = $this->getUser();
@@ -66,7 +62,6 @@ class PaymentController extends AbstractController
 
         return $this->render('/user/payment/success.html.twig');
     }
-
 
     #[Route('/cancel-url', name: 'cancel_url')]
     public function cancelUrl(): Response
