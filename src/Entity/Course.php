@@ -21,7 +21,7 @@ class Course
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'courses')]
     private Collection $user;
 
-    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'course')]
+    #[ORM\OneToMany(mappedBy: 'course', targetEntity: Question::class)]
     private Collection $questions;
 
     public function __construct()
@@ -83,7 +83,7 @@ class Course
     {
         if (!$this->questions->contains($question)) {
             $this->questions->add($question);
-            $question->addCourse($this);
+            $question->setCourse($this);
         }
 
         return $this;
@@ -92,7 +92,10 @@ class Course
     public function removeQuestion(Question $question): static
     {
         if ($this->questions->removeElement($question)) {
-            $question->removeCourse($this);
+            // set the owning side to null (unless already changed)
+            if ($question->getCourse() === $this) {
+                $question->setCourse(null);
+            }
         }
 
         return $this;

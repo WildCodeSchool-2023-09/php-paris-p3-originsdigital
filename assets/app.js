@@ -13,3 +13,4 @@ import './bootstrap';
 
 import './picturePreview';
 import './selectedAnswer';
+import './quiz';

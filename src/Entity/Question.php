@@ -22,15 +22,15 @@ class Question
     #[ORM\Column]
     private ?int $questionNumber = null;
 
-    #[ORM\ManyToMany(targetEntity: Course::class, inversedBy: 'questions')]
-    private Collection $course;
-
     #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class)]
     private Collection $answers;
 
+    #[ORM\ManyToOne(inversedBy: 'questions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Course $course = null;
+
     public function __construct()
     {
-        $this->course = new ArrayCollection();
         $this->answers = new ArrayCollection();
     }
 
@@ -64,30 +64,6 @@ class Question
     }
 
     /**
-     * @return Collection<int, Course>
-     */
-    public function getCourse(): Collection
-    {
-        return $this->course;
-    }
-
-    public function addCourse(Course $course): static
-    {
-        if (!$this->course->contains($course)) {
-            $this->course->add($course);
-        }
-
-        return $this;
-    }
-
-    public function removeCourse(Course $course): static
-    {
-        $this->course->removeElement($course);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Answer>
      */
     public function getAnswers(): Collection
@@ -113,6 +89,18 @@ class Question
                 $answer->setQuestion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCourse(): ?Course
+    {
+        return $this->course;
+    }
+
+    public function setCourse(?Course $course): static
+    {
+        $this->course = $course;
 
         return $this;
     }

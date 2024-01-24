@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240116094536 extends AbstractMigration
+final class Version20240124155347 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -25,8 +25,7 @@ final class Version20240116094536 extends AbstractMigration
         $this->addSql('CREATE TABLE course (id INT AUTO_INCREMENT NOT NULL, label VARCHAR(100) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE course_user (course_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_45310B4F591CC992 (course_id), INDEX IDX_45310B4FA76ED395 (user_id), PRIMARY KEY(course_id, user_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE language (id INT AUTO_INCREMENT NOT NULL, label VARCHAR(100) NOT NULL, logo VARCHAR(200) DEFAULT NULL, description LONGTEXT NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE question (id INT AUTO_INCREMENT NOT NULL, label LONGTEXT NOT NULL, question_number INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE question_course (question_id INT NOT NULL, course_id INT NOT NULL, INDEX IDX_11C340B11E27F6BF (question_id), INDEX IDX_11C340B1591CC992 (course_id), PRIMARY KEY(question_id, course_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE question (id INT AUTO_INCREMENT NOT NULL, course_id INT NOT NULL, label LONGTEXT NOT NULL, question_number INT NOT NULL, INDEX IDX_B6F7494E591CC992 (course_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(150) NOT NULL, profilepicture VARCHAR(200) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE video (id INT AUTO_INCREMENT NOT NULL, category_id INT NOT NULL, title VARCHAR(500) NOT NULL, description LONGTEXT NOT NULL, video VARCHAR(255) NOT NULL, thumbnail VARCHAR(255) DEFAULT NULL, slug VARCHAR(255) NOT NULL, INDEX IDX_7CC7DA2C12469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE messenger_messages (id BIGINT AUTO_INCREMENT NOT NULL, body LONGTEXT NOT NULL, headers LONGTEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', available_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', delivered_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', INDEX IDX_75EA56E0FB7336F0 (queue_name), INDEX IDX_75EA56E0E3BD61CE (available_at), INDEX IDX_75EA56E016BA31DB (delivered_at), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -34,8 +33,7 @@ final class Version20240116094536 extends AbstractMigration
         $this->addSql('ALTER TABLE category ADD CONSTRAINT FK_64C19C182F1BAF4 FOREIGN KEY (language_id) REFERENCES language (id)');
         $this->addSql('ALTER TABLE course_user ADD CONSTRAINT FK_45310B4F591CC992 FOREIGN KEY (course_id) REFERENCES course (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE course_user ADD CONSTRAINT FK_45310B4FA76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE question_course ADD CONSTRAINT FK_11C340B11E27F6BF FOREIGN KEY (question_id) REFERENCES question (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE question_course ADD CONSTRAINT FK_11C340B1591CC992 FOREIGN KEY (course_id) REFERENCES course (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE question ADD CONSTRAINT FK_B6F7494E591CC992 FOREIGN KEY (course_id) REFERENCES course (id)');
         $this->addSql('ALTER TABLE video ADD CONSTRAINT FK_7CC7DA2C12469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
     }
 
@@ -46,8 +44,7 @@ final class Version20240116094536 extends AbstractMigration
         $this->addSql('ALTER TABLE category DROP FOREIGN KEY FK_64C19C182F1BAF4');
         $this->addSql('ALTER TABLE course_user DROP FOREIGN KEY FK_45310B4F591CC992');
         $this->addSql('ALTER TABLE course_user DROP FOREIGN KEY FK_45310B4FA76ED395');
-        $this->addSql('ALTER TABLE question_course DROP FOREIGN KEY FK_11C340B11E27F6BF');
-        $this->addSql('ALTER TABLE question_course DROP FOREIGN KEY FK_11C340B1591CC992');
+        $this->addSql('ALTER TABLE question DROP FOREIGN KEY FK_B6F7494E591CC992');
         $this->addSql('ALTER TABLE video DROP FOREIGN KEY FK_7CC7DA2C12469DE2');
         $this->addSql('DROP TABLE answer');
         $this->addSql('DROP TABLE category');
@@ -55,7 +52,6 @@ final class Version20240116094536 extends AbstractMigration
         $this->addSql('DROP TABLE course_user');
         $this->addSql('DROP TABLE language');
         $this->addSql('DROP TABLE question');
-        $this->addSql('DROP TABLE question_course');
         $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE video');
         $this->addSql('DROP TABLE messenger_messages');
