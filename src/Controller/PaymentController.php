@@ -37,8 +37,6 @@ class PaymentController extends AbstractController
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
 
-        header("Location: " . $checkoutSession->url);
-
         return $this->redirect($checkoutSession->url, 303);
     }
 
