@@ -31,7 +31,10 @@ class VideoController extends AbstractController
             $entityManager->persist($video);
             $entityManager->flush();
 
-            return $this->redirectToRoute('video_show', ['languageSlug' => $video->getLanguage()->getSlug(), 'videoSlug' => $video->getSlug()]);
+            return $this->redirectToRoute('video_show', [
+                'languageSlug' => $video->getLanguage()->getSlug(),
+                'videoSlug' => $video->getSlug()
+            ]);
         }
 
         return $this->render('video/add.html.twig', [

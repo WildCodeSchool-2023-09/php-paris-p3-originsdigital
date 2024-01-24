@@ -12,7 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Video
 {
-    const CATEGORIES = ['Cours' => 'Cours', 'Tutoriel' => 'Tutoriel', 'LiveCoding' => 'LiveCoding'];
+    public const CATEGORIES = ['Cours' => 'Cours', 'Tutoriel' => 'Tutoriel', 'LiveCoding' => 'LiveCoding'];
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
