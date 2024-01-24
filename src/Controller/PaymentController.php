@@ -11,20 +11,16 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/payment')]
-
 class PaymentController extends AbstractController
 {
-    private StripeClient $stripe;
+    private const PAYMENT_STATUS_PAID = 'paid';
 
-    public function __construct()
-    {
-        $this->stripe = new StripeClient($this->getParameter('stripe_secret_key'));
-    }
-
-    #[Route('/payment', name: 'app_payment')]
+    #[Route('/', name: 'app_payment')]
     public function payment(): Response
     {
-        $checkoutSession = $this->stripe->checkout->sessions->create([
+        $stripeClient = new StripeClient($this->getParameter('stripe_secret_key'));
+
+        $checkoutSession = $stripeClient->checkout->sessions->create([
             'line_items' => [[
               'price_data' => [
                 'currency' => 'eur',
@@ -49,18 +45,18 @@ class PaymentController extends AbstractController
     #[Route('/success-url', name: 'success_url')]
     public function successUrl(EntityManagerInterface $entityManager): Response
     {
-        try {
-            $session = $this->stripe->checkout->sessions->retrieve($_GET['session_id']);
+        $stripeClient = new StripeClient($this->getParameter('stripe_secret_key'));
 
-            if ($session["payment_status"] === "paid") {
+        try {
+            $session = $stripeClient->checkout->sessions->retrieve($_GET['session_id']);
+
+            if ($session["payment_status"] === self::PAYMENT_STATUS_PAID) {
                 $user = $this->getUser();
                 $user->setRoles(['ROLE_PREMIUM']);
                 $entityManager->persist($user);
                 $entityManager->flush();
             }
-            http_response_code(200);
         } catch (\Error $e) {
-            http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
         }
 

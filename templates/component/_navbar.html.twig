@@ -12,6 +12,6 @@
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span></a>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/profile.svg') }}"><span class="nav-button">Profil</span></a>
     {% if app.user.roles[0] is same as("ROLE_USER") %}
-        <a class="link" id="premium" href="{{ path('app_subscription', {'id': app.user.id}) }}"><img class="logo-link" src= "{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span></a>
+        <a class="link" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link" src= "{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span></a>
     {% endif %}
 </div>
