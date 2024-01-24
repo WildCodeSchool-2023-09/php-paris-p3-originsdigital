@@ -39,7 +39,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/subscription', name: 'app_subscription', methods: ['GET', 'POST'])]
+    #[Route('/{id}/subscribe', name: 'app_subscribe', methods: ['GET', 'POST'])]
     public function getPremium(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(SubscriptionType::class, $user);

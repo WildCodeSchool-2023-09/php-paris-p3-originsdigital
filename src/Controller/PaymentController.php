@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/payment')]
 class PaymentController extends AbstractController
 {
+    private const PAYMENT_STATUS_PAID = 'paid';
+
     #[Route('/', name: 'app_payment')]
     public function payment(): Response
     {
@@ -35,8 +37,6 @@ class PaymentController extends AbstractController
             'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
           ]);
 
-        header("Location: " . $checkoutSession->url);
-
         return $this->redirect($checkoutSession->url, 303);
     }
 
@@ -48,15 +48,13 @@ class PaymentController extends AbstractController
         try {
             $session = $stripeClient->checkout->sessions->retrieve($_GET['session_id']);
 
-            if ($session["payment_status"] === "paid") {
+            if ($session["payment_status"] === self::PAYMENT_STATUS_PAID) {
                 $user = $this->getUser();
                 $user->setRoles(['ROLE_PREMIUM']);
                 $entityManager->persist($user);
                 $entityManager->flush();
             }
-            http_response_code(200);
         } catch (\Error $e) {
-            http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
         }
 
