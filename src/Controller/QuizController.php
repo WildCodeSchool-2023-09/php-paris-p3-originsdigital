@@ -3,15 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Course;
-use App\Entity\Question;
-use App\Repository\CourseRepository;
-use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class QuizController extends AbstractController
 {
+    #[IsGranted('ROLE_USER')]
     #[Route('/quiz/{id}', name: 'app_quiz')]
     public function quiz(Course $course): Response
     {

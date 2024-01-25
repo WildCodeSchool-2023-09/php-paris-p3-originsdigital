@@ -2,6 +2,7 @@
     margin-left: 250px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
     #progressBar {
         display: grid;
@@ -12,12 +13,11 @@
         width: 57vw;
         height: 2vw;
         margin-top: 6vw;
-        margin-bottom: 4vw;    
+        margin-bottom: 4vw;
     }
 
     #quizField {
         display: flex;
-        // flex-direction: column;
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: center;
@@ -25,13 +25,28 @@
         border: 1px solid #030300;
         border-radius: 5px;
         width: 60vw;
-        height: 40vw;
+        height: fit-content;
         font-size: 2vw;
-        margin: 11%;
+        margin-top: 4.5%;
+        margin-bottom: 4.5%;
+        margin-left: 11%;
     }
-    
+
     #questionList {
         color: whitesmoke;
+        text-align: center;
+    }
+
+    .answersContainer {
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .buttonContainer {
+        width: 100%;
     }
 
     .answersField {
@@ -63,6 +78,8 @@
     [class*="btn-glitch-"] {
         margin-bottom: 3vh;
         margin-top: 3vh;
+        margin-left: auto;
+        margin-right: auto;
         height: 13%;
         text-align: center;
         font-size: 2rem;
@@ -76,18 +93,18 @@
         line-height: 1.5em;
         text-transform: uppercase;
         cursor: pointer;
-    
+
         .text,
         .decoration,
         .text-decoration {
             display: inline-block;
             color: $button-color;
         }
-    
+
         .decoration {
             display: inline-block;
         }
-    
+
         &:hover,
         &:focus {
             animation-name: glitch;
@@ -95,20 +112,20 @@
             background-color: black;
             color: $button-color;
             border: 1px solid $button-color;
-    
+
             .text-decoration {
                 animation-name: blink;
                 animation-duration: 0.3s;
                 animation-iteration-count: infinite;
                 color: $button-color;
             }
-    
+
             .decoration {
                 animation-name: blink;
                 animation-duration: 0.3s;
                 animation-iteration-count: infinite;
             }
-    
+
             :before {
                 content: " ";
                 width: 15px;
@@ -117,7 +134,7 @@
                 bottom: 3px;
                 transform: rotate(35deg)
             }
-    
+
             :after {
                 animation-name: shrink;
                 animation-duration: .5s;
@@ -127,20 +144,20 @@
                 width: 75%;
             }
         }
-    
+
         &:active {
             background: none;
             color: $button-color;
-    
+
             .text-decoration {
                 animation-name: none;
                 color: $button-color;
             }
-    
+
             .decoration {
                 animation-name: none;
             }
-    
+
             :before,
             :after {
                 display: none;

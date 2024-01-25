@@ -4,27 +4,30 @@
 
 {% block body %}
 <div id="quizComponent">
-    <div id="quizField">
-        <div id="progressBar"></div>
-                <ul>
-                    <li id="questionList">
-                    {% for question in course.questions %}
-                        {{question.label}}
 
-                    </li>
-                </ul>
-            {% for answer in question.answers %}
-                <ul>
-                    <li class="answersField">{{answer.label}}</li>
-                </ul>
-            {% endfor %}
-             {% endfor %}
+    {% for question in course.questions %}
+        <div id="quizField">
+            <div id="progressBar"></div>
+            <ul>
+                <li id="questionList">
+                    {{question.label}}
+                </li>
+            </ul>
+            <div class="answersContainer">
+                {% for answer in question.answers %}
+                    <ul>
+                        <li class="answersField">{{answer.label}}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <div class ="buttonContainer">
                 <button class="btn-glitch-fill">
                     <span class="text">//Valider</span>
                     <span class="text-decoration">_</span>
                     <span class="decoration">&rArr;</span>
-                </button> 
-    </div>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
 </div>
-
 {% endblock %}
