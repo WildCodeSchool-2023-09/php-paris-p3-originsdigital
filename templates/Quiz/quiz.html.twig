@@ -3,10 +3,13 @@
 {% block title %}Quiz{% endblock %}
 
 {% block body %}
+
+<h1 id="quizTitle">//QUIZ_</h1>
+
 <div id="quizComponent">
 
     {% for question in course.questions %}
-        <div id="quizField">
+        <div id="quizField{{question.questionNumber}}" class="quizField">
             <div id="progressBar"></div>
             <ul>
                 <li id="questionList">
