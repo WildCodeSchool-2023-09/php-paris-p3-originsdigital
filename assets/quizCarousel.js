@@ -11,7 +11,7 @@ function showNextQuestion() {
     if (currentQuestionIndex < questions.length) {
       show(questions[currentQuestionIndex]);
     } else {
-      console.log('Arnold, vous êtes virés !');
+      document.forms["quizForm"].submit();;
     }
   }, transitionDuration);
 }
@@ -33,7 +33,7 @@ function hide(element) {
 }
 
 function show(element) {
-  element.style.display = 'block';
+  element.style.display = 'flex';
 }
 
 questions.forEach((question, index) => {
