@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Vidéos
+	{{ categoryLabel }}
+	{{ languageSlug }}
+{% endblock %}
+
+{% block body %}
+	<div id="index-videos">
+		<h1>//VIDEOS</h1>
+		<div id="index-videos-cards">
+			{% for video in videos %}
+				<div class="video-card index-card {{video.category.language.slug}}-card">
+					<div class="recto-index-card">
+						<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+						<h2>//{{video.title}}_</h2>
+					</div>
+					<div class="verso-index-card">
+						<h2>//{{video.title}}_</h2>
+						<p>{{video.description}}</p>
+						<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
+							<span class="text">//Video</span>
+							<span class="text-decoration">_</span>
+							<span class="decoration">&rArr;</span>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="navigation flex justify-center">
+			{{ knp_pagination_render(videos) }}
+		</div>
+	</div>
+{% endblock %}

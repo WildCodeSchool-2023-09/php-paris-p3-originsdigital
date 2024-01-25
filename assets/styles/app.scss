@@ -1,5 +1,9 @@
+@import "~bootstrap/scss/bootstrap";
 @import "reset";
 @import "base";
+@import "language/index";
+@import "category/index";
+@import "video/index";
 @import "upload";
 @import "navbarMobile";
 @import "navbar";

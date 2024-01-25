@@ -8,8 +8,8 @@
         justify-content: space-around;
         align-items: center;
         position: fixed;
-        z-index: 2;
         top: 93vh;
+        z-index: 2;
     }
 
     #navbar-mobile>.link-mobile {
@@ -26,6 +26,7 @@
     .logo-link-mobile {
         width: 4vh;
         height: 4vh;
+        text-decoration: none;
     }
 
     .nav-mobile-button {

@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block nav %}{% endblock %}
+
 {% block body %}
 
-<div class = 'contentContainer'>
+<div class = 'securityContainer'>
     <div class="formFields">
 
         <h1 id="user-form-title">Connexion</h1>
 
         {% if error %}
-        <div class = "formErrors">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class = "formErrors">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         <form action="{{ path('app_login') }}" method="post">

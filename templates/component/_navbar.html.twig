@@ -1,12 +1,17 @@
 <div id="navbar">
-    <h1 id="logo">{<span>Origins</span>/<span>Digital</span>}</h1>
-    <img id="avatar" src= "{{ asset('build/images/avatar-border.svg') }}">
-    <p id="pseudo">Nicolas</p>
+    <a href="{{ path('app_home') }}" id="logo">{<span>Origins</span>/<span>Digital</span>}</a>
+    {% if app.user.profilepicture %}
+    <div id="avatar-container">
+        <div id ="avatar-picture" style="background-image: url('{{ vich_uploader_asset(app.user, 'profilepictureFile') }}')"></div>
+    </div>
+    {% endif %}
+    <p id="pseudo">{{ app.user.username }}</p>
     <p id="rank">Gardien du Savoir Suprême</p>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span></a>
-    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/notes.svg') }}"><span class="nav-button">Notes</span></a>
-    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Playlists</span></a>
+    <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Ma playlist</span></a>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span></a>
     <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/profile.svg') }}"><span class="nav-button">Profil</span></a>
-    <a class="link" id="premium" href="#"><img class="logo-link" src= "{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span></a>
+    {% if app.user.roles[0] is same as("ROLE_USER") %}
+        <a class="link" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link" src= "{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span></a>
+    {% endif %}
 </div>
