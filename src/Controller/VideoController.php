@@ -89,4 +89,5 @@ class VideoController extends AbstractController
                 'languageSlug' => $languageSlug,
             ]);
     }
+
 }

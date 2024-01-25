@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -44,6 +46,14 @@ class Video
 
     #[ORM\Column(length: 255)]
     private ?string $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Playlist::class, mappedBy: 'video')]
+    private Collection $playlists;
+
+    public function __construct()
+    {
+        $this->playlists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -151,6 +161,33 @@ class Video
     public function setCategory(string $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Playlist>
+     */
+    public function getPlaylists(): Collection
+    {
+        return $this->playlists;
+    }
+
+    public function addPlaylist(Playlist $playlist): static
+    {
+        if (!$this->playlists->contains($playlist)) {
+            $this->playlists->add($playlist);
+            $playlist->addVideo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaylist(Playlist $playlist): static
+    {
+        if ($this->playlists->removeElement($playlist)) {
+            $playlist->removeVideo($this);
+        }
 
         return $this;
     }
