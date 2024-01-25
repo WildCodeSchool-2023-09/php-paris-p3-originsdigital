@@ -1,6 +1,6 @@
 const answers = document.querySelectorAll('.answersField');
 for (let answer of answers) {
-    answer.addEventListener('click', function() {
+    answer.addEventListener('mouseover', function() {
         let selectedAnswer = document.querySelector('.selectedAnswer')
         if (!answer.classList.contains('selectedAnswer')) {
             if (selectedAnswer !== null) {
