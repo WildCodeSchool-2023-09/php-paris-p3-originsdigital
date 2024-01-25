@@ -5,7 +5,7 @@
 {% block body %}
 
 <h1 id="quizTitle">//QUIZ_</h1>
-<form id="quizComponent" name="quizForm" method="POST">
+<form id="quizComponent" name="quizForm" action="app_quiz" method="POST">
     {% for question in course.questions %}
         <div id="quizField{{question.questionNumber}}" class="quizField">
             <div id="progressBar"></div>
@@ -17,7 +17,7 @@
             <div class="answersContainer">
                 {% for answer in question.answers %}
                     <ul>
-                        <li class="answersField">
+                        <li id="answerField{{answer.id}}" class="answersField">
                             <input type="checkbox" name="answersFiled" value="{{answer.isCorrect}}"/>
                             <label for="answersField">{{answer.label}}</label>
                         </li>
@@ -33,5 +33,7 @@
             </div>
         </div>
     {% endfor %}
+    <input type="hidden" name="pathInformation" value="">
+
 </form>
 {% endblock %}
