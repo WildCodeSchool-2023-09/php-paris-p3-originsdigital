@@ -69,13 +69,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     )]
     private ?File $profilepictureFile = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Playlist::class)]
+    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Playlist::class)]
     private Collection $playlists;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?UserPlaylist $program = null;
 
     public function __construct()
     {
         $this->playlists = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -199,7 +203,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     {
         if (!$this->playlists->contains($playlist)) {
             $this->playlists->add($playlist);
-            $playlist->setUser($this);
+            $playlist->setCreatedBy($this);
         }
 
         return $this;
@@ -209,11 +213,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     {
         if ($this->playlists->removeElement($playlist)) {
             // set the owning side to null (unless already changed)
-            if ($playlist->getUser() === $this) {
-                $playlist->setUser(null);
+            if ($playlist->getCreatedBy() === $this) {
+                $playlist->setCreatedBy(null);
             }
         }
 
         return $this;
     }
+
+    public function getProgram(): ?UserPlaylist
+    {
+        return $this->program;
+    }
+
+    public function setProgram(?UserPlaylist $program): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($program === null && $this->program !== null) {
+            $this->program->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($program !== null && $program->getUser() !== $this) {
+            $program->setUser($this);
+        }
+
+        $this->program = $program;
+
+        return $this;
+    }
+
 }

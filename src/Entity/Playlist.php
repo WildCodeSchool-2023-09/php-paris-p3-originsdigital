@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PlaylistRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlaylistRepository::class)]
@@ -15,20 +13,14 @@ class Playlist
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 255)]
     private ?string $label = null;
 
     #[ORM\ManyToOne(inversedBy: 'playlists')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?User $createdBy = null;
 
-    #[ORM\ManyToMany(targetEntity: Video::class, inversedBy: 'playlists')]
-    private Collection $video;
-
-    public function __construct()
-    {
-        $this->video = new ArrayCollection();
-    }
+    #[ORM\OneToOne(mappedBy: 'playlist', cascade: ['persist', 'remove'])]
+    private ?UserPlaylist $userPlaylist = null;
 
     public function getId(): ?int
     {
@@ -47,38 +39,36 @@ class Playlist
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getCreatedBy(): ?User
     {
-        return $this->user;
+        return $this->createdBy;
     }
 
-    public function setUser(?User $user): static
+    public function setCreatedBy(?User $createdBy): static
     {
-        $this->user = $user;
+        $this->createdBy = $createdBy;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Video>
-     */
-    public function getVideo(): Collection
+    public function getUserPlaylist(): ?UserPlaylist
     {
-        return $this->video;
+        return $this->userPlaylist;
     }
 
-    public function addVideo(Video $video): static
+    public function setUserPlaylist(?UserPlaylist $userPlaylist): static
     {
-        if (!$this->video->contains($video)) {
-            $this->video->add($video);
+        // unset the owning side of the relation if necessary
+        if ($userPlaylist === null && $this->userPlaylist !== null) {
+            $this->userPlaylist->setPlaylist(null);
         }
 
-        return $this;
-    }
+        // set the owning side of the relation if necessary
+        if ($userPlaylist !== null && $userPlaylist->getPlaylist() !== $this) {
+            $userPlaylist->setPlaylist($this);
+        }
 
-    public function removeVideo(Video $video): static
-    {
-        $this->video->removeElement($video);
+        $this->userPlaylist = $userPlaylist;
 
         return $this;
     }
