@@ -17,5 +17,4 @@ import './cardHover';
 import './uploadVideo';
 import './picturePreview';
 import './selectedAnswer';
-import './quiz';
 import './quizCarousel';
