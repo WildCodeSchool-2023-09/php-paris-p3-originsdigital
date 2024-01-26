@@ -27,6 +27,6 @@ class LoginController extends AbstractController
     public function logout(Security $security, LogoutEvent $event): Response
     {
         $security->logout();
-        return $this->render('language/index.html.twig');
+        return $this->redirectToRoute('home');
     }
 }
