@@ -14,25 +14,25 @@ function showNextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex === 2) {
       answer6.onclick = function () {
-        document.forms["quizForm"].pathInformation.value = "course_2";
+        document.forms["quizForm"].pathInformation.value = "2";
         document.forms["quizForm"].submit();;
       }
       answer7.onclick = function () {
-        document.forms["quizForm"].pathInformation.value = "course_2";
+        document.forms["quizForm"].pathInformation.value = "2";
         document.forms["quizForm"].submit();;
       }
       answer9.onclick = function () {
-        document.forms["quizForm"].pathInformation.value = "course_5";
+        document.forms["quizForm"].pathInformation.value = "5";
         document.forms["quizForm"].submit();;
       }
     }
     if (currentQuestionIndex === 3) {
       answer10.onclick = function () {
-        document.forms["quizForm"].pathInformation.value = "course_3";
+        document.forms["quizForm"].pathInformation.value = "3";
         document.forms["quizForm"].submit();;
       }
       answer11.onclick = function () {
-        document.forms["quizForm"].pathInformation.value = "course_4";
+        document.forms["quizForm"].pathInformation.value = "4";
         document.forms["quizForm"].submit();;
       }
     }
