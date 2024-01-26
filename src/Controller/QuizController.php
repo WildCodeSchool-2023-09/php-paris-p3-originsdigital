@@ -16,7 +16,7 @@ class QuizController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/quiz', name: 'app_quiz')]
-    public function quiz(Request $request, CourseRepository $courseRepository): Response
+    public function quiz(CourseRepository $courseRepository): Response
     {
 
         if (!isset($_POST["pathInformation"])) {
