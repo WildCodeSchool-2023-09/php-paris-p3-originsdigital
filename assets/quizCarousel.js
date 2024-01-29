@@ -2,6 +2,8 @@ let questions = document.querySelectorAll('.quizField');
 let currentQuestionIndex = 0;
 let transitionDuration = 300;
 let quiz1 = document.getElementById('test1');
+let quiz2 = document.getElementById('test2');
+
 let answer6 = document.getElementById('answerField6');
 let answer7 = document.getElementById('answerField7');
 let answer9 = document.getElementById('answerField9');
@@ -34,7 +36,7 @@ if (quiz1) {
         }
         answer11.onclick = function () {
           document.forms["quizForm"].pathInformation.value = "4";
-          document.forms["quizForm"].submit();;
+          document.forms["quizForm"].submit();
         }
       }
       if (currentQuestionIndex < questions.length) {
@@ -74,13 +76,26 @@ if (quiz1) {
       };
     });
   });
-} else {
+}
+
+else {
+  let tokenInput = document.createElement('input');
+  tokenInput.type = "hidden";
+  tokenInput.name = "tokenQuiz";
+  let quiz = document.forms[0];
+  let id = quiz.id;
+  let fofofo = document.getElementById(id);
+  fofofo.appendChild(tokenInput);
+
   function showNextQuestion() {
     hide(questions[currentQuestionIndex]);
     setTimeout(() => {
       currentQuestionIndex++;
       if (currentQuestionIndex < questions.length) {
         show(questions[currentQuestionIndex]);
+      }
+      else {
+        document.forms["quizForm"].submit();
       }
     }, transitionDuration);
   }

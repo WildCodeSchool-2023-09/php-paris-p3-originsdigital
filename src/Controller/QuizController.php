@@ -16,6 +16,10 @@ class QuizController extends AbstractController
     #[Route('/quiz', name: 'app_quiz')]
     public function quiz(CourseRepository $courseRepository): Response
     {
+        if (isset($_POST['tokenQuiz'])) {
+            return $this->redirectToRoute("home");
+        }
+
         if (!isset($_POST["pathInformation"])) {
             $course = $courseRepository->findOneById(self::FIRST_COURSE);
         } else {
