@@ -174,3 +174,23 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    #quizTitle {
+        margin-left: 0;
+    }
+
+    .quizComponent {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .quizField {
+            margin-left: 0;
+            width: 90%;
+            height: 64vh;
+            font-size: 4vw;
+        } 
+    }
+}
