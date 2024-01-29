@@ -32,4 +32,13 @@ class QuizController extends AbstractController
             'course' => $course,
         ]);
     }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/rules', name: 'app_rules')]
+    public function introQuiz(): Response
+    {
+
+        return $this->render('Quiz/rules.html.twig', [
+        ]);
+    }
 }
