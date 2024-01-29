@@ -1,0 +1,25 @@
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes shrink {
+    100% {
+        width: 10%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #playlist-index{
+        margin-left: 250px;
+        font-family: $main-font;
+        h1{
+            color: $text-color;
+            font-size: 4rem;
+            text-align: center;
+            padding-top: 7vh;
+            padding-bottom: 5vh;
+        }
+    }
+}

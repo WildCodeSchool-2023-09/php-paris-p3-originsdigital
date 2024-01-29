@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Mes playlists
+{% endblock %}
+
+{% block body %}
+	<div id="playlist-index">
+		<h1>Mes playlists</h1>
+		{% for playlist in playlists %}
+			{{playlist.label}}
+		{% endfor %}
+		<a href="{{ path('playlist_new') }}">Nouvelle playlist</a>
+	</div>
+{% endblock %}
