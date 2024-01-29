@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 769px) {
-    #playlist-index{
+    #playlist-show{
         margin-left: 250px;
         font-family: $main-font;
         h1{
@@ -21,93 +21,81 @@
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
-        #playlist-add{
-            text-decoration: none;
+        #index-videos-playlist-cards {
+            margin-left: 10vw;
+            margin-right: 10vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10%;
+            margin-bottom: 3rem;
+        }
+        .back-to-index{
             color: $button-color;
-            font-size: 2rem;
             display: flex;
             justify-content: end;
-            padding-right: 4rem;
-        }
-        #playlist-carousels{
-            margin-left: 5vw;
-            margin-right: 5vw;
-        }
-        .splide {
-            margin-left: 0;
-
-            .splide__arrow--prev{
-                left: -4.5%;
-                top: 35%;
-            }
-            .splide__arrow--next{
-                right: -4.5%;
-                top: 35%;
-            }
-        }
-        h2{
-            color: $text-color;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        span{
-            color: $text-color;
-            font-size: 1.5rem;
-        }
-        .all-videos{
             text-decoration: none;
+            font-size: 2rem;
+            line-height: 2.5rem;
+            margin-bottom: 2rem;
+            padding-right: 2rem;
+        }
+        .delete-playlist,
+        .rename-playlist {
             color: $button-color;
-            font-size: 1.3rem;
-            display:block;
-            text-align: end;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
+            display: flex;
+            margin-right: 0;
+            margin-top:0;
+            line-height: 2.5rem;
+            justify-content: end;
+            text-decoration: none;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-right: 2rem;
         }
-        .all-videos-mobile {
-            display: none;
-        }
-        .video-card{
+        .video-card {
+            display: block;
             border-radius: 5px;
             text-align: center;
             height: 250px;
+            padding-right:0.5rem;
+            padding-left:0.5rem;
             background-color: rgba(217, 217, 217, 0.70);
 
             .recto-index-card {
                 display: block;
                 img{
                     width: 85%;
-                    height: 8rem;
+                    height: 6rem;
                     border: solid black;
                     border-radius: 5px;
-                    margin-top: 7%;
-                    margin-bottom: 5%;
+                    margin-top: 10%;
+                    margin-bottom: 10%;
                 }
-                h3{
+                h2{
                     font-size: 1.5rem;
                     font-weight: bold;
-                    padding-right: 0.3rem;
-                    padding-left: 0.3rem;
+                    margin-bottom: 1rem;
                 }
             }
             .verso-index-card {
                 display: none;
-                h3{
+
+                h2 {
                     font-size: 1.5rem;
                     font-weight: bold;
-                    padding-right: 0.3rem;
-                    padding-left: 0.3rem;
-                    padding-top: 10%;
+                    margin-bottom: 1rem;
+                    margin-top: 8%;
                 }
                 p{
-                    margin-top: 10%;
-                    font-size: 1rem;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    line-height: 150%;
+                    margin-bottom: 1.5rem;
+                    margin-top: 8%;
                 }
                 a{
                     border-radius: 3px;
-                    margin-bottom: 1rem;
                     text-decoration: none;
-                    font-size: 1rem;
-                    margin-top: 10%;
                 }
                 [class*="btn-glitch-"] {
                     display: inline-block;
@@ -123,8 +111,8 @@
                     cursor: pointer;
 
                     .text,
-                    .decoration,
-                    .text-decoration {
+                    .text-decoration,
+                    .decoration {
                         display: inline-block;
                         color: $button-color;
                     }
@@ -142,7 +130,6 @@
                             animation-name: blink;
                             animation-duration: 0.3s;
                             animation-iteration-count: infinite;
-                            color: $button-color;
                         }
                         .decoration {
                             animation-name: blink;
@@ -171,11 +158,10 @@
                     }
                     &:active {
                         background: none;
-                        color: $button-color;
+                        color:$button-color;
 
                         .text-decoration {
                             animation-name: none;
-                            color: $button-color;
                         }
                         .decoration {
                             animation-name: none;
@@ -185,7 +171,7 @@
                         }
                     }
                 }
-            }
-        }
+            }  
+        }    
     }
 }

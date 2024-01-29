@@ -60,7 +60,7 @@ class PlaylistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_playlist_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('playlist/edit.html.twig', [
@@ -77,6 +77,6 @@ class PlaylistController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_playlist_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
     }
 }

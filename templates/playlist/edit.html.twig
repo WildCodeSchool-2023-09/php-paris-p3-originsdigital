@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Playlist{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Édition
+	{{ playlist.label }}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Playlist</h1>
+	<div id="playlist-edit">
+		<h1>Édition
+			{{ playlist.label }}</h1>
 
-    {{ include('playlist/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('playlist/_form.html.twig') }}
 
-    <a href="{{ path('app_playlist_index') }}">back to list</a>
-
-    {{ include('playlist/_delete_form.html.twig') }}
+		<a class="back-to-index" href="{{ path('playlist_show', {'id': playlist.id}) }}">Retour à la playlist</a>
+	</div>
 {% endblock %}
