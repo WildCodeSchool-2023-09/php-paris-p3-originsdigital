@@ -12,7 +12,7 @@ require('bootstrap');
 
 // start the Stimulus application
 import './bootstrap';
-import './carousel';
 import './cardHover';
+import './carousel';
 import './uploadVideo';
 // import './picturePreview';

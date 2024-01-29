@@ -1,6 +1,6 @@
-const carousels = ['#Cours-slider', '#Tutoriel-slider', '#LiveCoding-slider'];
+const carousels = document.getElementsByClassName('splide');
 
-carousels.forEach((carousel) => {
+Array.from(carousels).forEach((carousel) => {
 
     document.addEventListener('DOMContentLoaded', function () {
 
@@ -11,7 +11,7 @@ carousels.forEach((carousel) => {
             gap: '4rem',
             pagination: false,
             type: 'loop',
-            autoplay: true,
+            autoplay: false,
             breakpoints: {
                 768: {
                     perPage: 1

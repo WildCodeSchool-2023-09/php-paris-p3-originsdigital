@@ -43,7 +43,7 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_playlist_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(Playlist $playlist): Response
     {
         return $this->render('playlist/show.html.twig', [
@@ -51,7 +51,7 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_playlist_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Playlist $playlist, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PlaylistType::class, $playlist);
@@ -69,10 +69,10 @@ class PlaylistController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_playlist_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Playlist $playlist, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$playlist->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $playlist->getId(), $request->request->get('_token'))) {
             $entityManager->remove($playlist);
             $entityManager->flush();
         }

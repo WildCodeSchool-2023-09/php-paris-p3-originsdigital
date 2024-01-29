@@ -21,5 +21,169 @@
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
+        #playlist-add{
+            text-decoration: none;
+            color: $button-color;
+            font-size: 2rem;
+            margin-left: 72%;
+        }
+        #playlist-carousels{
+            margin-left: 5vw;
+            margin-right: 5vw;
+        }
+        .splide {
+            margin-left: 0;
+
+            .splide__arrow--prev{
+                left: -4.5%;
+                top: 35%;
+            }
+            .splide__arrow--next{
+                right: -4.5%;
+                top: 35%;
+            }
+        }
+        h2{
+            color: $text-color;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        span{
+            color: $text-color;
+            font-size: 1.5rem;
+        }
+        .all-videos{
+            text-decoration: none;
+            color: $button-color;
+            font-size: 1.3rem;
+            display:block;
+            text-align: end;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .all-videos-mobile {
+            display: none;
+        }
+        .video-card{
+            border-radius: 5px;
+            text-align: center;
+            height: 250px;
+            background-color: rgba(217, 217, 217, 0.70);
+
+            .recto-index-card {
+                display: block;
+                img{
+                    width: 85%;
+                    height: 8rem;
+                    border: solid black;
+                    border-radius: 5px;
+                    margin-top: 7%;
+                    margin-bottom: 5%;
+                }
+                h3{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    padding-right: 0.3rem;
+                    padding-left: 0.3rem;
+                }
+            }
+            .verso-index-card {
+                display: none;
+                h3{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    padding-right: 0.3rem;
+                    padding-left: 0.3rem;
+                    padding-top: 10%;
+                }
+                p{
+                    margin-top: 10%;
+                    font-size: 1rem;
+                }
+                a{
+                    border-radius: 3px;
+                    margin-bottom: 1rem;
+                    text-decoration: none;
+                    font-size: 1rem;
+                    margin-top: 10%;
+                }
+                [class*="btn-glitch-"] {
+                    display: inline-block;
+                    font-family: "Quantico", monospace;
+                    border: 1px solid black;
+                    color: $button-color;
+                    background-color: $navbar-main-color;
+                    padding: 5px 7px;
+                    min-width: 150px;
+                    line-height: 1.5em;
+                    white-space: no-wrap;
+                    text-transform: uppercase;
+                    cursor: pointer;
+
+                    .text,
+                    .decoration,
+                    .text-decoration {
+                        display: inline-block;
+                        color: $button-color;
+                    }
+                    .decoration {
+                        display: inline-block;
+                    }
+                    &:hover, &:focus {
+                        animation-name: glitch;
+                        animation-duration: 0.5s;
+                        background-color: black;
+                        color:$button-color;
+                        border: 1px solid $button-color;
+
+                        .text-decoration {
+                            animation-name: blink;
+                            animation-duration: 0.3s;
+                            animation-iteration-count: infinite;
+                            color: $button-color;
+                        }
+                        .decoration {
+                            animation-name: blink;
+                            animation-duration: 0.3s;
+                            animation-iteration-count: infinite;
+                        }
+                        :before {
+                            content: " ";
+                            width: 15px;
+                            position: absolute;
+                            right: 25%;
+                            bottom: 3px;
+                            transform: rotate(35deg)
+                        }
+                        :after {
+                            animation-name: shrink;
+                            animation-duration:.5s;
+                            animation-iteration-count: 1;
+                            animation-fill-mode : forwards;
+                            content: " ";
+                            width: 75%;
+                            position: absolute;
+                            left: 0;
+                            bottom: 5px;
+                        }
+                    }
+                    &:active {
+                        background: none;
+                        color: $button-color;
+
+                        .text-decoration {
+                            animation-name: none;
+                            color: $button-color;
+                        }
+                        .decoration {
+                            animation-name: none;
+                        }
+                        :before, :after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
