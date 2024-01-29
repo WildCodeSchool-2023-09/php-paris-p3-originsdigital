@@ -83,9 +83,10 @@ else {
   tokenInput.type = "hidden";
   tokenInput.name = "tokenQuiz";
   let quiz = document.forms[0];
-  let id = quiz.id;
-  let fofofo = document.getElementById(id);
-  fofofo.appendChild(tokenInput);
+  let quizId = quiz.id;
+  let quizById = document.getElementById(quizId);
+  quizById.appendChild(tokenInput);
+  let result = 0;
 
   function showNextQuestion() {
     hide(questions[currentQuestionIndex]);
@@ -118,6 +119,12 @@ else {
     let answers = question.getElementsByClassName('answersField');
     Array.from(answers).forEach(answer => {
       answer.onclick = function () {
+        let checkboxInput = answer.querySelector('input');
+        if(checkboxInput.value != ''){
+          result = result + parseInt(checkboxInput.value);
+        }
+        let quizResultInPercent = (result/questions.length)*100;
+        tokenInput.value = quizResultInPercent;
         showNextQuestion();
       };
     });
