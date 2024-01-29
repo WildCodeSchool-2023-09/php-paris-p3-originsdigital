@@ -17,11 +17,9 @@ class QuizController extends AbstractController
     public function quiz(CourseRepository $courseRepository): Response
     {
         if (isset($_POST['tokenQuiz'])) {
-            // get user
-            // get score
-            // get course
-            // les donner en dur à l entité persist et flush et nik tamer
-            return $this->redirectToRoute("home");
+            $score = $_POST['tokenQuiz'];
+            // when zinedine create his method for the programs => change the route
+            return $this->redirectToRoute("home", ['score' => $score]);
         }
 
         if (!isset($_POST["pathInformation"])) {
