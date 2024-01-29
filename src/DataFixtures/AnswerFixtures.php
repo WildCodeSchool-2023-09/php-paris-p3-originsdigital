@@ -14,54 +14,54 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             'question_1' => [
                 'answer_1' => [
                     'label' => 'Je veux entamer une reconversion professionnelle',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'Je veux apprendre pour un projet personnel',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
             'question_2' => [
                 'answer_1' => [
                     'label' => 'Je me consacre à la formation à plein temps',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'Je peux travailler quelques heures par jour',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_3' => [
                     'label' => 'Je peux travailler quelques heures par semaine',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
             'question_3' => [
                 'answer_1' => [
                     'label' => 'Je n\'ai jamais codé',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'J\'ai les notions fondamentales basiques',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_3' => [
                     'label' => 'J\'ai déjà suivi des cours dans un langage 
                                 et je souhaite me perfectionner dans celui-ci',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_4' => [
                     'label' => 'Je maîtrise un langage et je souhaite en apprendre un nouveau',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
             'question_4' => [
                 'answer_1' => [
                     'label' => 'PHP',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'JS',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
         ],
@@ -206,11 +206,11 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             'question_8' => [
                 'answer_1' => [
                     'label' => 'Créatif',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'Logique',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
         ],
@@ -564,35 +564,35 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             'question_1' => [
                 'answer_1' => [
                     'label' => 'PHP',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'JavaScript',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
             'question_2' => [
                 'answer_1' => [
                     'label' => 'PHP',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'JavaScript',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_3' => [
                     'label' => 'Je ne sais pas',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
             'question_3' => [
                 'answer_1' => [
                     'label' => 'Front-end',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
                 'answer_2' => [
                     'label' => 'Back-end',
-                    'is_correct' => true,
+                    'is_correct' => false,
                 ],
             ],
         ],

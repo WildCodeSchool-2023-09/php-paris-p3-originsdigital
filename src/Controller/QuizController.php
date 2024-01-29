@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Course;
 use App\Repository\CourseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -18,7 +16,6 @@ class QuizController extends AbstractController
     #[Route('/quiz', name: 'app_quiz')]
     public function quiz(CourseRepository $courseRepository): Response
     {
-
         if (!isset($_POST["pathInformation"])) {
             $course = $courseRepository->findOneById(self::FIRST_COURSE);
         } else {
