@@ -40,3 +40,17 @@ html {
         background-attachment: fixed;
     }
 }
+
+.flashMessageContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: $navbar-main-color;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: $text-color;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 10px;
+}

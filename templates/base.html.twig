@@ -51,10 +51,13 @@
 		{% endblock %}
 
 		{% block body %}
-            {% for notice in app.flashes('notice') %}
-                {{ notice }}
+            {% for message in app.flashes('notice') %}
+                {{ message }}
+            {% endfor %}
+            {% for message in app.flashes('warning') %}
+                {{ message }}
             {% endfor %}
         {% endblock %}
-        
+
 	</body>
 </html>
