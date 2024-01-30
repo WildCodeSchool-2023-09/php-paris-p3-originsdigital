@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
+use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -94,7 +95,7 @@ class VideoController extends AbstractController
     public function addInPlaylist(
         int $id,
         VideoRepository $videoRepository,
-        PaginatorInterface $paginator,
+        PlaylistRepository $playlistRepository,
         Request $request
     ): Response {
 
