@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Category;
 use App\Entity\Language;
 use App\Entity\User;
 use App\Entity\Video;
@@ -33,7 +32,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Videos', 'fa fa-file-video-o', Video::class);
         yield MenuItem::linkToCrud('Languages', 'fa fa-language', Language::class);
-        yield MenuItem::linkToCrud('Catégories', 'fa fa-folder-open', Category::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user-circle-o', User::class);
     }
 }

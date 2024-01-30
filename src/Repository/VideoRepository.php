@@ -22,15 +22,19 @@ class VideoRepository extends ServiceEntityRepository
         parent::__construct($registry, Video::class);
     }
 
-    public function recommandedVideos(int $id, string $category): array
+    public function recommandedVideos(int $id, string $category, string $language): array
     {
         $query = $this->getEntityManager()->createQueryBuilder()
-            ->select('c', 'v')
+            ->select('v')
             ->from('App\Entity\Video', 'v')
-            ->join('v.category', 'c')
-            ->where("c.label = '$category'")
-            ->andWhere("v.id > '$id'")
+            ->join('v.language', 'l')
+            ->where("v.category = :category")
+            ->andWhere("v.id > :id")
+            ->andWhere("l.label = :language")
             ->setMaxResults(4)
+            ->setParameter('category', $category)
+            ->setParameter('id', $id)
+            ->setParameter('language', $language)
             ->getQuery();
 
         return $query->getResult();

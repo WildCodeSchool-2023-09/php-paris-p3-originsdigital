@@ -1,50 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TEST FORMULAIRE{% endblock %}
-
-{% block body %}
-
-
-
-    <div id="form">
-        <div id="preview">
-            <div id="thumbnailPreview"></div>
-            <div id="videoPreview"></div>
-        </div>
-        {{ form_start(form) }}
-        <fieldset class="form">
-                <div id="upload_button">
-                    {{ form_row(form.thumbnailFile) }}
-                    {{ form_row(form.videoFile) }}
-                </div>
-
-                <div id="writing_field">
-                    {{ form_widget(form.title) }}
-                    {{ form_widget(form.description) }}
-                </div>
-        </fieldset>
-
-        <div id="select_upload">
-            <div name="language_select" class="select language-select" id="language_select">
-                {{ form_widget(form.language) }}
-            </div>
-        
-            <div name="category_select" class="select category-select" id="category_select">
-                {{ form_widget(form.category) }}
-            </div>
-        </div>
-
-        <button class="btn-glitch-fill">
-            <span class="text">//Valider</span>
-            <span class="text-decoration">_</span>
-            <span class="decoration">&rArr;</span>
-        </button>
-        {{ form_end(form) }}
-    </div>
-</div>
-
+{% block title %}
+	{{ parent() }}
+	- Ajoute une vidéo !
 {% endblock %}
 
-{% block javascripts %}
-{{ encore_entry_script_tags('app') }}
+{% block body %}
+	<div id="upload-video-form">
+		<div id="preview">
+			<div id="thumbnailPreview"></div>
+			<div id="videoPreview"></div>
+		</div>
+		{{ form_start(form) }}
+		<fieldset class="form">
+			<div id="upload_button">
+				{{ form_row(form.thumbnailFile) }}
+				{{ form_row(form.videoFile) }}
+			</div>
+
+			<div id="writing_field">
+				{{ form_widget(form.title) }}
+				{{ form_widget(form.description) }}
+			</div>
+		</fieldset>
+
+		<div id="select_upload">
+			<div name="language_select" class="select language-select" id="language_select">
+				{{ form_widget(form.language) }}
+			</div>
+
+			<div name="category_select" class="select category-select" id="category_select">
+				{{ form_widget(form.category) }}
+			</div>
+		</div>
+
+		<button class="btn-glitch-fill">
+			<span class="text">//Valider</span>
+			<span class="text-decoration">_</span>
+			<span class="decoration">&rArr;</span>
+		</button>
+		{{ form_end(form) }}
+	</div>
 {% endblock %}

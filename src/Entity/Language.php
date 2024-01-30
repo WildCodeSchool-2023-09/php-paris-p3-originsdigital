@@ -32,15 +32,15 @@ class Language
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'language', targetEntity: Category::class)]
-    private Collection $categories;
+    #[ORM\OneToMany(mappedBy: 'language', targetEntity: Video::class)]
+    private Collection $videos;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,29 +96,29 @@ class Language
     }
 
     /**
-     * @return Collection<int, Category>
+     * @return Collection<int, Video>
      */
-    public function getCategories(): Collection
+    public function getVideos(): Collection
     {
-        return $this->categories;
+        return $this->videos;
     }
 
-    public function addCategory(Category $category): static
+    public function addVideo(Video $video): static
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-            $category->setLanguage($this);
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
+            $video->setLanguage($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Category $category): static
+    public function removeVideo(Video $video): static
     {
-        if ($this->categories->removeElement($category)) {
+        if ($this->videos->removeElement($video)) {
             // set the owning side to null (unless already changed)
-            if ($category->getLanguage() === $this) {
-                $category->setLanguage(null);
+            if ($video->getLanguage() === $this) {
+                $video->setLanguage(null);
             }
         }
 

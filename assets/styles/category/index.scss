@@ -31,11 +31,11 @@
                 margin-left: 0;
 
                 .splide__arrow--prev{
-                    left: -8.5%;
+                    left: -4.5%;
                     top: 35%;
                 }
                 .splide__arrow--next{
-                    right: -8.5%;
+                    right: -4.5%;
                     top: 35%;
                 }
             }
@@ -67,7 +67,7 @@
                 display:block;
                 text-align: end;
                 margin-top: 1rem;
-                margin-bottom: 1.5rem;
+                padding-bottom: 2rem;
             }
             .all-videos-mobile {
                 display: none;
