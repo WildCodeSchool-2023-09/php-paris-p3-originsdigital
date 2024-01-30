@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
-use App\Repository\CategoryRepository;
+use App\Repository\LanguageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +32,10 @@ class VideoController extends AbstractController
             $entityManager->persist($video);
             $entityManager->flush();
 
-            return $this->redirectToRoute('video_new');
+            return $this->redirectToRoute('video_show', [
+                'languageSlug' => $video->getLanguage()->getSlug(),
+                'videoSlug' => $video->getSlug()
+            ]);
         }
 
         return $this->render('video/add.html.twig', [
@@ -40,18 +43,25 @@ class VideoController extends AbstractController
         ]);
     }
 
-    #[Route('/show/{slug}', name: 'show')]
+    #[Route('/show/{languageSlug}/{videoSlug}', name: 'show')]
     public function show(
-        string $slug,
+        string $languageSlug,
+        string $videoSlug,
+        LanguageRepository $languageRepository,
         VideoRepository $videoRepository,
     ): Response {
+        $language = $languageRepository->findOneBy(['slug' => $languageSlug]);
+        $video = $videoRepository->findOneBy(['slug' => $videoSlug, 'language' => $language]);
 
-        $video = $videoRepository->findOneBy(['slug' => $slug]);
-        $recommandedVideos = $videoRepository->recommandedVideos($video->getId(), $video->getCategory()->getLabel());
+        $recommandedVideos = $videoRepository->recommandedVideos(
+            $video->getId(),
+            $video->getCategory(),
+            $video->getLanguage()->getLabel()
+        );
 
         if (!$video) {
             throw $this->createNotFoundException(
-                'No video with name : ' . $slug . ' found in video\'s table.'
+                'No video with name : ' . $videoSlug . ' found in video\'s table.'
             );
         }
 
@@ -65,14 +75,11 @@ class VideoController extends AbstractController
     public function listByCategory(
         string $languageSlug,
         string $categoryLabel,
-        CategoryRepository $categoryRepository,
         VideoRepository $videoRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-
-        $category = $categoryRepository->findByLabel($categoryLabel);
-        $videos = $videoRepository->findByCategory($category);
+        $videos = $videoRepository->findBy(['category' => $categoryLabel]);
         $videos = $paginator->paginate(
             $videos,
             $request->query->getInt('page', 1),

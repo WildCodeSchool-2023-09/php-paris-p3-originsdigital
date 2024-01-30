@@ -32,26 +32,3 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
-
-// Category_Select et Language_Select
-window.addEventListener('DOMContentLoaded', function () {
-    var languageSelect = document.getElementById('language_select');
-    var categorySelect = document.getElementById('upload_video_category');
-    let categoriesContainer = document.getElementById("category_select");
-    const allCategories = Array.from(categorySelect.children);
-
-        if (languageSelect) {
-            languageSelect.addEventListener('change', function(e) {
-                const categories = allCategories.filter((category) => category.getAttribute("data-category-id") == e.target.value)
-                let select = document.createElement("select");
-                select.setAttribute("id", "upload_video_category");
-                select.setAttribute("name", "upload_video[category]")
-                for (key in categories) {
-                    select.appendChild(categories[key]);
-                }
-                categoriesContainer.innerHTML = null;
-                categoriesContainer.appendChild(select);
-            })
-        }
-});

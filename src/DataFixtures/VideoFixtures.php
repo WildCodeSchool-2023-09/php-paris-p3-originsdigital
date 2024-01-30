@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Config\Category;
 use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -15,109 +16,109 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
             'title' => 'Live Coding 1',
             'thumbnail' => '/uploads/thumbnails/test1.jpg',
             'description' => 'live coding 1',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test2.mp4' => [
             'title' => 'Tutoriel 1',
             'thumbnail' => '/uploads/thumbnails/test1.jpg',
             'description' => 'tuto 1',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test3.mp4' => [
             'title' => "Apprendre #Symfony 6 - Installation et configuration",
             'thumbnail' => '/uploads/thumbnails/test1.jpg',
             'description' => 'Installation et configuration',
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
         '/uploads/videos/test4.mp4' => [
             'title' => 'Live Coding 2',
             'thumbnail' => '/uploads/thumbnails/test2.jpg',
             'description' => 'live coding 2',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test5.mp4' => [
             'title' => 'Tutoriel 2',
             'thumbnail' => '/uploads/thumbnails/test2.jpg',
             'description' => 'tuto 2',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test6.mp4' => [
             'title' => "Apprendre #Symfony 6 - Notre première page",
             'thumbnail' => '/uploads/thumbnails/test2.jpg',
             'description' => "Notre première page",
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
         '/uploads/videos/test7.mp4' => [
             'title' => 'Live Coding 3',
             'thumbnail' => '/uploads/thumbnails/test3.jpg',
             'description' => 'live coding 3',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test8.mp4' => [
             'title' => 'Tutoriel 3',
             'thumbnail' => '/uploads/thumbnails/test3.jpg',
             'description' => 'tuto 3',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test9.mp4' => [
             'title' => "Apprendre #Symfony 6 - Twig & Symfony",
             'thumbnail' => '/uploads/thumbnails/test3.jpg',
             'description' => "Twig & Symfony",
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
         '/uploads/videos/test10.mp4' => [
             'title' => 'Live Coding 4',
             'thumbnail' => '/uploads/thumbnails/test4.jpg',
             'description' => 'live coding 4',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test11.mp4' => [
             'title' => 'Tutoriel 4',
             'thumbnail' => '/uploads/thumbnails/test4.jpg',
             'description' => 'tuto 4',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test12.mp4' => [
             'title' => "Apprendre #Symfony 6 - Notre première entité",
             'thumbnail' => '/uploads/thumbnails/test4.jpg',
             'description' => "Notre première entité",
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
         '/uploads/videos/test13.mp4' => [
             'title' => 'Live Coding 5',
             'thumbnail' => '/uploads/thumbnails/test5.jpg',
             'description' => 'live coding 5',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test14.mp4' => [
             'title' => 'Turoriel 5',
             'thumbnail' => '/uploads/thumbnails/test5.jpg',
             'description' => 'tuto 5',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test15.mp4' => [
             'title' => "Apprendre #Symfony 6 - Validation des entités",
             'thumbnail' => '/uploads/thumbnails/test5.jpg',
             'description' => "Validation des entités",
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
         '/uploads/videos/test16.mp4' => [
             'title' => 'Live Coding 6',
             'thumbnail' => '/uploads/thumbnails/test6.jpg',
             'description' => 'live coding 6',
-            'categoryReference' => 'PHPLiveCoding',
+            'category' => Video::CATEGORY_LIVECODING,
         ],
         '/uploads/videos/test17.mp4' => [
             'title' => 'Tutoriel 6',
             'thumbnail' => '/uploads/thumbnails/test6.jpg',
             'description' => 'tuto 6',
-            'categoryReference' => 'PHPTutoriel',
+            'category' => Video::CATEGORY_TUTORIEL,
         ],
         '/uploads/videos/test18.mp4' => [
             'title' => "Apprendre #Symfony 6 - Les Fixtures",
             'thumbnail' => '/uploads/thumbnails/test6.jpg',
             'description' => 'Les Fixtures',
-            'categoryReference' => 'PHPLesson',
+            'category' => Video::CATEGORY_LESSON,
         ],
     ];
     private SluggerInterface $slugger;
@@ -135,7 +136,8 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
             $video->setTitle($properties['title']);
             $video->setThumbnail($properties['thumbnail']);
             $video->setDescription($properties['description']);
-            $video->setCategory($this->getReference($properties['categoryReference']));
+            $video->setCategory($properties['category']);
+            $video->setLanguage($this->getReference('PHPLanguage'));
             $slug = $this->slugger->slug($video->getTitle());
             $video->setSlug($slug);
 
@@ -148,7 +150,7 @@ class VideoFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CategoryFixtures::class,
+            LanguageFixtures::class,
         ];
     }
 }

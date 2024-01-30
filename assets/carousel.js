@@ -11,7 +11,7 @@ carousels.forEach((carousel) => {
             gap: '4rem',
             pagination: false,
             type: 'loop',
-            autoplay: true,
+            autoplay: false,
             breakpoints: {
                 768: {
                     perPage: 1
