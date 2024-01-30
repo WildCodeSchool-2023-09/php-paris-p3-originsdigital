@@ -58,11 +58,11 @@ class QuizController extends AbstractController
 
         foreach ($data as $questionId => $answerId) {
             $question = $questionRepository->find($questionId);
-                foreach ($question->getAnswers() as $answer) {
-                    if ($answer->getId() == $answerId && $answer->isIsCorrect()) {
-                        $score += 1;
-                    }
+            foreach ($question->getAnswers() as $answer) {
+                if ($answer->getId() == $answerId && $answer->isIsCorrect()) {
+                    $score += 1;
                 }
+            }
         }
 
         return $this->json(['message' => 'Success', 'score' => $score]);
