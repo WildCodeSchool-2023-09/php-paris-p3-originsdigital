@@ -2,7 +2,6 @@
 
 namespace App\Form\Trait;
 
-use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -88,16 +87,6 @@ trait UserTrait
             'required' => true,
             'attr' => [
                 'placeholder' => 'Email', 'class' => 'form-control',
-            ],
-        ])
-        ->add('profilepictureFile', VichFileType::class, [
-            'required'      => false,
-            'allow_delete'  => true,
-            'download_uri' => true,
-            'label' => false,
-            'attr' => [
-                'class' => 'file-input-field',
-                'id' => 'user_profilepictureFile_file',
             ],
         ]);
     }
