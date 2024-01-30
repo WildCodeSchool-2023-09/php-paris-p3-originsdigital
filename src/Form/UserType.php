@@ -21,8 +21,7 @@ class UserType extends AbstractType
                 'label' => false,
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Pseudo',
-                    'class' => 'form-control',
+                    'placeholder' => 'Pseudo', 'class' => 'form-control',
                 ],
             ])
             ->add('password', RepeatedType::class, [
@@ -36,8 +35,7 @@ class UserType extends AbstractType
                 'label' => false,
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Email',
-                    'class' => 'form-control',
+                    'placeholder' => 'Email', 'class' => 'form-control',
                 ],
             ])
             ->add('profilepictureFile', VichFileType::class, [

@@ -6,6 +6,7 @@ use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
 use App\Repository\PlaylistRepository;
+use App\Repository\LanguageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,9 +48,12 @@ class VideoController extends AbstractController
     public function show(
         string $languageSlug,
         string $videoSlug,
+        LanguageRepository $languageRepository,
         VideoRepository $videoRepository,
     ): Response {
-        $video = $videoRepository->findOneBy(['slug' => $videoSlug]);
+        $language = $languageRepository->findOneBy(['slug' => $languageSlug]);
+        $video = $videoRepository->findOneBy(['slug' => $videoSlug, 'language' => $language]);
+
         $recommandedVideos = $videoRepository->recommandedVideos(
             $video->getId(),
             $video->getCategory(),

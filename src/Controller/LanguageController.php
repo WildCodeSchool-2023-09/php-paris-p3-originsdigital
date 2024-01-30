@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Repository\LanguageRepository;
+use App\Entity\Video;
 use App\Repository\VideoRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\LanguageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/language', name: 'language_')]
 class LanguageController extends AbstractController
@@ -25,18 +26,13 @@ class LanguageController extends AbstractController
         VideoRepository $videoRepository,
         LanguageRepository $languageRepository
     ): Response {
-        $language = $languageRepository->findBySlug($slug);
-        $results = $videoRepository->findByLanguage($language);
-
-        $videos = [];
-
-        foreach ($results as $result) {
-            $videos[$result->getCategory()][] = $result;
-        }
+        $language = $languageRepository->findOneBySlug($slug);
+        $videos = $videoRepository->findByLanguage($language);
 
         return $this->render('category/index.html.twig', [
+            'categories' => Video::CATEGORIES,
             'videos' => $videos,
-            'slug' => $slug,
+            'language' => $language,
         ]);
     }
 }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}{% endblock %}
+
+{% block title %}Paiement réussi !{% endblock %}
+
+{% block body %}
+
+    <h1 id="user-form-title">Paiement réussi !</h1>
+    <div class = 'securityContainer'>
+        <div class="formFields">
+            <p class="premium-user-form">L'option Premium vous sera facturée 10€ par mois</p>
+                <a href="{{ path('language_index') }}" class="btn-glitch-fill">
+                    <span class="text">Retour au menu</span>
+                    <span class="text-decoration">_</span>
+                    <span class="decoration">&rArr;</span>
+                </a>
+        </div>
+    </div>
+
+{% endblock %}

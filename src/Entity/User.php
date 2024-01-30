@@ -2,17 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Playlist;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -80,6 +82,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         $this->playlists = new ArrayCollection();
     }
 
+    #[ORM\Column(length: 150, nullable: true)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 150, nullable: true)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $birthdate = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $houseNumber = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $streetName = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $country = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $phoneNumber = null;
 
     public function getId(): ?int
     {
@@ -199,17 +224,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this->playlists;
     }
 
-    public function addPlaylist(Playlist $playlist): static
+    public function addPlaylist(Playlist $playlist): void
     {
         if (!$this->playlists->contains($playlist)) {
             $this->playlists->add($playlist);
             $playlist->setCreatedBy($this);
         }
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $lastname): static
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }
 
-    public function removePlaylist(Playlist $playlist): static
+    public function removePlaylist(Playlist $playlist): void
     {
         if ($this->playlists->removeElement($playlist)) {
             // set the owning side to null (unless already changed)
@@ -217,6 +252,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
                 $playlist->setCreatedBy(null);
             }
         }
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): static
+    {
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -226,7 +271,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this->program;
     }
 
-    public function setProgram(?UserPlaylist $program): static
+    public function setProgram(?UserPlaylist $program): void
     {
         // unset the owning side of the relation if necessary
         if ($program === null && $this->program !== null) {
@@ -239,6 +284,75 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         }
 
         $this->program = $program;
+    }
+    public function getBirthdate(): ?\DateTimeImmutable
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeImmutable $birthdate): static
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getHouseNumber(): ?int
+    {
+        return $this->houseNumber;
+    }
+
+    public function setHouseNumber(?int $houseNumber): static
+    {
+        $this->houseNumber = $houseNumber;
+
+        return $this;
+    }
+
+    public function getStreetName(): ?string
+    {
+        return $this->streetName;
+    }
+
+    public function setStreetName(?string $streetName): static
+    {
+        $this->streetName = $streetName;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): static
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): static
+    {
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
