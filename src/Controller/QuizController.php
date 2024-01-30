@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\CourseRepository;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -38,5 +40,31 @@ class QuizController extends AbstractController
     public function introQuiz(): Response
     {
         return $this->render('Quiz/rules.html.twig');
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/score', name: 'app_score')]
+    public function getPlaylist(Request $request, QuestionRepository $questionRepository): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        // Etape 1 : QuizService qui calcule le score selon des réponses
+
+        // Etape 2 : Appeler la fonction de Zinédine qui retrouve une playlist grâce à un score, un parcours et un user
+
+        // Etape 3 : Renvoyer vers la vue de la playlist concernée
+
+        $score = 0;
+
+        foreach ($data as $questionId => $answerId) {
+            $question = $questionRepository->find($questionId);
+                foreach ($question->getAnswers() as $answer) {
+                    if ($answer->getId() == $answerId && $answer->isIsCorrect()) {
+                        $score += 1;
+                    }
+                }
+        }
+
+        return $this->json(['message' => 'Success', 'score' => $score]);
     }
 }
