@@ -2,21 +2,23 @@
 
 namespace App\Controller;
 
-use App\Repository\VideoRepository;
 use App\Entity\Video;
 use App\Form\UploadVideoType;
+use App\Repository\VideoRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/video', name: 'video_')]
 class VideoController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN', message: 'Seuls les administrateurs peuvent ajouter des vidéos')]
     #[Route('/new', name: 'new')]
     public function new(
         Request $request,
@@ -40,6 +42,7 @@ class VideoController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER', message: 'veuillez vous connecter pour regarder les vidéos')]
     #[Route('/show/{slug}', name: 'show')]
     public function show(
         string $slug,
