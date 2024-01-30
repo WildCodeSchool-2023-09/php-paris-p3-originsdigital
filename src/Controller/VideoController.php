@@ -89,4 +89,29 @@ class VideoController extends AbstractController
                 'languageSlug' => $languageSlug,
             ]);
     }
+
+    #[Route('/add/{id}', name: 'add_playlist')]
+    public function addInPlaylist(
+        int $id,
+        VideoRepository $videoRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+
+        $user = $this->getUser();
+        $video = $videoRepository->findById($id);
+
+        
+
+        $recommandedVideos = $videoRepository->recommandedVideos(
+            $video->getId(),
+            $video->getCategory(),
+            $video->getLanguage()->getLabel()
+        );
+
+        return $this->render('video/player.html.twig', [
+            'video' => $video,
+            'recommandedVideos' => $recommandedVideos,
+        ]);
+    }
 }
