@@ -13,10 +13,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Video
 {
     public const CATEGORY_LESSON = 'Cours';
-    
+
     public const CATEGORY_TUTORIEL = 'Tutoriel';
-    
-    PUBLIC const CATEGORY_LIVECODING = 'LiveCoding';
+
+    public const CATEGORY_LIVECODING = 'LiveCoding';
 
     public const CATEGORIES = [self::CATEGORY_LESSON, self::CATEGORY_TUTORIEL, self::CATEGORY_LIVECODING];
 
