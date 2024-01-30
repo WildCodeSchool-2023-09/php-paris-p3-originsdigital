@@ -27,7 +27,6 @@ class LoginController extends AbstractController
     public function logout(Security $security, LogoutEvent $event): Response
     {
         $security->logout();
-        $this->addFlash('success', 'The new program has been created');
-        return $this->render('home/index.html.twig');
+        return $this->redirectToRoute('home');
     }
 }
