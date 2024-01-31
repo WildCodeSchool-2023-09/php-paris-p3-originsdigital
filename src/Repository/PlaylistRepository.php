@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Video;
 use App\Entity\Playlist;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Playlist>
@@ -21,28 +22,35 @@ class PlaylistRepository extends ServiceEntityRepository
         parent::__construct($registry, Playlist::class);
     }
 
-//    /**
-//     * @return Playlist[] Returns an array of Playlist objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function playlistsIncVideo(int $videoId, int $userId): array
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('p')
+            ->from('App\Entity\Playlist', 'p')
+            ->join('p.videos', 'v')
+            ->join('p.createdBy', 'u')
+            ->where('u.id = :userId')
+            ->andWhere('v.id = :videoId')
+            ->setParameter('userId', $userId)
+            ->setParameter('videoId', $videoId)
+            ->getQuery();
 
-//    public function findOneBySomeField($value): ?Playlist
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $query->getResult();
+    }
+
+    public function playlistsExcVideo(int $videoId, int $userId): array
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('p')
+            ->from('App\Entity\Playlist', 'p')
+            ->join('p.createdBy', 'u')
+            ->leftJoin('p.videos', 'v', 'WITH', 'v.id = :videoId')
+            ->where('u.id = :userId')
+            ->andWhere('v.id IS NULL')
+            ->setParameter('userId', $userId)
+            ->setParameter('videoId', $videoId)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

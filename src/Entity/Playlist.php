@@ -26,11 +26,11 @@ class Playlist
     private ?UserPlaylist $userPlaylist = null;
 
     #[ORM\ManyToMany(targetEntity: Video::class)]
-    private Collection $video;
+    private Collection $videos;
 
     public function __construct()
     {
-        $this->video = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -87,15 +87,15 @@ class Playlist
     /**
      * @return Collection<int, Video>
      */
-    public function getVideo(): Collection
+    public function getVideos(): Collection
     {
-        return $this->video;
+        return $this->videos;
     }
 
     public function addVideo(Video $video): static
     {
-        if (!$this->video->contains($video)) {
-            $this->video->add($video);
+        if (!$this->videos->contains($video)) {
+            $this->videos->add($video);
         }
 
         return $this;
@@ -103,7 +103,7 @@ class Playlist
 
     public function removeVideo(Video $video): static
     {
-        $this->video->removeElement($video);
+        $this->videos->removeElement($video);
 
         return $this;
     }

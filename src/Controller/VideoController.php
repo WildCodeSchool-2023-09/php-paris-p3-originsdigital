@@ -2,18 +2,20 @@
 
 namespace App\Controller;
 
-use App\Repository\VideoRepository;
 use App\Entity\Video;
+use App\Entity\Playlist;
 use App\Form\UploadVideoType;
-use App\Repository\PlaylistRepository;
+use App\Repository\VideoRepository;
 use App\Repository\LanguageRepository;
+use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/video', name: 'video_')]
 class VideoController extends AbstractController
@@ -24,6 +26,7 @@ class VideoController extends AbstractController
         EntityManagerInterface $entityManager,
         SluggerInterface $slugger
     ): Response {
+
         $video = new Video();
         $form = $this->createForm(UploadVideoType::class, $video);
         $form->handleRequest($request);
@@ -48,11 +51,18 @@ class VideoController extends AbstractController
     public function show(
         string $languageSlug,
         string $videoSlug,
+        PlaylistRepository $playlistRepository,
         LanguageRepository $languageRepository,
         VideoRepository $videoRepository,
     ): Response {
+
         $language = $languageRepository->findOneBy(['slug' => $languageSlug]);
+
         $video = $videoRepository->findOneBy(['slug' => $videoSlug, 'language' => $language]);
+
+        $playlistsIncVideo = $playlistRepository->playlistsIncVideo($video->getId(), $this->getUser()->getId());
+
+        $playlistsExcVideo = $playlistRepository->playlistsExcVideo($video->getId(), $this->getUser()->getId());
 
         $recommandedVideos = $videoRepository->recommandedVideos(
             $video->getId(),
@@ -69,6 +79,8 @@ class VideoController extends AbstractController
         return $this->render('video/player.html.twig', [
             'video' => $video,
             'recommandedVideos' => $recommandedVideos,
+            'playlistsIncVideo' => $playlistsIncVideo,
+            'playlistsExcVideo' => $playlistsExcVideo,
         ]);
     }
 
@@ -95,18 +107,39 @@ class VideoController extends AbstractController
             ]);
     }
 
-    #[Route('/add/{id}', name: 'add_playlist')]
+    #[Route('/add/{playlistId}/{videoId}', name: 'add_playlist')]
     public function addInPlaylist(
-        int $id,
-        VideoRepository $videoRepository,
-        PlaylistRepository $playlistRepository,
-        Request $request
+        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
+        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
+        EntityManagerInterface $entityManager,
     ): Response {
 
-        $video = $videoRepository->findById($id);
+        $playlist->addVideo($video);
 
-        return $this->render('video/player.html.twig', [
-            'video' => $video,
+        $entityManager->persist($playlist);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('video_show', [
+            'languageSlug' => $video->getLanguage()->getSlug(),
+            'videoSlug' => $video->getSlug()
+        ]);
+    }
+
+    #[Route('/remove/{playlistId}/{videoId}', name: 'remove_playlist')]
+    public function removeFromPlaylist(
+        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
+        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
+        EntityManagerInterface $entityManager,
+    ): Response {
+
+        $playlist->removeVideo($video);
+
+        $entityManager->persist($playlist);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('video_show', [
+            'languageSlug' => $video->getLanguage()->getSlug(),
+            'videoSlug' => $video->getSlug()
         ]);
     }
 }

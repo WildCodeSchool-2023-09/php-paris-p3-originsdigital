@@ -10,7 +10,7 @@ Array.from(carousels).forEach((carousel) => {
             perMove: 1,
             gap: '4rem',
             pagination: false,
-            type: 'loop',
+            type: 'slide',
             autoplay: false,
             breakpoints: {
                 768: {

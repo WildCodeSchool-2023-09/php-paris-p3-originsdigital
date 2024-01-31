@@ -10,7 +10,7 @@
 	<div id="playlist-show">
 		<h1>{{ playlist.label }}</h1>
 		<div id="index-videos-playlist-cards">
-			{% for video in playlist.video %}
+			{% for video in playlist.videos %}
 				<div class="video-card index-card">
 					<div class="recto-index-card">
 						<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">

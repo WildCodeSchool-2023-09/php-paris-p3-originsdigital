@@ -21,7 +21,7 @@
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
-        #playlist-add{
+        #playlist-add {
             text-decoration: none;
             color: $button-color;
             font-size: 2rem;
@@ -29,9 +29,14 @@
             justify-content: end;
             padding-right: 4rem;
         }
-        #playlist-carousels{
+        #playlist-carousels {
             margin-left: 5vw;
             margin-right: 5vw;
+        }
+        .no-video-playlist {
+            color: $text-color;
+            font-size: 2rem;
+            padding-left: 2rem;
         }
         .splide {
             margin-left: 0;

@@ -9,6 +9,13 @@
     height: 31vw;
 }
 
+#video-options {
+    .playlistsIncVideo {
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+}
 #video-player {
     display: flex;
     background-color: grey;

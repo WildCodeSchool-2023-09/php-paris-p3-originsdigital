@@ -11,8 +11,40 @@
 			</video>
 		</div>
 		<div id="video-options">
-			<div id="playlist-button">
-				<a href="#"></a>
+			<button type="button" id="playlist-button" class="btn" data-toggle="modal" data-target="#exampleModal"></button>
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">Cette vidéo fait déjà partie des playlists suivantes :</h1>
+						</div>
+						<div class="modal-body">
+							<ul>
+								{% for playlist in playlistsIncVideo %}
+									<li class="playlistsIncVideo">
+										<a href="{{ path('playlist_show', {'id': playlist.id}) }}">{{ playlist.label }}</a>
+										<a href="{{ path('video_remove_playlist', {'playlistId': playlist.id, 'videoId': video.id}) }}">Supprimer de cette playlist</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">Dans quelle playlist souhaitez-vous ajouter cette vidéo ?</h1>
+						</div>
+						<div class="modal-body">
+							<ul>
+								{% for playlist in playlistsExcVideo %}
+									<li>
+										<a href="{{ path('video_add_playlist', {'playlistId': playlist.id, 'videoId': video.id}) }}">{{ playlist.label }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="modal-footer">
+							<a href="{{ path('playlist_new', {'videoId': video.id}) }}" type="button" class="btn btn-primary">Créer une nouvelle playlist</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="like-button">
 				<a href="#"></a>
@@ -37,4 +69,17 @@
 			{% endfor %}
 		</div>
 	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+var playlistButton = document.getElementById('playlist-button');
+
+playlistButton.addEventListener('click', function () {
+var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+myModal.show();
+});
+});
+	</script>
 {% endblock %}
