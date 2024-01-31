@@ -12,111 +12,111 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class VideoFixtures extends Fixture implements DependentFixtureInterface
 {
     public const VIDEO_DATA = [
-        '/uploads/videos/test1.mp4' => [
+        'test1.mp4' => [
             'title' => 'Live Coding 1',
-            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'thumbnail' => 'test1.jpg',
             'description' => 'live coding 1',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test2.mp4' => [
+        'test2.mp4' => [
             'title' => 'Tutoriel 1',
-            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'thumbnail' => 'test1.jpg',
             'description' => 'tuto 1',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test3.mp4' => [
+        'test3.mp4' => [
             'title' => "Apprendre #Symfony 6 - Installation et configuration",
-            'thumbnail' => '/uploads/thumbnails/test1.jpg',
+            'thumbnail' => 'test1.jpg',
             'description' => 'Installation et configuration',
             'category' => Video::CATEGORY_LESSON,
         ],
-        '/uploads/videos/test4.mp4' => [
+        'test4.mp4' => [
             'title' => 'Live Coding 2',
-            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'thumbnail' => 'test2.jpg',
             'description' => 'live coding 2',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test5.mp4' => [
+        'test5.mp4' => [
             'title' => 'Tutoriel 2',
-            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'thumbnail' => 'test2.jpg',
             'description' => 'tuto 2',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test6.mp4' => [
+        'test6.mp4' => [
             'title' => "Apprendre #Symfony 6 - Notre première page",
-            'thumbnail' => '/uploads/thumbnails/test2.jpg',
+            'thumbnail' => 'test2.jpg',
             'description' => "Notre première page",
             'category' => Video::CATEGORY_LESSON,
         ],
-        '/uploads/videos/test7.mp4' => [
+        'test7.mp4' => [
             'title' => 'Live Coding 3',
-            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'thumbnail' => 'test3.jpg',
             'description' => 'live coding 3',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test8.mp4' => [
+        'test8.mp4' => [
             'title' => 'Tutoriel 3',
-            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'thumbnail' => 'test3.jpg',
             'description' => 'tuto 3',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test9.mp4' => [
+        'test9.mp4' => [
             'title' => "Apprendre #Symfony 6 - Twig & Symfony",
-            'thumbnail' => '/uploads/thumbnails/test3.jpg',
+            'thumbnail' => 'test3.jpg',
             'description' => "Twig & Symfony",
             'category' => Video::CATEGORY_LESSON,
         ],
-        '/uploads/videos/test10.mp4' => [
+        'test10.mp4' => [
             'title' => 'Live Coding 4',
-            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'thumbnail' => 'test4.jpg',
             'description' => 'live coding 4',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test11.mp4' => [
+        'test11.mp4' => [
             'title' => 'Tutoriel 4',
-            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'thumbnail' => 'test4.jpg',
             'description' => 'tuto 4',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test12.mp4' => [
+        'test12.mp4' => [
             'title' => "Apprendre #Symfony 6 - Notre première entité",
-            'thumbnail' => '/uploads/thumbnails/test4.jpg',
+            'thumbnail' => 'test4.jpg',
             'description' => "Notre première entité",
             'category' => Video::CATEGORY_LESSON,
         ],
-        '/uploads/videos/test13.mp4' => [
+        'test13.mp4' => [
             'title' => 'Live Coding 5',
-            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'thumbnail' => 'test5.jpg',
             'description' => 'live coding 5',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test14.mp4' => [
+        'test14.mp4' => [
             'title' => 'Turoriel 5',
-            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'thumbnail' => 'test5.jpg',
             'description' => 'tuto 5',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test15.mp4' => [
+        'test15.mp4' => [
             'title' => "Apprendre #Symfony 6 - Validation des entités",
-            'thumbnail' => '/uploads/thumbnails/test5.jpg',
+            'thumbnail' => 'test5.jpg',
             'description' => "Validation des entités",
             'category' => Video::CATEGORY_LESSON,
         ],
-        '/uploads/videos/test16.mp4' => [
+        'test16.mp4' => [
             'title' => 'Live Coding 6',
-            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'thumbnail' => 'test6.jpg',
             'description' => 'live coding 6',
             'category' => Video::CATEGORY_LIVECODING,
         ],
-        '/uploads/videos/test17.mp4' => [
+        'test17.mp4' => [
             'title' => 'Tutoriel 6',
-            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'thumbnail' => 'test6.jpg',
             'description' => 'tuto 6',
             'category' => Video::CATEGORY_TUTORIEL,
         ],
-        '/uploads/videos/test18.mp4' => [
+        'test18.mp4' => [
             'title' => "Apprendre #Symfony 6 - Les Fixtures",
-            'thumbnail' => '/uploads/thumbnails/test6.jpg',
+            'thumbnail' => 'test6.jpg',
             'description' => 'Les Fixtures',
             'category' => Video::CATEGORY_LESSON,
         ],
