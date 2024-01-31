@@ -1,35 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lecteur vidéo{% endblock %}
+{% block title %}Lecteur vidéo
+{% endblock %}
 
 {% block body %}
-<div id="video-player-components">
-    <div id="video-player">
-        <video id="video" controls>
-            <source src="{{ video.video }}" type="video/mp4">
-        </video>
-    </div>
-    <div id="video-options">
-        <div id="playlist-button">
-            <a href="#"></a>
-        </div>
-        <div id="like-button">
-            <a href="#"></a>
-        </div>
-        <div id="share-button">
-            <a href="#"></a>
-        </div>
-    </div>
-    <div id="description">
-        <span id="title-description">{{ video.title }}</span>
-        <p id="text-description">{{ video.description }}</p>
-    </div>
-    <div id="recommanded-videos-field">
-    {% for recommandedVideo in recommandedVideos %}
-        <ul>
-            <li><a class="recommanded-videos" href="{{ path('video_show', {slug: recommandedVideo.slug}) }}"><img src="{{ recommandedVideo.thumbnail }}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a></li>
-        </ul>
-        {% endfor %}
-    </div>
-</div>
+
+	<div id="components">
+		<div id="video-player">
+			<video id="video" controls>
+				<source src="{{ video.video }}" type="video/mp4">
+			</video>
+		</div>
+		<div id="video-options">
+			<div id="playlist-button">
+				<a href="#"></a>
+			</div>
+			<div id="like-button">
+				<a href="#"></a>
+			</div>
+			<div id="share-button">
+				<a href="#"></a>
+			</div>
+		</div>
+		<div id="description">
+			<span id="title-description">{{ video.title }}</span>
+			<p id="text-description">{{ video.description }}</p>
+		</div>
+		<div id="recommanded-videos-field">
+			{% for recommandedVideo in recommandedVideos %}
+				<ul>
+					<li>
+						<a class="recommanded-videos" href="{{ path('video_show', {'languageSlug': recommandedVideo.language.slug, 'videoSlug': recommandedVideo.slug}) }}">
+							<imgsrc="{{recommandedVideo.thumbnail}}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a>
+						</li>
+					</li>
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+
 {% endblock %}
