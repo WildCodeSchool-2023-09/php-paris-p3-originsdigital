@@ -55,16 +55,22 @@ class QuizController extends AbstractController
         // Etape 3 : Renvoyer vers la vue de la playlist concernée
 
         $score = 0;
+        $totalQuestions = 0;
 
         foreach ($data as $questionId => $answerId) {
             $question = $questionRepository->find($questionId);
-            foreach ($question->getAnswers() as $answer) {
-                if ($answer->getId() == $answerId && $answer->isIsCorrect()) {
-                    $score += 1;
+            if ($question && $question->getCourse()) {
+                $totalQuestions++;
+                foreach ($question->getAnswers() as $answer) {
+                    if ($answer->getId() == $answerId && $answer->isIsCorrect()) {
+                        $score += 1;
+                    }
                 }
             }
         }
 
-        return $this->json(['message' => 'Success', 'score' => $score]);
+        $percentage = ($totalQuestions > 0) ? ($score / $totalQuestions) * 100 : 0;
+
+        return $this->json(['message' => 'Success', 'score' => $score, 'percentage' => $percentage]);
     }
 }
