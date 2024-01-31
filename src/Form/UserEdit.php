@@ -8,12 +8,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SubscriptionType extends AbstractType
+class UserEditType extends AbstractType
 {
     use UserTrait;
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $this->addInscriptionFields($builder);
         $this->addSubscriptionFields($builder);
     }
 

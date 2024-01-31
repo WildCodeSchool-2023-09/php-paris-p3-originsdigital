@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\UserEditType;
 use App\Form\SubscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,5 +56,46 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    public function edit(int $id, Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser()->getId() !== $id) {
+            $this->addFlash('notice', 'erreur : vous ne pouvez pas modifier un profil différent du vôtre');
+            return $this->redirectToRoute('home');
+        }
+        $form = $this->createForm(UserEditType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/delete', name: 'app_user_delete', methods: ['GET', 'POST'])]
+    public function delete(
+        int $id,
+        User $user,
+        EntityManagerInterface $entityManager,
+        Request $request,
+    ): Response {
+
+        if ($this->getUser()->getId() !== $id) {
+            $this->addFlash('notice', 'erreur : vous ne pouvez pas supprimer un profil différent du vôtre');
+            return $this->redirectToRoute('home');
+        }
+        $entityManager->remove($user);
+        $entityManager->flush();
+        $request->getSession()->invalidate();
+        $this->container->get('security.token_storage')->setToken(null);
+
+        return $this->redirectToRoute('home');
     }
 }

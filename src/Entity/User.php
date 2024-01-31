@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -68,6 +70,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     )]
     private ?File $profilepictureFile = null;
 
+    #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
+    private Collection $courses;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $lastname = null;
 
@@ -202,6 +211,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return true;
     }
 
+    /**
+     * @return Collection<int, Course>
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): void
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses->add($course);
+            $course->addUser($this);
+        }
+    }
+
     public function getLastname(): ?string
     {
         return $this->lastname;
@@ -212,6 +237,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+    public function removeCourse(Course $course): void
+    {
+        if ($this->courses->removeElement($course)) {
+            $course->removeUser($this);
+        }
     }
 
     public function getFirstname(): ?string
