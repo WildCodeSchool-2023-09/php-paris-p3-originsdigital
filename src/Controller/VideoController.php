@@ -81,7 +81,6 @@ class VideoController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-
         $videos = $videoRepository->findBy(['category' => $categoryLabel]);
         $videos = $paginator->paginate(
             $videos,
