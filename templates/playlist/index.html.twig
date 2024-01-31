@@ -21,19 +21,21 @@
 								{% for video in playlist.videos %}
 									<li class="splide__slide">
 										<div class="{{video.slug}}-card video-card index-card">
-											<div class="recto-index-card">
-												<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
-												<h3>{{video.title}}</h3>
-											</div>
-											<div class="verso-index-card">
-												<h3>{{video.title}}</h3>
-												<p>{{video.description}}</p>
-												<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
-													<span class="text">//Vidéo</span>
-													<span class="text-decoration">_</span>
-													<span class="decoration">&rArr;</span>
-												</a>
-											</div>
+											<a href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
+												<div class="recto-index-card">
+													<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+													<h3>{{video.title}}</h3>
+												</div>
+												<div class="verso-index-card">
+													<h3>{{video.title}}</h3>
+													<p>{{video.description}}</p>
+													<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
+														<span class="text">//Vidéo</span>
+														<span class="text-decoration">_</span>
+														<span class="decoration">&rArr;</span>
+													</a>
+												</div>
+											</a>
 										</div>
 									</li>
 								{% endfor %}
