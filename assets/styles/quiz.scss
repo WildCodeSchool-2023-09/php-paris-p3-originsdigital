@@ -42,20 +42,6 @@
         margin-bottom: 4.5%;
         margin-left: auto;
         margin-right: auto;
-
-        // display: flex;
-        // width: 69%;
-        // height: fit-content;
-        // margin-left: auto;
-        // margin-right: auto;
-        // margin-top: 2%;
-        // margin-bottom: 2%;
-        // background-color: rgba(217, 217, 217, 0.30);
-        // border: 1px solid #030300;
-        // border-radius: 5px;
-        // justify-content: center;
-        // flex-direction: column;
-        // align-items: center;
     }
 
     .questionList {
@@ -234,7 +220,7 @@
         [class*="btn-glitch-"] {
             font-size: 2.3vw;
             height: 5.5vw;
-            min-width: 20%;
+            min-width: 25%;
         }
     }
 }

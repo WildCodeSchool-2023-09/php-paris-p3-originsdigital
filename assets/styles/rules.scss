@@ -21,7 +21,7 @@
         margin-right: auto;
         margin-top: 2%;
         margin-bottom: 2%;
-        background-color: rgba(217, 217, 217, 0.30);
+        background-color: rgb(96 96 96 / 66%);
         border: 1px solid #030300;
         border-radius: 5px;
         justify-content: center;
@@ -29,26 +29,149 @@
         align-items: center;
     }
 
+    .rulesDescription {
+        font-size: 2vw;
+        padding: 1vw;
+    }
+
     #rulesList {
         color: $text-color;
         text-align: center;
     }
 
-    .rulesH2Title {
-        width: 80%;
-        font-size: 3.8vw;
+    .rulesTitles {
+        font-size: 3.4vw;
         display: flex;
-        flex-direction: row;
-        margin-left: 1%;
+        justify-content: center;
         margin-bottom: 1vw;
         margin-top: 1vw;
     }
 
-    #rulesTextList{
+    [class*="btn-glitch-"] {
+        height: 3.5vw;
+        width: 12vw;
+        margin-bottom: 3vh;
+        margin-top: 3vw;
+        margin-left: 0;
+        text-align: center;
         font-size: 1.5vw;
-        display: flex;
-        justify-content: flex-start;
-        margin-bottom: 2vw;
-        margin-top: 2vw;
+        justify-content: center;
+        font-family: "Quantico", monospace;
+        border: 1px solid black;
+        color: $button-color;
+        background-color: $navbar-main-color;
+        padding: 5px 7px;
+        min-width: 30%;
+        line-height: 1.5em;
+        white-space: no-wrap;
+        text-transform: uppercase;
+        cursor: pointer;
+        .text,
+        .decoration,
+        .text-decoration {
+            display: inline-block;
+            color: $button-color;
+        }
+        .decoration {
+            display: inline-block;
+        }
+        &:hover,
+        &:focus {
+            animation-name: glitch;
+            animation-duration: 0.5s;
+            background-color: black;
+            color: $button-color;
+            border: 1px solid $button-color;
+            .text-decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+                color: $button-color;
+            }
+            .decoration {
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
+            }
+
+            :after {
+                animation-name: shrink;
+                animation-duration: .5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                content: " ";
+            }
+        }
+        &:active {
+            background: none;
+            color: $button-color;
+            .text-decoration {
+                animation-name: none;
+                color: $button-color;
+            }
+            .decoration {
+                animation-name: none;
+            }
+            :before,
+            :after {
+                display: none;
+            }
+        }
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    @keyframes shrink {
+        100% {
+            width: 10%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #rulesTitle {
+        margin-left: 0;
+    }
+
+    .rulesComponent {
+        margin-left: 0;
+
+        .rulesField {
+            width: 86%;
+            height: fit-content;
+            margin-bottom: 4rem;
+        }
+
+        .rulesDescription {
+            font-size: 3vw;
+            margin-bottom: 3rem;
+        }
+
+        [class*=btn-glitch-] {
+            height: 5.5vw;
+            min-width: 43%;
+            font-size: 2.5vw;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #rulesTitle {
+        font-size: 11vw;
+        margin-bottom: 13vw;
+    }
+
+    .rulesComponent {
+        .rulesDescription {
+            font-size: 5.5vw;
+        }
+
+        [class*=btn-glitch-] {
+            height: 10.5vw;
+            min-width: 60%;
+            font-size: 4.5vw;
+        }
     }
 }

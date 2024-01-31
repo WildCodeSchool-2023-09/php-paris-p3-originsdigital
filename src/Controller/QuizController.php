@@ -18,12 +18,6 @@ class QuizController extends AbstractController
     #[Route('/quiz', name: 'app_quiz')]
     public function quiz(CourseRepository $courseRepository): Response
     {
-        if (isset($_POST['tokenQuiz'])) {
-            $score = $_POST['tokenQuiz'];
-            // when zinedine create his method for the programs => change the route
-            return $this->redirectToRoute("home", ['score' => $score]);
-        }
-
         if (!isset($_POST["pathInformation"])) {
             $course = $courseRepository->findOneById(self::FIRST_COURSE);
         } else {
@@ -48,14 +42,9 @@ class QuizController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
-        // Etape 1 : QuizService qui calcule le score selon des réponses
-
-        // Etape 2 : Appeler la fonction de Zinédine qui retrouve une playlist grâce à un score, un parcours et un user
-
-        // Etape 3 : Renvoyer vers la vue de la playlist concernée
-
         $score = 0;
         $totalQuestions = 0;
+        $question = null;
 
         foreach ($data as $questionId => $answerId) {
             $question = $questionRepository->find($questionId);
@@ -69,8 +58,14 @@ class QuizController extends AbstractController
             }
         }
 
-        $percentage = ($totalQuestions > 0) ? ($score / $totalQuestions) * 100 : 0;
+        $scoreInPercent = ($totalQuestions > 0) ? ($score / $totalQuestions) * 100 : 0;
+        $course = $questionRepository->findByCourse($question->getCourse());
+        $userId = $this->getUser()->getId();
 
-        return $this->json(['message' => 'Success', 'score' => $score, 'percentage' => $percentage]);
+        return $this->redirectToRoute('assign_playlist', [
+            'userId' => $userId,
+            'course' => $course,
+            'percentage' => $scoreInPercent,
+        ]);
     }
 }
