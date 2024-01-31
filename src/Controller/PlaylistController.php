@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Video;
 use App\Entity\Playlist;
 use App\Form\PlaylistType;
 use App\Repository\PlaylistRepository;
