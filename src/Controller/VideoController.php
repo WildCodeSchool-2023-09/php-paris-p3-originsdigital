@@ -33,7 +33,7 @@ class VideoController extends AbstractController
             $video->setSlug($slugger->slug($video->getTitle()));
             $entityManager->persist($video);
             $entityManager->flush();
-
+            $this->addFlash('notice', 'Vidéo ajoutée avec succès');
             return $this->redirectToRoute('video_new');
         }
 

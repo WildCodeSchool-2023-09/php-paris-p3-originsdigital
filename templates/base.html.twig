@@ -50,13 +50,23 @@
 
 		{% endblock %}
 
-		{% block body %}
-            {% for message in app.flashes('notice') %}
-                {{ message }}
+		{% block content %}
+
+            {% for notice in app.flashes('notice') %}
+                <div class="noticeFlash">
+                {{ notice }}
+                </div>
             {% endfor %}
-            {% for message in app.flashes('warning') %}
-                {{ message }}
+
+            {% for warning in app.flashes('warning') %}
+                <div class="warningFlash">
+                {{ warning }}
+                </div>
             {% endfor %}
+
+        {% endblock %}
+
+        {% block body %}
         {% endblock %}
 
 	</body>

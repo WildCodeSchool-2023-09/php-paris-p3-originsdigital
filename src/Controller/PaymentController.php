@@ -58,7 +58,7 @@ class PaymentController extends AbstractController
             echo json_encode(['error' => $e->getMessage()]);
         }
 
-        $this->addFlash('notice', 'Votre paiement a bien été accepté');
+        $this->addFlash('notice', 'Votre paiement a bien été accepté, Merci !');
         return $this->redirectToRoute('home');
     }
 
