@@ -86,6 +86,7 @@ if (quiz1) {
 
         Array.from(previousButtons).forEach(previousButton => {
             previousButton.onclick = function () {
+                event.preventDefault();
                 showPreviousQuestion();
             };
         });
@@ -112,6 +113,7 @@ else {
         
         Array.from(previousButtons).forEach(previousButton => {
             previousButton.onclick = function () {
+                event.preventDefault();
                 showPreviousQuestion();
             };
         });
