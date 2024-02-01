@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Nouvelle playlist
+{% endblock %}
+
+{% block body %}
+	<div id="playlist-new">
+		<h1>Crée ta propre playlist !</h1>
+
+		{{ include('playlist/_form.html.twig') }}
+
+		<a class="back-to-index" href="{{ path('playlist_index') }}">Voir mes playlists</a>
+	</div>
+{% endblock %}

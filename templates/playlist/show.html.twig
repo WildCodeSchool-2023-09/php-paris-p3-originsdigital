@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	-
+	{{ playlist.label }}
+{% endblock %}
+
+{% block body %}
+	<div id="playlist-show">
+		<h1>{{ playlist.label }}</h1>
+		<div id="index-videos-playlist-cards">
+			{% for video in playlist.videos %}
+				<div class="video-card index-card">
+					<div class="recto-index-card">
+						<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+						<h2>//{{video.title}}_</h2>
+					</div>
+					<div class="verso-index-card">
+						<h2>//{{video.title}}_</h2>
+						<p>{{video.description}}</p>
+						<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
+							<span class="text">//Video</span>
+							<span class="text-decoration">_</span>
+							<span class="decoration">&rArr;</span>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<a class="back-to-index" href="{{ path('playlist_index') }}">Voir mes playlists</a>
+
+		<a class="rename-playlist" href="{{ path('playlist_edit', {'id': playlist.id}) }}">Renommer la playlist</a>
+
+		{{ include('playlist/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

@@ -51,6 +51,7 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $category = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
