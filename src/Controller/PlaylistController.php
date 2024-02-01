@@ -11,7 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_PREMIUM', message: 'Seuls les membres premium ont accès à la fonctionnalité playlist')]
 #[Route('/playlist', name:'playlist_')]
 class PlaylistController extends AbstractController
 {
