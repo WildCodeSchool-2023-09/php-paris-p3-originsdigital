@@ -13,12 +13,12 @@ class QuizService
         $this->questionRepository = $questionRepository;
     }
 
-    public function calculateScore(array $data): int
+    public function calculateScore(array $answers): int
     {
         $score = 0;
         $totalQuestions = 0;
 
-        foreach ($data['result'] as $questionId => $answerId) {
+        foreach ($answers as $questionId => $answerId) {
             $question = $this->questionRepository->findOneById($questionId);
             if ($question && $question->getCourse()) {
                 $totalQuestions++;

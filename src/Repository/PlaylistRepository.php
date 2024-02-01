@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Course;
+use App\Entity\User;
 use App\Entity\Video;
 use App\Entity\Playlist;
 use Doctrine\Persistence\ManagerRegistry;
@@ -17,6 +19,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  */
 class PlaylistRepository extends ServiceEntityRepository
 {
+    public const PLAYLIST_JS_BEGINNER = 'JS Beginner';
+    public const PLAYLIST_PHP_EXPERT = 'PHP Expert';
+    public const PLAYLIST_DEFAULT = 'HTML-CSS';
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Playlist::class);
@@ -52,5 +58,23 @@ class PlaylistRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $query->getResult();
+    }
+
+    public function assignPlaylist(User $user, Course $course, int $score): void
+    {
+        if ($score <= 30 && $course->getId() == 4) {
+            $playlistLabel = self::PLAYLIST_JS_BEGINNER;
+        } elseif ($score >= 60 && $course->getId() == 3) {
+            $playlistLabel = self::PLAYLIST_PHP_EXPERT;
+        } else {
+            $playlistLabel = self::PLAYLIST_DEFAULT;
+        }
+
+        $playlist = $this->findOneBy(['label' => $playlistLabel, 'createdBy' => null]);
+
+        $user->addProgram($playlist);
+
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
     }
 }

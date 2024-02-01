@@ -13,161 +13,159 @@ let answer10 = document.getElementById('10');
 let answer11 = document.getElementById('11');
 
 if (quiz1) {
-  function showNextQuestion() {
-    hide(questions[currentQuestionIndex]);
-    setTimeout(() => {
-      currentQuestionIndex++;
-      if (currentQuestionIndex === 2) {
-        answer6.onclick = function () {
-          document.forms["quizForm"].pathInformation.value = "2";
-          document.forms["quizForm"].submit();;
-        }
+    function showNextQuestion() {
+        hide(questions[currentQuestionIndex]);
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex === 2) {
+                answer6.onclick = function () {
+                    document.forms["quizForm"].pathInformation.value = "2";
+                    document.forms["quizForm"].submit();;
+                }
 
-        answer7.onclick = function () {
-          document.forms["quizForm"].pathInformation.value = "2";
-          document.forms["quizForm"].submit();;
-        }
+                answer7.onclick = function () {
+                    document.forms["quizForm"].pathInformation.value = "2";
+                    document.forms["quizForm"].submit();;
+                }
 
-        answer9.onclick = function () {
-          document.forms["quizForm"].pathInformation.value = "5";
-          document.forms["quizForm"].submit();;
-        }
-      }
-      if (currentQuestionIndex === 3) {
-        answer10.onclick = function () {
-          document.forms["quizForm"].pathInformation.value = "3";
-          document.forms["quizForm"].submit();;
-        }
+                answer9.onclick = function () {
+                    document.forms["quizForm"].pathInformation.value = "5";
+                    document.forms["quizForm"].submit();;
+                }
+            }
+            if (currentQuestionIndex === 3) {
+                answer10.onclick = function () {
+                    document.forms["quizForm"].pathInformation.value = "3";
+                    document.forms["quizForm"].submit();;
+                }
 
-        answer11.onclick = function () {
-          document.forms["quizForm"].pathInformation.value = "4";
-          document.forms["quizForm"].submit();
-        }
-      }
+                answer11.onclick = function () {
+                    document.forms["quizForm"].pathInformation.value = "4";
+                    document.forms["quizForm"].submit();
+                }
+            }
 
-      if (currentQuestionIndex < questions.length) {
-        show(questions[currentQuestionIndex]);
-      }
-    }, transitionDuration);
-  }
-  function showPreviousQuestion() {
-    if (currentQuestionIndex > 0) {
-      hide(questions[currentQuestionIndex]);
-
-      setTimeout(() => {
-        currentQuestionIndex--;
-        show(questions[currentQuestionIndex]);
-      }, transitionDuration);
+            if (currentQuestionIndex < questions.length) {
+                show(questions[currentQuestionIndex]);
+            }
+        }, transitionDuration);
     }
-  }
+    function showPreviousQuestion() {
+        if (currentQuestionIndex > 0) {
+            hide(questions[currentQuestionIndex]);
 
-  function hide(element) {
-    element.style.display = 'none';
-  }
-
-  function show(element) {
-    element.style.display = 'flex';
-  }
-
-  questions.forEach((question, index) => {
-    let answers = question.getElementsByClassName('answersField');
-
-    Array.from(answers).forEach(answer => {
-      answer.onclick = function () {
-        showNextQuestion();
-      };
-    });
-
-    if (index !== 0) {
-      hide(question);
+            setTimeout(() => {
+                currentQuestionIndex--;
+                show(questions[currentQuestionIndex]);
+            }, transitionDuration);
+        }
     }
 
-    let previousButtons = question.getElementsByClassName('buttonContainer');
+    function hide(element) {
+        element.style.display = 'none';
+    }
 
-    Array.from(previousButtons).forEach(previousButton => {
-      previousButton.onclick = function () {
-        event.preventDefault();
-        showPreviousQuestion();
-      };
+    function show(element) {
+        element.style.display = 'flex';
+    }
+
+    questions.forEach((question, index) => {
+        let answers = question.getElementsByClassName('answersField');
+
+        Array.from(answers).forEach(answer => {
+            answer.onclick = function () {
+                showNextQuestion();
+            };
+        });
+
+        if (index !== 0) {
+            hide(question);
+        }
+
+        let previousButtons = question.getElementsByClassName('buttonContainer');
+
+        Array.from(previousButtons).forEach(previousButton => {
+            previousButton.onclick = function () {
+                event.preventDefault();
+                showPreviousQuestion();
+            };
+        });
     });
-  });
 }
 else {
-  let result = {};
+    let result = {};
 
-  questions.forEach((question, index) => {
-    let answers = question.getElementsByClassName('answersField');
+    questions.forEach((question, index) => {
+        let answers = question.getElementsByClassName('answersField');
 
-    Array.from(answers).forEach(answer => {
-      answer.onclick = function () {
-        result[question.id] = answer.id;
-        showNextQuestion();
-      };
+        Array.from(answers).forEach(answer => {
+            answer.onclick = function () {
+                result[question.id] = answer.id;
+                showNextQuestion();
+            };
+        });
+
+        if (index !== 0) {
+            hide(question);
+        }
+
+        let previousButtons = question.getElementsByClassName('buttonContainer');
+
+        Array.from(previousButtons).forEach(previousButton => {
+            previousButton.onclick = function () {
+                event.preventDefault();
+                showPreviousQuestion();
+            };
+        });
     });
 
-    if (index !== 0) {
-      hide(question);
+    function showNextQuestion() {
+        hide(questions[currentQuestionIndex]);
+        setTimeout(() => {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                show(questions[currentQuestionIndex]);
+            }
+            else {
+                let course = document.forms["quizForm"].id;
+                let data = { result, course };
+
+                fetch('/generatePlaylist', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('La requête a échoué avec le code ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function () {
+                        window.location.href = '/playlist';
+                    })
+            }
+        }, transitionDuration);
     }
 
-    let previousButtons = question.getElementsByClassName('buttonContainer');
-
-    Array.from(previousButtons).forEach(previousButton => {
-      previousButton.onclick = function () {
-        event.preventDefault();
-        showPreviousQuestion();
-      };
-    });
-  });
-
-  function showNextQuestion() {
-    hide(questions[currentQuestionIndex]);
-    setTimeout(() => {
-      currentQuestionIndex++;
-
-      if (currentQuestionIndex < questions.length) {
-        show(questions[currentQuestionIndex]);
-      }
-      else {
-        console.log(result);
-        let course = document.forms["quizForm"].id;
-        let data = { result, course };
-        fetch('/generatePlaylist', {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-type': 'application/json',
-          },
-        })
-          .then(function (response) {
-            console.log('La réponse (premier then) : ')
-            console.log(response);
-          })
-          .then(function (score) {
-            console.log('La data (deuxieme then) : ')
-            console.log(score);
-          })
-          .catch(function (error) {
-            console.log('Something went wrong.', error);
-          });
-      }
-    }, transitionDuration);
-  }
-
-  function showPreviousQuestion() {
-    if (currentQuestionIndex > 0) {
-      hide(questions[currentQuestionIndex]);
-      setTimeout(() => {
-        currentQuestionIndex--;
-        show(questions[currentQuestionIndex]);
-      }, transitionDuration);
+    function showPreviousQuestion() {
+        if (currentQuestionIndex > 0) {
+            hide(questions[currentQuestionIndex]);
+            setTimeout(() => {
+                currentQuestionIndex--;
+                show(questions[currentQuestionIndex]);
+            }, transitionDuration);
+        }
     }
-  }
 
-  function hide(element) {
-    element.style.display = 'none';
-  }
+    function hide(element) {
+        element.style.display = 'none';
+    }
 
-  function show(element) {
-    element.style.display = 'flex';
-  }
+    function show(element) {
+        element.style.display = 'flex';
+    }
 }

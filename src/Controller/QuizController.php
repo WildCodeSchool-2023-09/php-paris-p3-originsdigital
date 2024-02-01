@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CourseRepository;
+use App\Repository\PlaylistRepository;
 use App\Service\QuizService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -42,22 +43,16 @@ class QuizController extends AbstractController
     public function getPlaylistByQuiz(
         Request $request,
         CourseRepository $courseRepository,
+        PlaylistRepository $playlistRepository,
         QuizService $quizService
     ): Response {
         $data = json_decode($request->getContent(), true);
 
-        $scoreInPercent = $quizService->calculateScore($data);
+        $score = $quizService->calculateScore($data['result']);
+        $course = $courseRepository->findOneByLabel($data['course']);
 
-        $courseId = $courseRepository->findOneByLabel($data['course'])->getId();
+        $playlistRepository->assignPlaylist($this->getUser(), $course, $score);
 
-        $userId = $this->getUser()->getId();
-
-        $responseData = [
-            'courseId' => $courseId,
-            'userId' => $userId,
-            'scoreInPercent' => $scoreInPercent,
-        ];
-
-        return new JsonResponse($responseData);
+        return $this->json([]);
     }
 }
