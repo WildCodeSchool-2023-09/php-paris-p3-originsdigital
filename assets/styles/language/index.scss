@@ -1,7 +1,3 @@
-.flashMessageContainer {
-    color: red;
-}
-
 @media screen and (min-width: 769px) {
     #index-language {
         width: 79vw;
@@ -108,6 +104,7 @@
                         line-height: 1.5em;
                         text-transform: uppercase;
                         cursor: pointer;
+
                         &:hover,
                         &:focus {
                             animation-name: glitch;
@@ -190,6 +187,7 @@
                         white-space: no-wrap;
                         text-transform: uppercase;
                         cursor: pointer;
+
                         &:hover,
                         &:focus {
                             animation-name: glitch;

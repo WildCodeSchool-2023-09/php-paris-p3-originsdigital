@@ -28,10 +28,13 @@ class UploadVideoType extends AbstractType
                 'placeholder'   => '//Description_'
                 ]])
             ->add('thumbnailFile', VichFileType::class, [
-                'label'          => 'Image (.jpg ou .png)',
+                'label'          => false,
                 'required'       => false,
-                'allow_delete'   => true,
+                'allow_delete'   => false,
                 'download_uri'   => true,
+                'attr' => [
+                    'id' => 'thumbnailPreview',
+                ],
                 'constraints'    => [
                     new File([
                         'maxSize'       => '5M',
@@ -44,10 +47,13 @@ class UploadVideoType extends AbstractType
                 ],
             ])
             ->add('videoFile', VichFileType::class, [
-                'label'             => 'Video (.mp4)',
+                'label'             => false,
                 'required'          => false,
-                'allow_delete'      => true,
-                'download_uri'      => true,
+                'allow_delete'      => false,
+                'download_uri'      => false,
+                'attr' => [
+                    'id' => 'videoPreview',
+                ],
                 'constraints'       => [
                     new File([
                         'maxSize'   => '1024M',

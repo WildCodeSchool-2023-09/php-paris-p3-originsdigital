@@ -22,15 +22,17 @@
 
                 {{ form_row(form.username) }}
                 {{ form_row(form.email)}}
-                {{ form_row(form.lastname) }}
-                {{ form_row(form.firstname) }}
-                {{ form_row(form.phoneNumber) }}
-                {{ form_row(form.birthdate) }}
-                {{ form_row(form.houseNumber) }}
-                {{ form_row(form.streetName) }}
-                {{ form_row(form.city) }}
-                {{ form_row(form.country) }}
                 {{ form_row(form._token) }}
+                {% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
+                    {{ form_row(form.lastname) }}
+                    {{ form_row(form.firstname) }}
+                    {{ form_row(form.phoneNumber) }}
+                    {{ form_row(form.birthdate) }}
+                    {{ form_row(form.houseNumber) }}
+                    {{ form_row(form.streetName) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.country) }}
+                {% endif %}
 
             <button class="btn-glitch-fill">
                 <span class="text">//Valider</span>
