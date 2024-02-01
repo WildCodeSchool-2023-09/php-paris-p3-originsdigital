@@ -65,7 +65,7 @@
             height: 250px;
             padding-right:0.5rem;
             padding-left:0.5rem;
-            background-color: rgba(217, 217, 217, 0.70);
+            background-color: #043B59;
 
             .recto-index-card {
                 display: block;
@@ -81,6 +81,7 @@
                     font-size: 1.5rem;
                     font-weight: bold;
                     margin-bottom: 1rem;
+                    color: $text-color;
                 }
             }
             .verso-index-card {
@@ -91,6 +92,7 @@
                     font-weight: bold;
                     margin-bottom: 1rem;
                     margin-top: 8%;
+                    color: $text-color;
                 }
                 p{
                     margin-right: 10px;
@@ -98,6 +100,7 @@
                     line-height: 150%;
                     margin-bottom: 1.5rem;
                     margin-top: 8%;
+                    color: $text-color;
                 }
                 a{
                     border-radius: 3px;

@@ -15,6 +15,24 @@
         justify-content: space-between;
         margin-bottom: 1rem;
     }
+    .modal-content{
+        background-color: #043B59;
+        h1{
+            color: $text-color;
+        }
+        li{
+            color: $button-color;
+            a{
+                color: $button-color;
+                text-decoration: none;
+            }
+        }
+        .modal-footer{
+            a {
+                color: $button-color;
+            }
+        }
+    }
 }
 #video-player {
     display: flex;

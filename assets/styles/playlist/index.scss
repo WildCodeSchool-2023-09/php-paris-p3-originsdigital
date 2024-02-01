@@ -80,7 +80,7 @@
             border-radius: 5px;
             text-align: center;
             height: 250px;
-            background-color: rgba(217, 217, 217, 0.70);
+            background-color: #043B59;
 
             .recto-index-card {
                 display: block;
@@ -98,7 +98,7 @@
                     padding-right: 0.3rem;
                     padding-left: 0.3rem;
                     text-decoration: none;
-                    color: black;
+                    color: $text-color;
                 }
             }
             .verso-index-card {
@@ -110,12 +110,12 @@
                     padding-left: 0.3rem;
                     padding-top: 10%;
                     text-decoration: none;
-                    color: black;
+                    color: $text-color
                 }
                 p{
                     margin-top: 10%;
                     font-size: 1rem;
-                    color: black;
+                    color: $text-color;
                 }
                 a{
                     border-radius: 3px;
@@ -277,7 +277,7 @@
             border-radius: 5px;
             text-align: center;
             height: 250px;
-            background-color: rgba(217, 217, 217, 0.70);
+            background-color: #043B59;
 
             .recto-index-card {
                 display: block;
@@ -295,7 +295,7 @@
                     padding-right: 0.3rem;
                     padding-left: 0.3rem;
                     text-decoration: none;
-                    color: black;
+                    color: $text-color;
                 }
             }
             .verso-index-card {
@@ -307,13 +307,13 @@
                     padding-left: 0.3rem;
                     padding-top: 10%;
                     text-decoration: none;
-                    color: black;
+                    color: $text-color;
                 }
                 p{
                     margin-top: 10%;
                     font-size: 1rem;
                     text-decoration: none;
-                    color: black;
+                    color: $text-color
                 }
                 a{
                     border-radius: 3px;
