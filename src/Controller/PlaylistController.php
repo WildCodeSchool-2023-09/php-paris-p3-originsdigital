@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Video;
 use App\Entity\Playlist;
 use App\Form\PlaylistType;
-use App\Repository\PlaylistRepository;
 use App\Repository\VideoRepository;
+use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_PREMIUM', message: 'Seuls les membres premium ont accès à la fonctionnalité playlist')]
 #[Route('/playlist', name:'playlist_')]
@@ -36,17 +38,16 @@ class PlaylistController extends AbstractController
         $form = $this->createForm(PlaylistType::class, $playlist);
         $form->handleRequest($request);
 
-        $video = $videoRepository->findOneById($videoId);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $playlist->setCreatedBy($this->getUser());
-            if ($video) {
+            if ($videoId) {
+                $video = $videoRepository->findOneById($videoId);
                 $playlist->addVideo($video);
             }
             $entityManager->persist($playlist);
             $entityManager->flush();
 
-            if ($video) {
+            if ($videoId) {
                 return $this->redirectToRoute('video_show', [
                     'languageSlug' => $video->getLanguage()->getSlug(),
                     'videoSlug' => $video->getSlug()
@@ -97,5 +98,41 @@ class PlaylistController extends AbstractController
         }
 
         return $this->redirectToRoute('playlist_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/add/{playlistId}/{videoId}', name: 'add_video')]
+    public function addInPlaylist(
+        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
+        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
+        EntityManagerInterface $entityManager,
+    ): Response {
+
+        $playlist->addVideo($video);
+
+        $entityManager->persist($playlist);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('video_show', [
+            'languageSlug' => $video->getLanguage()->getSlug(),
+            'videoSlug' => $video->getSlug()
+        ]);
+    }
+
+    #[Route('/remove/{playlistId}/{videoId}', name: 'remove_video')]
+    public function removeFromPlaylist(
+        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
+        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
+        EntityManagerInterface $entityManager,
+    ): Response {
+
+        $playlist->removeVideo($video);
+
+        $entityManager->persist($playlist);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('video_show', [
+            'languageSlug' => $video->getLanguage()->getSlug(),
+            'videoSlug' => $video->getSlug()
+        ]);
     }
 }

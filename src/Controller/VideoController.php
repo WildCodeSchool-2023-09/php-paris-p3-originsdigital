@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Video;
-use App\Entity\Playlist;
 use App\Form\UploadVideoType;
 use App\Repository\VideoRepository;
 use App\Repository\LanguageRepository;
@@ -13,7 +12,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -103,41 +101,5 @@ class VideoController extends AbstractController
                 'categoryLabel' => $categoryLabel,
                 'languageSlug' => $languageSlug,
             ]);
-    }
-
-    #[Route('/add/{playlistId}/{videoId}', name: 'add_playlist')]
-    public function addInPlaylist(
-        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
-        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
-        EntityManagerInterface $entityManager,
-    ): Response {
-
-        $playlist->addVideo($video);
-
-        $entityManager->persist($playlist);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('video_show', [
-            'languageSlug' => $video->getLanguage()->getSlug(),
-            'videoSlug' => $video->getSlug()
-        ]);
-    }
-
-    #[Route('/remove/{playlistId}/{videoId}', name: 'remove_playlist')]
-    public function removeFromPlaylist(
-        #[MapEntity(mapping: ['playlistId' => 'id'])] Playlist $playlist,
-        #[MapEntity(mapping: ['videoId' => 'id'])] Video $video,
-        EntityManagerInterface $entityManager,
-    ): Response {
-
-        $playlist->removeVideo($video);
-
-        $entityManager->persist($playlist);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('video_show', [
-            'languageSlug' => $video->getLanguage()->getSlug(),
-            'videoSlug' => $video->getSlug()
-        ]);
     }
 }
