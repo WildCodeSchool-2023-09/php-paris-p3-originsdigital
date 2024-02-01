@@ -1,0 +1,140 @@
+$navbar-main-color: #030300;
+$button-color : #00FFFD;
+$text-color: #DEDEDE;
+$js-color: #F7DF1E;
+$php-color: #6280B6;
+$html-color: #E44D26;
+$css-color: #1572B6;
+
+$main-font: 'Quantico';
+
+$background-image: url('/assets/images/background-image.jpg');
+$background-image-mobile: url('/assets/images/background-image-mobile.jpg');
+
+@mixin card ($x, $y, $o, $color) {
+    width: $x;
+    height: $y;
+    background-color: $color;
+    border-radius: 5px;
+    opacity: $o;
+}
+
+html {
+    font-family: $main-font;
+}
+
+@media screen and (min-width: 769px) {
+
+    body {
+        background-image: $background-image;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position-x: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: $background-image-mobile;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes shrink {
+    100% {
+        width: 10%;
+    }
+}
+
+.noticeFlash {
+    background-color: #00ef02;
+    box-shadow: 0 2px 5px #00ef02;
+}
+
+.warningFlash {
+    background-color: #ef0726;
+    box-shadow: 0 2px 5px #ef0726;
+}
+
+[class*="btn-glitch-"] {
+
+    .text,
+    .text-decoration,
+    .decoration {
+        display: inline-block;
+        color: $button-color;
+    }
+
+    .decoration {
+        display: inline-block;
+    }
+
+    &:hover,
+    &:focus {
+        animation-name: glitch;
+        animation-duration: 0.5s;
+        background-color: black;
+        color: $button-color;
+        border: 1px solid $button-color;
+
+        .text-decoration {
+            animation-name: blink;
+            animation-duration: 0.3s;
+            animation-iteration-count: infinite;
+            color: $button-color;
+        }
+
+        .decoration {
+            animation-name: blink;
+            animation-duration: 0.3s;
+            animation-iteration-count: infinite;
+        }
+
+        :before {
+            content: " ";
+            width: 15px;
+            position: absolute;
+            right: 25%;
+            bottom: 3px;
+            transform: rotate(35deg)
+        }
+
+        :after {
+            animation-name: shrink;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            content: " ";
+            width: 75%;
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+        }
+    }
+
+    &:active {
+        background: none;
+        color: $button-color;
+
+        .text-decoration {
+            animation-name: none;
+            color: $button-color;
+        }
+
+        .decoration {
+            animation-name: none;
+        }
+
+        :before,
+        :after {
+            display: none;
+        }
+    }
+}

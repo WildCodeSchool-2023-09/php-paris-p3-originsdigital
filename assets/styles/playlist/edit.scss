@@ -1,0 +1,162 @@
+@media screen and (min-width: 769px) {
+    #playlist-edit{
+        margin-left: 250px;
+        font-family: $main-font;
+        h1{
+            color: $text-color;
+            font-size: 4rem;
+            text-align: center;
+            padding-top: 7vh;
+            padding-bottom: 5vh;
+        }
+        #playlist_label{
+            display: flex;
+            justify-content: center;
+            height: 10vh;
+            min-height: 50px;
+            width: 30vw;
+            min-width: 160px;
+            border-color: transparent;
+            background-color: transparent;
+            background-image: url("/assets/images/form-fields.svg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            margin-top: 2vw;
+            margin-bottom: 5vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #playlist_label::placeholder{
+            color: #FFF;
+            font-family: $main-font;
+            font-size: 2vw;
+            padding-left: 1vw;
+            padding-right: 6vw;
+        }
+        #playlist_label{
+            font-family: $main-font;
+            color: #FFF;
+            font-size: 2vw;
+            padding-left: 1vw;
+            padding-right: 6vw;
+        }
+        form{
+            margin-bottom: 5rem;
+        }
+        button,a{
+            margin-top: 3rem;
+            text-decoration: none;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .back-to-index{
+            color: $button-color;
+            display: flex;
+            margin-right: 0;
+            margin-top:0;
+            line-height: 2.5rem;
+            justify-content: end;
+            padding-right: 2rem;
+        }
+        [class*="btn-glitch-"] {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Quantico", monospace;
+            border: 1px solid black;
+            color: $button-color;
+            background-color: $navbar-main-color;
+            padding: 5px 7px;
+            width: 350px;
+            line-height: 1.5em;
+            text-transform: uppercase;
+            cursor: pointer;
+            &:hover, &:focus {
+                animation-name: glitch;
+                animation-duration: 0.5s;
+                background-color: black;
+                color:$button-color;
+                border: 1px solid $button-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #playlist-edit{
+        font-family: $main-font;
+        h1{
+            color: $text-color;
+            font-size: 2.8rem;
+            text-align: center;
+            padding-top: 7vh;
+            padding-bottom: 5vh;
+        }
+        #playlist_label{
+            display: flex;
+            justify-content: center;
+            height: 10vh;
+            min-height: 50px;
+            width: 80vw;
+            min-width: 160px;
+            border-color: transparent;
+            background-color: transparent;
+            background-image: url("/assets/images/form-fields.svg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            margin-top: 2vw;
+            margin-bottom: 2vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #playlist_label{
+            font-family: $main-font;
+            color: #FFF;
+            font-size: 6vw;
+            padding-left: 4vw;
+            padding-right: 6vw;
+        }
+        form{
+            margin-bottom: 5rem;
+        }
+        button,a{
+            margin-top: 3rem;
+            text-decoration: none;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .back-to-index{
+            color: $text-color;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 350px;
+            font-size: 2.5rem;
+        }
+        [class*="btn-glitch-"] {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Quantico", monospace;
+            border: 1px solid black;
+            color: $button-color;
+            background-color: $navbar-main-color;
+            padding: 5px 7px;
+            width: 200px;
+            line-height: 1.5em;
+            text-transform: uppercase;
+            cursor: pointer;
+            &:hover, &:focus {
+                animation-name: glitch;
+                animation-duration: 0.5s;
+                background-color: black;
+                color:$button-color;
+                border: 1px solid $button-color;
+            }
+        }
+    }
+}

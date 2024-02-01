@@ -10,7 +10,7 @@
     {% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
         <a class="link" href="{{ path('app_quiz') }}"><img class="logo-link" src= "{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span></a>
         <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span></a>
-        <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Ma playlist</span></a>
+	    <a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Mes playlists</span>
     {% endif %}
     {% if app.user.roles[0] is same as("ROLE_ADMIN") %}
         <a class="link" href="{{ path('app_admin') }}"><img class="logo-link" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span></a>

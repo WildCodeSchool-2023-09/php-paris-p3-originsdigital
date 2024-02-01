@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<div id="components">
+	<div id="video-player-components">
 		<div id="video-player">
 			<video id="video" controls>
 				<source src="/uploads/videos/{{ video.video }}" type="video/mp4">
@@ -24,7 +24,7 @@
 								{% for playlist in playlistsIncVideo %}
 									<li class="playlistsIncVideo">
 										<a href="{{ path('playlist_show', {'id': playlist.id}) }}">{{ playlist.label }}</a>
-										<a href="{{ path('video_remove_playlist', {'playlistId': playlist.id, 'videoId': video.id}) }}">Supprimer de cette playlist</a>
+										<a href="{{ path('playlist_remove_video', {'playlistId': playlist.id, 'videoId': video.id}) }}">Supprimer de cette playlist</a>
 									</li>
 								{% endfor %}
 							</ul>
@@ -36,13 +36,13 @@
 							<ul>
 								{% for playlist in playlistsExcVideo %}
 									<li>
-										<a href="{{ path('video_add_playlist', {'playlistId': playlist.id, 'videoId': video.id}) }}">{{ playlist.label }}</a>
+										<a href="{{ path('playlist_add_video', {'playlistId': playlist.id, 'videoId': video.id}) }}">{{ playlist.label }}</a>
 									</li>
 								{% endfor %}
 							</ul>
 						</div>
 						<div class="modal-footer">
-							<a href="{{ path('playlist_new', {'videoId': video.id}) }}" type="button" class="btn btn-primary">Créer une nouvelle playlist</a>
+							<a href="{{ path('playlist_new', {'videoId': video.id}) }}" type="button" class="btn">Créer une nouvelle playlist</a>
 						</div>
 					</div>
 				</div>

@@ -2,18 +2,19 @@
 
 namespace App\Entity;
 
+use App\Entity\Playlist;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(
@@ -70,11 +71,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     )]
     private ?File $profilepictureFile = null;
 
+    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Playlist::class)]
+    private Collection $playlists;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?UserPlaylist $program = null;
+
     #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
     private Collection $courses;
 
     public function __construct()
     {
+        $this->playlists = new ArrayCollection();
         $this->courses = new ArrayCollection();
     }
     #[ORM\Column(length: 150, nullable: true)]
@@ -160,9 +168,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function eraseCredentials(): void
     {
         $this->password = null;
@@ -212,19 +217,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     }
 
     /**
+     * @return Collection<int, Playlist>
+     */
+    public function getPlaylists(): Collection
+    {
+        return $this->playlists;
+    }
+
+    public function addPlaylist(Playlist $playlist): void
+    {
+        if (!$this->playlists->contains($playlist)) {
+            $this->playlists->add($playlist);
+            $playlist->setCreatedBy($this);
+        }
+    }
+    /*
      * @return Collection<int, Course>
      */
     public function getCourses(): Collection
     {
         return $this->courses;
-    }
-
-    public function addCourse(Course $course): void
-    {
-        if (!$this->courses->contains($course)) {
-            $this->courses->add($course);
-            $course->addUser($this);
-        }
     }
 
     public function getLastname(): ?string
@@ -239,6 +251,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
+    public function removePlaylist(Playlist $playlist): void
+    {
+        if ($this->playlists->removeElement($playlist)) {
+            // set the owning side to null (unless already changed)
+            if ($playlist->getCreatedBy() === $this) {
+                $playlist->setCreatedBy(null);
+            }
+        }
+    }
     public function removeCourse(Course $course): void
     {
         if ($this->courses->removeElement($course)) {
@@ -258,6 +279,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
+    public function getProgram(): ?UserPlaylist
+    {
+        return $this->program;
+    }
+
+    public function setProgram(?UserPlaylist $program): void
+    {
+        // unset the owning side of the relation if necessary
+        if ($program === null && $this->program !== null) {
+            $this->program->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($program !== null && $program->getUser() !== $this) {
+            $program->setUser($this);
+        }
+
+        $this->program = $program;
+    }
     public function getBirthdate(): ?\DateTimeImmutable
     {
         return $this->birthdate;

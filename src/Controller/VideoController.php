@@ -6,6 +6,7 @@ use App\Entity\Video;
 use App\Form\UploadVideoType;
 use App\Repository\VideoRepository;
 use App\Repository\LanguageRepository;
+use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +26,7 @@ class VideoController extends AbstractController
         EntityManagerInterface $entityManager,
         SluggerInterface $slugger
     ): Response {
+
         $video = new Video();
         $form = $this->createForm(UploadVideoType::class, $video);
         $form->handleRequest($request);
@@ -49,11 +51,18 @@ class VideoController extends AbstractController
     public function show(
         string $languageSlug,
         string $videoSlug,
+        PlaylistRepository $playlistRepository,
         LanguageRepository $languageRepository,
         VideoRepository $videoRepository,
     ): Response {
+
         $language = $languageRepository->findOneBy(['slug' => $languageSlug]);
+
         $video = $videoRepository->findOneBy(['slug' => $videoSlug, 'language' => $language]);
+
+        $playlistsIncVideo = $playlistRepository->playlistsIncVideo($video->getId(), $this->getUser()->getId());
+
+        $playlistsExcVideo = $playlistRepository->playlistsExcVideo($video->getId(), $this->getUser()->getId());
 
         $recommandedVideos = $videoRepository->recommandedVideos(
             $video->getId(),
@@ -70,6 +79,8 @@ class VideoController extends AbstractController
         return $this->render('video/player.html.twig', [
             'video' => $video,
             'recommandedVideos' => $recommandedVideos,
+            'playlistsIncVideo' => $playlistsIncVideo,
+            'playlistsExcVideo' => $playlistsExcVideo,
         ]);
     }
 
