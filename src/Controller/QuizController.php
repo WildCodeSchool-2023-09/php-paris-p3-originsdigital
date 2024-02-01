@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\CourseRepository;
 use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,10 +63,21 @@ class QuizController extends AbstractController
         $course = $questionRepository->findByCourse($question->getCourse());
         $userId = $this->getUser()->getId();
 
-        return $this->redirectToRoute('assign_playlist', [
-            'userId' => $userId,
+        $responseData = [
             'course' => $course,
-            'percentage' => $scoreInPercent,
-        ]);
+            'userId' => $userId,
+            'scoreInPercent' => $scoreInPercent,
+        ];
+
+        return new JsonResponse($responseData);
+        // appelle la fonction de zinedine pour générrer la playlist
+        // retourne la playlist suivant les données
+        // la playlist je la retourne dans la fin de la fonction que je peux remettre dans le then du fetch
+
+        // return $this->redirectToRoute('assign_playlist', [
+        //     'userId' => $userId,
+        //     'course' => $course,
+        //     'percentage' => $scoreInPercent,
+        // ]);
     }
 }

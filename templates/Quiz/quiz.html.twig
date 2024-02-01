@@ -9,20 +9,6 @@
 <form class="quizComponent" id="{{ course.label }}" name="quizForm" action="{{ path('app_quiz') }}" method="POST">
     {% for question in course.questions %}
         <div id="{{ question.id }}" class="quizField">
-            <div id="progressBar">
-                Question : 
-                {% if course.id == 1 %}
-                    {{ question.id }}
-                {% elseif course.id == 3 %}
-                    {{ question.id - 8 }}
-                {% elseif course.id == 4 %}
-                    {{ question.id - 17 }}
-                {% elseif course.id == 5 %}
-                    {{ question.id - 27 }}
-                {% else %}
-                    {{ question.id - 1 }}
-                {% endif %}
-            </div>
             <ul>
                 <li class="questionList" id="{{ question.questionNumber }}">
                     {{ question.label }}

@@ -13,20 +13,6 @@
     justify-content: center;
     flex-direction: column;
 
-    #progressBar {
-        display: flex;
-        justify-content: center;
-        background-color: rgba(217, 217, 217, 0.30);
-        border: 1px solid #030300;
-        border-radius: 5px;
-        width: 57vw;
-        height: 2vw;
-        margin-top: 6vw;
-        margin-bottom: 4vw;
-        align-items: center;
-        padding: 1.1rem;
-    }
-
     .quizField {
         display: flex;
         flex-wrap: wrap;
@@ -47,6 +33,8 @@
     .questionList {
         color: $text-color;
         text-align: center;
+        margin-top: 5vw;
+        margin-bottom: 2vw;
     }
 
     .answersContainer {
@@ -192,13 +180,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        #progressBar {
-            width: 100%;
-            height: 2.5vh;
-            margin-left: 2rem;
-            margin-right: 2rem;
-        }
 
         .quizField {
             width: 90%;
