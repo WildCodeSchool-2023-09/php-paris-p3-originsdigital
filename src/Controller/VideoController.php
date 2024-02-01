@@ -92,14 +92,12 @@ class VideoController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-
         $videos = $videoRepository->findBy(['category' => $categoryLabel]);
         $videos = $paginator->paginate(
             $videos,
             $request->query->getInt('page', 1),
             3,
         );
-
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,
                 'categoryLabel' => $categoryLabel,

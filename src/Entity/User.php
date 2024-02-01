@@ -3,12 +3,12 @@
 namespace App\Entity;
 
 use App\Entity\Playlist;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -77,11 +77,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?UserPlaylist $program = null;
 
+    #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
+    private Collection $courses;
+
     public function __construct()
     {
         $this->playlists = new ArrayCollection();
+        $this->courses = new ArrayCollection();
     }
-
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $lastname = null;
 
@@ -165,9 +168,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function eraseCredentials(): void
     {
         $this->password = null;
@@ -231,6 +231,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
             $playlist->setCreatedBy($this);
         }
     }
+    /*
+     * @return Collection<int, Course>
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
 
     public function getLastname(): ?string
     {
@@ -251,6 +258,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
             if ($playlist->getCreatedBy() === $this) {
                 $playlist->setCreatedBy(null);
             }
+        }
+    }
+    public function removeCourse(Course $course): void
+    {
+        if ($this->courses->removeElement($course)) {
+            $course->removeUser($this);
         }
     }
 

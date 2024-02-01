@@ -82,7 +82,8 @@ body {
             margin-bottom: 2vh;
         }
 
-        #subscription_birthdate {
+        #subscription_birthdate,
+        #user_edit_birthdate {
 
             display: inline-flex;
             justify-content: space-between;
@@ -342,4 +343,17 @@ body {
             }
         }
     }
+}
+
+#btn-delete-account,
+#btn-logout {
+    width: fit-content;
+    height: fit-content;
+}
+
+#securityBtnContainer {
+    display: inline-flex;
+    width: 69%;
+    justify-content: space-around;
+    align-items: center;
 }

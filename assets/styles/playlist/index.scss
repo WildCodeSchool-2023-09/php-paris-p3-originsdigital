@@ -1,15 +1,3 @@
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-@keyframes shrink {
-    100% {
-        width: 10%;
-    }
-}
-
 @media screen and (min-width: 769px) {
     #playlist-index{
         margin-left: 250px;
@@ -123,6 +111,7 @@
                     text-decoration: none;
                     font-size: 1rem;
                     margin-top: 10%;
+                    color: $button-color;
                 }
                 [class*="btn-glitch-"] {
                     display: inline-block;
@@ -136,15 +125,11 @@
                     white-space: no-wrap;
                     text-transform: uppercase;
                     cursor: pointer;
-
                     .text,
-                    .decoration,
-                    .text-decoration {
-                        display: inline-block;
-                        color: $button-color;
-                    }
+                    .text-decoration,
                     .decoration {
                         display: inline-block;
+                        color: $button-color;
                     }
                     &:hover, &:focus {
                         animation-name: glitch;
@@ -152,59 +137,12 @@
                         background-color: black;
                         color:$button-color;
                         border: 1px solid $button-color;
-
-                        .text-decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                            color: $button-color;
-                        }
-                        .decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                        }
-                        :before {
-                            content: " ";
-                            width: 15px;
-                            position: absolute;
-                            right: 25%;
-                            bottom: 3px;
-                            transform: rotate(35deg)
-                        }
-                        :after {
-                            animation-name: shrink;
-                            animation-duration:.5s;
-                            animation-iteration-count: 1;
-                            animation-fill-mode : forwards;
-                            content: " ";
-                            width: 75%;
-                            position: absolute;
-                            left: 0;
-                            bottom: 5px;
-                        }
-                    }
-                    &:active {
-                        background: none;
-                        color: $button-color;
-
-                        .text-decoration {
-                            animation-name: none;
-                            color: $button-color;
-                        }
-                        .decoration {
-                            animation-name: none;
-                        }
-                        :before, :after {
-                            display: none;
-                        }
                     }
                 }
             }
         }
     }
 }
-
 
 @media screen and (max-width: 768px) {
     #playlist-index{
@@ -334,15 +272,11 @@
                     white-space: no-wrap;
                     text-transform: uppercase;
                     cursor: pointer;
-
                     .text,
-                    .decoration,
-                    .text-decoration {
-                        display: inline-block;
-                        color: $button-color;
-                    }
+                    .text-decoration,
                     .decoration {
                         display: inline-block;
+                        color: $button-color;
                     }
                     &:hover, &:focus {
                         animation-name: glitch;
@@ -350,52 +284,6 @@
                         background-color: black;
                         color:$button-color;
                         border: 1px solid $button-color;
-
-                        .text-decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                            color: $button-color;
-                        }
-                        .decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                        }
-                        :before {
-                            content: " ";
-                            width: 15px;
-                            position: absolute;
-                            right: 25%;
-                            bottom: 3px;
-                            transform: rotate(35deg)
-                        }
-                        :after {
-                            animation-name: shrink;
-                            animation-duration:.5s;
-                            animation-iteration-count: 1;
-                            animation-fill-mode : forwards;
-                            content: " ";
-                            width: 75%;
-                            position: absolute;
-                            left: 0;
-                            bottom: 5px;
-                        }
-                    }
-                    &:active {
-                        background: none;
-                        color: $button-color;
-
-                        .text-decoration {
-                            animation-name: none;
-                            color: $button-color;
-                        }
-                        .decoration {
-                            animation-name: none;
-                        }
-                        :before, :after {
-                            display: none;
-                        }
                     }
                 }
             }

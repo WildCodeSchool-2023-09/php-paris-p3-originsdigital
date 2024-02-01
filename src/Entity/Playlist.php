@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PlaylistRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PlaylistRepository::class)]
 class Playlist
@@ -16,6 +17,11 @@ class Playlist
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom de la playlist : {{ value }} est trop long, il ne peut pas dépasser {{ limit }} caractères',
+    )]
+    #[Assert\NotBlank(message: 'Un nom de playlist est obligatoire')]
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
