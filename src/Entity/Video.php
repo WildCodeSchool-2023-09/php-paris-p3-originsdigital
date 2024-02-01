@@ -12,11 +12,17 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Video
 {
+    public const CATEGORY_LESSON = 'Cours';
+
+    public const CATEGORY_TUTORIEL = 'Tutoriel';
+
+    public const CATEGORY_LIVECODING = 'LiveCoding';
+
+    public const CATEGORIES = [self::CATEGORY_LESSON, self::CATEGORY_TUTORIEL, self::CATEGORY_LIVECODING];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-
-
     private ?int $id = null;
 
     #[ORM\Column(length: 500)]
@@ -37,10 +43,13 @@ class Video
 
     #[ORM\ManyToOne(inversedBy: 'videos')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private ?Language $language = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
 
     public function getId(): ?int
     {
@@ -116,14 +125,14 @@ class Video
         return $this->thumbnailFile;
     }
 
-    public function getCategory(): ?Category
+    public function getLanguage(): ?Language
     {
-        return $this->category;
+        return $this->language;
     }
 
-    public function setCategory(?Category $category): static
+    public function setLanguage(?Language $language): static
     {
-        $this->category = $category;
+        $this->language = $language;
 
         return $this;
     }
@@ -136,6 +145,18 @@ class Video
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

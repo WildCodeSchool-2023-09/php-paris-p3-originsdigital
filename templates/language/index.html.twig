@@ -6,6 +6,13 @@
 {% endblock %}
 
 {% block body %}
+
+    {% for notice in app.flashes('notice') %}
+        <div class="flashMessageContainer">
+            {{ notice }}
+        </div>
+    {% endfor %}
+
 	<div id="index-language">
 		<h1>//LANGAGES_</h1>
 		<div id="index-language-cards">
@@ -18,7 +25,7 @@
 					<div class="verso-index-card">
 						<h2>//{{language.label}}_</h2>
 						<p>{{language.description}}</p>
-						<a class="btn-glitch-fill" href="{{ path("category_index", { slug: language.slug })}}">
+						<a class="btn-glitch-fill" href="{{ path("language_category_index", { slug: language.slug })}}">
 							<span class="text">//Catégories</span>
 							<span class="text-decoration">_</span>
 							<span class="decoration">&rArr;</span>

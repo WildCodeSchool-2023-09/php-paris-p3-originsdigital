@@ -3,7 +3,7 @@
 {% block title %}
 	{{ parent() }}
 	- Catégories
-	{{slug}}
+	{{ language.slug }}
 {% endblock %}
 
 {% block body %}
@@ -12,13 +12,13 @@
 		<div id="index-category-cards">
 			{% for category in categories %}
 				<div class="category-carousel">
-					<h2>{{category.label}}</h2>
-					<section class="splide" id="{{category.label}}-slider" aria-label="Splide Basic HTML Example">
+					<h2>{{ category }}</h2>
+					<section class="splide" id="{{category}}-slider">
 						<div class="splide__track">
 							<ul class="splide__list">
-								{% for video in videos[category.label] %}
+								{% for video in videos|filter(video => video.category == category) %}
 									<li class="splide__slide">
-										<div class="{{slug}}-card category-card index-card">
+										<div class="{{language.slug}}-card category-card index-card">
 											<div class="recto-index-card">
 												<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
 												<h3>{{video.title}}</h3>
@@ -26,7 +26,7 @@
 											<div class="verso-index-card">
 												<h3>{{video.title}}</h3>
 												<p>{{video.description}}</p>
-												<a class="btn-glitch-fill" href="{{ path("video_show", { 'slug': video.slug } )}}">
+												<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
 													<span class="text">//Vidéo</span>
 													<span class="text-decoration">_</span>
 													<span class="decoration">&rArr;</span>
@@ -38,8 +38,8 @@
 							</ul>
 						</div>
 					</section>
-					<a class="all-videos" href="{{ path("video_show_by_category", { 'categoryLabel': category.label, 'languageSlug': slug })}}">Toutes les vidéos</a>
-					<a class="all-videos-mobile btn-glitch-fill" href="{{ path("video_show_by_category", { 'categoryLabel': category.label, 'languageSlug': slug })}}">
+					<a class="all-videos" href="{{ path("video_show_by_category", { 'categoryLabel': category, 'languageSlug': language.slug })}}">Toutes les vidéos</a>
+					<a class="all-videos-mobile btn-glitch-fill" href="{{ path("video_show_by_category", { 'categoryLabel': category, 'languageSlug': language.slug })}}">
 						<span class="text">//Vidéos</span>
 						<span class="text-decoration">_</span>
 						<span class="decoration">&rArr;</span>
