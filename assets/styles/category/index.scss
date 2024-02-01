@@ -1,15 +1,3 @@
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-@keyframes shrink {
-    100% {
-        width: 10%;
-    }
-}
-
 @media screen and (min-width: 769px) {
     #index-category {
         width: 81vw;
@@ -26,17 +14,16 @@
             margin-left: 5vw;
             margin-right: 5vw;
             height: 71vw;
-
             .splide {
                 margin-left: 0;
 
                 .splide__arrow--prev{
                     left: -4.5%;
-                    top: 35%;
+                    top: 45%;
                 }
                 .splide__arrow--next{
                     right: -4.5%;
-                    top: 35%;
+                    top: 45%;
                 }
             }
             h2{
@@ -126,15 +113,11 @@
                         white-space: no-wrap;
                         text-transform: uppercase;
                         cursor: pointer;
-
                         .text,
                         .decoration,
                         .text-decoration {
                             display: inline-block;
                             color: $button-color;
-                        }
-                        .decoration {
-                            display: inline-block;
                         }
                         &:hover, &:focus {
                             animation-name: glitch;
@@ -142,52 +125,6 @@
                             background-color: black;
                             color:$button-color;
                             border: 1px solid $button-color;
-
-                            .text-decoration {
-                                animation-name: blink;
-                                animation-duration: 0.3s;
-                                animation-iteration-count: infinite;
-                                color: $button-color;
-                            }
-                            .decoration {
-                                animation-name: blink;
-                                animation-duration: 0.3s;
-                                animation-iteration-count: infinite;
-                            }
-                            :before {
-                                content: " ";
-                                width: 15px;
-                                position: absolute;
-                                right: 25%;
-                                bottom: 3px;
-                                transform: rotate(35deg)
-                            }
-                            :after {
-                                animation-name: shrink;
-                                animation-duration:.5s;
-                                animation-iteration-count: 1;
-                                animation-fill-mode : forwards;
-                                content: " ";
-                                width: 75%;
-                                position: absolute;
-                                left: 0;
-                                bottom: 5px;
-                            }
-                        }
-                        &:active {
-                            background: none;
-                            color: $button-color;
-
-                            .text-decoration {
-                                animation-name: none;
-                                color: $button-color;
-                            }
-                            .decoration {
-                                animation-name: none;
-                            }
-                            :before, :after {
-                                display: none;
-                            }
                         }
                     }
                 }
@@ -266,60 +203,12 @@
                         display: inline-block;
                         color: $button-color;
                     }
-                    .decoration {
-                        display: inline-block;
-                    }
                     :hover, &:focus {
                         animation-name: glitch;
                         animation-duration: 0.5s;
                         background-color: black;
                         color:$button-color;
                         border: 1px solid $button-color;
-
-                        .text-decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                        }
-                        .decoration {
-                            animation-name: blink;
-                            animation-duration: 0.3s;
-                            animation-iteration-count: infinite;
-                        }
-                        :before {
-                            content: " ";
-                            width: 15px;
-                            border: 1px solid black;
-                            position: absolute;
-                            right: 25%;
-                            bottom: 3px;
-                            transform: rotate(35deg)
-                        }
-                        :after {
-                            animation-name: shrink;
-                            animation-duration:.5s;
-                            animation-iteration-count: 1;
-                            animation-fill-mode : forwards;
-                            content: " ";
-                            width: 75%;
-                            border: 1px solid black;
-                            position: absolute;
-                            left: 0;
-                            bottom: 5px;
-                        }
-                    }
-                    &:active {
-                        background: none;
-                        color:$button-color;
-                        .text-decoration {
-                            animation-name: none;
-                        }
-                        .decoration {
-                            animation-name: none;
-                        }
-                        :before, :after {
-                            display: none;
-                        }
                     }
                 }
             }
