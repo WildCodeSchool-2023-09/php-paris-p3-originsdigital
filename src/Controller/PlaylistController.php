@@ -24,6 +24,7 @@ class PlaylistController extends AbstractController
     {
         return $this->render('playlist/index.html.twig', [
             'playlists' => $playlistRepository->findBy(['createdBy' => $this->getUser()]),
+            'programs' => $this->getUser()->getPrograms(),
         ]);
     }
 
