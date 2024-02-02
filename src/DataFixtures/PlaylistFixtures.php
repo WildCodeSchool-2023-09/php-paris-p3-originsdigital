@@ -40,8 +40,9 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
                           ->addVideo($this->getReference('Docker : Premier Pas & Installation'))
                           ->addVideo($this->getReference('Docker : manipuler les conteneurs'))
                           ->addVideo($this->getReference('Déployer du PHP avec Ansible (1/2) : Presentation'))
-                          ->addVideo($this->getReference('Déployer du PHP avec Ansible (2/2) :
-                          Déployer le code avec Ansistrano'));
+                          ->addVideo($this->getReference(
+                              'Déployer du PHP avec Ansible (2/2) : Déployer le code avec Ansistrano'
+                          ));
 
         $objectManager->persist($playlistPHPExpert);
 
