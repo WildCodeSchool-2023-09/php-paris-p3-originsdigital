@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz{% endblock %}
+
+{% block body %}
+<h1 id="rulesTitle">//Instructions du Quiz_</h1>
+<div class="rulesComponent">
+    <div class="rulesField">
+        <div id="rulesList">
+            <p class="rulesDescription">Bienvenue sur notre quiz éducatif! Avant de commencer, veuillez lire attentivement cette page :</p>
+            <p class="rulesDescription">Faites notre quiz pour évaluer votre niveau et accéder à un programme personnalisé.</p>
+            <p class="rulesDescription">Vous ne pouvez soumettre vos réponses qu'une seule fois, alors assurez-vous de bien les vérifier avant de continuer.</p>
+            <p class="rulesDescription">Prêt à commencer ? Cliquez sur le bouton ci-dessous pour lancer le quiz !</p>
+
+            <div class ="buttonContainer">
+                <button class="btn-glitch-fill">
+                    <a href="{{ path('app_quiz') }}">
+                    <span class="text">//Commencer</span>
+                    <span class="text-decoration">_</span>
+                    <span class="decoration">&rArr;</span></a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

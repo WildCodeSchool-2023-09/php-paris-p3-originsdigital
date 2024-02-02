@@ -206,11 +206,11 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             'question_8' => [
                 'answer_1' => [
                     'label' => 'Créatif',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
                 'answer_2' => [
                     'label' => 'Logique',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
             ],
         ],

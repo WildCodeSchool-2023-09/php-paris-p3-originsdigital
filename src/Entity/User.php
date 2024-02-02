@@ -74,9 +74,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Playlist::class)]
     private Collection $playlists;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?UserPlaylist $program = null;
-
     #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
     private Collection $courses;
 
@@ -84,6 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     {
         $this->playlists = new ArrayCollection();
         $this->courses = new ArrayCollection();
+        $this->programs = new ArrayCollection();
     }
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $lastname = null;
@@ -108,6 +106,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $phoneNumber = null;
+
+    #[ORM\ManyToMany(targetEntity: Playlist::class)]
+    private Collection $programs;
 
     public function getId(): ?int
     {
@@ -279,25 +280,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         return $this;
     }
 
-    public function getProgram(): ?UserPlaylist
-    {
-        return $this->program;
-    }
-
-    public function setProgram(?UserPlaylist $program): void
-    {
-        // unset the owning side of the relation if necessary
-        if ($program === null && $this->program !== null) {
-            $this->program->setUser(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($program !== null && $program->getUser() !== $this) {
-            $program->setUser($this);
-        }
-
-        $this->program = $program;
-    }
     public function getBirthdate(): ?\DateTimeImmutable
     {
         return $this->birthdate;
@@ -366,6 +348,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     public function setPhoneNumber(?string $phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Playlist>
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->programs;
+    }
+
+    public function addProgram(Playlist $program): static
+    {
+        if (!$this->programs->contains($program)) {
+            $this->programs->add($program);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(Playlist $program): static
+    {
+        $this->programs->removeElement($program);
 
         return $this;
     }

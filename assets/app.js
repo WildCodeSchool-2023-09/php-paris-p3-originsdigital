@@ -14,6 +14,5 @@ import './cardHover';
 import './carousel';
 import './uploadVideo';
 import './picturePreview';
-import './playlistModal';
-import './selectedAnswer';
 import './quizCarousel';
+import './playlistModal';

@@ -1,4 +1,4 @@
-#quizTitle {
+#rulesTitle {
     color: $text-color;
     text-align: center;
     margin-left: 17%;
@@ -7,81 +7,44 @@
     margin-bottom: 3vh;
 }
 
-.quizComponent {
+.rulesComponent {
     margin-left: 250px;
     display: flex;
     justify-content: center;
     flex-direction: column;
 
-    .quizField {
+    .rulesField {
         display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: center;
-        background-color: rgba(217, 217, 217, 0.30);
-        border: 1px solid #030300;
-        border-radius: 5px;
-        width: 60vw;
+        width: 69%;
         height: fit-content;
-        font-size: 2vw;
-        margin-top: 4.5%;
-        margin-bottom: 4.5%;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        background-color: rgb(96 96 96 / 66%);
+        border: 1px solid #030300;
+        border-radius: 5px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .questionList {
+    .rulesDescription {
+        font-size: 2vw;
+        padding: 1vw;
+    }
+
+    #rulesList {
         color: $text-color;
         text-align: center;
-        margin-top: 5vw;
-        margin-bottom: 2vw;
     }
 
-    .answersContainer {
-        display: inline-flex;
-        width: 100%;
-        justify-content: space-around;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .buttonContainer {
-        width: 100%;
-    }
-
-    .answersField {
-        background-image: url('/assets/images/answer.svg');
-        background-repeat: no-repeat;
-        color: $text-color;
-        font-size: 1.3vw;
-        margin-top: 3vw;
-        height: 6vw;
-        width: 29vw;
-        background-size: 29vw;
-        padding: 0 2vw 0 1vw;
-        text-align: center;
+    .rulesTitles {
+        font-size: 3.4vw;
         display: flex;
         justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-        &:hover {
-            cursor: pointer;
-        }
-
-        a {
-            text-decoration: none;
-            color: $text-color;
-        }
-    }
-
-    .answersField:hover label {
-        cursor: pointer;
-        color: green;
-    }
-
-    .selectedAnswer {
-        color: $button-color;
+        margin-bottom: 1vw;
+        margin-top: 1vw;
     }
 
     [class*="btn-glitch-"] {
@@ -89,7 +52,7 @@
         width: 12vw;
         margin-bottom: 3vh;
         margin-top: 3vw;
-        margin-left: 40%;
+        margin-left: 0;
         text-align: center;
         font-size: 1.5vw;
         justify-content: center;
@@ -98,7 +61,7 @@
         color: $button-color;
         background-color: $navbar-main-color;
         padding: 5px 7px;
-        min-width: 17%;
+        min-width: 30%;
         line-height: 1.5em;
         white-space: no-wrap;
         text-transform: uppercase;
@@ -165,80 +128,50 @@
             width: 10%;
         }
     }
-
 }
 
 @media screen and (max-width: 768px) {
-    #quizTitle {
+    #rulesTitle {
         margin-left: 0;
-        padding-top: 6vh;
-        font-size: 8vh;
     }
 
-    .quizComponent {
+    .rulesComponent {
         margin-left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
-        .quizField {
-            width: 90%;
-            height: 100%;
-            font-size: 3.2vw;
+        .rulesField {
+            width: 86%;
+            height: fit-content;
+            margin-bottom: 4rem;
         }
 
-        .answersField {
-            background-image: none;
-            background: $navbar-main-color;
-            border: 1px solid $button-color;
-            border-radius: 10px;
-            font-size: 2vw;
-            height: 10vw;
-            width: 42vw;        
-            background-size: 29vw;
+        .rulesDescription {
+            font-size: 3vw;
+            margin-bottom: 3rem;
         }
-        
-        [class*="btn-glitch-"] {
-            font-size: 2.3vw;
+
+        [class*=btn-glitch-] {
             height: 5.5vw;
-            min-width: 25%;
+            min-width: 43%;
+            font-size: 2.5vw;
         }
     }
 }
 
 @media screen and (max-width: 425px) {
-    .quizComponent {
-        margin-left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    #rulesTitle {
+        font-size: 11vw;
+        margin-bottom: 13vw;
+    }
 
-        .quizField {
-            font-size: 6vw;
-            margin-bottom: 8vh;
+    .rulesComponent {
+        .rulesDescription {
+            font-size: 5.5vw;
         }
 
-        .answersField {
-            font-size: 3.7vw;
-            height: 17vw;
-            width: 76vw;
-        }
-        
-        [class*="btn-glitch-"] {
-            font-size: 2.8vw;
-            height: 7vw;
-            min-width: 25%;
+        [class*=btn-glitch-] {
+            height: 10.5vw;
+            min-width: 60%;
+            font-size: 4.5vw;
         }
     }
-}
-
-@media screen and (max-width: 425px) {
-    .quizComponent {
-        [class*="btn-glitch-"] {
-            font-size: 2.8vw;
-            height: 7vw;
-            min-width: 27%;
-        }
-    }
-    
 }
