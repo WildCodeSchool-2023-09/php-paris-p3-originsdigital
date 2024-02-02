@@ -52,21 +52,36 @@ html {
         width: 10%;
     }
 }
+
+.noticeFlash {
+    background-color: #00ef02;
+    box-shadow: 0 2px 5px #00ef02;
+}
+
+.warningFlash {
+    background-color: #ef0726;
+    box-shadow: 0 2px 5px #ef0726;
+}
+
 [class*="btn-glitch-"] {
+
     .text,
     .text-decoration,
     .decoration {
         display: inline-block;
         color: $button-color;
     }
+
     .decoration {
         display: inline-block;
     }
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         animation-name: glitch;
         animation-duration: 0.5s;
         background-color: black;
-        color:$button-color;
+        color: $button-color;
         border: 1px solid $button-color;
 
         .text-decoration {
@@ -75,11 +90,13 @@ html {
             animation-iteration-count: infinite;
             color: $button-color;
         }
+
         .decoration {
             animation-name: blink;
             animation-duration: 0.3s;
             animation-iteration-count: infinite;
         }
+
         :before {
             content: " ";
             width: 15px;
@@ -88,11 +105,12 @@ html {
             bottom: 3px;
             transform: rotate(35deg)
         }
+
         :after {
             animation-name: shrink;
-            animation-duration:.5s;
+            animation-duration: .5s;
             animation-iteration-count: 1;
-            animation-fill-mode : forwards;
+            animation-fill-mode: forwards;
             content: " ";
             width: 75%;
             position: absolute;
@@ -100,18 +118,22 @@ html {
             bottom: 5px;
         }
     }
+
     &:active {
         background: none;
-        color:$button-color;
+        color: $button-color;
 
         .text-decoration {
             animation-name: none;
             color: $button-color;
         }
+
         .decoration {
             animation-name: none;
         }
-        :before, :after {
+
+        :before,
+        :after {
             display: none;
         }
     }

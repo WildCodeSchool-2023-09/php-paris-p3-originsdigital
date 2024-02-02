@@ -1,28 +1,22 @@
 <div id="navbar">
-	<a href="{{ path('language_index') }}" id="logo">{<span>Origins</span>/<span>Digital</span>}</a>
-	{% if app.user.profilepicture %}
-		<div id="avatar-container">
-			<div id="avatar-picture" style="background-image: url('{{ vich_uploader_asset(app.user, 'profilepictureFile') }}')"></div>
-		</div>
-	{% endif %}
-	<p id="pseudo">{{ app.user.username }}</p>
-	<p id="rank">Gardien du Savoir Suprême</p>
-	{% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
-		<a class="link" href="{{ path('app_quiz') }}"><img class="logo-link" src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span>
-		</a>
-	{% endif %}
-	<a class="link" href="#"><img class="logo-link" src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
-	</a>
-	<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Mes playlists</span>
-	</a>
-	{% if app.user.roles[0] is same as("ROLE_ADMIN") %}
-		<a class="link" href="{{ path('app_admin') }}"><img class="logo-link" src="{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span>
-		</a>
-	{% endif %}
-	<a class="link" href="{{ path('app_user_edit', {'id': app.user.id}) }}"><img class="logo-link" src="{{ asset('build/images/profile.svg') }}"><span class="nav-button">Profil</span>
-	</a>
-	{% if app.user.roles[0] is same as("ROLE_USER") %}
-		<a class="link" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link" src="{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span>
-		</a>
-	{% endif %}
+    <a href="{{ path('language_index') }}" id="logo">{<span>Origins</span>/<span>Digital</span>}</a>
+    {% if app.user.profilepicture %}
+    <div id="avatar-container">
+        <div id ="avatar-picture" style="background-image: url('{{ vich_uploader_asset(app.user, 'profilepictureFile') }}')"></div>
+    </div>
+    {% endif %}
+    <p id="pseudo">{{ app.user.username }}</p>
+    <p id="rank">Gardien du Savoir Suprême</p>
+    {% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
+        <a class="link" href="{{ path('app_quiz') }}"><img class="logo-link" src= "{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span></a>
+        <a class="link" href="#"><img class="logo-link" src= "{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span></a>
+	    <a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Mes playlists</span>
+    {% endif %}
+    {% if app.user.roles[0] is same as("ROLE_ADMIN") %}
+        <a class="link" href="{{ path('app_admin') }}"><img class="logo-link" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-button">Dashboard</span></a>
+    {% endif %}
+    <a class="link" href="{{ path('app_user_edit', {'id': app.user.id}) }}"><img class="logo-link" src= "{{ asset('build/images/profile.svg') }}"><span class="nav-button">Profil</span></a>
+    {% if app.user.roles[0] is same as("ROLE_USER") %}
+        <a class="link" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link" src= "{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span></a>
+    {% endif %}
 </div>

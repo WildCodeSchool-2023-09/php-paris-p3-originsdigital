@@ -6,17 +6,19 @@
 {% endblock %}
 
 {% block body %}
+
+    <h1 id="user-form-title">//Ajout d'une vidéo</h1>
 	<div id="upload-video-form">
-		<div id="preview">
-			<div id="thumbnailPreview"></div>
-			<div id="videoPreview"></div>
-		</div>
+
 		{{ form_start(form) }}
 		<fieldset class="form">
-			<div id="upload_button">
-				{{ form_row(form.thumbnailFile) }}
-				{{ form_row(form.videoFile) }}
-			</div>
+
+            <div id="preview">
+                {{ form_row(form.thumbnailFile) }}
+                {{ form_row(form.videoFile) }}
+		    </div>
+
+            <div id="test"></div>
 
 			<div id="writing_field">
 				{{ form_widget(form.title) }}

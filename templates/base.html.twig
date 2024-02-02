@@ -3,8 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		<link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
+		<meta name="description" content="Origins Digital est un site internet en VOD pour apprendre le développement web
+			via des tutoriels vidéos couvrants de nombreux languages commes le PHP, le Javascript le CSS et le HTML.">
+		<meta name="keywords" content="Origins, digital, développement, web, tutoriels, vidéos">
+		<meta name="robots" content="index, follow">
+		<link rel="icon" type="image/png" href="{{ asset('build/images/ODlogo.svg') }}"/>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,10 +54,23 @@
 
 		{% endblock %}
 
-		{% block body %}
+		{% block content %}
+
             {% for notice in app.flashes('notice') %}
+                <div class="noticeFlash">
                 {{ notice }}
+                </div>
             {% endfor %}
+
+            {% for warning in app.flashes('warning') %}
+                <div class="warningFlash">
+                {{ warning }}
+                </div>
+            {% endfor %}
+
+        {% endblock %}
+
+        {% block body %}
         {% endblock %}
 
 	</body>
