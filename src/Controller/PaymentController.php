@@ -58,12 +58,14 @@ class PaymentController extends AbstractController
             echo json_encode(['error' => $e->getMessage()]);
         }
 
-        return $this->render('/user/payment/success.html.twig');
+        $this->addFlash('notice', 'Votre paiement a bien été accepté, Merci !');
+        return $this->redirectToRoute('home');
     }
 
     #[Route('/cancel-url', name: 'cancel_url')]
     public function cancelUrl(): Response
     {
-        return $this->render('/user/payment/cancel.html.twig', []);
+        $this->addFlash('warning', 'Erreur : votre paiement a été refusé');
+        return $this->redirectToRoute('home');
     }
 }
