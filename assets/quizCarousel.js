@@ -145,7 +145,7 @@ else {
                         return response.json();
                     })
                     .then(function () {
-                        window.location.href = '/playlist';
+                        window.location.href = '/result';
                     })
             }
         }, transitionDuration);

@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quiz{% endblock %}
+{% block title %}Résultat du Quiz{% endblock %}
 
 {% block body %}
-<h1 id="rulesTitle">//Instructions du Quiz_</h1>
-<div class="rulesComponent">
-    <div class="rulesField">
-        <div id="rulesList">
-            <p></p>
+<h1 id="resultTitle">//Résultat du Quiz_</h1>
+<div class="resultComponent">
+    <div class="resultField">
+        <div id="resultList">
+            <p class="resultDescription">Merci d’avoir répondu à notre quiz !</p>
+            <p class="resultDescription">Un programme personnalisé a été créé spécialement pour vous.</p>
+            <p class="resultDescription">Votre apprentissage commence maintenant !</p>
+            <p class="resultDescription">Merci d’avoir choisit Origins Digital pour vous former !</p>
+            
             <div class ="buttonContainer">
                 <button class="btn-glitch-fill">
-                    <a href="{{ path('app_quiz') }}">
-                    <span class="text">//Commencer</span>
+                    <a href="{{ path('playlist_index') }}">
+                    <span class="text">//Voir votre programme</span>
                     <span class="text-decoration">_</span>
                     <span class="decoration">&rArr;</span></a>
                 </button>

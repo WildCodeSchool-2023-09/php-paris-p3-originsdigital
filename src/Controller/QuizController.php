@@ -55,4 +55,11 @@ class QuizController extends AbstractController
 
         return $this->json([]);
     }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/result', name: 'app_result')]
+    public function resultQuiz(): Response
+    {
+        return $this->render('Quiz/result.html.twig');
+    }
 }
