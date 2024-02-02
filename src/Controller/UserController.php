@@ -31,7 +31,7 @@ class UserController extends AbstractController
             $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash('notice', 'Compte créé avec succès ! vous pouvez vous connecter');
+            $this->addFlash('notice', 'Compte créé avec succès ! Vous pouvez vous connecter');
             return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('user/new.html.twig', [
@@ -62,7 +62,7 @@ class UserController extends AbstractController
     public function edit(int $id, Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getId() !== $id) {
-            $this->addFlash('warning', 'erreur : vous ne pouvez pas modifier un profil différent du vôtre');
+            $this->addFlash('warning', 'Erreur : vous ne pouvez pas modifier un profil différent du vôtre');
             return $this->redirectToRoute('home');
         }
         $form = $this->createForm(UserEditType::class, $user);
