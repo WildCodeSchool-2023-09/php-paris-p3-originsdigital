@@ -14,12 +14,18 @@
         color: transparent;
     }
 
+    #upload-form-title {
+        display: block;
+        color: #FFF;
+        font-size: 3rem;
+        margin-left: 250px;
+        padding-top: 2vh;
+        text-align: center;
+    }
+
     #preview {
         display: flex;
-        justify-content: space-between;
-        width: 80%;
-        margin-right: 15%;
-        margin-left: auto;
+        justify-content: space-around;
 
         #upload_video_thumbnailFile_file,
         #upload_video_videoFile_file {
@@ -27,13 +33,10 @@
             margin-bottom: 5vw;
             display: flex;
             background-repeat: no-repeat;
-            background-size: 100%;
             background-size: cover;
             border-radius: 10px;
-            background-position-x: center;
-            background-position-y: center;
-            height: 169px;
-            width: 300px;
+            height: 14vw;
+            width: 25vw;
             border: 2px solid $button-color;
             cursor: pointer;
         }
@@ -48,8 +51,9 @@
     }
 
     #upload-video-form {
+        display: flex;
         justify-content: center;
-        margin-left: 350px;
+        margin-left: 250px;
 
         label {
             display: flex;
@@ -68,8 +72,10 @@
         background-repeat: no-repeat;
         background-size: 67vw;
         font-size: 1.5vw;
-        color: #00FFFD;
+        color: #FFF;
         margin-bottom: 2vw;
+        padding-right: 13vw;
+        padding-left: 1vw;
     }
 
     #upload_video_description {
@@ -84,8 +90,11 @@
         background-repeat: no-repeat;
         background-size: 67vw;
         font-size: 1.5vw;
-        color: #00FFFD;
+        color: #FFF;
         margin-bottom: 2vw;
+        padding-right: 13vw;
+        padding-left: 1vw;
+        padding-top: 0.8vw;
     }
 
     #upload_button {
@@ -105,13 +114,10 @@
 
     #upload-video-form::placeholder,
     #upload_video_title::placeholder,
-    #upload_video_description::placeholder,
-    #upload-video-form {
+    #upload_video_description::placeholder {
         color: #FFF;
         font-family: $main-font;
         font-size: 2vw;
-        padding-left: 1vw;
-        padding-right: 6vw;
     }
 
     select {
