@@ -8,6 +8,7 @@ use App\Form\PlaylistType;
 use App\Repository\VideoRepository;
 use App\Repository\PlaylistRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +25,7 @@ class PlaylistController extends AbstractController
     {
         return $this->render('playlist/index.html.twig', [
             'playlists' => $playlistRepository->findBy(['createdBy' => $this->getUser()]),
+            'programs' => $this->getUser()->getPrograms(),
         ]);
     }
 
@@ -64,9 +66,16 @@ class PlaylistController extends AbstractController
     }
 
     #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Playlist $playlist): Response
+    public function show(Playlist $playlist, PaginatorInterface $paginator, Request $request): Response
     {
+        $videos = $paginator->paginate(
+            $playlist->getVideos(),
+            $request->query->getInt('page', 1),
+            9,
+        );
+
         return $this->render('playlist/show.html.twig', [
+            'videos' => $videos,
             'playlist' => $playlist,
         ]);
     }
