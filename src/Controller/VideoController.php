@@ -96,7 +96,7 @@ class VideoController extends AbstractController
         $videos = $paginator->paginate(
             $videos,
             $request->query->getInt('page', 1),
-            3,
+            9,
         );
         return $this->render('video/index.html.twig', [
                 'videos' => $videos,

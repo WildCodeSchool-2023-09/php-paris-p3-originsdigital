@@ -2,6 +2,15 @@
     #playlist-index{
         margin-left: 250px;
         font-family: $main-font;
+        #new-playlist{
+            color: $text-color;
+            font-size: 2.6rem;
+            text-align: center;
+            margin-top: 5rem;
+            a{
+                color: $button-color;
+            }
+        }
         h1{
             color: $text-color;
             font-size: 4rem;
@@ -16,8 +25,10 @@
             display: flex;
             justify-content: end;
             padding-right: 4rem;
+            padding-top: 2rem;
         }
-        #playlist-carousels {
+        #playlist-carousels,
+        #program-carousels {
             margin-left: 5vw;
             margin-right: 5vw;
             margin-bottom: 2rem;
@@ -32,11 +43,11 @@
 
             .splide__arrow--prev{
                 left: -4.5%;
-                top: 35%;
+                top: 50%;
             }
             .splide__arrow--next{
                 right: -4.5%;
-                top: 35%;
+                top: 50%;
             }
         }
         h2{
@@ -44,6 +55,9 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             margin-top:2rem;
+        }
+        .playlist-title{
+            text-align: center;
         }
         span{
             color: $text-color;
@@ -154,6 +168,15 @@
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
+        #new-playlist{
+            color: $text-color;
+            font-size: 2.6rem;
+            text-align: center;
+            margin-top: 5rem;
+            a{
+                color: $button-color;
+            }
+        }
         #playlist-add {
             text-decoration: none;
             color: $button-color;
@@ -164,8 +187,10 @@
             width: 300px;
             margin-bottom: 3rem;
             text-align: center;
+            padding-top: 2rem;
         }
-        #playlist-carousels {
+        #playlist-carousels,
+        #program-carousels {
             margin-left: 10vw;
             margin-right: 10vw;
             margin-bottom: 2rem;
