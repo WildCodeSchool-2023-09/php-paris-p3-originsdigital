@@ -86,7 +86,7 @@ class Video
         return $this->video;
     }
 
-    public function setVideo(string $video): static
+    public function setVideo(?string $video): static
     {
         $this->video = $video;
 

@@ -53,6 +53,63 @@ html {
     }
 }
 
+.noticeFlash,
+.warningFlash {
+    display: block;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    margin-top: 3.5%;
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 20px;
+    border-radius: 10px 0px 50px 10px / 10px 25px 0px 10px;
+    z-index: 1000;
+    animation-duration: 3.5s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+    0% {
+        right: -1000px;
+    }
+
+    25% {
+        right: 0px;
+    }
+
+    50% {
+        right: 0px;
+    }
+
+    75% {
+        right: 0px;
+    }
+
+    100% {
+        right: -1000px;
+    }
+}
+
+.noticeFlash.hide,
+.warningFlash.hide {
+    animation-name: slideout;
+    animation-delay: 2s;
+}
+
+@keyframes slideout {
+    0% {
+        right: 0px;
+    }
+
+    100% {
+        right: -1000px;
+    }
+}
+
 .noticeFlash {
     background-color: #00ef02;
     box-shadow: 0 2px 5px #00ef02;

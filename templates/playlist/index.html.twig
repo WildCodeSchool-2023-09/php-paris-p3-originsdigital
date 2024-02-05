@@ -23,7 +23,7 @@
 										<div class="{{video.slug}}-card video-card index-card">
 											<a href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
 												<div class="recto-index-card">
-													<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+													<img src="/uploads/thumbnails/{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
 													<h3>{{video.title}}</h3>
 												</div>
 												<div class="verso-index-card">
@@ -67,7 +67,7 @@
 											<div class="{{video.slug}}-card video-card index-card">
 												<a href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
 													<div class="recto-index-card">
-														<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+														<img src="/uploads/thumbnails/{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
 														<h3>{{video.title}}</h3>
 													</div>
 													<div class="verso-index-card">

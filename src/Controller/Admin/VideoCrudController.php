@@ -27,6 +27,9 @@ class VideoCrudController extends AbstractCrudController
         return $actions
             ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
                 return $action->linkToRoute('video_new');
+            })
+            ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+                return $action->linktoRoute('home');
             });
     }
 }

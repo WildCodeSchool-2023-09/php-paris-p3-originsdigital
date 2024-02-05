@@ -1,12 +1,17 @@
 <div id="navbar-mobile">
-	<a class="link-mobile" href="{{ path('language_index') }}"><img class="logo-link-mobile" src="{{ asset('build/images/home.svg') }}"><span class="nav-mobile-button">Home</span>
-	</a>
-	<a class="link-mobile" href="#"><img class="logo-link-mobile" src="{{ asset('build/images/notes.svg') }}"><span class="nav-mobile-button">Notes</span>
-	</a>
-	<a class="link-mobile" href="#"><img class="logo-link-mobile" src="{{ asset('build/images/program.svg') }}"><span class="nav-mobile-button">Programme</span>
-	</a>
-	<a class="link-mobile" href="{{ path('playlist_index') }}"><img class="logo-link-mobile" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-mobile-button">Playlists</span>
-	</a>
-	<a class="link-mobile" href="#"><img class="logo-link-mobile" src="{{ asset('build/images/profile.svg') }}"><span class="nav-mobile-button">Profile</span>
-	</a>
+
+    <a class="link-mobile" href="{{ path('language_index') }}"><img class="logo-link-mobile" src= "{{ asset('build/images/home.svg') }}"><span class="nav-mobile-button">Home</span></a>
+    {% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
+        <a class="link-mobile" href="{{ path('app_rules') }}"><img class="logo-link-mobile" src= "{{ asset('build/images/blackboard.svg') }}"><span class="nav-mobile-button">Quiz</span></a>
+        <a class="link-mobile" href="#"><img class="logo-link-mobile" src= "{{ asset('build/images/program.svg') }}"><span class="nav-mobile-button">Programme</span></a>
+        <a class="link-mobile" href="{{ path('playlist_index') }}"><img class="logo-link-mobile" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-mobile-button">Playlists</span>
+    {% endif %}
+    {% if app.user.roles[0] is same as("ROLE_ADMIN") %}
+        <a class="link-mobile" href="{{ path('app_admin') }}"><img class="logo-link-mobile" src= "{{ asset('build/images/dashboard.svg') }}"><span class="nav-mobile-button">Dashboard</span></a>
+    {% endif %}
+    <a class="link-mobile" href="{{ path('app_user_edit', {'id': app.user.id}) }}"><img class="logo-link-mobile" src= "{{ asset('build/images/profile.svg') }}"><span class="nav-mobile-button">Profil</span></a>
+    {% if app.user.roles[0] is same as("ROLE_USER") %}
+        <a class="link-mobile" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link-mobile" src= "{{ asset('build/images/star.svg') }}"><span class="nav-mobile-button" id="nav-button-premium">PASSER PREMIUM</span></a>
+    {% endif %}
+
 </div>
