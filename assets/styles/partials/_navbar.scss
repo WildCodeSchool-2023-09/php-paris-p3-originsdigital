@@ -1,4 +1,12 @@
 @media screen and (min-width: 769px) {
+
+    //Homepage Guest
+    #navbar {
+        body.home-page & {
+            display: none;
+        }
+    }
+
     #navbar {
         width: 250px;
         height: 100vh;
