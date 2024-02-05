@@ -1,4 +1,11 @@
 @media screen and (max-width: 768px) {
+// HOMEPAGE GUEST
+#header-mobile {
+    body.home-page & {
+    display: none;
+    }
+}
+
     #header-mobile {
         width: 100%;
         height: 6vh;
