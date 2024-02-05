@@ -229,6 +229,13 @@ body {
             display: none;
         }
 
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 50px #030300 inset;
+            -webkit-text-fill-color: #FFF;
+        }
+
         input[type='file'] {
             color: transparent;
         }
@@ -428,6 +435,13 @@ body {
                 padding-left: 5%;
                 height: 5vh;
             }
+
+            #btn-delete-account,
+            #btn-logout {
+                width: fit-content;
+                height: fit-content;
+                font-size: 1rem;
+            }
         }
 
         @media screen and (max-width: 425px) {
@@ -449,6 +463,13 @@ body {
                 padding-left: 5%;
                 height: 5vh;
                 width: fit-content;
+            }
+
+            #btn-delete-account,
+            #btn-logout {
+                width: fit-content;
+                height: fit-content;
+                font-size: 0.5rem;
             }
         }
     }
