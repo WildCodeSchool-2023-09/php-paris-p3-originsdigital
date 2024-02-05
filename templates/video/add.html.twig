@@ -7,7 +7,7 @@
 
 {% block body %}
 
-    <h1 id="user-form-title">//Ajout d'une vidéo</h1>
+    <h1 id="upload-form-title">//Ajout d'une vidéo</h1>
 	<div id="upload-video-form">
 
 		{{ form_start(form) }}
@@ -17,8 +17,6 @@
                 {{ form_row(form.thumbnailFile) }}
                 {{ form_row(form.videoFile) }}
 		    </div>
-
-            <div id="test"></div>
 
 			<div id="writing_field">
 				{{ form_widget(form.title) }}
