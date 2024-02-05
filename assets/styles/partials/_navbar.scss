@@ -35,7 +35,6 @@
     #avatar-picture {
         margin: 2vh;
         display: flex;
-        background-image: url("/assets/images/avatar-border.svg");
         background-repeat: no-repeat;
         background-size: 100%;
         background-size: cover;
@@ -45,8 +44,9 @@
     }
 
     #avatar-picture {
-        width: 9vw;
-        height: 9vw;
+        width: 10vw;
+        height: 10vw;
+        border: 5px solid $button-color;
     }
 
     #pseudo {
