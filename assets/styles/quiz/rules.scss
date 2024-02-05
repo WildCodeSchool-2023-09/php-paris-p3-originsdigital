@@ -75,6 +75,9 @@
         .decoration {
             display: inline-block;
         }
+        #rules-button{
+            text-decoration: none;
+        }
         &:hover,
         &:focus {
             animation-name: glitch;
