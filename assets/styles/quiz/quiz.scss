@@ -115,16 +115,18 @@
         &:hover,
         &:focus {
             animation-name: glitch;
-            animation-duration: 0.5s;
+            animation-duration: 100s;
             background-color: black;
             color: $button-color;
             border: 1px solid $button-color;
+
             .text-decoration {
                 animation-name: blink;
                 animation-duration: 0.3s;
                 animation-iteration-count: infinite;
                 color: $button-color;
             }
+
             .decoration {
                 animation-name: blink;
                 animation-duration: 0.3s;
@@ -139,16 +141,20 @@
                 content: " ";
             }
         }
+
         &:active {
             background: none;
             color: $button-color;
+
             .text-decoration {
                 animation-name: none;
                 color: $button-color;
             }
+
             .decoration {
                 animation-name: none;
             }
+            
             :before,
             :after {
                 display: none;
@@ -163,6 +169,12 @@
     @keyframes shrink {
         100% {
             width: 10%;
+        }
+    }
+
+    @keyframes glitch {
+        0% {
+            transform: translate(0);
         }
     }
 
