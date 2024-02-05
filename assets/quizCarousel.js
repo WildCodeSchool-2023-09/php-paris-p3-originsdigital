@@ -144,8 +144,8 @@ else {
                         }
                         return response.json();
                     })
-                    .then(function () {
-                        window.location.href = '/playlist';
+                    .then(function (score) {
+                        window.location.href = '/result?score=' + score;
                     })
             }
         }, transitionDuration);

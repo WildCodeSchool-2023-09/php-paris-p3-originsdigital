@@ -16,7 +16,7 @@ class QuizController extends AbstractController
 {
     private const FIRST_COURSE = 1;
 
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_PREMIUM')]
     #[Route('/quiz', name: 'app_quiz')]
     public function quiz(CourseRepository $courseRepository): Response
     {
@@ -31,14 +31,14 @@ class QuizController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_PREMIUM')]
     #[Route('/rules', name: 'app_rules')]
     public function introQuiz(): Response
     {
         return $this->render('Quiz/rules.html.twig');
     }
 
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_PREMIUM')]
     #[Route('/generatePlaylist', name: 'app_generatePlaylist')]
     public function getPlaylistByQuiz(
         Request $request,
@@ -53,6 +53,17 @@ class QuizController extends AbstractController
 
         $playlistRepository->assignPlaylist($this->getUser(), $course, $score);
 
-        return $this->json([]);
+        return $this->json([$score]);
+    }
+
+    #[IsGranted('ROLE_PREMIUM')]
+    #[Route('/result', name: 'app_result')]
+    public function resultQuiz(Request $request): Response
+    {
+        $score = $request->query->get('score');
+
+        return $this->render('Quiz/result.html.twig', [
+            'score' => $score,
+        ]);
     }
 }

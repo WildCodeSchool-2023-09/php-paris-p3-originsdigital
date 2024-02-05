@@ -7,18 +7,18 @@
 
 {% block body %}
 	<div id="playlist-index">
-		<h1>Mes playlists</h1>
-		<a id="playlist-add" href="{{ path('playlist_new') }}">Nouvelle playlist</a>
-		<div id="playlist-carousels">
-			{% for playlist in playlists %}
-				<h2>{{playlist.label}}</h2>
-				{% if playlist.videos is empty %}
-					<p class="no-video-playlist">Pas de vidéos dans cette playlist</p>
-				{% else %}
-					<section class="splide" id="{{playlist.label}}-slider" aria-label="Splide Basic HTML Example">
+		{% if playlists is not empty %}
+			<a id="playlist-add" href="{{ path('playlist_new') }}">Nouvelle playlist</a>
+		{% endif %}
+		{% if programs is not empty %}
+			<h1 class="playlist-title">Vos programmes</h2>
+			<div id="program-carousels">
+				{% for program in programs %}
+					<h2>{{ program.label }}</h2>
+					<section class="splide" id="{{program.label}}-slider" aria-label="Splide Basic HTML Example">
 						<div class="splide__track">
 							<ul class="splide__list">
-								{% for video in playlist.videos %}
+								{% for video in program.videos %}
 									<li class="splide__slide">
 										<div class="{{video.slug}}-card video-card index-card">
 											<a href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
@@ -42,14 +42,65 @@
 							</ul>
 						</div>
 					</section>
-				{% endif %}
-				<a class="all-videos" href="{{ path('playlist_show', {'id': playlist.id}) }}">Toutes les vidéos</a>
-				<a class="all-videos-mobile btn-glitch-fill" href="">
-					<span class="text">//Vidéos</span>
-					<span class="text-decoration">_</span>
-					<span class="decoration">&rArr;</span>
-				</a>
-			{% endfor %}
-		</div>
+					<a class="all-videos" href="{{ path('playlist_show', {'id': program.id}) }}">Toutes les vidéos</a>
+					<a class="all-videos-mobile btn-glitch-fill" href="">
+						<span class="text">//Vidéos</span>
+						<span class="text-decoration">_</span>
+						<span class="decoration">&rArr;</span>
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if playlists is not empty %}
+			<h1 class="playlist-title">Vos playlists</h2>
+			<div id="playlist-carousels">
+				{% for playlist in playlists %}
+					<h2>{{playlist.label}}</h2>
+					{% if playlist.videos is empty %}
+						<p class="no-video-playlist">Pas de vidéos dans cette playlist</p>
+					{% else %}
+						<section class="splide" id="{{playlist.label}}-slider" aria-label="Splide Basic HTML Example">
+							<div class="splide__track">
+								<ul class="splide__list">
+									{% for video in playlist.videos %}
+										<li class="splide__slide">
+											<div class="{{video.slug}}-card video-card index-card">
+												<a href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
+													<div class="recto-index-card">
+														<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+														<h3>{{video.title}}</h3>
+													</div>
+													<div class="verso-index-card">
+														<h3>{{video.title}}</h3>
+														<p>{{video.description}}</p>
+														<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': video.language.slug, 'videoSlug': video.slug } )}}">
+															<span class="text">//Vidéo</span>
+															<span class="text-decoration">_</span>
+															<span class="decoration">&rArr;</span>
+														</a>
+													</div>
+												</a>
+											</div>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+						</section>
+					{% endif %}
+					<a class="all-videos" href="{{ path('playlist_show', {'id': playlist.id}) }}">Toutes les vidéos</a>
+					<a class="all-videos-mobile btn-glitch-fill" href="">
+						<span class="text">//Vidéos</span>
+						<span class="text-decoration">_</span>
+						<span class="decoration">&rArr;</span>
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if playlists is empty %}
+			<p id="new-playlist">Vous n'avez pas de playlist,
+				<a href="{{ path('playlist_new') }}">ajoutez-en une</a>
+				!
+			</p>
+		{% endif %}
 	</div>
 {% endblock %}

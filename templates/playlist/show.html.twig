@@ -10,7 +10,7 @@
 	<div id="playlist-show">
 		<h1>{{ playlist.label }}</h1>
 		<div id="index-videos-playlist-cards">
-			{% for video in playlist.videos %}
+			{% for video in videos %}
 				<div class="video-card index-card">
 					<div class="recto-index-card">
 						<img src="{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
@@ -27,6 +27,9 @@
 					</div>
 				</div>
 			{% endfor %}
+		</div>
+		<div class="navigation flex justify-center">
+			{{ knp_pagination_render(videos) }}
 		</div>
 		<a class="back-to-index" href="{{ path('playlist_index') }}">Voir mes playlists</a>
 
