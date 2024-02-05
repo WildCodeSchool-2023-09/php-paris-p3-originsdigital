@@ -15,9 +15,20 @@
             display:block;
             margin-top: 3rem;
         }
-        .pagination{
-            display: flex;
-            justify-content: center;
+        .navigation {
+            .pagination {
+                justify-content: center;
+                span {
+                    font-size: 2rem;
+                    color: $text-color;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    a {
+                        color: $button-color;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
         #index-videos-cards {
             margin-left: 10vw;
@@ -25,7 +36,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 10%;
-
+            padding-bottom: 8rem;
             .js-card{
                 background-color: $js-color;
             }
@@ -122,6 +133,21 @@
 
         h1{
             display: none;
+        }
+        .navigation {
+            .pagination {
+                justify-content: center;
+                span {
+                    font-size: 1.6rem;
+                    color: $text-color;
+                    margin-left: 2px;
+                    margin-right: 2px;
+                    a {
+                        color: $button-color;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
         #index-videos-cards {
             .video-card{

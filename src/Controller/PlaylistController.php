@@ -73,6 +73,7 @@ class PlaylistController extends AbstractController
             $request->query->getInt('page', 1),
             9,
         );
+
         return $this->render('playlist/show.html.twig', [
             'videos' => $videos,
             'playlist' => $playlist,

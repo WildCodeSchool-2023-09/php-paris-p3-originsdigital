@@ -9,6 +9,21 @@
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
+        .navigation {
+            .pagination {
+                justify-content: center;
+                span {
+                    font-size: 2rem;
+                    color: $text-color;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    a {
+                        color: $button-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
         #index-videos-playlist-cards {
             margin-left: 10vw;
             margin-right: 10vw;
@@ -129,6 +144,21 @@
             padding-top: 2vh;
             padding-bottom: 2vh;
             border-bottom: solid 1px $button-color;
+        }
+        .navigation {
+            .pagination {
+                justify-content: center;
+                span {
+                    font-size: 1.6rem;
+                    color: $text-color;
+                    margin-left: 2px;
+                    margin-right: 2px;
+                    a {
+                        color: $button-color;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
         .back-to-index{
             color: $button-color;
