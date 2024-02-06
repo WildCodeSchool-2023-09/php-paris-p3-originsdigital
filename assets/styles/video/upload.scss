@@ -1,321 +1,355 @@
-    body {
-        background-image: $background-image
-    }
+input::-webkit-file-upload-button {
+    display: none;
+}
 
-    input::-webkit-file-upload-button {
-        display: none;
-    }
+input::-webkit-textfield-decoration-container {
+    display: none;
+}
 
-    input::-webkit-textfield-decoration-container {
-        display: none;
-    }
+input[type='file'] {
+    color: transparent;
+}
 
-    input[type='file'] {
-        color: transparent;
-    }
+#upload-form-title {
+    display: block;
+    color: #FFF;
+    font-size: 6vh;
+    margin-left: 250px;
+    padding-top: 6vh;
+    text-align: center;
+}
 
-    #preview {
+#preview {
+    display: flex;
+    justify-content: space-around;
+
+    #upload_video_thumbnailFile_file,
+    #upload_video_videoFile_file {
+        margin-top: 5vw;
+        margin-bottom: 5vw;
         display: flex;
-        justify-content: space-between;
-        width: 80%;
-        margin-right: 15%;
-        margin-left: auto;
-
-        #upload_video_thumbnailFile_file,
-        #upload_video_videoFile_file {
-            margin-top: 5vw;
-            margin-bottom: 5vw;
-            display: flex;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            background-size: cover;
-            border-radius: 10px;
-            background-position-x: center;
-            background-position-y: center;
-            height: 169px;
-            width: 300px;
-            border: 2px solid $button-color;
-            cursor: pointer;
-        }
-
-        #upload_video_thumbnailFile_file {
-            background-image: url("/assets/images/thumbnailpreviewfield.png");
-        }
-
-        #upload_video_videoFile_file {
-            background-image: url("/assets/images/videopreviewfield.png");
-        }
-    }
-
-    #upload-video-form {
-        justify-content: center;
-        margin-left: 350px;
-
-        label {
-            display: flex;
-            font-family: "Quantico", monospace;
-            margin: 0.3vw;
-        }
-    }
-
-    #upload_video_title {
-        height: 4.1vw;
-        width: 67.2vw;
-        border: none;
-        border-radius: 0%;
-        background-color: transparent;
-        background-image: url("/assets/images/title.svg");
         background-repeat: no-repeat;
-        background-size: 67vw;
-        font-size: 1.5vw;
-        color: #00FFFD;
-        margin-bottom: 2vw;
+        background-size: cover;
+        border-radius: 10px;
+        height: 14vw;
+        width: 25vw;
+        border: 2px solid $button-color;
+        cursor: pointer;
     }
 
-    #upload_video_description {
+    #upload_video_thumbnailFile_file {
+        background-image: url("/assets/images/thumbnailpreviewfield.png");
+    }
+
+    #upload_video_videoFile_file {
+        background-image: url("/assets/images/videopreviewfield.png");
+    }
+}
+
+#upload-video-form {
+    display: flex;
+    justify-content: center;
+    margin-left: 250px;
+
+    label {
         display: flex;
-        justify-content: center;
-        height: 10.1vw;
-        width: 67.2vw;
-        border: none;
-        border-radius: 0%;
-        background-color: transparent;
-        background-image: url("/assets/images/description.svg");
-        background-repeat: no-repeat;
-        background-size: 67vw;
-        font-size: 1.5vw;
-        color: #00FFFD;
-        margin-bottom: 2vw;
-    }
-
-    #upload_button {
-        display: flex;
-        color: #00FFFD;
-        border-color: #00FFFD;
-        border-radius: 0%;
-        margin-bottom: 3vw;
-    }
-
-    #select_upload {
-        display: grid;
-        grid-template-columns: 15vw 15vw;
-        justify-content: space-around;
-        gap: 3vw;
-    }
-
-    #upload-video-form::placeholder,
-    #upload_video_title::placeholder,
-    #upload_video_description::placeholder,
-    #upload-video-form {
-        color: #FFF;
-        font-family: $main-font;
-        font-size: 2vw;
-        padding-left: 1vw;
-        padding-right: 6vw;
-    }
-
-    select {
-        height: 3vw;
-        width: 10vw;
-        background-color: black;
-        border-color: #00FFFD;
-        border-radius: 5%;
         font-family: "Quantico", monospace;
-        font-size: 1.2vw;
-        color: #00FFFD;
+        margin: 0.3vw;
     }
+}
 
-    #upload-video-form {
-        [class*="btn-glitch-"] {
-            height: 3.5vw;
-            width: 12vw;
-            margin-bottom: 3vh;
-            margin-top: 3vw;
-            margin-left: 40%;
-            text-align: center;
-            font-size: 1.5vw;
-            justify-content: center;
-            font-family: "Quantico", monospace;
-            border: 1px solid black;
+#upload_video_title {
+    height: 4.1vw;
+    width: 67.2vw;
+    border: none;
+    border-radius: 0%;
+    background-color: transparent;
+    background-image: url("/assets/images/title.svg");
+    background-repeat: no-repeat;
+    background-size: 67vw;
+    font-size: 1.5vw;
+    color: #FFF;
+    margin-bottom: 2vw;
+    padding-right: 13vw;
+    padding-left: 1vw;
+}
+
+#upload_video_description {
+    display: flex;
+    justify-content: center;
+    height: 10.1vw;
+    width: 67.2vw;
+    border: none;
+    border-radius: 0%;
+    background-color: transparent;
+    background-image: url("/assets/images/description.svg");
+    background-repeat: no-repeat;
+    background-size: 67vw;
+    font-size: 1.5vw;
+    color: #FFF;
+    margin-bottom: 2vw;
+    padding-right: 13vw;
+    padding-left: 1vw;
+    padding-top: 0.8vw;
+}
+
+#upload_button {
+    display: flex;
+    color: #00FFFD;
+    border-color: #00FFFD;
+    border-radius: 0%;
+    margin-bottom: 3vw;
+}
+
+#select_upload {
+    display: grid;
+    grid-template-columns: 15vw 15vw;
+    justify-content: space-around;
+    gap: 3vw;
+}
+
+#upload-video-form::placeholder,
+#upload_video_title::placeholder,
+#upload_video_description::placeholder {
+    color: #FFF;
+    font-family: $main-font;
+    font-size: 2vw;
+}
+
+select {
+    height: 3vw;
+    width: 10vw;
+    background-color: black;
+    border-color: #00FFFD;
+    border-radius: 5%;
+    font-family: "Quantico", monospace;
+    font-size: 1.2vw;
+    color: #00FFFD;
+}
+
+#upload-video-form {
+    [class*="btn-glitch-"] {
+        height: 3.5vw;
+        width: 12vw;
+        margin-bottom: 12vh;
+        margin-top: 6vh;
+        margin-left: 40%;
+        text-align: center;
+        font-size: 1.5vw;
+        font-family: "Quantico", monospace;
+        border: 1px solid black;
+        color: $button-color;
+        background-color: $navbar-main-color;
+        padding: 5px 7px;
+        min-width: 17%;
+        line-height: 1.5em;
+        white-space: no-wrap;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        .text,
+        .decoration,
+        .text-decoration {
+            display: inline-block;
             color: $button-color;
-            background-color: $navbar-main-color;
-            padding: 5px 7px;
-            min-width: 17%;
-            line-height: 1.5em;
-            white-space: no-wrap;
-            text-transform: uppercase;
-            cursor: pointer;
+        }
 
-            .text,
-            .decoration,
+        .decoration {
+            display: inline-block;
+        }
+
+        &:hover,
+        &:focus {
+            animation-name: glitch;
+            animation-duration: 0.5s;
+            background-color: black;
+            color: $button-color;
+            border: 1px solid $button-color;
+
             .text-decoration {
-                display: inline-block;
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
                 color: $button-color;
             }
 
             .decoration {
-                display: inline-block;
+                animation-name: blink;
+                animation-duration: 0.3s;
+                animation-iteration-count: infinite;
             }
 
-            &:hover,
-            &:focus {
-                animation-name: glitch;
-                animation-duration: 0.5s;
-                background-color: black;
-                color: $button-color;
-                border: 1px solid $button-color;
-
-                .text-decoration {
-                    animation-name: blink;
-                    animation-duration: 0.3s;
-                    animation-iteration-count: infinite;
-                    color: $button-color;
-                }
-
-                .decoration {
-                    animation-name: blink;
-                    animation-duration: 0.3s;
-                    animation-iteration-count: infinite;
-                }
-
-                :after {
-                    animation-name: shrink;
-                    animation-duration: .5s;
-                    animation-iteration-count: 1;
-                    animation-fill-mode: forwards;
-                    content: " ";
-                }
-            }
-
-            &:active {
-                background: none;
-                color: $button-color;
-
-                .text-decoration {
-                    animation-name: none;
-                    color: $button-color;
-                }
-
-                .decoration {
-                    animation-name: none;
-                }
-
-                :before,
-                :after {
-                    display: none;
-                }
+            :after {
+                animation-name: shrink;
+                animation-duration: .5s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                content: " ";
             }
         }
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
+        &:active {
+            background: none;
+            color: $button-color;
 
-        @keyframes shrink {
-            100% {
-                width: 10%;
+            .text-decoration {
+                animation-name: none;
+                color: $button-color;
+            }
+
+            .decoration {
+                animation-name: none;
+            }
+
+            :before,
+            :after {
+                display: none;
             }
         }
     }
 
-
-
-    @media screen and (max-width: 768px) {
-        body {
-            background-image: $background-image-mobile;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        #preview {
-            margin-left: 0;
-        }
-
-        #upload-video-form {
-            display: grid;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15%;
-            margin-left: 0;
-        }
-
-        #upload_button {
-            display: flex;
-            justify-content: space-around;
-            color: #00FFFD;
-            border-color: #00FFFD;
-            border-radius: 0%;
-            margin-bottom: 3vw;
-        }
-
-        #writing_field {
-            display: grid;
-            justify-content: center;
-        }
-
-        #upload_video_title {
-            height: 4.5vw;
-            width: 67.3vw;
-            border-color: transparent;
-            border-radius: 0%;
-            background-color: transparent;
-            background-image: url("/assets/images/title.svg");
-            background-repeat: no-repeat;
-            background-size: 67vw;
-            margin-bottom: 2vw;
-        }
-
-        #upload_video_description {
-            display: flex;
-            justify-content: center;
-            height: 10.1vw;
-            width: 67.2vw;
-            border-color: transparent;
-            border-radius: 0%;
-            background-color: transparent;
-            background-image: url("/assets/images/description.svg");
-            background-repeat: no-repeat;
-            background-size: 67vw;
-            margin-bottom: 2vw;
-        }
-
-        #select_upload {
-            display: grid;
-            grid-template-columns: 15vw 15vw;
-            justify-content: space-around;
-            gap: 3vw;
-            margin-top: 4vw;
-        }
-
-        .select {
-            height: 3vw;
-            width: 10vw;
-            background-color: black;
-            border-color: #00FFFD;
-            border-radius: 5%;
-            font-family: "Quantico", monospace;
-            font-size: 1.2vw;
-            color: #00FFFD;
+    @keyframes blink {
+        50% {
+            opacity: 0;
         }
     }
 
-    @media screen and (max-width: 425px) {
-        #upload_button {
-            display: flex;
-            flex-direction: column;
-            gap: 2vw;
+    @keyframes shrink {
+        100% {
+            width: 10%;
         }
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    #upload-form-title {
+        margin-left: 0px;
+    }
+
+    #upload-video-form {
+        margin-left: 0px;
+        font-size: 7vw;
+    }
+
+    #preview #upload_video_thumbnailFile_file, #preview #upload_video_videoFile_file {
+        margin-top: 6vw;
+        height: 21vw;
+        width: 37vw;
+    }
+
+    #upload_video_title {
+        height: 5.1vw;
+        width: 87vw;
+        background-size: 87vw;
+        margin-bottom: 3vw;
+        padding-right: 17vw;
+        font-size: 2.5vw;
+    }
+
+    #upload_video_description {
+        height: 13.1vw;
+        width: 87vw;
+        background-size: 87vw;
+        padding-right: 17vw;
+        font-size: 2.5vw;
+        margin-bottom: 0vw;
+    }
+
+    #upload-video-form::placeholder,
+    #upload_video_title::placeholder,
+    #upload_video_description::placeholder {
+        font-size: 2.5vw;
+    }
+
+    select {
+        height: 5vw;
+        width: 15vw;
+        border-radius: 5px;
+        font-size: 2vw;
+    }
+
+    #upload-video-form {
+        [class*="btn-glitch-"] {
+            height: 5.5vw;
+            width: 21vw;
+            margin-bottom: 12vh;
+            margin-top: 9vh;
+            margin-left: 37%;
+            font-size: 2.5vw;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #upload-form-title {
+        font-size: 4.5vh;
+        margin-bottom: 5vh;
+    }
+
+    #preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #preview #upload_video_thumbnailFile_file, #preview #upload_video_videoFile_file {
+        margin-top: 0vw;
+        height: 35vw;
+        width: 62vw;
+    }
+
+    #upload_video_title {
+        background-image: none;
+        background-size: 29vw;
+        background: #020202a6;
+        border: 1px solid $button-color;
+        border-radius: 10px;
+        font-size: 4vw;
+        height: 10vw;
+        width: 86vw;
+        padding-right: 1vw;
+    }
+
+    #upload_video_description {
+        background-image: none;
+        background-size: 29vw;
+        background: #020202a6;
+        border: 1px solid $button-color;
+        border-radius: 10px;
+        font-size: 4vw;
+        height: 33vw;
+        width: 86vw;
+        padding-right: 1vw;
+        margin-top: 1vh;
+    }
+
+    #upload-video-form::placeholder,
+    #upload_video_title::placeholder,
+    #upload_video_description::placeholder {
+        font-size: 4vw;
+    }
+
+    #select_upload {
+        justify-items: center;
+        margin-top: 3vh;
 
         select {
-            height: 4vw;
-            width: 20vw;
-            background-color: black;
-            border-color: #00FFFD;
-            border-radius: 5%;
-            font-family: "Quantico", monospace;
-            font-size: 2vw;
-            color: #00FFFD;
+            height: 9vw;
+            width: 25vw;
+            border-radius: 5px;
+            font-size: 3vw;    
         }
     }
+
+    #upload-video-form {
+        [class*="btn-glitch-"] {
+            height: 8.5vw;
+            width: 31vw;
+            margin-top: 7vh;
+            margin-left: 32%;
+            font-size: 3.5vw;
+        }
+    }
+}

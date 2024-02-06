@@ -1,17 +1,23 @@
 @media screen and (max-width: 768px) {
+// HOMEPAGE GUEST
+#header-mobile {
+    body.home-page & {
+    display: none;
+    }
+}
+
     #header-mobile {
         width: 100%;
         height: 6vh;
         background-color: $navbar-main-color;
         color: $text-color;
         display: flex;
-        justify-content: space-between;
         align-items: center;
     }
 
     #header-mobile-logo {
         color: #006AB3;
-        font-size: 4vw;
+        font-size: 3vh;
         margin-left: 2vh;
         margin: 1vw 0 1vw 2vw;
         text-decoration: none;
@@ -19,9 +25,5 @@
 
     #header-mobile-logo>span {
         color: $text-color;
-    }
-
-    #header-mobile-search {
-        margin: 1vw 2vw 1vw 0;
     }
 }

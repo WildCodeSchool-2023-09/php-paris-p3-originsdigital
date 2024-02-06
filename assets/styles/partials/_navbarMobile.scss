@@ -1,4 +1,11 @@
 @media screen and (max-width: 768px) {
+
+    #navbar-mobile {
+        body.home-page & {
+            display: none;
+        }
+    }
+
     #navbar-mobile {
         width: 100%;
         height: 7vh;
@@ -31,7 +38,7 @@
 
     .nav-mobile-button {
         margin-top: 0.2vh;
-        font-size: 2vw;
+        font-size: 1.5vh;
     }
 
     #navbar {

@@ -1,0 +1,110 @@
+@media screen and (min-width: 769px) {
+    .home-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contain {
+        font-family: "Quantico";
+        text-align: center;
+        font-size: 3rem;
+        color: $text-color;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 17.3%;
+        width: 60%;
+        line-height: 60px;
+        justify-content: center;
+
+        [class*="btn-glitch-"] {
+            margin: 2rem;
+            font-size: 2rem;
+            display: inline-block;
+            font-family: "Quantico", monospace;
+            border: 1px solid $button-color;
+            color: $button-color;
+            background-color: #030300;
+            padding: 5px 7px;
+            min-width: 150px;
+            line-height: 1.5em;
+            white-space: no-wrap;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            .text,
+            .decoration,
+            .text-decoration {
+                display: inline-block;
+                color: $button-color;
+            }
+
+            &:hover,
+            &:focus {
+                animation-name: glitch;
+                animation-duration: 0.5s;
+                background-color: black;
+                color: $button-color;
+                border: 1px solid $button-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .home-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contain {
+        font-family: "Quantico";
+        text-align: center;
+        font-size: 30px;
+        color: $text-color;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 50%;
+        justify-content: center;
+
+        #titleHome {
+            width: 60%;
+        }
+
+        [class*="btn-glitch-"] {
+            margin: 2.2rem;
+            font-size: 17px;
+            display: inline-block;
+            font-family: "Quantico", monospace;
+            border: 1px solid $button-color;
+            color: $button-color;
+            background-color: transparent;
+            padding: 5px 7px;
+            min-width: 150px;
+            line-height: 1.5em;
+            white-space: no-wrap;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            .text,
+            .decoration,
+            .text-decoration {
+                display: inline-block;
+                color: $button-color;
+            }
+
+            &:hover,
+            &:focus {
+                animation-name: glitch;
+                animation-duration: 0.5s;
+                background-color: black;
+                color: $button-color;
+                border: 1px solid $button-color;
+            }
+        }
+    }
+}

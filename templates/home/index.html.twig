@@ -1,5 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+    Origins Digital
+{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+
+    <body class="home-page">
+        <div class="contain">
+                <div id="titleHome">
+            <h1>Rejoignez le programme
+                virtuel d'Origins Digital
+                pour de nouvelles perspectives
+            </h1>
+        </div>
+            <a class="btn-glitch-fill" href="{{ path("app_user_new")}}">
+                <span class="text">//Commencer</span>
+                <span class="text-decoration">_</span>
+                <span class="decoration">&rArr;</span>
+            </a>
+            <a class="btn-glitch-fill" href="{{ path("app_login")}}">
+                <span class="text">//Continuer</span>
+                <span class="text-decoration">_</span>
+                <span class="decoration">&rArr;</span>
+            </a>
+        </div>
+    </body>
+
+{% endblock %}
+

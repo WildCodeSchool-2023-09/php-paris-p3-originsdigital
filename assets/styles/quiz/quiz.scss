@@ -227,18 +227,8 @@
         [class*="btn-glitch-"] {
             font-size: 2.8vw;
             height: 7vw;
-            min-width: 25%;
+            min-width: 27%;
         }
     }
 }
 
-@media screen and (max-width: 425px) {
-    .quizComponent {
-        [class*="btn-glitch-"] {
-            font-size: 2.8vw;
-            height: 7vw;
-            min-width: 27%;
-        }
-    }
-    
-}

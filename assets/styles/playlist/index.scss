@@ -1,23 +1,27 @@
 @media screen and (min-width: 769px) {
-    #playlist-index{
+    #playlist-index {
         margin-left: 250px;
         font-family: $main-font;
-        #new-playlist{
+
+        #new-playlist {
             color: $text-color;
             font-size: 2.6rem;
             text-align: center;
-            margin-top: 5rem;
-            a{
+            padding-top: 5rem;
+
+            a {
                 color: $button-color;
             }
         }
-        h1{
+
+        h1 {
             color: $text-color;
             font-size: 4rem;
             text-align: center;
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
+
         #playlist-add {
             text-decoration: none;
             color: $button-color;
@@ -27,58 +31,69 @@
             padding-right: 4rem;
             padding-top: 2rem;
         }
+
         #playlist-carousels,
         #program-carousels {
             margin-left: 5vw;
             margin-right: 5vw;
             margin-bottom: 2rem;
         }
+
         .no-video-playlist {
             color: $text-color;
             font-size: 2rem;
             padding-left: 2rem;
         }
+
         .splide {
             margin-left: 0;
 
-            .splide__arrow--prev{
+            .splide__arrow--prev {
                 left: -4.5%;
                 top: 50%;
             }
-            .splide__arrow--next{
+
+            .splide__arrow--next {
                 right: -4.5%;
                 top: 50%;
             }
         }
-        h2{
+
+        h2 {
             color: $text-color;
             font-size: 3rem;
             margin-bottom: 1rem;
-            margin-top:2rem;
+            margin-top: 2rem;
         }
-        .playlist-title{
+
+        .playlist-title {
             text-align: center;
         }
-        span{
+
+        span {
             color: $text-color;
             font-size: 1.5rem;
         }
-        .all-videos{
+
+        .all-videos {
             text-decoration: none;
             color: $button-color;
             font-size: 1.3rem;
-            display:block;
+            display: block;
             text-align: end;
             margin-top: 1rem;
             margin-bottom: 1.5rem;
         }
+
         .all-videos-mobile {
             display: none;
         }
+
         a {
             text-decoration: none;
         }
-        .video-card{
+
+        .video-card {
             border-radius: 5px;
             text-align: center;
             height: 250px;
@@ -86,7 +101,8 @@
 
             .recto-index-card {
                 display: block;
-                img{
+
+                img {
                     width: 85%;
                     height: 8rem;
                     border: solid black;
@@ -94,7 +110,8 @@
                     margin-top: 7%;
                     margin-bottom: 5%;
                 }
-                h3{
+
+                h3 {
                     font-size: 1.5rem;
                     font-weight: bold;
                     padding-right: 0.3rem;
@@ -103,9 +120,11 @@
                     color: $text-color;
                 }
             }
+
             .verso-index-card {
                 display: none;
-                h3{
+
+                h3 {
                     font-size: 1.5rem;
                     font-weight: bold;
                     padding-right: 0.3rem;
@@ -114,12 +133,14 @@
                     text-decoration: none;
                     color: $text-color
                 }
-                p{
+
+                p {
                     margin-top: 10%;
                     font-size: 1rem;
                     color: $text-color;
                 }
-                a{
+
+                a {
                     border-radius: 3px;
                     margin-bottom: 1rem;
                     text-decoration: none;
@@ -127,6 +148,7 @@
                     margin-top: 10%;
                     color: $button-color;
                 }
+
                 [class*="btn-glitch-"] {
                     display: inline-block;
                     font-family: "Quantico", monospace;
@@ -139,17 +161,20 @@
                     white-space: no-wrap;
                     text-transform: uppercase;
                     cursor: pointer;
+
                     .text,
                     .text-decoration,
                     .decoration {
                         display: inline-block;
                         color: $button-color;
                     }
-                    &:hover, &:focus {
+
+                    &:hover,
+                    &:focus {
                         animation-name: glitch;
                         animation-duration: 0.5s;
                         background-color: black;
-                        color:$button-color;
+                        color: $button-color;
                         border: 1px solid $button-color;
                     }
                 }
@@ -159,24 +184,28 @@
 }
 
 @media screen and (max-width: 768px) {
-    #playlist-index{
+    #playlist-index {
         font-family: $main-font;
-        h1{
+
+        h1 {
             color: $text-color;
             font-size: 2.8rem;
             text-align: center;
             padding-top: 7vh;
             padding-bottom: 5vh;
         }
-        #new-playlist{
+
+        #new-playlist {
             color: $text-color;
             font-size: 2.6rem;
             text-align: center;
             margin-top: 5rem;
-            a{
+
+            a {
                 color: $button-color;
             }
         }
+
         #playlist-add {
             text-decoration: none;
             color: $button-color;
@@ -189,54 +218,64 @@
             text-align: center;
             padding-top: 2rem;
         }
+
         #playlist-carousels,
         #program-carousels {
             margin-left: 10vw;
             margin-right: 10vw;
             margin-bottom: 2rem;
         }
+
         .no-video-playlist {
             color: $text-color;
             font-size: 2rem;
             padding-left: 2rem;
         }
+
         .splide {
             margin-left: 0;
 
-            .splide__arrow--prev{
+            .splide__arrow--prev {
                 left: -11%;
                 top: 50%;
             }
-            .splide__arrow--next{
+
+            .splide__arrow--next {
                 right: -11%;
                 top: 50%;
             }
         }
-        h2{
+
+        h2 {
             color: $text-color;
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        span{
+
+        span {
             color: $text-color;
             font-size: 1.5rem;
         }
-        .all-videos{
+
+        .all-videos {
             text-decoration: none;
             color: $button-color;
             font-size: 1.5rem;
-            display:block;
+            display: block;
             text-align: end;
             margin-top: 1rem;
             padding-bottom: 2.5rem;
         }
+
         .all-videos-mobile {
             display: none;
         }
+
         a {
             text-decoration: none;
         }
-        .video-card{
+
+        .video-card {
             border-radius: 5px;
             text-align: center;
             height: 250px;
@@ -244,7 +283,8 @@
 
             .recto-index-card {
                 display: block;
-                img{
+
+                img {
                     width: 85%;
                     height: 8rem;
                     border: solid black;
@@ -252,7 +292,8 @@
                     margin-top: 7%;
                     margin-bottom: 5%;
                 }
-                h3{
+
+                h3 {
                     font-size: 1.5rem;
                     font-weight: bold;
                     padding-right: 0.3rem;
@@ -261,9 +302,11 @@
                     color: $text-color;
                 }
             }
+
             .verso-index-card {
                 display: none;
-                h3{
+
+                h3 {
                     font-size: 1.5rem;
                     font-weight: bold;
                     padding-right: 0.3rem;
@@ -272,19 +315,22 @@
                     text-decoration: none;
                     color: $text-color;
                 }
-                p{
+
+                p {
                     margin-top: 10%;
                     font-size: 1rem;
                     text-decoration: none;
                     color: $text-color
                 }
-                a{
+
+                a {
                     border-radius: 3px;
                     margin-bottom: 1rem;
                     text-decoration: none;
                     font-size: 1rem;
                     margin-top: 10%;
                 }
+
                 [class*="btn-glitch-"] {
                     display: inline-block;
                     font-family: "Quantico", monospace;
@@ -297,17 +343,20 @@
                     white-space: no-wrap;
                     text-transform: uppercase;
                     cursor: pointer;
+
                     .text,
                     .text-decoration,
                     .decoration {
                         display: inline-block;
                         color: $button-color;
                     }
-                    &:hover, &:focus {
+
+                    &:hover,
+                    &:focus {
                         animation-name: glitch;
                         animation-duration: 0.5s;
                         background-color: black;
-                        color:$button-color;
+                        color: $button-color;
                         border: 1px solid $button-color;
                     }
                 }

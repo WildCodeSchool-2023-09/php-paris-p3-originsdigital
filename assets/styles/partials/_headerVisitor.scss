@@ -1,6 +1,13 @@
+// HOMEPAGE GUEST
+#header-visitor {
+    body.home-page & {
+    display: none;
+    }
+}
+
     #header-visitor {
         width: 100%;
-        height: 4%;
+        height: 6vh;
         background-color: $navbar-main-color;
         color: $text-color;
         display: flex;
@@ -9,7 +16,7 @@
 
         #header-visitor-logo {
             color: #006AB3;
-            font-size: 190%;
+            font-size: 3vh;
             margin-left: 2vh;
             margin: 1vw 0 1vw 2vw;
             text-decoration: none;
@@ -17,11 +24,6 @@
 
         #header-visitor-logo>span {
             color: $text-color;
-        }
-
-        #header-visitor-search {
-            margin: 1vw 2vw 1vw 0;
-            margin-left: 14%;
         }
 
         .connexion-buttons {
@@ -38,7 +40,7 @@
 
         #header-visitor-buttons-container {
             display: inline-flex;
-            justify-content: space-between;
+            justify-content: space-around;
             width: 45%;
         }
 
@@ -86,5 +88,21 @@
         #header-visitor-inscription-button:active,
         #header-visitor-login-button:active:active {
             top: 1px;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        #header-visitor {
+            .connexion-buttons {
+                font-size: 70%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        #header-visitor {
+            .connexion-buttons {
+                font-size: 50%;
+            }
         }
     }

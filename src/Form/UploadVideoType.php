@@ -71,7 +71,7 @@ class UploadVideoType extends AbstractType
             ])
             ->add('category', ChoiceType::class, [
                 'placeholder' => '//Catégorie_',
-                'choices' => Video::CATEGORIES,
+                'choices' => array_flip(array_combine(Video::CATEGORIES, Video::CATEGORIES)),
                 'label' => 'Category',
             ]);
         ;

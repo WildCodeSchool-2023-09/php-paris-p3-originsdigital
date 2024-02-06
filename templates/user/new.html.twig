@@ -6,6 +6,10 @@
 
 {% block body %}
 
+    <div id="header-visitor">
+        <a href="{{ path('language_index') }}" id="header-visitor-logo">{<span>Origins</span>/<span>Digital</span>}</a>
+    </div>
+
     <h1 id="user-form-title">Créer un compte</h1>
 
 {{ include('user/_form.html.twig') }}
