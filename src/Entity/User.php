@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use Serializable;
 use App\Entity\Playlist;
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Ignore;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -26,7 +29,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
     message: 'ce pseudo est déjà utilisé',
 )]
 #[Vich\Uploadable]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
+class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -62,6 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
     private ?string $email = null;
 
     #[ORM\Column(length: 200, nullable: true)]
+    #[Ignore]
     private ?string $profilepicture = null;
 
     #[Vich\UploadableField(mapping: 'profilepicture_file', fileNameProperty: 'profilepicture')]
@@ -374,5 +378,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Equatab
         $this->programs->removeElement($program);
 
         return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->roles,
+            $this->password,
+            $this->email,
+            $this->profilepicture, // You may need to adjust this based on your needs
+            // Exclude the profilepictureFile from serialization
+            // $this->profilepictureFile,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->roles,
+            $this->password,
+            $this->email,
+            $this->profilepicture, // You may need to adjust this based on your needs
+            // Exclude the profilepictureFile from serialization
+            // $this->profilepictureFile,
+        ) = unserialize($serialized);
     }
 }
