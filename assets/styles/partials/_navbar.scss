@@ -10,7 +10,7 @@
     #navbar {
         width: 250px;
         height: 100vh;
-        background-color: #030300;
+        background-color: $navbar-main-color;
         color: $text-color;
         display: flex;
         justify-content: flex-start;

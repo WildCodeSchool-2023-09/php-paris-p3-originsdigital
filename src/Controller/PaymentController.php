@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Stripe\StripeClient;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authenticator\Token\PostAuthenticationToken;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 #[Route('/payment')]
 class PaymentController extends AbstractController
@@ -41,8 +44,11 @@ class PaymentController extends AbstractController
     }
 
     #[Route('/success-url', name: 'success_url')]
-    public function successUrl(EntityManagerInterface $entityManager): Response
-    {
+    public function successUrl(
+        EntityManagerInterface $entityManager,
+        UserRepository $userRepository,
+        TokenStorageInterface $tokenStorage
+    ): Response {
         $stripeClient = new StripeClient($this->getParameter('stripe_secret_key'));
 
         try {
@@ -57,6 +63,11 @@ class PaymentController extends AbstractController
         } catch (\Error $e) {
             echo json_encode(['error' => $e->getMessage()]);
         }
+
+        $databaseUser = $userRepository->findOneById($this->getUser()->getId());
+        $databaseUserRoles = $databaseUser->getRoles();
+        $newToken = new PostAuthenticationToken($databaseUser, 'main', $databaseUserRoles);
+        $tokenStorage->setToken($newToken);
 
         $this->addFlash('notice', 'Votre paiement a bien été accepté, Merci !');
         return $this->redirectToRoute('home');

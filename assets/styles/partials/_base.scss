@@ -137,7 +137,7 @@ html {
     &:focus {
         animation-name: glitch;
         animation-duration: 0.5s;
-        background-color: black;
+        background-color: $navbar-main-color;
         color: $button-color;
         border: 1px solid $button-color;
 
