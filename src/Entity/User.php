@@ -65,7 +65,6 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     private ?string $email = null;
 
     #[ORM\Column(length: 200, nullable: true)]
-    #[Ignore]
     private ?string $profilepicture = null;
 
     #[Vich\UploadableField(mapping: 'profilepicture_file', fileNameProperty: 'profilepicture')]

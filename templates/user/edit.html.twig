@@ -58,6 +58,8 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {{ encore_entry_script_tags('app') }}
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var myModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
@@ -66,6 +68,7 @@
             });
         });
     </script>
+
 {% endblock %}
 
 {% endblock %}
