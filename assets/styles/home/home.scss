@@ -5,121 +5,129 @@
         align-items: center;
     }
 
-    .contain {
-        font-family: "Quantico";
-        text-align: center;
-        font-size: 3rem;
-        color: $text-color;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        margin-top: 17.3%;
-        width: 60%;
-        line-height: 60px;
-        justify-content: center;
-        overflow: hidden;
+    #home-connexion-buttons {
 
-        [class*="btn-glitch-"] {
-            margin: 2rem;
-            font-size: 2rem;
-            display: inline-block;
-            font-family: "Quantico", monospace;
-            border: 1px solid $button-color;
-            color: $button-color;
-            background-color: #030300;
-            padding: 5px 7px;
-            min-width: 150px;
-            line-height: 1.5em;
-            white-space: no-wrap;
-            text-transform: uppercase;
+        display: inline-flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: 5%;
+
+        .connexion-buttons {
+            display: block;
+            width: fit-content;
+            border-radius: 5px;
+            text-align: center;
+            color: #FFF;
             text-decoration: none;
-            cursor: pointer;
+            font-family: $main-font;
+            font-size: 100%;
+            padding: 0.3%;
+        }
 
-            .text,
-            .decoration,
-            .text-decoration {
-                display: inline-block;
-                color: $button-color;
+        #header-visitor-inscription-button {
+            background: #00B368;
+            box-shadow: 0px 4px 4px 0px rgba(0, 179, 104, 0.25), 0px -4px 4px 0px rgba(0, 179, 104, 0.25);
+        }
 
-            }
+        #header-visitor-login-button {
+            background: #006AB3;
+            box-shadow: 4px 0px 4px 0px rgba(0, 106, 179, 0.25), 0px -4px 4px 0px rgba(0, 106, 179, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
 
-            &:hover,
-            &:focus {
-                animation-name: glitch;
-                animation-duration: 100s;
-                background-color: black;
-                color: $button-color;
-                border: 1px solid $button-color;
-            }
+        #header-visitor-inscription-button:hover,
+        #header-visitor-login-button:hover {
+            box-shadow: 0px 2.5px 5px 0px rgba(255, 255, 255, 0.449);
+        }
 
-            @keyframes glitch {
-                0% {
-                    transform: translate(0);
-                }
-            }
+        #header-visitor-inscription-button:after,
+        #header-visitor-login-button:after {
+            content: "";
+            display: block;
+            position: relative;
+            border-radius: 4em;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.5s;
+            box-shadow: 0 0 10px 40px white;
+        }
+
+        #header-visitor-inscription-button:active:after,
+        #header-visitor-login-button:active:after {
+            box-shadow: 0 0 0 0 white;
+            position: relative;
+            border-radius: 4em;
+            left: 0;
+            top: -100%;
+            opacity: 1;
+            transition: 0s;
+        }
+
+        #header-visitor-inscription-button:active,
+        #header-visitor-login-button:active:active {
+            top: 1px;
         }
     }
 }
 
-@media screen and (max-width: 768px) {
-
-    .home-page {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+@media screen and (max-width: 425px) {
+    #header-visitor {
+        .connexion-buttons {
+            font-size: 70%;
+        }
     }
+}
 
-    .contain {
-        font-family: "Quantico";
-        text-align: center;
-        font-size: 30px;
-        color: $text-color;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        margin-top: 50%;
-        justify-content: center;
+@media screen and (max-width: 320px) {
+    #header-visitor {
+        .connexion-buttons {
+            font-size: 50%;
+        }
+    }
+}
 
-        #titleHome {
-            width: 60%;
+.contain {
+    font-family: "Quantico";
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+    color: $text-color;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 17.3%;
+    width: 60%;
+    line-height: 60px;
+    justify-content: center;
+    overflow: hidden;
+
+
+
+    @media screen and (max-width: 768px) {
+
+        .home-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        [class*="btn-glitch-"] {
-            margin: 2.2rem;
-            font-size: 17px;
-            display: inline-block;
-            font-family: "Quantico", monospace;
-            border: 1px solid $button-color;
-            color: $button-color;
-            background-color: #030300;
-            padding: 5px 7px;
-            min-width: 150px;
-            line-height: 1.5em;
-            white-space: no-wrap;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
+        .contain {
+            font-family: "Quantico";
+            text-align: center;
+            font-size: 30px;
+            color: $text-color;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 50%;
+            justify-content: center;
 
-            .text,
-            .decoration,
-            .text-decoration {
-                display: inline-block;
-                color: $button-color;
-            }
-
-            &:hover,
-            &:focus {
-                animation-name: glitch;
-                animation-duration: 100s;
-                background-color: black;
-                color: $button-color;
-                border: 1px solid $button-color;
-            }
-
-            @keyframes glitch {
-                0% {
-                    transform: translate(0);
-                }
+            #titleHome {
+                width: 60%;
             }
         }
     }

@@ -7,24 +7,31 @@
 {% block body %}
 
     <body class="home-page">
+
         <div class="contain">
-                <div id="titleHome">
-            <h1>Rejoignez le programme
-                virtuel d'Origins Digital
-                pour de nouvelles perspectives
-            </h1>
+            <div id="titleHome">
+                <h1>Rejoignez le programme
+                    virtuel d'Origins Digital
+                    pour de nouvelles perspectives
+                </h1>
+            </div>
+            <div id="home-connexion-buttons">
+                <a href ="{{ path('app_login') }}" class="connexion-buttons" id="header-visitor-login-button">LOGIN</a>
+                <a href ="{{ path('app_user_new') }}" class="connexion-buttons" id="header-visitor-inscription-button">INSCRIPTION</a>
+            </div>
         </div>
-            <a class="btn-glitch-fill" href="{{ path("app_user_new")}}">
-                <span class="text">//Commencer</span>
+
+            {# <a class="btn-glitch-fill" href="{{ path("app_user_new")}}">
+                <span class="text">//Inscription</span>
                 <span class="text-decoration">_</span>
                 <span class="decoration">&rArr;</span>
             </a>
             <a class="btn-glitch-fill" href="{{ path("app_login")}}">
-                <span class="text">//Continuer</span>
+                <span class="text">//Connexion</span>
                 <span class="text-decoration">_</span>
                 <span class="decoration">&rArr;</span>
-            </a>
-        </div>
+            </a> #}
+
     </body>
 
 {% endblock %}
