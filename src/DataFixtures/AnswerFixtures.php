@@ -564,35 +564,35 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             'question_1' => [
                 'answer_1' => [
                     'label' => 'PHP',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
                 'answer_2' => [
                     'label' => 'JavaScript',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
             ],
             'question_2' => [
                 'answer_1' => [
                     'label' => 'PHP',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
                 'answer_2' => [
                     'label' => 'JavaScript',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
                 'answer_3' => [
                     'label' => 'Je ne sais pas',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
             ],
             'question_3' => [
                 'answer_1' => [
                     'label' => 'Front-end',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
                 'answer_2' => [
                     'label' => 'Back-end',
-                    'is_correct' => false,
+                    'is_correct' => true,
                 ],
             ],
         ],
