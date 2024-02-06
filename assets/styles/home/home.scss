@@ -1,5 +1,6 @@
 @media screen and (min-width: 769px) {
     .home-page {
+        background-image: url('/assets/images/background-homepage.png');
         display: flex;
         justify-content: center;
         align-items: center;
@@ -64,6 +65,7 @@
 @media screen and (max-width: 768px) {
 
     .home-page {
+        background-image: url('/assets/images/background-homepage.png');
         display: flex;
         justify-content: center;
         align-items: center;
