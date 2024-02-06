@@ -16,6 +16,7 @@
             margin-top: 3rem;
         }
         .navigation {
+            padding-top: 2rem;
             .pagination {
                 justify-content: center;
                 span {
@@ -71,7 +72,10 @@
                         font-size: 1.5rem;
                         font-weight: bold;
                         margin-bottom: 1rem;
-                    }
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -webkit-line-clamp: 4;                    }
                 }
                 .verso-index-card {
                     display: none;
@@ -88,7 +92,10 @@
                         line-height: 150%;
                         margin-bottom: 1.5rem;
                         margin-top: 8%;
-                    }
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        -webkit-line-clamp: 2;                       }
                     a{
                         border-radius: 3px;
                         text-decoration: none;
@@ -135,6 +142,7 @@
             display: none;
         }
         .navigation {
+            padding-top: 1.5rem;
             .pagination {
                 justify-content: center;
                 span {

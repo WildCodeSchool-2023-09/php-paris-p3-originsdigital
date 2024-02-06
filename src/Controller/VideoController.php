@@ -89,10 +89,13 @@ class VideoController extends AbstractController
         string $languageSlug,
         string $categoryLabel,
         VideoRepository $videoRepository,
+        LanguageRepository $languageRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-        $videos = $videoRepository->findBy(['category' => $categoryLabel]);
+        $languageLabel = $languageRepository->findBySlug($languageSlug);
+
+        $videos = $videoRepository->findBy(['category' => $categoryLabel, 'language' => $languageLabel]);
         $videos = $paginator->paginate(
             $videos,
             $request->query->getInt('page', 1),

@@ -11,54 +11,89 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $objectManager): void
     {
-        // PLAYLIST JS
         $playlistJSBeginner = new Playlist();
-
         $playlistJSBeginner->setLabel('JS Beginner');
-        $playlistJSBeginner->addVideo($this->getReference('COURS COMPLET HTML ET CSS - Eléments, balises et attributs'))
-                           ->addVideo($this->getReference('HTML/CSS - images'))
-                           ->addVideo($this->getReference('HTML/CSS - media queries'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : Introduction à la formation'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : Les variables'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : Les conditions'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : La portée des variables'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : Les boucles'))
-                           ->addVideo($this->getReference('Apprendre le JavaScript : Les fonctions'));
-
+        $playlistJSBeginner->addVideo($this->getReference('HTMLLanguage - Introduction'))
+                           ->addVideo($this->getReference('HTMLLanguage - Première page web'))
+                           ->addVideo($this->getReference('HTMLLanguage - Les balises'))
+                           ->addVideo($this->getReference('HTMLLanguage - Le formatage (1/2)'))
+                           ->addVideo($this->getReference('HTMLLanguage - Le formatage (2/2)'))
+                           ->addVideo($this->getReference('HTMLLanguage - Les listes'))
+                           ->addVideo($this->getReference('HTMLLanguage - Les tableaux'))
+                           ->addVideo($this->getReference('HTMLLanguage - Les images'))
+                           ->addVideo($this->getReference('CSSLanguage - Les sélecteurs'))
+                           ->addVideo($this->getReference('CSSLanguage - Le modèle de boîte'))
+                           ->addVideo($this->getReference('CSSLanguage - Les polices'))
+                           ->addVideo($this->getReference('CSSLanguage - Les formats de couleurs'))
+                           ->addVideo($this->getReference('CSSLanguage - Les unités de mesure'))
+                           ->addVideo($this->getReference('CSSLanguage - Le positionnement'))
+                           ->addVideo($this->getReference('CSSLanguage - Les éléments flottants'))
+                           ->addVideo($this->getReference('CSSLanguage - La propriété background'))
+                           ->addVideo($this->getReference('CSSLanguage - Transform'))
+                           ->addVideo($this->getReference('CSSLanguage - Animation'))
+                           ->addVideo($this->getReference('CSSLanguage - Responsive et media query'))
+                           ->addVideo($this->getReference('JSLanguage - Les variables'))
+                           ->addVideo($this->getReference('JSLanguage - Les conditions'))
+                           ->addVideo($this->getReference('JSLanguage - Les boucles'))
+                           ->addVideo($this->getReference('JSLanguage - Les fonctions'))
+                           ->addVideo($this->getReference('JSLanguage - Les classes'))
+                           ->addVideo($this->getReference('JSLanguage - Les erreurs'))
+                           ->addVideo($this->getReference('JSLanguage - Les promises'))
+                           ->addVideo($this->getReference('JSLanguage - La méthode fetch'))
+                           ->addVideo($this->getReference('JSLanguage - Les modules'))
+                           ->addVideo($this->getReference('JSLanguage - L\'objet Date'))
+                           ->addVideo($this->getReference('JSLanguage - Les écouteurs d\'événements'));
+            
         $objectManager->persist($playlistJSBeginner);
 
-        // PLAYLIST PHP
         $playlistPHPExpert = new Playlist();
-
         $playlistPHPExpert->setLabel('PHP Expert');
-        $playlistPHPExpert->addVideo($this->getReference('Apprendre #Symfony 6 - Installation et configuration'))
-                          ->addVideo($this->getReference('Apprendre #Symfony 6 - Créer une extension Twig'))
-                          ->addVideo($this->getReference('Apprendre #Symfony 6 - Le cache'))
-                          ->addVideo($this->getReference('Apprendre #Symfony 6 - Webpack Encore'))
-                          ->addVideo($this->getReference('Apprendre #Symfony 6 - Event Listeners et Event Subscribers'))
-                          ->addVideo($this->getReference('Tutoriel Symfony UX Turbo'))
-                          ->addVideo($this->getReference('Docker : Premier Pas & Installation'))
-                          ->addVideo($this->getReference('Docker : manipuler les conteneurs'))
-                          ->addVideo($this->getReference('Déployer du PHP avec Ansible (1/2) : Presentation'))
-                          ->addVideo($this->getReference(
-                              'Déployer du PHP avec Ansible (2/2) : Déployer le code avec Ansistrano'
-                          ));
+        $playlistPHPExpert->addVideo($this->getReference('PHPLanguage - L\'installation'))
+                          ->addVideo($this->getReference('PHPLanguage - Les variables'))
+                          ->addVideo($this->getReference('PHPLanguage - Les tableaux'))
+                          ->addVideo($this->getReference('PHPLanguage - Les conditions'))
+                          ->addVideo($this->getReference('PHPLanguage - Les boucles'))
+                          ->addVideo($this->getReference('PHPLanguage - Les fonctions'))
+                          ->addVideo($this->getReference('PHPLanguage - Require & Include'))
+                          ->addVideo($this->getReference('PHPLanguage - Les formulaires'))
+                          ->addVideo($this->getReference('PHPLanguage - Les dates'))
+                          ->addVideo($this->getReference('PHPLanguage - Les sessions'))
+                          ->addVideo($this->getReference('PHPLanguage - Les classes'))
+                          ->addVideo($this->getReference('PHPLanguage - Le mot-clé static'))
+                          ->addVideo($this->getReference('PHPLanguage - L\'héritage'))
+                          ->addVideo($this->getReference('PHPLanguage - Les exceptions'))
+                          ->addVideo($this->getReference('PHPLanguage - La PDO'))
+                          ->addVideo($this->getReference('PHPLanguage - Les namespaces'))
+                          ->addVideo($this->getReference('PHPLanguage - L\'autoloader'))
+                          ->addVideo($this->getReference('PHPLanguage - Composer'))
+                          ->addVideo($this->getReference('PHPLanguage - Le Query Builder'))
+                          ->addVideo($this->getReference('PHPLanguage - La pagination'));
 
         $objectManager->persist($playlistPHPExpert);
 
-        $playlistTest = new Playlist();
-        $playlistTest->setLabel('HTML-CSS');
-        $playlistTest->addVideo($this->getReference('COURS COMPLET HTML ET CSS - Eléments, balises et attributs'))
-                     ->addVideo($this->getReference('HTML/CSS - images'))
-                     ->addVideo($this->getReference('HTML/CSS - media queries'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : Introduction à la formation'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : Les variables'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : Les conditions'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : La portée des variables'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : Les boucles'))
-                     ->addVideo($this->getReference('Apprendre le JavaScript : Les fonctions'));
+        $playlistDefault = new Playlist();
+        $playlistDefault->setLabel('HTML & CSS');
+        $playlistDefault->addVideo($this->getReference('HTMLLanguage - Introduction'))
+                        ->addVideo($this->getReference('HTMLLanguage - Première page web'))
+                        ->addVideo($this->getReference('HTMLLanguage - Les balises'))
+                        ->addVideo($this->getReference('HTMLLanguage - Le formatage (1/2)'))
+                        ->addVideo($this->getReference('HTMLLanguage - Le formatage (2/2)'))
+                        ->addVideo($this->getReference('HTMLLanguage - Les listes'))
+                        ->addVideo($this->getReference('HTMLLanguage - Les tableaux'))
+                        ->addVideo($this->getReference('HTMLLanguage - Les images'))
+                        ->addVideo($this->getReference('CSSLanguage - Les sélecteurs'))
+                        ->addVideo($this->getReference('CSSLanguage - Le modèle de boîte'))
+                        ->addVideo($this->getReference('CSSLanguage - Les polices'))
+                        ->addVideo($this->getReference('CSSLanguage - Les formats de couleurs'))
+                        ->addVideo($this->getReference('CSSLanguage - Les unités de mesure'))
+                        ->addVideo($this->getReference('CSSLanguage - Le positionnement'))
+                        ->addVideo($this->getReference('CSSLanguage - Les éléments flottants'))
+                        ->addVideo($this->getReference('CSSLanguage - La propriété background'))
+                        ->addVideo($this->getReference('CSSLanguage - Transform'))
+                        ->addVideo($this->getReference('CSSLanguage - Animation'))
+                        ->addVideo($this->getReference('CSSLanguage - Responsive et media query'));
 
-        $objectManager->persist($playlistTest);
+        $objectManager->persist($playlistDefault);
 
         $objectManager->flush();
     }

@@ -14,11 +14,11 @@
 			{% for video in videos %}
 				<div class="video-card index-card {{languageSlug}}-card">
 					<div class="recto-index-card">
-						<img src="/uploads/thumbnail/{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
-						<h2>//{{video.title}}_</h2>
+						<img src="/uploads/thumbnails/{{video.thumbnail}}" alt="thumbnail of {{video.title}}">
+						<h2>{{video.title}}</h2>
 					</div>
 					<div class="verso-index-card">
-						<h2>//{{video.title}}_</h2>
+						<h2>{{video.title}}</h2>
 						<p>{{video.description}}</p>
 						<a class="btn-glitch-fill" href="{{ path("video_show", { 'languageSlug': languageSlug, 'videoSlug': video.slug } )}}">
 							<span class="text">//Video</span>
