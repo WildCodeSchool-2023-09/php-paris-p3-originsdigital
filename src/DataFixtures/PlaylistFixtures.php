@@ -43,7 +43,7 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
                            ->addVideo($this->getReference('JSLanguage - Les modules'))
                            ->addVideo($this->getReference('JSLanguage - L\'objet Date'))
                            ->addVideo($this->getReference('JSLanguage - Les écouteurs d\'événements'));
-            
+
         $objectManager->persist($playlistJSBeginner);
 
         $playlistPHPExpert = new Playlist();
