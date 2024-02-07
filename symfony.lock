@@ -279,6 +279,9 @@
             "./config/packages/uid.yaml"
         ]
     },
+    "symfony/ux-swup": {
+        "version": "v2.14.0"
+    },
     "symfony/validator": {
         "version": "6.4",
         "recipe": {

@@ -43,6 +43,7 @@
         "symfony/string": "6.4.*",
         "symfony/translation": "6.4.*",
         "symfony/twig-bundle": "6.4.*",
+        "symfony/ux-swup": "^2.14",
         "symfony/validator": "6.4.*",
         "symfony/web-link": "6.4.*",
         "symfony/webapp-meta": "^1.0",
