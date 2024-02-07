@@ -2,6 +2,7 @@
 
 namespace App\Form\Trait;
 
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -75,6 +76,16 @@ trait UserTrait
     public function addInscriptionFields(FormBuilderInterface $builder): void
     {
         $builder
+        ->add('profilepictureFile', VichFileType::class, [
+            'required'      => false,
+            'allow_delete'  => false,
+            'download_uri' => false,
+            'label' => false,
+            'attr' => [
+                'class' => 'file-input-field',
+                'id' => 'user_profilepictureFile_file',
+            ],
+        ])
         ->add('username', TextType::class, [
             'label' => false,
             'required' => true,

@@ -105,7 +105,7 @@
                 img {
                     width: 85%;
                     height: 8rem;
-                    border: solid black;
+                    border: solid $navbar-main-color;
                     border-radius: 5px;
                     margin-top: 7%;
                     margin-bottom: 5%;
@@ -152,7 +152,7 @@
                 [class*="btn-glitch-"] {
                     display: inline-block;
                     font-family: "Quantico", monospace;
-                    border: 1px solid black;
+                    border: 1px solid $navbar-main-color;
                     color: $button-color;
                     background-color: $navbar-main-color;
                     padding: 5px 7px;
@@ -173,7 +173,7 @@
                     &:focus {
                         animation-name: glitch;
                         animation-duration: 0.5s;
-                        background-color: black;
+                        background-color: $navbar-main-color;
                         color: $button-color;
                         border: 1px solid $button-color;
                     }
@@ -287,7 +287,7 @@
                 img {
                     width: 85%;
                     height: 8rem;
-                    border: solid black;
+                    border: solid $navbar-main-color;
                     border-radius: 5px;
                     margin-top: 7%;
                     margin-bottom: 5%;
@@ -334,7 +334,7 @@
                 [class*="btn-glitch-"] {
                     display: inline-block;
                     font-family: "Quantico", monospace;
-                    border: 1px solid black;
+                    border: 1px solid $navbar-main-color;
                     color: $button-color;
                     background-color: $navbar-main-color;
                     padding: 5px 7px;
@@ -355,7 +355,7 @@
                     &:focus {
                         animation-name: glitch;
                         animation-duration: 0.5s;
-                        background-color: black;
+                        background-color: $navbar-main-color;
                         color: $button-color;
                         border: 1px solid $button-color;
                     }

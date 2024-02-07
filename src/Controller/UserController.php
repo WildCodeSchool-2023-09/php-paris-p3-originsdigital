@@ -7,11 +7,17 @@ use App\Form\UserType;
 use App\Form\UserEditType;
 use App\Form\SubscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\SecurityEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -21,6 +27,8 @@ class UserController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher,
+        EventDispatcherInterface $dispatcher,
+        TokenStorageInterface $tokenStorage
     ): Response {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -31,14 +39,22 @@ class UserController extends AbstractController
             $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash('notice', 'Compte créé avec succès ! Vous pouvez vous connecter');
-            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('notice', 'Compte créé avec succès ! Bienvenue');
+
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            $tokenStorage->setToken($token);
+            $event = new InteractiveLoginEvent($request, $token);
+            $dispatcher->dispatch($event, SecurityEvents::INTERACTIVE_LOGIN);
+
+            return $this->redirectToRoute('home');
         }
+
         return $this->render('user/new.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
+
 
     #[Route('/{id}/subscribe', name: 'app_subscribe', methods: ['GET', 'POST'])]
     public function getPremium(Request $request, User $user, EntityManagerInterface $entityManager): Response
