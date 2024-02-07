@@ -31,7 +31,7 @@ class VideoRepository extends ServiceEntityRepository
             ->where("v.category = :category")
             ->andWhere("v.id > :id")
             ->andWhere("l.label = :language")
-            ->setMaxResults(4)
+            ->setMaxResults(3)
             ->setParameter('category', $category)
             ->setParameter('id', $id)
             ->setParameter('language', $language)

@@ -120,6 +120,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        p {
+            color: $text-color;
+            padding-top: 7px;
+            padding-bottom: 1px;
+            padding-right: 3px;
+            padding-left: 3px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+        }
     }
 
     .recommanded-videos {
