@@ -1,6 +1,6 @@
 <div id="navbar-mobile">
 
-	<a class="link-mobile" href="{{ path('language_index') }}"><img class="logo-link-mobile" src="{{ asset('build/images/home.svg') }}"><span class="nav-mobile-button">Home</span>
+	<a class="link-mobile" href="{{ path('home') }}"><img class="logo-link-mobile" src="{{ asset('build/images/home.svg') }}"><span class="nav-mobile-button">Home</span>
 	</a>
 	{% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
 		<a class="link-mobile" href="{{ path('app_rules') }}"><img class="logo-link-mobile" src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-mobile-button">Quiz</span>
