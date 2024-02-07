@@ -18,4 +18,11 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig');
     }
+
+    #[Route('/', name: 'access_denied')]
+    public function accessDenied(): Response
+    {
+        $this->addFlash('warning', 'Vous n\'avez pas les autorisations nécessaires pour accéder à cette page');
+        return $this->redirectToRoute('language_index');
+    }
 }
