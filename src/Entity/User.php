@@ -32,7 +32,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
     message: 'ce pseudo est déjà utilisé',
 )]
 #[Vich\Uploadable]
-class User implements UserInterface, Serializable, PasswordAuthenticatedUserInterface, EquatableInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -386,29 +386,5 @@ class User implements UserInterface, Serializable, PasswordAuthenticatedUserInte
         $this->programs->removeElement($program);
 
         return $this;
-    }
-
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->roles,
-            $this->password,
-            $this->email,
-            $this->profilepicture,
-        ));
-    }
-
-    public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->username,
-            $this->roles,
-            $this->password,
-            $this->email,
-            $this->profilepicture,
-        ) = unserialize($serialized);
     }
 }
