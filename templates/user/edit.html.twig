@@ -19,7 +19,7 @@
             <div class="formErrors">
                 {{ form_errors(form) }}
             </div>
-
+                {{ form_row(form.profilepictureFile) }}
                 {{ form_row(form.username) }}
                 {{ form_row(form.email)}}
                 {{ form_row(form._token) }}
@@ -58,6 +58,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var myModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
@@ -66,6 +67,7 @@
             });
         });
     </script>
+
 {% endblock %}
 
 {% endblock %}
