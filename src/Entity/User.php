@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Serializable;
+use App\Entity\Course;
+use DateTimeImmutable;
 use App\Entity\Playlist;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,7 +32,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
     message: 'ce pseudo est déjà utilisé',
 )]
 #[Vich\Uploadable]
-class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInterface, EquatableInterface
+class User implements UserInterface, Serializable, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -67,6 +70,9 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $profilepicture = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTime $updatedAt = null;
+
     #[Vich\UploadableField(mapping: 'profilepicture_file', fileNameProperty: 'profilepicture')]
     #[Assert\File(
         maxSize: '2M',
@@ -80,6 +86,12 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
     private Collection $courses;
 
+    public function __construct()
+    {
+        $this->playlists = new ArrayCollection();
+        $this->courses = new ArrayCollection();
+        $this->programs = new ArrayCollection();
+    }
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $lastname = null;
 
@@ -87,7 +99,7 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     private ?string $firstname = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
-    private ?\DateTimeImmutable $birthdate = null;
+    private ?DateTimeImmutable $birthdate = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $houseNumber = null;
@@ -107,13 +119,6 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\ManyToMany(targetEntity: Playlist::class)]
     private Collection $programs;
 
-    public function __construct()
-    {
-        $this->playlists = new ArrayCollection();
-        $this->courses = new ArrayCollection();
-        $this->programs = new ArrayCollection();
-    }
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -193,6 +198,9 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     public function setProfilepictureFile(File $image = null): User
     {
         $this->profilepictureFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+          }
         return $this;
     }
 

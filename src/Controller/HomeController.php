@@ -12,7 +12,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function home(): Response
     {
-        if ($this->getUser() && $this->getUser()->getRoles()) {
+
+        if ($this->getUser() !== null) {
             return $this->redirectToRoute('language_index');
         }
 
