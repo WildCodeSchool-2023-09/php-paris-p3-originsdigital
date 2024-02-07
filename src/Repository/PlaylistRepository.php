@@ -21,7 +21,7 @@ class PlaylistRepository extends ServiceEntityRepository
 {
     public const PLAYLIST_JS_BEGINNER = 'JS Beginner';
     public const PLAYLIST_PHP_EXPERT = 'PHP Expert';
-    public const PLAYLIST_DEFAULT = 'HTML-CSS';
+    public const PLAYLIST_DEFAULT = 'HTML & CSS';
 
     public function __construct(ManagerRegistry $registry)
     {

@@ -26,7 +26,7 @@ class QuizController extends AbstractController
             $course = $courseRepository->findOneById($_POST["pathInformation"]);
         }
 
-        return $this->render('Quiz/quiz.html.twig', [
+        return $this->render('quiz/quiz.html.twig', [
             'course' => $course,
         ]);
     }
@@ -35,7 +35,7 @@ class QuizController extends AbstractController
     #[Route('/rules', name: 'app_rules')]
     public function introQuiz(): Response
     {
-        return $this->render('Quiz/rules.html.twig');
+        return $this->render('quiz/rules.html.twig');
     }
 
     #[IsGranted('ROLE_PREMIUM')]
@@ -62,7 +62,7 @@ class QuizController extends AbstractController
     {
         $score = $request->query->get('score');
 
-        return $this->render('Quiz/result.html.twig', [
+        return $this->render('quiz/result.html.twig', [
             'score' => $score,
         ]);
     }
