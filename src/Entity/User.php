@@ -395,9 +395,7 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
             $this->roles,
             $this->password,
             $this->email,
-            $this->profilepicture, // You may need to adjust this based on your needs
-            // Exclude the profilepictureFile from serialization
-            // $this->profilepictureFile,
+            $this->profilepicture,
         ));
     }
 
@@ -409,9 +407,7 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
             $this->roles,
             $this->password,
             $this->email,
-            $this->profilepicture, // You may need to adjust this based on your needs
-            // Exclude the profilepictureFile from serialization
-            // $this->profilepictureFile,
+            $this->profilepicture,
         ) = unserialize($serialized);
     }
 }
