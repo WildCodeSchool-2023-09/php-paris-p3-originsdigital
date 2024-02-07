@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Serializable;
+use DateTimeImmutable;
 use App\Entity\Playlist;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -67,6 +69,9 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $profilepicture = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTime $updatedAt = null;
+
     #[Vich\UploadableField(mapping: 'profilepicture_file', fileNameProperty: 'profilepicture')]
     #[Assert\File(
         maxSize: '2M',
@@ -93,7 +98,7 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     private ?string $firstname = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
-    private ?\DateTimeImmutable $birthdate = null;
+    private ?DateTimeImmutable $birthdate = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $houseNumber = null;
@@ -192,6 +197,9 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     public function setProfilepictureFile(File $image = null): User
     {
         $this->profilepictureFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+          }
         return $this;
     }
 
