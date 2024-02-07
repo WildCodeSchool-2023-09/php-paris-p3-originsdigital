@@ -80,12 +80,6 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'user')]
     private Collection $courses;
 
-    public function __construct()
-    {
-        $this->playlists = new ArrayCollection();
-        $this->courses = new ArrayCollection();
-        $this->programs = new ArrayCollection();
-    }
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $lastname = null;
 
@@ -113,6 +107,13 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
     #[ORM\ManyToMany(targetEntity: Playlist::class)]
     private Collection $programs;
 
+    public function __construct()
+    {
+        $this->playlists = new ArrayCollection();
+        $this->courses = new ArrayCollection();
+        $this->programs = new ArrayCollection();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;

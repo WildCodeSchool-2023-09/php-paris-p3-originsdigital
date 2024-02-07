@@ -62,15 +62,13 @@
 			{% for recommandedVideo in recommandedVideos %}
 				<ul>
 					<li>
-						<a class="recommanded-videos" href="{{ path('video_show', {'languageSlug': recommandedVideo.language.slug, 'videoSlug': recommandedVideo.slug}) }}">
-							<imgsrc="{{recommandedVideo.thumbnail}}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a>
-						</li>
+						<p>{{ recommandedVideo.title }}</p>
+						<a class="recommanded-videos" href="{{ path('video_show', {'languageSlug': recommandedVideo.language.slug, 'videoSlug': recommandedVideo.slug}) }}"><img src="/uploads/thumbnails/{{recommandedVideo.thumbnail}}" id="thumbnail-recommanded-video" alt="video-thumbnail"></a>
 					</li>
 				</ul>
 			{% endfor %}
 		</div>
 	</div>
-
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
