@@ -414,7 +414,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                 ],
                 'answer_2' => [
                     'label' => 'Il est déclenché lorsque le DOM (Document Object Model)
-                                est complètement construit, sans attendre les feuilles de style ou les images',
+                                est construit, sans attendre les feuilles de style ou les images',
                     'is_correct' => false,
                 ],
                 'answer_3' => [
@@ -538,8 +538,8 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             ],
             'question_9' => [
                 'answer_1' => [
-                    'label' => '"bubbling" : propagation d\'un événement du parent
-                                aux enfants. "capturing" : propagation des enfants vers le parent',
+                    'label' => '"bubbling" : propagation du parent aux enfants.
+                    "capturing" : propagation des enfants vers le parent',
                     'is_correct' => false,
                 ],
                 'answer_2' => [
@@ -548,7 +548,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => true,
                 ],
                 'answer_3' => [
-                    'label' => 'Il n\'y a pas de différence entre le "bubbling" et le "capturing" en JavaScript',
+                    'label' => 'Il n\'y a pas de différence entre le "bubbling" et le "capturing" en JS',
                     'is_correct' => false,
                 ],
                 'answer_4' => [

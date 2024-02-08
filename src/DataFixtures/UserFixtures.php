@@ -43,11 +43,11 @@ class UserFixtures extends Fixture
         $manager->persist($admin);
 
         $placeholder = new User();
-        $placeholder->setUsername('Nolf');
-        $placeholder->setEmail('nolf@test.com');
+        $placeholder->setUsername('MC Lambert');
+        $placeholder->setEmail('micka@lambert.com');
         $placeholder->setpassword($this->passwordHasher->hashPassword($placeholder, 'zizi1234'));
         $placeholder->setRoles(['ROLE_USER']);
-        $placeholder->setProfilepicture('Photoplaceholder.jpg');
+        $placeholder->setProfilepicture('micka.png');
         $manager->persist($placeholder);
 
         $manager->flush();
