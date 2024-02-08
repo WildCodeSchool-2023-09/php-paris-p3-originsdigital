@@ -13,26 +13,7 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
     {
         $playlistJSBeginner = new Playlist();
         $playlistJSBeginner->setLabel('JS Beginner');
-        $playlistJSBeginner->addVideo($this->getReference('HTMLLanguage - Introduction'))
-                           ->addVideo($this->getReference('HTMLLanguage - Première page web'))
-                           ->addVideo($this->getReference('HTMLLanguage - Les balises'))
-                           ->addVideo($this->getReference('HTMLLanguage - Le formatage (1/2)'))
-                           ->addVideo($this->getReference('HTMLLanguage - Le formatage (2/2)'))
-                           ->addVideo($this->getReference('HTMLLanguage - Les listes'))
-                           ->addVideo($this->getReference('HTMLLanguage - Les tableaux'))
-                           ->addVideo($this->getReference('HTMLLanguage - Les images'))
-                           ->addVideo($this->getReference('CSSLanguage - Les sélecteurs'))
-                           ->addVideo($this->getReference('CSSLanguage - Le modèle de boîte'))
-                           ->addVideo($this->getReference('CSSLanguage - Les polices'))
-                           ->addVideo($this->getReference('CSSLanguage - Les formats de couleurs'))
-                           ->addVideo($this->getReference('CSSLanguage - Les unités de mesure'))
-                           ->addVideo($this->getReference('CSSLanguage - Le positionnement'))
-                           ->addVideo($this->getReference('CSSLanguage - Les éléments flottants'))
-                           ->addVideo($this->getReference('CSSLanguage - La propriété background'))
-                           ->addVideo($this->getReference('CSSLanguage - Transform'))
-                           ->addVideo($this->getReference('CSSLanguage - Animation'))
-                           ->addVideo($this->getReference('CSSLanguage - Responsive et media query'))
-                           ->addVideo($this->getReference('JSLanguage - Les variables'))
+        $playlistJSBeginner->addVideo($this->getReference('JSLanguage - Les variables'))
                            ->addVideo($this->getReference('JSLanguage - Les conditions'))
                            ->addVideo($this->getReference('JSLanguage - Les boucles'))
                            ->addVideo($this->getReference('JSLanguage - Les fonctions'))
@@ -42,7 +23,12 @@ class PlaylistFixtures extends Fixture implements DependentFixtureInterface
                            ->addVideo($this->getReference('JSLanguage - La méthode fetch'))
                            ->addVideo($this->getReference('JSLanguage - Les modules'))
                            ->addVideo($this->getReference('JSLanguage - L\'objet Date'))
-                           ->addVideo($this->getReference('JSLanguage - Les écouteurs d\'événements'));
+                           ->addVideo($this->getReference('JSLanguage - Les écouteurs d\'événements'))
+                           ->addVideo($this->getReference('JSLanguage - Créer une ToDo liste'))
+                           ->addVideo($this->getReference('JSLanguage - Créer un carousel : la base (1/4)'))
+                           ->addVideo($this->getReference('JSLanguage - Créer un carousel : la pagination (2/4)'))
+                           ->addVideo($this->getReference('JSLanguage - Créer un carousel : le défilement (3/4)'))
+                           ->addVideo($this->getReference('JSLanguage - Créer un carousel : le tactile (4/4)'));
 
         $objectManager->persist($playlistJSBeginner);
 

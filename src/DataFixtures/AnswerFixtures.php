@@ -413,7 +413,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => true,
                 ],
                 'answer_2' => [
-                    'label' => 'Il est déclenché lorsque le DOM (Document Object Model)
+                    'label' => 'Il est déclenché lorsque le DOM
                                 est construit, sans attendre les feuilles de style ou les images',
                     'is_correct' => false,
                 ],
@@ -454,7 +454,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => false,
                 ],
                 'answer_3' => [
-                    'label' => 'document.querySelector("#exemple")',
+                    'label' => 'document.querySelector(".exemple")',
                     'is_correct' => false,
                 ],
                 'answer_4' => [
