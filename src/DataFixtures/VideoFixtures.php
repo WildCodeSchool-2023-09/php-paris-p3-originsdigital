@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Config\Category;
 use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;

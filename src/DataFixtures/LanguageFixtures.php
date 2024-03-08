@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Language;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class LanguageFixtures extends Fixture
 {

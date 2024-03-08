@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\UserRepository;
 use Stripe\StripeClient;
 use Doctrine\ORM\EntityManagerInterface;
@@ -56,6 +55,7 @@ class PaymentController extends AbstractController
 
             if ($session["payment_status"] === self::PAYMENT_STATUS_PAID) {
                 $user = $this->getUser();
+                // var_dump($user); die();
                 $user->setRoles(['ROLE_PREMIUM']);
                 $entityManager->persist($user);
                 $entityManager->flush();

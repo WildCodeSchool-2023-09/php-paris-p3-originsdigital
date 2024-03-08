@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Course;
 use App\Entity\User;
-use App\Entity\Video;
 use App\Entity\Playlist;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

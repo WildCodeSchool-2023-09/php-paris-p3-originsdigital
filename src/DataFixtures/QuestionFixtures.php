@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Course;
 use App\Entity\Question;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
