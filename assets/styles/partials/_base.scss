@@ -11,10 +11,6 @@ $main-font: 'Quantico';
 $background-image: url('/assets/images/background-image.jpg');
 $background-image-mobile: url('/assets/images/background-image-mobile.jpg');
 
-.sf-minitoolbar {
-    display: none;
-}
-
 @mixin card ($x, $y, $o, $color) {
     width: $x;
     height: $y;
