@@ -7,13 +7,16 @@
 	{% endif %}
 	<p id="pseudo">{{ app.user.username }}</p>
 	{% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
-		<a class="link" href="{{ path('app_rules') }}"><img class="logo-link" src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span>
+		<a class="link" href="{{ path('app_rules') }}"><img class="logo-link"
+        src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span>
 		</a>
 		{% if app.user.programs[0] is defined %}
-			<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
+			<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link"
+            src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
 			</a>
 		{% else %}
-			<a class="link" href="{{ path('app_rules') }}"><img class="logo-link" src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
+			<a class="link" href="{{ path('app_rules') }}"><img class="logo-link"
+            src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
 			</a>
 		{% endif %}
 		<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Mes playlists</span>

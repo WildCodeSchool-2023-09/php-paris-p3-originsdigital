@@ -11,9 +11,6 @@ $main-font: 'Quantico';
 $background-image: url('/assets/images/background-image.jpg');
 $background-image-mobile: url('/assets/images/background-image-mobile.jpg');
 
-.sf-minitoolbar {
-    display: none;
-}
 
 @mixin card ($x, $y, $o, $color) {
     width: $x;
@@ -70,7 +67,7 @@ html {
     padding: 20px;
     border-radius: 10px 0px 50px 10px / 10px 25px 0px 10px;
     z-index: 1000;
-    animation-duration: 3.5s;
+    animation-duration: 8s;
     animation-name: slidein;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;

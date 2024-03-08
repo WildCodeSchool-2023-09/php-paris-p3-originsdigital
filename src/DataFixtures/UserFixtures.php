@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
 
-        //Fixture d'un premium, seuls les champs obligatoires sont renseignés. Mot de passe : '1234'//
+        //Fixture d'un utilisateur Premium, seuls les champs obligatoires sont renseignés. Mot de passe : '1234'//
         $premium = new User();
         $premium->setUsername('PREMIUM');
         $premium->setEmail('premium@test.com');
