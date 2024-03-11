@@ -11,6 +11,7 @@
 				<source src="/uploads/videos/{{ video.video }}" type="video/mp4">
 			</video>
 		</div>
+         {% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
 		<div id="video-options">
 			<button type="button" id="playlist-button" class="btn" data-toggle="modal" data-target="#exampleModal"></button>
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,13 +48,8 @@
 					</div>
 				</div>
 			</div>
-			<div id="like-button">
-				<a href="#"></a>
-			</div>
-			<div id="share-button">
-				<a href="#"></a>
-			</div>
 		</div>
+        {% endif %}
 		<div id="description">
 			<span id="title-description">{{ video.title }}</span>
 			<p id="text-description">{{ video.description }}</p>

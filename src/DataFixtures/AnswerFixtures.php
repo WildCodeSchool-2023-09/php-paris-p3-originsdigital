@@ -356,7 +356,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => true,
                 ],
                 'answer_3' => [
-                    'label' => 'C\'est une méthode pour injecter des données directement
+                    'label' => 'C\'est une méthode qui injecte des données
                                 dans une base de données sans passer par un formulaire',
                     'is_correct' => false,
                 ],
@@ -413,8 +413,8 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => true,
                 ],
                 'answer_2' => [
-                    'label' => 'Il est déclenché lorsque le DOM (Document Object Model)
-                                est complètement construit, sans attendre les feuilles de style ou les images',
+                    'label' => 'Il est déclenché lorsque le DOM
+                                est construit, sans attendre les feuilles de style ou les images',
                     'is_correct' => false,
                 ],
                 'answer_3' => [
@@ -454,7 +454,7 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => false,
                 ],
                 'answer_3' => [
-                    'label' => 'document.querySelector("#exemple")',
+                    'label' => 'document.querySelector(".exemple")',
                     'is_correct' => false,
                 ],
                 'answer_4' => [
@@ -522,15 +522,13 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
                     'is_correct' => false,
                 ],
                 'answer_2' => [
-                    'label' => 'null est une valeur attribuée explicitement pour
-                                indiquer l\'absence de valeur, tandis que undefined est la valeur
-                                par défaut pour les variables non initialisées',
+                    'label' => 'Null : valeur qui indique l\'absence de valeur. Undefined : valeur
+                                par défaut des variables',
                     'is_correct' => true,
                 ],
                 'answer_3' => [
-                    'label' => 'undefined est une valeur attribuée explicitement pour
-                                indiquer l\'absence de valeur, tandis que null est la valeur par
-                                défaut pour les variables non initialisées',
+                    'label' => 'undefined : valeur qui indique l\'absence de valeur. Null : valeur par
+                                défaut des variables',
                     'is_correct' => false,
                 ],
                 'answer_4' => [
@@ -540,18 +538,17 @@ class AnswerFixtures extends Fixture implements DependentFixtureInterface
             ],
             'question_9' => [
                 'answer_1' => [
-                    'label' => 'Le "bubbling" est la propagation d\'un événement du parent
-                                vers les enfants, tandis que le "capturing" est la
-                                propagation des enfants vers le parent',
+                    'label' => '"bubbling" : propagation du parent aux enfants.
+                    "capturing" : propagation des enfants vers le parent',
                     'is_correct' => false,
                 ],
                 'answer_2' => [
-                    'label' => 'Le "bubbling" est la propagation d\'un événement des enfants
-                    vers le parent, tandis que le "capturing" est la propagation du parent vers les enfants',
+                    'label' => 'bubbling : propagation d\'un événement des enfants
+                    au parent,. "capturing" : propagation du parent aux enfants',
                     'is_correct' => true,
                 ],
                 'answer_3' => [
-                    'label' => 'Il n\'y a pas de différence entre le "bubbling" et le "capturing" en JavaScript',
+                    'label' => 'Il n\'y a pas de différence entre le "bubbling" et le "capturing" en JS',
                     'is_correct' => false,
                 ],
                 'answer_4' => [

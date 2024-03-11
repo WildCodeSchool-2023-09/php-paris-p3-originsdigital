@@ -59,12 +59,15 @@
     }
 
     #video-options {
-        background-image: url('/assets/images/card2.svg');
-        background-repeat: no-repeat;
-        background-size: 13vw;
-        width: 13vw;
-        height: 4vw;
-        margin-right: -13vw;
+        // background-image: url('/assets/images/card2.svg');
+        // background-repeat: no-repeat;
+        background-color: rgba(3, 3, 0, 0.50);
+        border-radius: 5px;
+        border: 1px solid $button-color;
+        // background-size: 13vw;
+        width: 5vw;
+        height: 4.4vw;
+        margin-right: -5vw;
         margin-top: 34.5vw;
     }
 
@@ -76,26 +79,6 @@
         height: 4vw;
         margin-left: 0.7vw;
         margin-top: 0.5vw;
-    }
-
-    #like-button {
-        background-image: url('/assets/images/like.svg');
-        background-repeat: no-repeat;
-        background-size: 3vw;
-        width: 4vw;
-        height: 4vw;
-        margin-left: 4.3vw;
-        margin-top: -4vw;
-    }
-
-    #share-button {
-        background-image: url('/assets/images/share.svg');
-        background-repeat: no-repeat;
-        background-size: 3vw;
-        width: 4vw;
-        height: 4vw;
-        margin-left: 7.7vw;
-        margin-top: -4vw;
     }
 
     #title-description {
@@ -179,6 +162,11 @@
         #video-options {
             background-image: none;
             margin: 0;
+            background-color: transparent;
+            border: none;
+            background-size: 13vw;
+            width: 11vw;
+            height: 4.4vw;
         }
 
         #playlist-button {
@@ -187,22 +175,6 @@
             height: 5vw;
             margin-left: -10.3vw;
             margin-top: 2.5vw;
-        }
-
-        #like-button {
-            background-size: 6vw;
-            width: 7vw;
-            height: 5vw;
-            margin-left: 32.7vw;
-            margin-top: -5.5vw;
-        }
-
-        #share-button {
-            background-size: 6vw;
-            width: 7vw;
-            height: 6vw;
-            margin-left: 69vw;
-            margin-top: -4.5vw;
         }
 
         #description {

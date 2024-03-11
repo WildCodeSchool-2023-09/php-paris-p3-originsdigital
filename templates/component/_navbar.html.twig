@@ -7,13 +7,16 @@
 	{% endif %}
 	<p id="pseudo">{{ app.user.username }}</p>
 	{% if (app.user.roles[0] is same as("ROLE_ADMIN") or app.user.roles[0] is same as("ROLE_PREMIUM")) %}
-		<a class="link" href="{{ path('app_rules') }}"><img class="logo-link" src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span>
+		<a class="link" href="{{ path('app_rules') }}"><img class="logo-link"
+        src="{{ asset('build/images/blackboard.svg') }}"><span class="nav-button">Quiz</span>
 		</a>
 		{% if app.user.programs[0] is defined %}
-			<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
+			<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link"
+            src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
 			</a>
 		{% else %}
-			<a class="link" href="{{ path('app_rules') }}"><img class="logo-link" src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
+			<a class="link" href="{{ path('app_rules') }}"><img class="logo-link"
+            src="{{ asset('build/images/program.svg') }}"><span class="nav-button">Programme</span>
 			</a>
 		{% endif %}
 		<a class="link" href="{{ path('playlist_index') }}"><img class="logo-link" src="{{ asset('build/images/playlist.svg') }}"><span class="nav-button">Mes playlists</span>
@@ -27,5 +30,8 @@
 		{% if app.user.roles[0] is same as("ROLE_USER") %}
 			<a class="link" id="premium" href="{{ path('app_subscribe', {'id': app.user.id}) }}"><img class="logo-link" src="{{ asset('build/images/star.svg') }}"><span class="nav-button" id="nav-button-premium">PASSER PREMIUM</span>
 			</a>
+		{% endif %}
+        {% if app.user.roles[0] is same as("ROLE_USER") %}
+            <div id="premium-info">Un compte Premium vous permettra d'accéder à un programme personnalisé pour 10€</div>
 		{% endif %}
 	</div>
